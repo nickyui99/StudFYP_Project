@@ -1,4 +1,4 @@
-Instruction in setting up studfyp_db:
+#Instruction in setting up studfyp_db:
     1. Place this 'MySQLi' folder under 'StudFYP_Project' folder or directory.
     2. Move 'STUDFYP_PROJECT' folder to /xampp/htdocs directory.
     3. Open your xampp application and start 'Apache' and 'MySQL'.
