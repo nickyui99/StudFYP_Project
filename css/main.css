@@ -1,0 +1,42 @@
+/* Main CSS */
+/* Do not change anything in main css section, u are free to add and modify ur own css module */
+body {
+    font-family: sans-serif;
+   
+}
+
+.icon{
+    margin: 0 10px 0 10px;
+}
+
+.logo{
+    height: 40px;
+    width: 30px;
+}
+
+.dropdown-item{
+   padding: 10px;
+}
+
+.dropdown-header{
+    background-color: steelblue;
+}
+
+.dropdown-divider{
+    margin: 0;
+    padding: 0;
+}
+
+.see-more-notification{
+    background-color: lightgrey;
+    text-align: center;
+    padding: 5px;
+}
+
+.sb-sidenav-menu-nested .nav-link{
+    font-size: 14px;
+}
+
+.login_bg{
+    background-color: lightgray;
+}
