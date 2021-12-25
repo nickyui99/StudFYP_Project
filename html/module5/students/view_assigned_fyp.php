@@ -4,7 +4,7 @@
 <!-- This page is for students to view their assigned evaluator-->
 
 <?php
-    include '../DAO/myDAO.php';
+include '../DAO/DatabaseHelper.php';
 ?>
 
 <head>
@@ -271,9 +271,10 @@
                                 <th scope="col">Handle</th>
                             </tr>
                         </thead>
-                        <tr>
-                            
-                        </tr>
+                        <tbody>
+                                
+                        </tbody>
+
                     </table>
                 </div>
             </main>
