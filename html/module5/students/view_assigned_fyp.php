@@ -4,7 +4,7 @@
 <!-- This page is for students to view their assigned evaluator-->
 
 <?php
-
+    include '../DAO/myDAO.php';
 ?>
 
 <head>
