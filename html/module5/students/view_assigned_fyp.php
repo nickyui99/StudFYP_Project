@@ -4,7 +4,7 @@
 <!-- This page is for students to view their assigned evaluator-->
 
 <?php
-include '../DAO/DatabaseHelper.php';
+include '../DAO/StudentDataService.php';
 ?>
 
 <head>
@@ -272,7 +272,10 @@ include '../DAO/DatabaseHelper.php';
                             </tr>
                         </thead>
                         <tbody>
-                                
+                              <tr>
+                                  <td><?php $u = new StudentDataService;
+                                  echo $u->getEvaluator(); ?></td>
+                              </tr>  
                         </tbody>
 
                     </table>
