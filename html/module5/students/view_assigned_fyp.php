@@ -26,7 +26,7 @@ include '../DAO/StudentDataService.php';
 
     <!-- CSS -->
     <link rel="stylesheet" href="../../../css/main.css" />
-    <link rel="stylesheet" href="../../../css/module_1.css" />
+    <link rel="stylesheet" href="../../../css/module_5.css" />
 
     <!-- JS -->
 </head>
@@ -275,8 +275,11 @@ include '../DAO/StudentDataService.php';
                         </thead>
                         <tbody>
                             <?php 
-                                $u = new StudentDataService;
-                                echo $u->getEvaluator(); 
+                                $studServices = new StudentDataService;
+                                //print lecturer evaluator data table
+                                echo $studServices->getLectEvaluator(); 
+                                //print industrial evalutor data table
+                                echo $studServices->getIndustrialEvaluator();
                             ?>
                         </tbody>
 
