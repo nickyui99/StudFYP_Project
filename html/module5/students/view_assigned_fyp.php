@@ -265,17 +265,19 @@ include '../DAO/StudentDataService.php';
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr class="table-primary">
-                                <th scope="col ">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th scope="col ">Evaluator ID</th>
+                                <th scope="col">Evaluator Category</th>
+                                <th scope="col">Evaluator Name</th>
+                                <th scope="col">Contact Number</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Company</th>
                             </tr>
                         </thead>
                         <tbody>
-                              <tr>
-                                  <td><?php $u = new StudentDataService;
-                                  echo $u->getEvaluator(); ?></td>
-                              </tr>  
+                            <?php 
+                                $u = new StudentDataService;
+                                echo $u->getEvaluator(); 
+                            ?>
                         </tbody>
 
                     </table>
