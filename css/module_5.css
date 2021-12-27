@@ -13,3 +13,15 @@
     pointer-events: none;
     color: #aaa;
 }
+thead{
+    border: 1px darkgrey solid;
+}
+tbody{
+    font-size: 14px;
+    border: 1px darkgrey solid;
+}
+
+.header-bg{
+    background-color: rgb(1, 80, 76);
+    color: white;
+}

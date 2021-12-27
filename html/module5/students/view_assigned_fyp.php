@@ -29,6 +29,7 @@ include '../DAO/StudentDataService.php';
     <link rel="stylesheet" href="../../../css/module_5.css" />
 
     <!-- JS -->
+    <script src="../../../js/module_5.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -257,14 +258,14 @@ include '../DAO/StudentDataService.php';
                         <div class="form-outline col-sm-2">
                             <div class="form-group has-search">
                                 <span class="fa fa-search form-control-feedback"></span>
-                                <input type="text" class="form-control" placeholder="Search">
+                                <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Search">
                             </div>
                         </div>
                     </div>
 
                     <table class="table table-bordered table-striped">
                         <thead>
-                            <tr class="table-primary">
+                            <tr class="header-bg">
                                 <th scope="col ">Evaluator ID</th>
                                 <th scope="col">Evaluator Category</th>
                                 <th scope="col">Evaluator Name</th>
