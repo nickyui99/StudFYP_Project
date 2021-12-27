@@ -1,28 +1,28 @@
 <?php
 
 class LecturerEvaluator{
-    private $evaluatorID;
-    private $evaluatorName;
+    private $evaluator_id;
+    private $evaluator_name;
     private $lect_id;
-    private $contactNum;
+    private $contact_num;
     private $email;
     
     //Constructor
-    public function LecturerEvaluator($evaluator_id, $lect_id, $name, $contactNumber, $email){
-        $this -> evaluatorID = $evaluator_id;
+    public function LecturerEvaluator($evaluator_id, $lect_id, $name, $contact_number, $email){
+        $this -> evaluator_id = $evaluator_id;
         $this -> lect_id = $lect_id;
-        $this -> evaluatorName = $name;
-        $this -> contactNum = $contactNumber;
+        $this -> evaluator_name = $name;
+        $this -> contact_num = $contact_number;
         $this -> email = $email;
     }
     
     //Getter and Setter
     public function getEvaluatorID(){
-        return $this -> evaluatorID;
+        return $this -> evaluator_id;
     }
 
     public function setEvaluatorID($id){
-        $this -> evaluatorID = $id;
+        $this -> evaluator_id = $id;
     }
 
     public function getLecturerID(){
@@ -34,19 +34,19 @@ class LecturerEvaluator{
     }
 
     public function getEvaluatorName(){
-        return $this -> evaluatorName;
+        return $this -> evaluator_name;
     }
 
     public function setEvaluatorName($name){
-        $this -> evaluatorName = $name;
+        $this -> evaluator_name = $name;
     }
 
     public function getContactNum(){
-        return $this -> contactNum;
+        return $this -> contact_num;
     }
 
-    public function setContactNum($contactNum){
-        $this -> contactNum = $contactNum;
+    public function setContactNum($contact_num){
+        $this -> contact_num = $contact_num;
     }
 
     public function getEmail(){

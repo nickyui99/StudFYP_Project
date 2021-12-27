@@ -1,30 +1,30 @@
 <?php
 
 class IndustrialEvaluator{
-    private $evaluatorID;
-    private $evaluatorName;
+    private $evaluator_id;
+    private $evaluator_name;
     private $ip_id;
     private $contactNum;
     private $email;
     private $company;
     
     //Constructor
-    public function IndustrialEvaluator($evaluator_id, $ip_id, $name, $contactNumber, $email, $company){
-        $this -> evaluatorID = $evaluator_id;
+    public function IndustrialEvaluator($evaluator_id, $ip_id, $name, $contact_number, $email, $company){
+        $this -> evaluator_id = $evaluator_id;
         $this -> ip_id = $ip_id;
-        $this -> evaluatorName = $name;
-        $this -> contactNum = $contactNumber;
+        $this -> evaluator_name = $name;
+        $this -> contact_num = $contact_number;
         $this -> email = $email;
         $this -> company = $company;
     }
     
     //Getter and Setter
     public function getEvaluatorID(){
-        return $this -> evaluatorID;
+        return $this -> evaluator_id;
     }
 
     public function setEvaluatorID($id){
-        $this -> evaluatorID = $id;
+        $this -> evaluator_id = $id;
     }
 
     public function getIPID(){
@@ -36,19 +36,19 @@ class IndustrialEvaluator{
     }
 
     public function getEvaluatorName(){
-        return $this -> evaluatorName;
+        return $this -> evaluator_name;
     }
 
     public function setEvaluatorName($name){
-        $this -> evaluatorName = $name;
+        $this -> evaluator_name = $name;
     }
 
     public function getContactNum(){
-        return $this -> contactNum;
+        return $this -> contact_num;
     }
 
-    public function setContactNum($contactNum){
-        $this -> contactNum = $contactNum;
+    public function setContactNum($contact_num){
+        $this -> contact_num = $contact_num;
     }
 
     public function getEmail(){
