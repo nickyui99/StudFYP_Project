@@ -196,9 +196,9 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link active" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View my evaluator
@@ -253,7 +253,8 @@
                         </div>
                     </div>
 
-                    <table class="table table-bordered table-striped">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
                         <thead>
                             <tr class="header-bg">
                                 <th scope="col ">Evaluator ID</th>
@@ -265,8 +266,12 @@
                             </tr>
                         </thead>
                         <tbody id="result">
+                            <!-- Show datatable here -->
                         </tbody>
                     </table>
+                    </div>
+
+                    
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">

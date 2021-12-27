@@ -11,7 +11,9 @@ class StudentDataService
 
         $connection = $db->getConnection();
 
-        $sql_query = "SELECT * FROM assigned_lecturer_evaluator ".
+        $sql_query = "SELECT assigned_lecturer_evaluator.assigned_lect_id, assigned_lecturer_evaluator.lect_id, assigned_lecturer_evaluator.evaluator_name, lecturer.lect_contact_num, lecturer.lect_email " .
+            "FROM assigned_lecturer_evaluator " . 
+            "INNER JOIN lecturer ON assigned_lecturer_evaluator.lect_id = lecturer.lect_id ".
             "WHERE assigned_lect_id LIKE '%". $search ."%' OR ". 
             "evaluator_name LIKE '%". $search ."%'";
 
@@ -28,7 +30,8 @@ class StudentDataService
                 $lecturer_evaluator->setEvaluatorID($row['assigned_lect_id']);
                 $lecturer_evaluator->setLecturerID($row['lect_id']);
                 $lecturer_evaluator->setEvaluatorName($row['evaluator_name']);
-
+                $lecturer_evaluator->setContactNum($row['lect_contact_num']);
+                $lecturer_evaluator->setEmail($row['lect_email']);
                 //Add to array
                 $lect_evaluator_array[$i] = $lecturer_evaluator;
                 $i++;
@@ -37,9 +40,7 @@ class StudentDataService
             $connection->close();
 
             $output = "";
-            foreach ($lect_evaluator_array as $i) {
-                $service = new StudentDataService();
-                $evaluator = $service -> getLectEvaluatorDetails($i);
+            foreach ($lect_evaluator_array as $evaluator) {
                 $output = $output . "<tr><td>" . $evaluator->getEvaluatorID() . 
                 "</td><td>Lecturer</td><td>" . $evaluator->getEvaluatorName() . 
                 "</td><td>" . $evaluator->getContactNum() . 
@@ -48,32 +49,6 @@ class StudentDataService
             }
             echo $output;
         }
-    }
-
-    function getLectEvaluatorDetails($lect_evaluator)
-    {
-        $db = new Database();
-
-        $sql_query = "SELECT * FROM lecturer WHERE lect_id = '" . $lect_evaluator->getLecturerID() . "'";
-
-        $connection = $db->getConnection();
-
-        // Check connection
-        if ($connection->connect_error) {
-            die("Connection failed: " . $connection->connect_error);
-        }
-
-        $result = $connection->query($sql_query);
-
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $lect_evaluator->setContactNum($row['lect_contact_num']);
-                $lect_evaluator->setEmail($row['lect_email']);
-            }
-        }
-
-        $connection->close();
-        return $lect_evaluator;
     }
 
 
