@@ -17,9 +17,8 @@ include '../DAO/StudentDataService.php';
     <link rel="stylesheet" href="../../../bootstrap_v5.1/css/styles.css" />
 
     <!-- Bootstrap 5 JavaScript -->
-    <script src="../../bootstrap_v5.1/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
+    <script src="../../../bootstrap_v5.1/js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
@@ -30,6 +29,7 @@ include '../DAO/StudentDataService.php';
 
     <!-- JS -->
     <script src="../../../js/module_5.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -48,8 +48,7 @@ include '../DAO/StudentDataService.php';
         <ul class="navbar-nav d-md- ms-auto me-1">
             <!-- Announcement -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-bell fa-fw"></i> Notification</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell fa-fw"></i> Notification</a>
                 <ul class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="navbarDropdown">
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
@@ -77,8 +76,7 @@ include '../DAO/StudentDataService.php';
 
             <!-- Profile -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li>
                         <a class="dropdown-item" href="#!">My profile</a>
@@ -123,8 +121,7 @@ include '../DAO/StudentDataService.php';
                         </a>
 
                         <!-- My FYP -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseFYP"
-                            aria-expanded="false" aria-controls="collapseFYP">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseFYP" aria-expanded="false" aria-controls="collapseFYP">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -133,8 +130,7 @@ include '../DAO/StudentDataService.php';
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseFYP" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseFYP" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
@@ -166,9 +162,7 @@ include '../DAO/StudentDataService.php';
                         </div>
 
                         <!-- My FYP Supervisor -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseSupervisor" aria-expanded="false"
-                            aria-controls="collapseSupervisor">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSupervisor" aria-expanded="false" aria-controls="collapseSupervisor">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -177,8 +171,7 @@ include '../DAO/StudentDataService.php';
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
@@ -194,9 +187,7 @@ include '../DAO/StudentDataService.php';
                         </div>
 
                         <!-- FYP Evaluation -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseEvaluation" aria-expanded="false"
-                            aria-controls="collapseEvaluation">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEvaluation" aria-expanded="false" aria-controls="collapseEvaluation">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -205,8 +196,7 @@ include '../DAO/StudentDataService.php';
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
@@ -258,7 +248,7 @@ include '../DAO/StudentDataService.php';
                         <div class="form-outline col-sm-2">
                             <div class="form-group has-search">
                                 <span class="fa fa-search form-control-feedback"></span>
-                                <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Search">
+                                <input type="text" name="search" id="search" class="form-control" placeholder="Search">
                             </div>
                         </div>
                     </div>
@@ -274,14 +264,8 @@ include '../DAO/StudentDataService.php';
                                 <th scope="col">Company</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php 
-                                $studServices = new StudentDataService;
-                                //print lecturer evaluator data table
-                                echo $studServices->getLectEvaluator(); 
-                                //print industrial evalutor data table
-                                echo $studServices->getIndustrialEvaluator();
-                            ?>
+                        <tbody id="result">
+                            
                         </tbody>
 
                     </table>
@@ -297,5 +281,20 @@ include '../DAO/StudentDataService.php';
         </div>
     </div>
 </body>
+
+<script>
+    $(document).ready(function() {
+        load_data();
+
+        $('#search').keyup(function() {
+            var search = $(this).val();
+            if (search != '') {
+                load_data(search);
+            } else {
+                load_data();
+            }
+        });
+    });
+</script>
 
 </html>

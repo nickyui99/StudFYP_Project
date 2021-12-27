@@ -1,21 +1,11 @@
-function myFunction() {
-    // Declare variables
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("evaluatorTable");
-    tr = table.getElementsByTagName("tr");
+function load_data(query) {
   
-    // Loop through all table rows, and hide those who don't match the search query
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }
+  $.ajax({
+    url: "http://localhost/StudFYP_Project/StudFYP_Project/html/module5/DAO/StudentDataService.php",
+    method: "POST",
+    data: {functionname: 'getLectEvaluator()', arguments: query },
+    success: function (data) {
+      $('#result').html(data);
     }
-  }
+  });
+}
