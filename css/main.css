@@ -2,7 +2,6 @@
 /* Do not change anything in main css section, u are free to add and modify ur own css module */
 body {
     font-family: sans-serif;
-   
 }
 
 .icon{
@@ -39,8 +38,4 @@ body {
 
 .login_bg{
     background-color: lightgray;
-}
-
-.active{
-    background-color: steelblue !important;
 }
