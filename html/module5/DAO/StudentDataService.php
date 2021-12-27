@@ -56,7 +56,10 @@ class StudentDataService
     {
         $db = new Database();
 
-        $sql_query = "SELECT * FROM assigned_industrial_evaluator INNER JOIN industrial_panel ON assigned_industrial_evaluator.ip_id = industrial_panel.ip_id ";
+        $sql_query = "SELECT * FROM assigned_industrial_evaluator " . 
+            "INNER JOIN industrial_panel ON assigned_industrial_evaluator.ip_id = industrial_panel.ip_id " . 
+            "WHERE assigned_ip_id LIKE '%" . $search . "%' OR ".
+            "evaluator_name LIKE '%" . $search . "%'";
 
         $connection = $db->getConnection();
 

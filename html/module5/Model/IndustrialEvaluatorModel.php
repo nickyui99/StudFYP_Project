@@ -60,7 +60,7 @@ class IndustrialEvaluator{
     }
 
     public function getCompany(){
-        return $this -> email;
+        return $this -> company;
     }
 
     public function setCompany($company_name){

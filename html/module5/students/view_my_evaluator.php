@@ -242,7 +242,7 @@
 
                     <div class="row mb-2">
                         <!-- Evaluation panel counter -->
-                        <p class="col-sm-9 my-auto text-secondary">Total 0 Evaluation Panel</p>
+                        <p id="evaluator_counter" class="col-sm-9 my-auto text-secondary">Total 0 Evaluation Panel</p>
 
                         <!-- Search bar -->
                         <div class="form-outline col-sm-3">
@@ -254,7 +254,7 @@
                     </div>
 
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
+                        <table id="myTable" class="table table-bordered table-striped">
                         <thead>
                             <tr class="header-bg">
                                 <th scope="col ">Evaluator ID</th>
@@ -288,7 +288,7 @@
 <script>
     $(document).ready(function() {
         load_data("");
-
+        
         $('#search').keyup(function() {
             var search = $(this).val();
             if (search != '') {
