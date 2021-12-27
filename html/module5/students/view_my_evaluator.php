@@ -3,10 +3,6 @@
 
 <!-- This page is for students to view their assigned evaluator-->
 
-<?php
-    include '../DAO/StudentDataService.php';
-?>
-
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -197,10 +193,10 @@
                             </div>
                         </a>
                         <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link active" href="#">
+                            <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
+                                <a class="nav-link text-light active" href="#">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                                     </div>View my evaluator
                                 </a>
                                 <a class="nav-link" href="#">

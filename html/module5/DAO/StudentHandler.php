@@ -8,4 +8,9 @@ if(isset($_POST['search_evaluator'])) {
     $result = $lecturer_evaluator . $industrial_evaluator;
     echo $result;
 }
+
+function displayFyp1Result($student_id){
+    $student_id = "CB19080";
+
+}
 ?>

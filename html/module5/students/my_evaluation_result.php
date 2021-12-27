@@ -172,7 +172,7 @@
                             </div>
                         </a>
                         <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
+                            <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
@@ -197,15 +197,15 @@
                             </div>
                         </a>
                         <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
+                            <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View my evaluator
                                 </a>
-                                <a class="nav-link active" href="#">
+                                <a class="nav-link text-light active" href="#">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                                     </div>My evaluation result
                                 </a>
                             </nav>
@@ -232,7 +232,7 @@
             <main>
                 <div class="container-fluid px-4">
                     <!-- Page Header -->
-                    <h1 class="ms-0 mt-4">Evaluator Result</h1>
+                    <h1 class="ms-0 mt-4">Evaluation Result</h1>
 
                     <!-- Breadcrumb -->
                     <ol class="breadcrumb mb-3">
@@ -248,6 +248,7 @@
                             <p>P001</p>
                         </div>
                     </div>
+
                     <div class="row justify-content-md-left">
                         <div class="col-2">
                             <p>Project Title: </p>
@@ -257,19 +258,22 @@
                         </div>
                     </div>
 
+                    <div class="row justify-content-md-left">
+                        <h3><u>FYP 1</u></h3>
+                    </div>
+
                     <div class="table-responsive">
-                        <table id="myTable" class="table table-bordered table-striped">
+                        <table id="ev_fyp_1_table" class="table table-bordered table-striped">
                         <thead>
                             <tr class="header-bg">
-                                <th scope="col ">Evaluator ID</th>
-                                <th scope="col">Evaluator Category</th>
+                                <th scope="col">Submission</th>
+                                <th scope="col">Evaluator ID</th>
                                 <th scope="col">Evaluator Name</th>
-                                <th scope="col">Contact Number</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Company</th>
+                                <th scope="col">Project Feedback</th>
+                                <th scope="col">Evaluation Mark</th>
                             </tr>
                         </thead>
-                        <tbody id="result">
+                        <tbody id="result_fyp_1">
                             <!-- Show datatable here -->
                         </tbody>
                     </table>
@@ -288,20 +292,5 @@
         </div>
     </div>
 </body>
-
-<script>
-    $(document).ready(function() {
-        load_data("");
-        
-        $('#search').keyup(function() {
-            var search = $(this).val();
-            if (search != '') {
-                load_data(search);
-            } else {
-                load_data("");
-            }
-        });
-    });
-</script>
 
 </html>

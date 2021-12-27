@@ -56,7 +56,8 @@ class StudentDataService
     {
         $db = new Database();
 
-        $sql_query = "SELECT * FROM assigned_industrial_evaluator " . 
+        $sql_query = "SELECT assigned_industrial_evaluator.assigned_ip_id, assigned_industrial_evaluator.ip_id, assigned_industrial_evaluator.evaluator_name, industrial_panel.ip_contact_num, industrial_panel.ip_email, industrial_panel.ip_company " . 
+            "FROM assigned_industrial_evaluator " . 
             "INNER JOIN industrial_panel ON assigned_industrial_evaluator.ip_id = industrial_panel.ip_id " . 
             "WHERE assigned_ip_id LIKE '%" . $search . "%' OR ".
             "evaluator_name LIKE '%" . $search . "%'";
@@ -99,5 +100,14 @@ class StudentDataService
 
             return $output;
         }
+    }
+
+    function getFyp1Result($student_id){
+
+        $db = new Database();
+
+        $connection = $db->getConnection();
+
+        $sql_query = "SELECT * FROM" ;       
     }
 }
