@@ -232,24 +232,28 @@
             <main>
                 <div class="container-fluid px-4">
                     <!-- Page Header -->
-                    <h1 class="ms-0 mt-4">Evaluator Information</h1>
+                    <h1 class="ms-0 mt-4">Evaluator Result</h1>
 
                     <!-- Breadcrumb -->
                     <ol class="breadcrumb mb-3">
                         <li class="breadcrumb-item">My FYP evaluation</li>
-                        <li class="breadcrumb-item active">View my evaluator</li>
+                        <li class="breadcrumb-item active">My evaluation result</li>
                     </ol>
 
-                    <div class="row mb-2">
-                        <!-- Evaluation panel counter -->
-                        <p id="evaluator_counter" class="col-sm-9 my-auto text-secondary">Total 0 Evaluation Panel</p>
-
-                        <!-- Search bar -->
-                        <div class="form-outline col-sm-3">
-                            <div class="form-group has-search">
-                                <span class="fa fa-search form-control-feedback"></span>
-                                <input type="text" name="search" id="search" class="form-control" placeholder="Search ID or Name">
-                            </div>
+                    <div class="row justify-content-md-left">
+                        <div class="col-2">
+                            <p>Project ID: </p>
+                        </div>
+                        <div class="col-3">
+                            <p>P001</p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-md-left">
+                        <div class="col-2">
+                            <p>Project Title: </p>
+                        </div>
+                        <div class="col-3">
+                            <p>Advanced Mobile Store</p>
                         </div>
                     </div>
 
