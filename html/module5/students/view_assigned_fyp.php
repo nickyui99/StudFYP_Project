@@ -4,14 +4,14 @@
 <!-- This page is for students to view their assigned evaluator-->
 
 <?php
-include '../DAO/StudentDataService.php';
+    include '../DAO/StudentDataService.php';
 ?>
 
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <title>View Assigned Evaluator</title>
 
     <!-- Bootstrap 5 CSS -->
     <link rel="stylesheet" href="../../../bootstrap_v5.1/css/styles.css" />
@@ -29,7 +29,7 @@ include '../DAO/StudentDataService.php';
 
     <!-- JS -->
     <script src="../../../js/module_5.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -242,13 +242,13 @@ include '../DAO/StudentDataService.php';
 
                     <div class="row mb-2">
                         <!-- Evaluation panel counter -->
-                        <p class="col-sm-10 my-auto text-secondary">Total 0 Evaluation Panel</p>
+                        <p class="col-sm-9 my-auto text-secondary">Total 0 Evaluation Panel</p>
 
                         <!-- Search bar -->
-                        <div class="form-outline col-sm-2">
+                        <div class="form-outline col-sm-3">
                             <div class="form-group has-search">
                                 <span class="fa fa-search form-control-feedback"></span>
-                                <input type="text" name="search" id="search" class="form-control" placeholder="Search">
+                                <input type="text" name="search" id="search" class="form-control" placeholder="Search ID or Name">
                             </div>
                         </div>
                     </div>
@@ -265,9 +265,7 @@ include '../DAO/StudentDataService.php';
                             </tr>
                         </thead>
                         <tbody id="result">
-                            
                         </tbody>
-
                     </table>
                 </div>
             </main>
@@ -284,14 +282,14 @@ include '../DAO/StudentDataService.php';
 
 <script>
     $(document).ready(function() {
-        load_data();
+        load_data("");
 
         $('#search').keyup(function() {
             var search = $(this).val();
             if (search != '') {
                 load_data(search);
             } else {
-                load_data();
+                load_data("");
             }
         });
     });
