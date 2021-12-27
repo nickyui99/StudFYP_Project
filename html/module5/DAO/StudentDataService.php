@@ -52,7 +52,7 @@ class StudentDataService
     }
 
 
-    function getIndustrialEvaluator()
+    function getIndustrialEvaluator($search)
     {
         $db = new Database();
 
@@ -80,18 +80,17 @@ class StudentDataService
             }
 
             $connection->close();
-
+            $result = "";
             foreach ($industrial_evaluator_array as $i) {
                 $service = new StudentDataService();
                 $evaluator = $service -> getIPEvaluatorDetails($i);
-                echo "<tr>";
-                echo "<td>" . $evaluator->getEvaluatorID() . "</td>";
-                echo "<td>Lecturer</td>";
-                echo "<td>" . $evaluator->getEvaluatorName() . "</td>";
-                echo "<td>" . $evaluator->getContactNum() . "</td>";
-                echo "<td>" . $evaluator->getEmail() . "</td>";
-                echo "<td>" . $evaluator->getCompany() . "</td>";
-                echo "</tr>";
+                $result = $result . "<tr><td>" . $evaluator->getEvaluatorID() . 
+                "</td><td>Industrial Panel</td><td>" . 
+                $evaluator->getEvaluatorName() . 
+                "</td><td>" . $evaluator->getContactNum() . 
+                "</td><td>" . $evaluator->getEmail() . 
+                "</td><td>" . $evaluator->getCompany() . 
+                "</td></tr>";
             }
         }
     }
