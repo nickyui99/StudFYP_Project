@@ -47,7 +47,7 @@ class StudentDataService
                 "</td><td>" . $evaluator->getEmail() . 
                 "</td><td> - </td></tr>";
             }
-            echo $output;
+            return $output;
         }
     }
 
@@ -56,7 +56,7 @@ class StudentDataService
     {
         $db = new Database();
 
-        $sql_query = "SELECT * FROM assigned_industrial_evaluator";
+        $sql_query = "SELECT * FROM assigned_industrial_evaluator INNER JOIN industrial_panel ON assigned_industrial_evaluator.ip_id = industrial_panel.ip_id ";
 
         $connection = $db->getConnection();
 
@@ -73,6 +73,9 @@ class StudentDataService
                 $industrial_evaluator->setEvaluatorID($row['assigned_ip_id']);
                 $industrial_evaluator->setIPID($row['ip_id']);
                 $industrial_evaluator->setEvaluatorName($row['evaluator_name']);
+                $industrial_evaluator->setContactNum($row['ip_contact_num']);
+                $industrial_evaluator->setEmail($row['ip_email']);
+                $industrial_evaluator->setCompany($row['ip_company']);
 
                 //Add to array
                 $industrial_evaluator_array[$i] = $industrial_evaluator;
@@ -80,11 +83,9 @@ class StudentDataService
             }
 
             $connection->close();
-            $result = "";
-            foreach ($industrial_evaluator_array as $i) {
-                $service = new StudentDataService();
-                $evaluator = $service -> getIPEvaluatorDetails($i);
-                $result = $result . "<tr><td>" . $evaluator->getEvaluatorID() . 
+            $output = "";
+            foreach ($industrial_evaluator_array as $evaluator) {
+                $output = $output . "<tr><td>" . $evaluator->getEvaluatorID() . 
                 "</td><td>Industrial Panel</td><td>" . 
                 $evaluator->getEvaluatorName() . 
                 "</td><td>" . $evaluator->getContactNum() . 
@@ -92,33 +93,8 @@ class StudentDataService
                 "</td><td>" . $evaluator->getCompany() . 
                 "</td></tr>";
             }
+
+            return $output;
         }
-    }
-
-    function getIpEvaluatorDetails($ip_evaluator)
-    {
-        $db = new Database();
-
-        $sql_query = "SELECT * FROM industrial_panel WHERE ip_id = '" . $ip_evaluator->getIPID() . "'";
-
-        $connection = $db->getConnection();
-
-        // Check connection
-        if ($connection->connect_error) {
-            die("Connection failed: " . $connection->connect_error);
-        }
-
-        $result = $connection->query($sql_query);
-
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $ip_evaluator->setContactNum($row['ip_contact_num']);
-                $ip_evaluator->setEmail($row['ip_email']);
-                $ip_evaluator->setCompany($row['ip_company']);
-            }
-        }
-
-        $connection->close();
-        return $ip_evaluator;
     }
 }
