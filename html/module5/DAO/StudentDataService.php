@@ -108,6 +108,6 @@ class StudentDataService
 
         $connection = $db->getConnection();
 
-        $sql_query = "SELECT * FROM" ;       
+        $sql_query = "SELECT evaluation_result.submission_level, evaluation_result.assigned_lect_id, evaluation_result.assigned_ip_id,  evaluation_result.project_title, FROM " ;       
     }
 }

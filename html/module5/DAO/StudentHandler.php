@@ -11,6 +11,6 @@ if(isset($_POST['search_evaluator'])) {
 
 function displayFyp1Result($student_id){
     $student_id = "CB19080";
-
+    
 }
 ?>
