@@ -4,7 +4,7 @@
 <!-- This page is for students to view their assigned evaluator-->
 
 <?php
-    include '../DAO/StudentDataService.php';
+    include '../DAO/StudentHandler.php';
 ?>
 
 <head>
@@ -275,6 +275,9 @@
                         </thead>
                         <tbody id="result_fyp_1">
                             <!-- Show datatable here -->
+                            <?php 
+                            displayFyp1Result("");
+                            ?>
                         </tbody>
                     </table>
                     </div>

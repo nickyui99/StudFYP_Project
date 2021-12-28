@@ -10,7 +10,9 @@ if(isset($_POST['search_evaluator'])) {
 }
 
 function displayFyp1Result($student_id){
-    $student_id = "CB19080";
-    
+    $student_id = "CA18016";
+    $sds = new StudentDataService();
+    $output = $sds->getFyp1Result("CA18016");
+    echo $output;
 }
 ?>
