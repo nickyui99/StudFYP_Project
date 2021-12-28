@@ -1,20 +1,23 @@
 <?php
 require_once 'Database.php';
+require_once '../Model/AssignedEvaluationModel.php';
 
-class LecturerDataService{
-    
-    function getAssignedEvaluation($query, $id){
+class LecturerDataService
+{
+
+    function getAssignedEvaluation($query, $id)
+    {
 
         $db = new Database();
 
         //Create connection
         $connection = $db->getConnection();
 
-        $sql_query = "SELECT * FROM assigned_lecturer_evaluator " . 
-            "INNER JOIN fyp_project " . 
-            "ON assigned_lecturer_evaluator.stud_id = fyp_project.stud_id " . 
-            "WHERE assigned_lecturer_evaluator.lect_id = '". $id ."' AND " . 
-            "fyp_project.stud_id LIKE '%". $query ."%'";
+        $sql_query = "SELECT * FROM assigned_lecturer_evaluator " .
+            "INNER JOIN fyp_project " .
+            "ON assigned_lecturer_evaluator.stud_id = fyp_project.stud_id " .
+            "WHERE assigned_lecturer_evaluator.lect_id = '" . $id . "' AND " .
+            "fyp_project.stud_id LIKE '%" . $query . "%'";
 
         //Run SQL Query
         $result = $connection->query($sql_query);
@@ -27,9 +30,30 @@ class LecturerDataService{
             while ($row = $result->fetch_assoc()) {
 
                 //Retrieve data
-                
-                
+                $assigned_ev = new AssignedEvaluation();
+                $assigned_ev->setProjectID($row['fyp_proj_id']);
+                $assigned_ev->setStudentID($row['stud_id']);
+                $assigned_ev->setStudentName($row['evaluator_name']);
+                $assigned_ev->setFypLevel($row['proj_fyp_stage']);
+                $assigned_ev->setFypProgress($row['fyp_proj_progress']);
+                $assigned_ev->setEvaluation1($row['document_submission_1']);
+                $assigned_ev->setEvaluation2($row['document_submission_2']);
+                $assigned_ev->setEvaluation3($row['document_submission_3']);
+
+                //Add to array
+                $assigned_ev_array[$i] = $assigned_ev;
+                $i++;
             }
+
+            //Close connection
+            $connection->close();
+
+            //Set output
+            $output = "";
+            foreach($assigned_ev_array as $assigned_ev){
+
+            }
+            return $output;
         }
     }
 }
