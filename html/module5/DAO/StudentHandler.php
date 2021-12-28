@@ -15,4 +15,15 @@ function displayFyp1Result($student_id){
     $output = $sds->getFyp1Result("CA18016");
     echo $output;
 }
+
+function displayFyp2Result($student_id){
+    $student_id = "CA18016";
+    $sds = new StudentDataService();
+    $output = $sds->getFyp2Result("CA18016");
+    echo $output;
+}
+
+function displayProjectID($student_id){
+    
+}
 ?>

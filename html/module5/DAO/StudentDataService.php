@@ -134,7 +134,12 @@ class StudentDataService
         $result = $connection->query($sql_query);
 
         if ($result->num_rows == 0) {
-            return null;
+            $output="";
+            for($i=1; $i<=3; $i++){
+                $output = $output . '<tr> <td>' . $i . '</td>  <td> - </td> <td> - </td> <td> - </td> <td  style="text-align: right;"> - </td> </tr>';
+            }
+            $output = $output . '<tr><td style="text-align: right; font-weight: bold; padding: 10px;" colspan="4">Total: </td> <td style="text-align: right;"> 0 </td></tr>';
+            return $output;
         } else {
             $i = 0;
             $result_array = array();
@@ -154,6 +159,7 @@ class StudentDataService
             //Set output
             $output = "";
             $counter = 0;
+            $total_mark = 0;
             foreach ($result_array as $result){
                 $output = $output . 
                     "<tr>" . 
@@ -161,18 +167,102 @@ class StudentDataService
                     "<td>". $result->getEvaluatorID() . "</td>" . 
                     "<td>". $result->getEvaluatorName() ."</td>" .
                     "<td>". $result->getProjectFeedback() ."</td>" .
-                    "<td>". $result->getEvaluationMark() ."</td>" .
+                    '<td  style="text-align: right;">'. $result->getEvaluationMark() ."</td>" .
                     "</tr>";
                 $counter++;
+                $total_mark = $total_mark + $result->getEvaluationMark();
             }
 
             if($counter<3){
                 for($i=$counter+1; $i<=3; $i++){
-                    $output = $output . "<tr> <td>" . $i . "</td>  <td> - </td> <td> - </td> <td> - </td> <td> - </td> </tr>";
+                    $output = $output . '<tr> <td>' . $i . '</td>  <td> - </td> <td> - </td> <td> - </td> <td  style="text-align: right;"> - </td> </tr>';
                 }
             }
 
+            $output = $output . '<tr><td style="text-align: right; font-weight: bold; padding-right: 10px;" colspan="4">Total: </td> <td style="text-align: right;">'. $total_mark.'</td></tr>';
+
             return $output;
         }
+    }
+
+    function getFyp2Result($student_id){
+
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "SELECT evaluation_result.submission_level, evaluation_result.assigned_lect_id, assigned_lecturer_evaluator.evaluator_name, evaluation_result.evaluation_feedback, evaluation_result.evaluation_mark, evaluation_result.fyp_proj_id, fyp_project.stud_id " . 
+            "FROM ((evaluation_result " . 
+            "INNER JOIN assigned_lecturer_evaluator ON evaluation_result.assigned_lect_id = assigned_lecturer_evaluator.assigned_lect_id) " . 
+            "INNER JOIN fyp_project ON evaluation_result.fyp_proj_id = fyp_project.fyp_proj_id )" .
+            "WHERE evaluation_result.assigned_lect_id IS NOT NULL AND " . 
+            "fyp_project.proj_fyp_stage = 'PSM2' AND " . 
+            "fyp_project.stud_id = '" . $student_id . "'";     
+            
+        //Run SQL query
+        $result = $connection->query($sql_query);
+
+        if ($result->num_rows == 0) {
+            $output="";
+            for($i=1; $i<=3; $i++){
+                $output = $output . '<tr> <td>' . $i . '</td>  <td> - </td> <td> - </td> <td> - </td> <td  style="text-align: right;"> - </td> </tr>';
+            }
+            $output = $output . '<tr><td style="text-align: right; font-weight: bold; padding: 10px;" colspan="4">Total: </td> <td style="text-align: right;"> 0 </td></tr>';
+            return $output;
+        } else {
+            $i = 0;
+            $result_array = array();
+            //Retrieve data
+            while ($row = $result->fetch_assoc()) {
+                $evaluation_result = new EvaluationResult();
+                $evaluation_result->EvaluationResult($row['submission_level'], $row['assigned_lect_id'], $row['evaluator_name'], $row['evaluation_feedback'], $row['evaluation_mark']);
+
+                //Add to array
+                $result_array[$i] = $evaluation_result;
+                $i++;
+            }
+
+            //Close connection
+            $connection->close();
+
+            //Set output
+            $output = "";
+            $counter = 0;
+            $total_mark = 0;
+            foreach ($result_array as $result){
+                $output = $output . 
+                    "<tr>" . 
+                    "<td>". $result->getSubmission() . "</td>" . 
+                    "<td>". $result->getEvaluatorID() . "</td>" . 
+                    "<td>". $result->getEvaluatorName() ."</td>" .
+                    "<td>". $result->getProjectFeedback() ."</td>" .
+                    '<td style="text-align: right;">'. $result->getEvaluationMark() ."</td>" .
+                    "</tr>";
+                $counter++;
+                $total_mark = $total_mark + $result->getEvaluationMark();
+            }
+
+            if($counter<3){
+                for($i=$counter+1; $i<=3; $i++){
+                    $output = $output . '<tr> <td>' . $i . '</td>  <td> - </td> <td> - </td> <td> - </td> <td style="text-align: right;"> - </td> </tr>';
+                }
+            }
+            $output = $output . '<tr><td style="text-align: right; font-weight: bold; padding: 10px;" colspan="4">Total: </td> <td style="text-align: right;"> '. $total_mark.' </td></tr>';
+            return $output;
+        }
+    }
+
+    function getFypProjectID(){
+
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "Select ";
+
+        //Run SQL query
+        $result = $connection->query($sql_query);
     }
 }

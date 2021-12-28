@@ -282,6 +282,29 @@
                     </table>
                     </div>
 
+                    <div class="row justify-content-md-left">
+                        <h3><u>FYP 2</u></h3>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="ev_fyp_2_table" class="table table-bordered table-striped">
+                        <thead>
+                            <tr class="header-bg">
+                                <th scope="col">Submission</th>
+                                <th scope="col">Evaluator ID</th>
+                                <th scope="col">Evaluator Name</th>
+                                <th scope="col">Project Feedback</th>
+                                <th scope="col">Evaluation Mark</th>
+                            </tr>
+                        </thead>
+                        <tbody id="result_fyp_2">
+                            <!-- Show datatable here -->
+                            <?php 
+                            displayFyp2Result("");
+                            ?>
+                        </tbody>
+                    </table>
+                    </div>
                     
                 </div>
             </main>
