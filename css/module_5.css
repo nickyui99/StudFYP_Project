@@ -13,15 +13,17 @@
     pointer-events: none;
     color: #aaa;
 }
-thead{
+
+thead {
     border: 1px darkgrey solid;
 }
-tbody{
+
+tbody {
     font-size: 14px;
     border: 1px darkgrey solid;
 }
 
-.header-bg{
-    background-color: rgb(1, 80, 76);
+.header-bg {
+    background-color: rgb(0, 104, 107);
     color: white;
 }

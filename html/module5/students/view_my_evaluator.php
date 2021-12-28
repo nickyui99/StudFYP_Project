@@ -251,23 +251,23 @@
 
                     <div class="table-responsive">
                         <table id="myTable" class="table table-bordered table-striped">
-                        <thead>
-                            <tr class="header-bg">
-                                <th scope="col ">Evaluator ID</th>
-                                <th scope="col">Evaluator Category</th>
-                                <th scope="col">Evaluator Name</th>
-                                <th scope="col">Contact Number</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Company</th>
-                            </tr>
-                        </thead>
-                        <tbody id="result">
-                            <!-- Show datatable here -->
-                        </tbody>
-                    </table>
+                            <thead>
+                                <tr class="header-bg">
+                                    <th scope="col ">Evaluator ID</th>
+                                    <th scope="col">Evaluator Category</th>
+                                    <th scope="col">Evaluator Name</th>
+                                    <th scope="col">Contact Number</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Company</th>
+                                </tr>
+                            </thead>
+                            <tbody id="result">
+                                <!-- Show datatable here -->
+                            </tbody>
+                        </table>
                     </div>
 
-                    
+
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
@@ -283,14 +283,14 @@
 
 <script>
     $(document).ready(function() {
-        load_data("");
-        
+        load_evaluator("");
+
         $('#search').keyup(function() {
             var search = $(this).val();
             if (search != '') {
-                load_data(search);
+                load_evaluator(search);
             } else {
-                load_data("");
+                load_evaluator("");
             }
         });
     });

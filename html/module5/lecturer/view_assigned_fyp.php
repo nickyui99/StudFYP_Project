@@ -3,6 +3,10 @@
 
 <!-- This html template is only for StudFYP lecturer only -->
 
+<?php
+    include '../DAO/LecturerHandler.php';
+?>
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -22,8 +26,12 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../../../css/main.css" />
+    <link rel="stylesheet" href="../../../css/module_5.css" />
 
     <!-- JS -->
+    <script src="../../../js/module_5.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
 </head>
 
 <body class="sb-nav-fixed">
@@ -248,25 +256,42 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Dashboard</h1>
+                    <h1 class="mt-4">Assigned FYP for Evaluation</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">
-                            <a href="index.html">Dashboard</a>
+                            FYP evaluation
                         </li>
-                        <li class="breadcrumb-item active">Announcement</li>
+                        <li class="breadcrumb-item active">Assigned FYP for Evaluation</li>
                     </ol>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            This page is an example of using the light side
-                            navigation option. By appending the
-                            <code>.sb-sidenav-light</code>
-                            class to the
-                            <code>.sb-sidenav</code>
-                            class, the side navigation will take on a light
-                            color scheme. The
-                            <code>.sb-sidenav-dark</code>
-                            is also available for a darker option.
+                    <div class="row mb-2">
+                        <!-- Evaluation panel counter -->
+                        <p id="row_counter" class="col-sm-9 my-auto text-secondary">Total 0 Assigned Evaluation</p>
+
+                        <!-- Search bar -->
+                        <div class="form-outline col-sm-3">
+                            <div class="form-group has-search">
+                                <span class="fa fa-search form-control-feedback"></span>
+                                <input type="text" name="search" id="search" class="form-control" placeholder="Search ID or Name">
+                            </div>
                         </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="myTable" class="table table-bordered table-striped">
+                            <thead>
+                                <tr class="header-bg">
+                                    <th scope="col">Project ID</th>
+                                    <th scope="col">Student ID</th>
+                                    <th scope="col">Student Name</th>
+                                    <th scope="col">FYP Level</th>
+                                    <th scope="col">FYP Progress</th>
+                                    <th scope="col">Evaluation</th>
+                                </tr>
+                            </thead>
+                            <tbody id="result">
+                                <!-- Show datatable here -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </main>
@@ -280,5 +305,21 @@
         </div>
     </div>
 </body>
+
+<script>
+    $(document).ready(function() {
+    
+        load_assigned_evaluator("", "S001");
+        
+        $('#search').keyup(function() {
+            var search = $(this).val();
+            if (search != '') {
+                load_assigned_evaluator(search, "S001");
+            } else {
+                load_assigned_evaluator("", "S001");
+            }
+        });
+    });
+</script>
 
 </html>
