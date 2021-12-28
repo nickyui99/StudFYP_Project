@@ -2,6 +2,7 @@
 require_once 'Database.php';
 require_once '../Model/LecturerEvaluatorModel.php';
 require_once '../Model/IndustrialEvaluatorModel.php';
+require_once '../Model/EvaluationResultModel.php';
 
 class StudentDataService
 {
@@ -108,6 +109,20 @@ class StudentDataService
 
         $connection = $db->getConnection();
 
-        $sql_query = "SELECT evaluation_result.submission_level, evaluation_result.assigned_lect_id, evaluation_result.assigned_ip_id,  evaluation_result.project_title, FROM " ;       
+        $sql_query = "SELECT evaluation_result.submission_level, evaluation_result.assigned_lect_id, assigned_lecturer_evaluator.evaluator_name, evaluation_result.evaluation_feedback, evaluation_result.evaluation_mark, evaluation_result.fyp_proj_id, fyp_project.stud_id" . 
+            "FROM evaluation_result " . 
+            "INNER JOIN assigned_lecturer_evaluator ON evaluation_result.assigned_lect_id = assigned_lecturer_evaluator.assigned_lect_id " . 
+            "INNER JOIN fyp_project ON evaluation_result.fyp_proj_id = fyp_project.fyp_proj_id )" .
+            "WHERE evaluation_result.assigned_lect_id IS NOT NULL AND " . 
+            "fyp_project.proj_fyp_stage = 'PSM1' AND " . 
+            "fyp_project.stud_id = '" . $student_id . "'";     
+            
+        $result = $connection->query($sql_query);
+
+        if ($result->num_rows == 0) {
+            return null;
+        } else {
+
+        }
     }
 }
