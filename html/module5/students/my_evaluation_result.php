@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- This page is for students to view their assigned evaluator-->
+<!-- This page is for students to view their evaluation result-->
 
 <?php
     include '../DAO/StudentHandler.php';
