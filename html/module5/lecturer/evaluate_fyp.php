@@ -11,7 +11,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>View Assigned FYP</title>
+    <title>Evaluate FYP</title>
 
     <!-- Bootstrap 5 CSS -->
     <link rel="stylesheet" href="../../../bootstrap_v5.1/css/styles.css" />
@@ -256,43 +256,33 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Assigned FYP for Evaluation</h1>
+                    <h1 class="mt-4">Evaluate FYP</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">
                             FYP evaluation
                         </li>
                         <li class="breadcrumb-item active">Assigned FYP for Evaluation</li>
+                        <li class="breadcrumb-item active">Evaluate FYP</li>
                     </ol>
-                    <div class="row mb-2">
-                        <!-- Evaluation panel counter -->
-                        <p id="row_counter" class="col-sm-9 my-auto text-secondary">Total 0 Assigned Evaluation</p>
 
-                        <!-- Search bar -->
-                        <div class="form-outline col-sm-3">
-                            <div class="form-group has-search">
-                                <span class="fa fa-search form-control-feedback"></span>
-                                <input type="text" name="search" id="search" class="form-control" placeholder="Search ID or Name">
+                    <form action="">
+                        <div class="form-group row">
+                            <label class="col-sm-2" for="project_id">Project ID: </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control " name="project_id" id="project_id">
                             </div>
+                            <div class="col-sm-2">
+                                <img src="../../../images/ump_logo.png" alt="" class="img-thumbnail">
+                            </div>           
                         </div>
-                    </div>
 
-                    <div class="table-responsive">
-                        <table id="myTable" class="table table-bordered table-striped">
-                            <thead>
-                                <tr class="header-bg">
-                                    <th scope="col">Project ID</th>
-                                    <th scope="col">Student ID</th>
-                                    <th scope="col">Student Name</th>
-                                    <th scope="col">FYP Level</th>
-                                    <th scope="col">FYP Progress</th>
-                                    <th scope="col">Evaluation</th>
-                                </tr>
-                            </thead>
-                            <tbody id="result">
-                                <!-- Show datatable here -->
-                            </tbody>
-                        </table>
-                    </div>
+                        <div class="form-group row">
+                            
+                        </div>
+                    </form>
+                    
+                    
+
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">

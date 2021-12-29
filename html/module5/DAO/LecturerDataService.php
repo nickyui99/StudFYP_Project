@@ -47,6 +47,7 @@ class LecturerDataService
 
             //Close connection
             $connection->close();
+            mysqli_close($connection);
 
             //Set output
             $output = "";
