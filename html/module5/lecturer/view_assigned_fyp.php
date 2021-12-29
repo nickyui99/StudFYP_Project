@@ -220,12 +220,12 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne"
+                        <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
+                            <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
+                                <a class="nav-link text-light active" href="#">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                                     </div>View assigned FYP
                                 </a>
                                 <a class="nav-link" href="#">
@@ -309,14 +309,14 @@
 <script>
     $(document).ready(function() {
     
-        load_assigned_evaluator("", "S001");
+        load_assigned_evaluator("", "S012");
         
         $('#search').keyup(function() {
             var search = $(this).val();
             if (search != '') {
-                load_assigned_evaluator(search, "S001");
+                load_assigned_evaluator(search, "S012");
             } else {
-                load_assigned_evaluator("", "S001");
+                load_assigned_evaluator("", "S012");
             }
         });
     });

@@ -51,7 +51,16 @@ class LecturerDataService
             //Set output
             $output = "";
             foreach($assigned_ev_array as $assigned_ev){
-
+                $output = '<tr>'.
+                    '<td>'. $assigned_ev->getProjectID() . '</td>'.
+                    '<td>'.$assigned_ev->getStudentID() .'</td>'.
+                    '<td>'.$assigned_ev->getStudentName() .'</td>'.
+                    '<td>'.$assigned_ev->getFypLevel() .'</td>'.
+                    '<td>'.$assigned_ev->getFypProgress() .'</td>'.
+                    '<td><button type="button" class="btn btn-light btn-outline-dark btn-sm">1</button> '.
+                        '<button type="button" class="btn btn-light btn-outline-dark btn-sm">2</button>'.
+                        ' <button type="button" class="btn btn-light btn-outline-dark btn-sm">3</button></td>'.
+                    '</tr>';
             }
             return $output;
         }
