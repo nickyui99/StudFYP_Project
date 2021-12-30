@@ -1,6 +1,6 @@
 <?php
 require_once 'Database.php';
-require_once '../Model/AssignedEvaluationModel.php';
+require_once '../ClassModel/AssignedEvaluationModel.php';
 
 class LecturerDataService
 {

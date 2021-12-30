@@ -1,8 +1,8 @@
 <?php
 require_once 'Database.php';
-require_once '../Model/LecturerEvaluatorModel.php';
-require_once '../Model/IndustrialEvaluatorModel.php';
-require_once '../Model/EvaluationResultModel.php';
+require_once '../ClassModel/LecturerEvaluatorModel.php';
+require_once '../ClassModel/IndustrialEvaluatorModel.php';
+require_once '../ClassModel/EvaluationResultModel.php';
 
 class StudentDataService
 {
