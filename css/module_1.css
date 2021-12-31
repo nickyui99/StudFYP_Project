@@ -1,0 +1,86 @@
+body{
+    font-family: Calibri, Helvetica, sans-serif;
+    background-color: lightblue;
+  }
+    form {
+      margin:auto;/* nice thing of auto margin if display:flex; it center both horizontal and vertical :) */
+      border: 5px solid #f1f1f1;
+    }
+  table.au{
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Calibri, Helvetica, sans-serif;
+    font-size: large;
+    padding-top: 0pt;
+    margin-top:none;
+    width: 100%;
+  }
+  table.au th{
+    text-align: right;
+  }
+  table.au td{
+    text-align: left;
+  }
+  
+  .dlt {
+    margin-left: auto;
+    margin-right: auto;
+    }
+  
+  table.dlt th{
+    margin-left: auto;
+    margin-right: auto;
+  background-color: blue;
+    text-align: center;
+  }
+  table.dlt td{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lightseagreen;
+    text-align: center;
+  }
+  
+  h1{
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    font-size: 30;
+    margin-bottom: none;
+    padding-top: none;
+  }
+  .container {  
+    padding: 50px;  
+  background-color: lightblue;  
+  text-align: center;
+  }  
+  
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+  .button {
+    background-color: blue;
+    padding: 16px 20px;
+    margin: 8px 8px;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 40%;
+    opacity: 0.9;
+  }
+  
+  table.gototal {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Calibri, Helvetica, sans-serif;
+    font-size: large;
+    padding-top: 0pt;
+    margin-top:none;
+    width: 100%;
+    border: 1px solid black;
+  }
+  
+  table.gototal td{
+  text-align: center;
+  }
+  

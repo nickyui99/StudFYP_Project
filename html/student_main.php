@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- This is the main page for lecturer -->
+<!-- This is the main page for student-->
 
 <head>
     <meta charset="UTF-8" />
@@ -30,7 +30,7 @@
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <img class="logo ms-3" src="../images/ump_logo.png" alt="UMP" />
-        <a class="navbar-brand ms-3" href="index.html">StudFYP</a>
+        <a class="navbar-brand ms-3 me-0" href="index.html">StudFYP</a>
 
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
@@ -108,73 +108,66 @@
                             My profile
                         </a>
 
-                        <!-- FYP Coordinator -->
+                        <!-- FYP Enrollment -->
+                        <a class="nav-link" href="index.html">
+                            <div class="sb-nav-link-icon">
+                                <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                            </div>
+                            FYP Enrollment
+                        </a>
+
+                        <!-- My FYP -->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseCoordinator" aria-expanded="false"
-                            aria-controls="collapseCoordinator">
+                            data-bs-target="#collapseFYP" aria-expanded="false"
+                            aria-controls="collapseFYP">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
-                            FYP coordinator
+                            My FYP
                             <div class="sb-sidenav-collapse-arrow">
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseCoordinator" aria-labelledby="headingOne"
+                        <div class="collapse" id="collapseFYP" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
-                                    Assign student to supervisor
+                                    View logbook
                                 </a>
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Assign student to evaluator
+                                    </div>Update logbook
                                 </a>
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Announcement platform
+                                    </div>Add logbook
                                 </a>
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>FYP progress
+                                    </div>Delete logbook
                                 </a>
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Student mark
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Manage FYP submission date
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Manage FYP rubrics
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Coordinator final report
+                                    </div>My FYP project
                                 </a>
                             </nav>
                         </div>
 
-                        <!-- FYP Supervisor -->
+                        <!-- My FYP Supervisor -->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                             data-bs-target="#collapseSupervisor" aria-expanded="false"
                             aria-controls="collapseSupervisor">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
-                            FYP supervisor
+                            My FYP supervisor
                             <div class="sb-sidenav-collapse-arrow">
                                 <i class="fa fa-angle-down"></i>
                             </div>
@@ -185,17 +178,12 @@
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>View assigned student
+                                    </div>View my evaluator
                                 </a>
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>View student's FYP
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Supervisor report
+                                    </div>My evaluation result
                                 </a>
                             </nav>
                         </div>
@@ -207,7 +195,7 @@
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
-                            FYP supervisor
+                            My FYP evaluation
                             <div class="sb-sidenav-collapse-arrow">
                                 <i class="fa fa-angle-down"></i>
                             </div>
@@ -218,12 +206,12 @@
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>View assigned FYP
+                                    </div>View my evaluator
                                 </a>
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Evaluation report
+                                    </div>My evaluation result
                                 </a>
                             </nav>
                         </div>
@@ -239,7 +227,13 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    username
+                    <?php $sql = "SELECT stud_name FROM student WHERE stud_id='".$_SESSION['id']."'";
+$statement = mysqli_query($db,$sql);
+// fetch the next row
+while ($row =mysqli_fetch_assoc($statement)) 
+{
+        echo $row['stud_name'] ;} 
+        $db->close();?>   
                 </div>
             </nav>
         </div>
