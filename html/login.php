@@ -1,83 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudFYP | Login Page</title>
+    
+    <?php
+include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php' ;  
+$f_loginUserID=$f_loginUserPass = " "; 
+    session_start(); 
+   
 
-    <!-- Bootstrap 5 CSS -->
-    <link rel="stylesheet" href="../bootstrap_v5.1/css/styles.css" />
-
-    <!-- Bootstrap 5 JavaScript -->
-    <script src="../bootstrap_v5.1/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-
-    <!-- Fontawesome CSS -->
-    <script src="https://use.fontawesome.com/8134766fa6.js"></script>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="../css/main.css" />
-
-    <!-- JS -->
-</head>
-
-<body class="login_bg">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <!-- Navbar Brand-->
-        <img class="logo ms-3" src="../images/ump_logo.png" alt="UMP" />
-        <a class="navbar-brand ms-3 me-0" href="index.html">StudFYP</a>
-    </nav>
-
-    <!-- Main Content -->
-    <div id="layoutSidenav_content">
-        <main>
-            <div class="container pt-5 pb-5">
-                <div class="card mx-auto" style="width: 30rem;">
-                    <div class="card-body">
-                        <h1 class="card-title text-center mt-3 mb-3">StudFYP Login</h1>
-                        <form class="mt-3" action="">
-
-                            <!-- Username -->
-                            <div class="form-group mb-3">
-                                <label for="f_userID">Username: </label>
-                                <input class="form-control" type="text" name="f_loginUserID">
-                            </div>
-
-                            <!-- Password -->
-                            <div class="form-group mb-3">
-                                <label for="f_loginUserPass">Password: </label>
-                                <input class="form-control" type="password" name="f_loginUserPass">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="f_userClass">Login as: </label>
-                                <select class="form-select form-control" id="f_userClass">
-                                    <option value="student" selected>Student</option>
-                                    <option value="staff">Staff</option>
-                                    <option value="external">External</option>
-                                    <option value="system_administrator">System administrator</option>
-                                </select>
-                            </div>
-
-
-                            <div class="form-group mt-3 mb-3">
-                                <input class="btn btn-primary form-control mt-3" type="submit" value="Login">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </main>
-        <footer class="py-4 bg-light fixed-bottom">
-            <div class="container-fluid px-4">
-                <div class="text-muted text-center">
-                    Copyright &copy; University Malaysia Pahang 2021
-                </div>
-            </div>
-        </footer>
-    </div>
-</body>
-
-</html>
+ //  if(isset$_SESSION["student_login"]){
+ //   header("location:student_template.html");
+ //  }
+ //  if(isset$_SESSION["staff_login"]){
+ //   header("location:lecturer_template.html");
+ //  }
+  // if(isset$_SESSION["external_login"]){
+  //  header("location:ippanel_template.html");
+ //  }
+ if(isset($_POST['Login'])) 
+ {
+     if(empty($_POST['f_loginUserID'])||empty($_POST['f_loginUserPass']))
+       {
+      echo '<script type="text/javascript">';
+      echo ' alert("Input cannot be null !")';  
+      echo '</script>';
+      echo "<script>window.open('loginpage.php','_self')</script>";  
+        }
+       else
+  {
+          $id=$_POST['f_loginUserID']; 
+          $pass=$_POST['f_loginUserPass']; 
+          $type=$_POST['f_userClass']; 
+          switch($type){
+          case"type_student";
+      $check_std = "SELECT * FROM student WHERE stud_id ='$id' AND stud_password= '$pass'";
+      $gostd=mysqli_query($db,$check_std);  
+      if(mysqli_num_rows($gostd)>0)  
+      {  $_SESSION['id']=$id ; 
+          echo "<script>window.open('student_template.php','_self')</script>";  
+       }
+        else {
+            echo '<script type="text/javascript">';
+            echo ' alert("Incorrect Username and Password.\n Please Try again !")'; 
+            echo '</script>'; 
+            echo "<script>window.open('loginpage.php','_self')</script>";  
+          }  mysqli_close($db);
+break ;    
+            case"type_system_administrator";
+  $check_admin = "SELECT * FROM administrator WHERE admin_id ='$id' AND admin_password= '$pass'";
+  $goadmin=mysqli_query($db,$check_admin);  
+ if(mysqli_num_rows($goadmin)>0)  
+  {  $_SESSION['id']=$id ; 
+      echo "<script>window.open('admin_template.php','_self')</script>";  
+   }
+    else {
+        echo '<script type="text/javascript">';
+        echo ' alert("Incorrect Username and Password.\n Please Try again !")'; 
+        echo '</script>'; 
+        echo "<script>window.open('loginpage.php','_self')</script>";  
+      }  mysqli_close($db);
+break;
+     
+        case"type_staff";
+            $check_lect = "SELECT * FROM lecturer WHERE lect_id ='$id' AND lect_password= '$pass'";
+            $golect=mysqli_query($db,$check_lect);  
+            if(mysqli_num_rows($golect)>0)  
+            {  $_SESSION['id']=$id ; 
+                echo "<script>window.open('lecturer_template.php','_self')</script>";  
+             }
+              else {
+                  echo '<script type="text/javascript">';
+                  echo ' alert("Incorrect Username and Password.\n Please Try again !")'; 
+                  echo '</script>'; 
+                  echo "<script>window.open('loginpage.php','_self')</script>";  
+                }  mysqli_close($db);
+break; 
+            case"type_external";
+            $check_ip = "SELECT * FROM industrial_panel WHERE ip_id ='$id' AND ip_password= '$pass'";
+            $goip=mysqli_query($db,$check_ip);  
+           if(mysqli_num_rows($goip)>0)  
+            {  $_SESSION['id']=$id ; 
+                echo "<script>window.open('industrialpanel_template.php','_self')</script>";  
+             }
+              else {
+                  echo '<script type="text/javascript">';
+                  echo ' alert("Incorrect Username and Password.\n Please Try again !")'; 
+                  echo '</script>'; 
+                  echo "<script>window.open('loginpage.php','_self')</script>";  
+                }  mysqli_close($db);
+break ;   
+          }
+        }   
+    }
+?>
