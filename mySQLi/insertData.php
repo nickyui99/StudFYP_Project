@@ -5,22 +5,24 @@
 	// to select the targeted database
 	mysqli_select_db($link, "studfyp_db") or die(mysqli_error($link));
 		
-	// Insert data into administrator table
-	$query = 	"insert into administrator values('A001', 'Ali', '1234'),
-				('A002', 'Fatimah', '5678')"
-				or die(mysqli_connect_error());
+    // Insert data into administrator table
+    $query =    "INSERT INTO administrator values('A001', 'Ali', '1234'),
+                ('A002', 'Fatimah', '5678')"
+                or die(mysqli_connect_error());
 
-	$result = mysqli_query($link, $query);
+    $result = mysqli_query($link, $query);
 
-	if($result){      
-    	 echo("administrator data inserted <br>");			
-	}
-	else {       
-	    die("administrator data insert failed <br>");
-	}
+    if($result){      
+         echo("administrator data inserted <br>");          
+    }
+    else {       
+        die("administrator data insert failed <br>");
+           }
 
 	// Insert data into student table
-	$query = 	"INSERT into student values
+	$query = 	"INSERT INTO student VALUES
+				
+
 				('CA18016','Tan Chia Hui','ca18016', 'Jalan Sg Johor, Taman Cempeka, Johor', 'chiahui@gmail.com', '0175551111', 'FK', 'SysArmy.Sdn Bhd', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_CA18016.png')), 
                 ('CB19124', 'Aiman Basheer Abdulwareth Mohammed','cb19124', 'Jalan Lenga, Taman Singa, Kuala Lumpur', 'aiman@gmail.com', '0124411344', 'FK', 'Samsung Sdn Bhd', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_CD18001.png')), 
                 ('CD18001', 'Siti Binti Abu Bakar', 'cd18001','Jalan Bersatu, Taman Bahagia, Kedah', 'siti@gmail.com', '0164425512', 'FK', '-', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_CB19124.png')), 
@@ -73,7 +75,7 @@
 				('CB18040','Mastura Binti Zainul Asri','cb18040','Jalan Batu, Taman Campbell, Melaka','mastura9906@gmail.com','0125345904','FK','-',''),
                 ('CA17083','Uthayasurian A/L Salavamani','ca17083','Jalan setiawai, Taman Senkon, Kelantan','uthayasurian@gmail.com','01114457623','FK','-',''),
 
-                ('CA18007','Najwa Ramlan','ca18007','Jalan Setiawai, Taman Senkon, Kelantan','nramlan1509@gmail.com','01139335740','FK','-',''),
+                  ('CA18007','Najwa Ramlan','ca18007','Jalan Setiawai, Taman Senkon, Kelantan','nramlan1509@gmail.com','01139335740','FK','-',''),
                 ('CA18037','Ahmad Shazrul Bin Muhammad Apandi','ca18037','Jalan Imbang, Taman Selimau, Kedah','shazrul@gmail.com','0111424534','FK','-',''),
                 ('CA18044','Jenny Yew Sook Peng','ca18044','Jalan Iskandar, Taman Sentosa, Johor','jennyyew98@live.com.my','0162647686','FK','-',''),
                 ('CA18053','Mohamad Farhan bin Md Yazid','ca18053','Jalan Nona, Taman Hari, Penang','farhan@gmail.com','01173643748','FK','-',''),
@@ -102,7 +104,7 @@
                 ('CC20025','Muhammad Yazid Bin Zulfar Shariel','cc20025','Jalan Sibal, Taman Sentiasa, Penang','umpyazid@gmail.com','01160500559','FK','-',''),
                 ('CC19112','Lakxhana A/P Selva Rajah','cc19112','Jalan Tebal, Taman Temerloh, Terengganu','lakxhana@gmail.com','0178722633','FK','-',''),
 
-               	('CC19283','Nur Syuhada Binti Muhammad Pauzi','cc19283','Jalan Air, Taman Kembung, Johor','syuha1608@gmail.com','01121097112','FK','-',''),
+               ('CC19283','Nur Syuhada Binti Muhammad Pauzi','cc19283','Jalan Air, Taman Kembung, Johor','syuha1608@gmail.com','01121097112','FK','-',''),
                 ('CC19255','Wan Aqilah Illyana Binti Rosli','cc19255','Jalan Sugai, Taman Keli, Kelantan','aqilahfhbbsl@gmail.com','0102580170','FK','-',''), 
                 ('CD17063','Nur Anis Farhain Binti Zurizam','cd17063','Jalan Kelantan, Taman Ringgit, Sarawak','afarhain98@gmail.com','0169788536','FK','-',''),
                 ('CD15039','Nurfarahin Binti Kamaruzaman','ca15039','Jalan Jitra, Taman Dana, Sabah','nurfarahin1501@gmail.com','0183924031','FK','-',''),
@@ -125,9 +127,11 @@
                 ('CD18034','Pang Wei Khee','cd18034','Jalan Meriah, Taman Bantuan, Terengganu','pang.weikhee@gmail.com','0166911939','FK','-',''),
                 ('CD18036','Wong Zelin','cd18036','Jalan Biru, Taman Klang, Kelantan','wongzelin.tiger@gmail.com','0187831314','FK','-',''),
                 ('CD18042','Nur Anis Binti Che Aziz','cd18042','Jalan Pangkal, Taman Port, Selangor','nuranischeaziz99@gmail.com','0146058998','FK','-',''),
-            	('CD18043','Dg Nur Sakinah Binti Armain','cd18043','Jalan Kundasang, Taman Genting, KL','dnsakinah00@gmail.com','0172050105','FK','-','')"
+            ('CD18043','Dg Nur Sakinah Binti Armain','cd18043','Jalan Kundasang, Taman Genting, KL','dnsakinah00@gmail.com','0172050105','FK','-','')
                 				
-					or die(mysqli_connect_error());
+			
+				
+			"	or die(mysqli_connect_error());
 
 	$result = mysqli_query($link, $query);
 	     
@@ -137,79 +141,81 @@
 	else {       
 	    die("student data insert failed <br>");
 	}
+    // Insert data into fyp_stud table
+    $query =    "insert into fyp_stud values
+                ('FS001', 'CA18016', 'Tan Chia Hui', 'PSM1', '2', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CA18016_Proposal.docx')), 
+                ('FS002', 'CB19124', 'Aiman Basheer Abdulwareth Mohammed', 'PSM2', '1', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CB19124_Proposal.docx'))"
+                or die(mysqli_connect_error());
 
-	// Insert data into fyp_stud table
-	$query = 	"insert into fyp_stud values('FS001', 'CA18016', 'Tan Chia Hui', 'PSM1', '2', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CA18016_Proposal.docx')), 
-				('FS002', 'CB19124', 'Aiman Basheer Abdulwareth Mohammed', 'PSM2', '1', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CB19124_Proposal.docx'))"
-				or die(mysqli_connect_error());
+    $result = mysqli_query($link, $query);
+         
+    if($result){      
+         echo("fyp_stud data inserted <br>");           
+            }
+    else {       
+        die("fyp_stud data insert failed <br>");
+    }
+    
+    // Insert data into fyp_project table
+    $query =    "insert into fyp_project values('FP001', 'CA18016', 'Advanced Mobile Store', 'PSM1', '2', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CA18016_Submission1.pdf'), LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CA18016_Submission2.pdf'), NULL, LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_FP001.png')),
+                ('FP002', 'CB19124', 'Attendance system', 'PSM1', '1', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CB19124_Submission1.pdf'), NULL, NULL, LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_FP002.png'))"
+                or die(mysqli_connect_error());
 
-	$result = mysqli_query($link, $query);
-	     
-	if($result){      
-    	 echo("fyp_stud data inserted <br>");			
-	}
-	else {       
-	    die("fyp_stud data insert failed <br>");
-	}
-	
-	// Insert data into fyp_project table
-	$query = 	"insert into fyp_project values('FP001', 'CA18016', 'Advanced Mobile Store', 'PSM1', '2', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CA18016_Submission1.pdf'), LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CA18016_Submission2.pdf'), NULL, LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_FP001.png')),
-				('FP002', 'CB19124', 'Attendance system', 'PSM1', '1', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CB19124_Submission1.pdf'), NULL, NULL, LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_FP002.png'))"
-				or die(mysqli_connect_error());
+    $result = mysqli_query($link, $query);
+         
+    if($result){      
+         echo("fyp_project data inserted <br>");            
+    }
+    else {       
+        die("fyp_project data insert failed <br>");
+    }
 
-	$result = mysqli_query($link, $query);
-	     
-	if($result){      
-    	 echo("fyp_project data inserted <br>");			
-	}
-	else {       
-	    die("fyp_project data insert failed <br>");
-	}
+
 
 	// Insert data into lecturer table
-	$query = 	"insert into lecturer values
-	('S001', 'Dr. Azlina Binti Zainuddin', 's001', '0123336677', 'azlina@ump.edu.my', 'S352 Kampung Sri Langkas Batu 13 Jalan 47100 Puchong Malaysia', 'Senior Lecturer', 'Requirement Engineering, Software Quality Assurance and Software Testing', 'FK'),
-	('S001', 'Dr. Azlina Binti Zainuddin','s001', '0123336677', 'azlina@ump.edu.my', 'S352 Kampung Sri Langkas Batu 13 Jalan 47100 Puchong Malaysia', 'Senior Lecturer', 'Requirement Engineering, Software Quality Assurance and Software Testing', 'FK'),
-	('S002', 'Dr Mohammad Amirulkhairi Bin Zubir', 's002', '0145555777', 'amirulkhairi@ump.edu.my', 'A 6 Jln Sagu 1 Taman Daya 81100, Johor', 'Senior Lecturer', 'Civil Engineering', 'FTKA'),
-	('S003', 'Dr. Fatihah Ayu Bin Amin', 's003', '0454556772', 'fatihah@ump.edu.my', 'Jalan Geliga Sakti,Taman Permai,Terengganu', 'Lecturer', 'Biotech', 'FIST'),
-	('S012', 'Dr. Ali Abdulrahman Nasser', 's012', '0823456781', 'ali_abdulrahman012@ump.edu.my', 'No. 354 Jln Tok Ungku 70100 Negeri Sembilan', 'Senior Lecturer', 'Mechanical Engineering', 'FKM'),
-	('S191', 'Dr. Mohammed ben Salem Mustafa', 's191', '0128660630', 'mohammed55@ump.edu.my', '38st Floor, Imbi Plaza, Jalan Imbi', 'Senior Lecturer', 'Design integrated systems', 'FK'),
-	('S005', 'Imran Edzereiq Bin Kamarudin', 's005',	'095492431',	'edzereiq@ump.edu.my'	,'18, Jalan Selangor, Taman Merdeka, Kedah'	,'Lecturer'	,'Data Communication Device, Pilot Plant Technology, Database','FK'),
-	('S006','Ts. Dr. Syahrulanuar Bin Ngah',	's006',	'094244721',	'syahrulanuar@ump.edu.my'	,'Jalan Ikhlas, Taman Senawang, Kelantan'	,'Senior Lecturer'	,'Communication Networks And Services','FK'),
-	('S007','Dr. Muhammad Arif Bin Mohamad',	's007',	'093311334',	'arifmohamad@ump.edu.my'	,'Jalan Bukit Angat, Taman BA/3, KL'	,'Lecturer'	,'Pattern Recognition And Image Recognition and Machine Learning'	,'FK'),
-	('S008','Ts. Dr. Mritha Ramalingam',		's008','094244683',	'mritha@ump.edu.my'	,'Jalan Seri, Taman Impian, Kelantan'	,'Senior Lecturer'	,'Embedded Systems,Computer Forensic and Educational Challenges'	,'FK'),
-	('S009','Dr. Nur Shamsiah Binti Abdul Rahman','s009','094244702', 'shamsiah@ump.edu.my'	,'Jalan Medan, Taman Bukit Mertajam, Perlis'	,'Senior Lecturer'	,'Adult Learning And Development, Information System (Is) Planning'	,'FK'),
-	('S010','Profesor Madya Ts. Dr. Awanis Binti Romli','s010','095492246',	'awanis@ump.edu.my','Jalan Kewajipan, Taman Betik, Sarawak','Associate Professor'	,'Decision Support System, Sustainability'	,'FK'),
-	('S011','Profesor Madya Ts. Dr. Adzhar Bin Kamaludin','s011','094245024',	'adzhar@ump.edu.my',	'Jalan Manis, Taman Manis, Pahang',	'Associate Professor',	'Computer-Based Teaching And Learning'	,'FK'),
-	('S004','Profesor Ts. Dr. Kamal Zuhairi Bin Zamli',	's004','094245401',	'kamalz@ump.edu.my',	'Jalan Village, Taman Lampung, Terengganu',	'Professor',	'My Main Areas Of Research Involves Developing Strategies For Combinatorial Test Data Generation'	,'FK'),
-	('S013','Profesor Ts. Dr. Ruzaini Bin Abdullah Arshah','s013','094433225',	'ruzaini@ump.edu.my',	'Jalan Subang, Taman Seti, Selangor',	'Professor',	'Information System (Is) Planning'	,'FK'),
-	('S014','Professor Dr. Rizalman Mamat',	's014',	'094246275' ,  	'rizalman@ump.edu.my',	'Jalan Eco, Taman Desa, Sarawak',	'Professor',	'Fuel & Energy, Internal combustion engines, Nanofluid heat transfer, Computational fluid dynamics (CFD)'	,'FKM'),
-	('S015','Associate Professor Dr. Mahadzir Ishak@Muhammad, C. Eng',	's015',	'094246235'  ,	'mahadzir@ump.edu.my',	'Jalan Bansar, Taman South, Kelantan',	'Associate Professor',	'Welding and joining, laser processing'	,'FKM'),
-	('S016','Dr. Ahmad Syahrizan Sulaiman',	's016',	'094246206'  ,  	'syahrizan@ump.edu.my',	'Jalan Axis, Taman Angin, Kedah',	'Senior Lecturer',	'Material failure'	,'FKM'),
-	('S017','Profesor Madya Dr. Cheng Jack Kie',	's017',	'095492311',	'jackkie@ump.edu.my',	'Jalan Dagang, Taman Dynaton, Johor',	'Associate Professor',	'Operations Research'	,'FIM'),
-	('S018','Profesor Madya Dr. Irene Ting Wei Kiong',	's018',	'095493234',	'irene@ump.edu.my',	'Jalan Kota, Taman Bahru, Kelantan',	'Associate Professor',	'Financial Management, Corporate Finance'	,'FIM'),
-	('S019','Dr. Fazeeda Bt. Mohamad',	's019',	'095492258',	'fazeedamohamad@ump.edu.my',	'Jalan Johor, Taman Pilah, Perak',	'Senior Lecturer',	'Supply Chain Management'	,'FIM'),
-	('S020','Dr. Diyana Binti Kamarudin',	's020','094245000',	'yanakamarudin@ump.edu.my',	'Jalan Tasik, Taman Permasuri, Kelantan',	'Senior Lecturer',	'Communications, Research And Development Management, Education'	,'FIM'),
-	('S021','Azizan Bin Hj. Azit',	's021',	'095492292',	'azizan@ump.edu.my',	'Jalan Kluang, Taman Setia, Selangor',	'Lecturer',	'asic Building Construction, Cost Estimating, Facility Maintenance, Construction Project Management.'	,'FIM'),
-	('S022','Profesor Madya Ts. Dr. Aishah Binti Abu Bakar',	's022',	 '094245000',	'aishahabubakar@ump.edu.my',	'Jalan Rakyat, Taman Sentral, KL',	'Associate Professor',	'Educational Administration, Concrete'	,'FTKA'),
-	('S024','Dr. SHARIFAH MASZURA SYED MOHSIN',	's024',	'095493011',	'maszura@ump.edu.my',	'Jalan Sunway, Taman Kelisa, Kelantan',	'Senior Lecturer',	'Simulation Modelling, Seismology (Including Earthquake And Tsunami, Seismic Exploration)'	,'FTKA'),
-	('S025','Dr. Syarifuddin Bin Misbari',	's025',	'098751331',	'syarifuddinm@ump.edu.my',	'Jalan Velocity, Taman USJ, KL',	'Senior Lecturer',	'Remote Sensing, Mapping And Gis'	,'FTKA'),
-	('S026','Profesor Ir. Ts. Dr. Kamarul Hawari Bin Ghazali',	's026',	'094246029',	'kamarul@ump.edu.my',	'Jalan Bukit, Taman Indah, Kelantan',	'Professor',	'Engineering Science And Technology, Engineering Science And Technology'	,'FTKEE'),
-	('S027','Profesor Madya Ts. Dr. Mohd Ashraf Bin Ahmad',	's027',	'094246041',	'mashraf@ump.edu.my',	'Jalan Park One, Taman Utama, Johor',	'Associate	Professor',	'Control And System'	,'FTKEE'),
-	('S028','Profesor Madya Dr. Ahmad Nor Kasruddin Bin Nasir',	's028',	'094245000',	'kasruddin@ump.edu.my',	'Jalan Seikat, Taman Berbakti, Kelantan',	'Associate Professor',	'Neural, Evolutionary And Fuzzy Computation, Soft Computing'	,'FTKEE'),
-	('S029','Profesor Madya Dr. Hamdan Bin Daniyal',	's029',	'094246023',	'hamdan@ump.edu.my',	'Jalan Indah, Taman Mahkota, Kelantan',	'Associate Professor',	'Power Quality Audit, Power Quality Analysis, Power Quality Mitigation, Consultation & Research In Power Electronics; Converter Design & Advanced Control','FTKEE'),
-	('S031','Fairuz Rizal Bin Mohamad Rashidi',	's031',	 '094246018',	'fairuz@ump.edu.my','Jalan PJS1, Taman Seti, Sarawak',	'Lecturer',	'Separation Of Audio Or Speech Signals That Are Convolutively Or Linearly Mixed In Different Environm'	,'FTKEE'),
-	('S032','Dr. Rozlina Binti Mohamed',	 's032',	'095492131',	'rozlina@ump.edu.my',	'Jalan Suria, Taman Sentiasa, Kelantan',	'Senior Lecturer',	'Food Tracebility, Database'	,'FK'),
-	('S033','Dr. Anis Farihan Binti Mat Raffei',	's033',	'09-5492474',	'anisfarihan@um,p.edu.my',	'Jalan Ria, Taman Derga, Kedah',	'Senior Lecturer',	'Computer Based Training'	,'FK'),
-	('S034','Dr. Ahmad Firdaus Bin Zainal Abidin',	's034',	'094244629',	'firdausza@ump.edu.my',	'Jalan Sembilan, Taman IKS, Kelantan',	'Senior Lecturer',	'Predictiion In Classifying Classes, Other Security System N.E.C.'	,'FK'),
-	('S035','Roslina Binti Mohd Sidek',	's035',	'094244709',	 'roslinams@ump.edu.my',	'Jalan Jaya, Taman One, Johor',	'Lecturer',	'Software Engineering'	,'FK'),
-	('S036','Ts. Azma Binti Abdullah',	's036',	'094244640',	 'azma@ump.edu.my',	'Jalan Bazar, Taman Raya, Kelantan',	'Lecturer',	'Component Based Software Development','FK'),
-	('S037','Dr. Siti Suhaila Binti Abdul Hamid',	's037',	'095529655',	'sitisuhaila@ump.edu.my',	'Jalan Bunga, Taman Tertib, KL',	'Senior Lecturer',	'Human Computer Interaction (Hci), Information System (Is) Planning','FK'),
-	('S038','Ts. Dr. Wan Isni Sofiah Binti Wan Din',	's038',	'094244726',	'sofiah@ump.edu.my',	'Jalan Damansara, Taman Kota, Penang',	'Senior Lecturer',	'Clustering In Sensor Network, Network Design, Simulation System'	,'FK'),
-	('S039','Dr. Nur Hafieza Binti Ismail',	's039',	'094427532',	'hafieza@ump.edu.my',	'Jalan Wisma, Taman Bandar, Kelantan',	'Senior Lecturer',	'Data Mining'	,'FK'),
-	('S040','Profesor Madya Dr. Mohamed Ariff Bin Ameedeen',	's040',	'095492472',	'mohamedariff@ump.edu.my',	'Jalan Tasik, Taman Selatan, Perak',	'Associate Professor',	'Computer System Organisation, Computer Software'	,'FK')
-	" 
-	or die(mysqli_connect_error());
+	$query = 	"INSERT into lecturer values
+				('S001', 'Dr. Azlina Binti Zainuddin','s001', '0123336677', 'azlina@ump.edu.my', 'S352 Kampung Sri Langkas Batu 13 Jalan 47100 Puchong Malaysia', 'Senior Lecturer', 'Requirement Engineering, Software Quality Assurance and Software Testing', 'FK'),
+				('S002', 'Dr Mohammad Amirulkhairi Bin Zubir', 's002', '0145555777', 'amirulkhairi@ump.edu.my', 'A 6 Jln Sagu 1 Taman Daya 81100, Johor', 'Senior Lecturer', 'Civil Engineering', 'FTKA'),
+				('S003', 'Dr. Fatihah Ayu Bin Amin', 's003', '0454556772', 'fatihah@ump.edu.my', 'Jalan Geliga Sakti,Taman Permai,Terengganu', 'Lecturer', 'Biotech', 'FIST'),
+				('S012', 'Dr. Ali Abdulrahman Nasser', 's012', '0823456781', 'ali_abdulrahman012@ump.edu.my', 'No. 354 Jln Tok Ungku 70100 Negeri Sembilan', 'Senior Lecturer', 'Mechanical Engineering', 'FKM'),
+				('S191', 'Dr. Mohammed ben Salem Mustafa', 's191', '0128660630', 'mohammed55@ump.edu.my', '38st Floor, Imbi Plaza, Jalan Imbi', 'Senior Lecturer', 'Design integrated systems', 'FK'),
+				('S005', 'Imran Edzereiq Bin Kamarudin', 's005',	'095492431',	'edzereiq@ump.edu.my'	,'18, Jalan Selangor, Taman Merdeka, Kedah'	,'Lecturer'	,'Data Communication Device, Pilot Plant Technology, Database','FK'),
+				('S006','Ts. Dr. Syahrulanuar Bin Ngah',	's006',	'094244721',	'syahrulanuar@ump.edu.my'	,'Jalan Ikhlas, Taman Senawang, Kelantan'	,'Senior Lecturer'	,'Communication Networks And Services','FK'),
+				('S007','Dr. Muhammad Arif Bin Mohamad',	's007',	'093311334',	'arifmohamad@ump.edu.my'	,'Jalan Bukit Angat, Taman BA/3, KL'	,'Lecturer'	,'Pattern Recognition And Image Recognition and Machine Learning'	,'FK'),
+				('S008','Ts. Dr. Mritha Ramalingam',		's008','094244683',	'mritha@ump.edu.my'	,'Jalan Seri, Taman Impian, Kelantan'	,'Senior Lecturer'	,'Embedded Systems,Computer Forensic and Educational Challenges'	,'FK'),
+				('S009','Dr. Nur Shamsiah Binti Abdul Rahman','s009','094244702', 'shamsiah@ump.edu.my'	,'Jalan Medan, Taman Bukit Mertajam, Perlis'	,'Senior Lecturer'	,'Adult Learning And Development, Information System (Is) Planning'	,'FK'),
+				('S010','Profesor Madya Ts. Dr. Awanis Binti Romli','s010','095492246',	'awanis@ump.edu.my','Jalan Kewajipan, Taman Betik, Sarawak','Associate Professor'	,'Decision Support System, Sustainability'	,'FK'),
+				('S011','Profesor Madya Ts. Dr. Adzhar Bin Kamaludin','s011','094245024',	'adzhar@ump.edu.my',	'Jalan Manis, Taman Manis, Pahang',	'Associate Professor',	'Computer-Based Teaching And Learning'	,'FK'),
+				('S004','Profesor Ts. Dr. Kamal Zuhairi Bin Zamli',	's004','094245401',	'kamalz@ump.edu.my',	'Jalan Village, Taman Lampung, Terengganu',	'Professor',	'My Main Areas Of Research Involves Developing Strategies For Combinatorial Test Data Generation'	,'FK'),
+				('S013','Profesor Ts. Dr. Ruzaini Bin Abdullah Arshah','s013','094433225',	'ruzaini@ump.edu.my',	'Jalan Subang, Taman Seti, Selangor',	'Professor',	'Information System (Is) Planning'	,'FK'),
+				('S014','Professor Dr. Rizalman Mamat',	's014',	'094246275' ,  	'rizalman@ump.edu.my',	'Jalan Eco, Taman Desa, Sarawak',	'Professor',	'Fuel & Energy, Internal combustion engines, Nanofluid heat transfer, Computational fluid dynamics (CFD)'	,'FKM'),
+				('S015','Associate Professor Dr. Mahadzir Ishak@Muhammad, C. Eng',	's015',	'094246235'  ,	'mahadzir@ump.edu.my',	'Jalan Bansar, Taman South, Kelantan',	'Associate Professor',	'Welding and joining, laser processing'	,'FKM'),
+				('S016','Dr. Ahmad Syahrizan Sulaiman',	's016',	'094246206'  ,  	'syahrizan@ump.edu.my',	'Jalan Axis, Taman Angin, Kedah',	'Senior Lecturer',	'Material failure'	,'FKM'),
+				('S017','Profesor Madya Dr. Cheng Jack Kie',	's017',	'095492311',	'jackkie@ump.edu.my',	'Jalan Dagang, Taman Dynaton, Johor',	'Associate Professor',	'Operations Research'	,'FIM'),
+				('S018','Profesor Madya Dr. Irene Ting Wei Kiong',	's018',	'095493234',	'irene@ump.edu.my',	'Jalan Kota, Taman Bahru, Kelantan',	'Associate Professor',	'Financial Management, Corporate Finance'	,'FIM'),
+				('S019','Dr. Fazeeda Bt. Mohamad',	's019',	'095492258',	'fazeedamohamad@ump.edu.my',	'Jalan Johor, Taman Pilah, Perak',	'Senior Lecturer',	'Supply Chain Management'	,'FIM'),
+				('S020','Dr. Diyana Binti Kamarudin',	's020','094245000',	'yanakamarudin@ump.edu.my',	'Jalan Tasik, Taman Permasuri, Kelantan',	'Senior Lecturer',	'Communications, Research And Development Management, Education'	,'FIM'),
+				('S021','Azizan Bin Hj. Azit',	's021',	'095492292',	'azizan@ump.edu.my',	'Jalan Kluang, Taman Setia, Selangor',	'Lecturer',	'asic Building Construction, Cost Estimating, Facility Maintenance, Construction Project Management.'	,'FIM'),
+				('S022','Profesor Madya Ts. Dr. Aishah Binti Abu Bakar',	's022',	 '094245000',	'aishahabubakar@ump.edu.my',	'Jalan Rakyat, Taman Sentral, KL',	'Associate Professor',	'Educational Administration, Concrete'	,'FTKA'),
+				('S024','Dr. SHARIFAH MASZURA SYED MOHSIN',	's024',	'095493011',	'maszura@ump.edu.my',	'Jalan Sunway, Taman Kelisa, Kelantan',	'Senior Lecturer',	'Simulation Modelling, Seismology (Including Earthquake And Tsunami, Seismic Exploration)'	,'FTKA'),
+				('S025','Dr. Syarifuddin Bin Misbari',	's025',	'098751331',	'syarifuddinm@ump.edu.my',	'Jalan Velocity, Taman USJ, KL',	'Senior Lecturer',	'Remote Sensing, Mapping And Gis'	,'FTKA'),
+				('S026','Profesor Ir. Ts. Dr. Kamarul Hawari Bin Ghazali',	's026',	'094246029',	'kamarul@ump.edu.my',	'Jalan Bukit, Taman Indah, Kelantan',	'Professor',	'Engineering Science And Technology, Engineering Science And Technology'	,'FTKEE'),
+				('S027','Profesor Madya Ts. Dr. Mohd Ashraf Bin Ahmad',	's027',	'094246041',	'mashraf@ump.edu.my',	'Jalan Park One, Taman Utama, Johor',	'Associate	Professor',	'Control And System'	,'FTKEE'),
+				('S028','Profesor Madya Dr. Ahmad Nor Kasruddin Bin Nasir',	's028',	'094245000',	'kasruddin@ump.edu.my',	'Jalan Seikat, Taman Berbakti, Kelantan',	'Associate Professor',	'Neural, Evolutionary And Fuzzy Computation, Soft Computing'	,'FTKEE'),
+				('S029','Profesor Madya Dr. Hamdan Bin Daniyal',	's029',	'094246023',	'hamdan@ump.edu.my',	'Jalan Indah, Taman Mahkota, Kelantan',	'Associate Professor',	'Power Quality Audit, Power Quality Analysis, Power Quality Mitigation, Consultation & Research In Power Electronics; Converter Design & Advanced Control','FTKEE'),
+				('S031','Fairuz Rizal Bin Mohamad Rashidi',	's031',	 '094246018',	'fairuz@ump.edu.my','Jalan PJS1, Taman Seti, Sarawak',	'Lecturer',	'Separation Of Audio Or Speech Signals That Are Convolutively Or Linearly Mixed In Different Environm'	,'FTKEE'),
+				('S032','Dr. Rozlina Binti Mohamed',	 's032',	'095492131',	'rozlina@ump.edu.my',	'Jalan Suria, Taman Sentiasa, Kelantan',	'Senior Lecturer',	'Food Tracebility, Database'	,'FK'),
+				('S033','Dr. Anis Farihan Binti Mat Raffei',	's033',	'09-5492474',	'anisfarihan@um,p.edu.my',	'Jalan Ria, Taman Derga, Kedah',	'Senior Lecturer',	'Computer Based Training'	,'FK'),
+				('S034','Dr. Ahmad Firdaus Bin Zainal Abidin',	's034',	'094244629',	'firdausza@ump.edu.my',	'Jalan Sembilan, Taman IKS, Kelantan',	'Senior Lecturer',	'Predictiion In Classifying Classes, Other Security System N.E.C.'	,'FK'),
+				('S035','Roslina Binti Mohd Sidek',	's035',	'094244709',	 'roslinams@ump.edu.my',	'Jalan Jaya, Taman One, Johor',	'Lecturer',	'Software Engineering'	,'FK'),
+				('S036','Ts. Azma Binti Abdullah',	's036',	'094244640',	 'azma@ump.edu.my',	'Jalan Bazar, Taman Raya, Kelantan',	'Lecturer',	'Component Based Software Development','FK'),
+				('S037','Dr. Siti Suhaila Binti Abdul Hamid',	's037',	'095529655',	'sitisuhaila@ump.edu.my',	'Jalan Bunga, Taman Tertib, KL',	'Senior Lecturer',	'Human Computer Interaction (Hci), Information System (Is) Planning','FK'),
+				('S038','Ts. Dr. Wan Isni Sofiah Binti Wan Din',	's038',	'094244726',	'sofiah@ump.edu.my',	'Jalan Damansara, Taman Kota, Penang',	'Senior Lecturer',	'Clustering In Sensor Network, Network Design, Simulation System'	,'FK'),
+				('S039','Dr. Nur Hafieza Binti Ismail',	's039',	'094427532',	'hafieza@ump.edu.my',	'Jalan Wisma, Taman Bandar, Kelantan',	'Senior Lecturer',	'Data Mining'	,'FK'),
+				('S040','Profesor Madya Dr. Mohamed Ariff Bin Ameedeen',	's040',	'095492472',	'mohamedariff@ump.edu.my',	'Jalan Tasik, Taman Selatan, Perak',	'Associate Professor',	'Computer System Organisation, Computer Software'	,'FK')
+			
+			
+				"or die(mysqli_connect_error());
 
 	$result = mysqli_query($link, $query);
 	     
@@ -220,40 +226,80 @@
 	    die("lecturer data insert failed <br>");
 	}
 
-	// Insert data into fyp_coordinator table
-	$query = 	"insert into fyp_coordinator values('S001', 'Dr. Azlina Binti Zainuddin', 'FK', 'PSM 1,2', 'Requirement Engineering, Software Quality Assurance and Software Testing'),
-				('S002', 'Dr Mohammad Amirulkhairi Bin Zubir', 'FK', 'PSM 2', 'Civil Engineering'),
-				('S012', 'Dr. Ali Abdulrahman Nasser', 'FTEK', 'PSM 1', 'Mechanical Engineering'),
-				('S191', 'Dr. Mohammed ben Salem Mustafa', 'FKM', 'PSM 1,2', 'Design integrated systems')"
-				or die(mysqli_connect_error());
+    // Insert data into fyp_coordinator table
+    $query =    "insert into fyp_coordinator values('S001', 'Dr. Azlina Binti Zainuddin', 'FK', 'PSM 1,2', 'Requirement Engineering, Software Quality Assurance and Software Testing'),
+                ('S002', 'Dr Mohammad Amirulkhairi Bin Zubir', 'FK', 'PSM 2', 'Civil Engineering'),
+                ('S012', 'Dr. Ali Abdulrahman Nasser', 'FTEK', 'PSM 1', 'Mechanical Engineering'),
+                ('S191', 'Dr. Mohammed ben Salem Mustafa', 'FKM', 'PSM 1,2', 'Design integrated systems')"
+                or die(mysqli_connect_error());
 
-	$result = mysqli_query($link, $query);
-	     
-	if($result){      
-    	 echo("fyp_coordinator data inserted <br>");			
-	}
-	else {       
-	    die("fyp_coordinator data insert failed <br>");
-	}
+    $result = mysqli_query($link, $query);
+         
+ if($result){      
+         echo("fyp_coordinator data inserted <br>");            
+    }
+    else {       
+        die("fyp_coordinator data insert failed <br>");
+    }
 
-	// Insert data into fyp_supervisor table
-	$query = 	"insert into fyp_supervisor values('SU001', 'S002', 'FS001', 'Dr. Mohammad Amirulkhairi Bin Zubir', 'amirulkhairi@ump.edu.my', '0145555777', 'A 6 Jln Sagu 1 Taman Daya, 81100 Johor'),
-				('SU002', 'S003', 'FS002', 'Dr. Fatihah Ayu Bin Amin', 'fatihah@ump.edu.my', '0454556772', 'Jalan Geliga Sakti,Taman Permai,Terengganu')"
-				or die(mysqli_connect_error());
+    // Insert data into fyp_supervisor table
+    $query =    "insert into fyp_supervisor values('SU001', 'S002', 'FS001', 'Dr. Mohammad Amirulkhairi Bin Zubir', 'amirulkhairi@ump.edu.my', '0145555777', 'A 6 Jln Sagu 1 Taman Daya, 81100 Johor'),
+                ('SU002', 'S003', 'FS002', 'Dr. Fatihah Ayu Bin Amin', 'fatihah@ump.edu.my', '0454556772', 'Jalan Geliga Sakti,Taman Permai,Terengganu')"
+                or die(mysqli_connect_error());
 
-	$result = mysqli_query($link, $query);
-	     
-	if($result){      
-    	 echo("fyp_supervisor data inserted <br>");			
-	}
-	else {       
-	    die("fyp_supervisor data insert failed <br>");
-	}
+    $result = mysqli_query($link, $query);
+         
+    if($result){      
+         echo("fyp_supervisor data inserted <br>");         
+    }
+    else {       
+        die("fyp_supervisor data insert failed <br>");
+    }
+
+
 
 	// Insert data into industrial_panel table
-	$query = 	"insert into industrial_panel values('IP001', 'Mr. Ooi Kai Cheng', '013324590', 'kaicheng@gmail.com', 'Google Inc.', 'ip001'),
+	$query = 	"INSERT into industrial_panel values
+				('IP001', 'Mr. Ooi Kai Cheng', '013324590', 'kaicheng@gmail.com', 'Google Inc.', 'ip001'),
 				('IP002', 'Mr. Ali bin Washeed', '019956342', 'abw@outlook.com', 'Microsoft Inc', 'ip002'),
-				('IP003', 'Mr. Warren Roller', '014556631', 'wroller@gmail.com', 'SinHub Inc.', 'ip003')"
+				('IP003', 'Mr. Warren Roller', '014556631', 'wroller@gmail.com', 'SinHub Inc.', 'ip003'),
+				('IP004','Mr, Mohd Nazree Bin Abu Bakar','0102250575','nazree@umk.edu.my','Universiti Malaysia kelantan (UMK)','ip004'),
+				('IP005','Mr. Syahrillimri Bin Ismail','0125809829','syahrillimri.bin.ismail@intel.com','Intel Microelectronics Sdn Bhd','ip005'),
+				('IP006','Mrs. Chew Ne Wei','0379569822'	,'nwchew@hitachi-ebworx.com'	,'Hitachi eBworx Sdn Bhd'	,'ip006'),
+				('IP007','Ms. Angel Lim','0377115200'	,'angel.lim@fusionexgroup.com'	,'Fusionex Corp'	,'ip007'),
+				('IP008','Mrs. Tan Loo Toon','0124622584'	,'lttan@maxwellcloudtech.com'	,'Maxwell Cloud Technology Sdn Bhd'	,'ip008'),
+				('IP009','Mr. Sim Vui Sing Harris','0379669288'	,'harris.sim@ctc-g.com.my'	,'CTC Global Sdn. Bhd.'	,'ip009'),
+				('IP010','Mr. Soroosh Darvish','0162840246'	,'soroosh@getright.com.my'	,'Getright Malaysia Sdn Bhd'	,'ip010'),
+				('IP011','Mr. Alain Lye','0129006648'	,'hr@veecotech.com'	,'VeecoTech Web & Ecommerce Sdn Bhd'	,'ip011'),
+				('IP012','Ms. Goh Wei Yee',	'046382400',	'WEIYEE.GOH@my.bosch.com'	,'Robert Bosch (M) Sdn. Bhd.'	,'ip012'),
+				('IP013','Mr. Teddy Wong',	'0167392828',	'zetaweb88@gmail.com'	,'Zeta Web Solutions'	,'ip013'),
+				('IP014','Mr. James',	'0122309350',	'acc2@auto-id.com.my'	,'Global Barcoding Technology Sdn Bhd','ip014'),
+				('IP015','Ms. Por Kie Yee',	'0327154248',	'hrd@thetasp.com'	,'Theta Service Partner Sdn.Bhd.','ip015'),
+				('IP016','Mr. Ayman Jamalludin',	'01133173417',	'hr@vimigoapp.com'	,'Adev Ventures Sdn Bhd','ip016'),
+				('IP017','Ms. Angel Lim',	'0377115200',	'angel.lim@fusionexgroup.com'	,'Fusionex Corp Sdn Bhd'	,'ip017'),
+				('IP018','Mr. Desmond Tay Hsiung Kae',	'0123453460',	'desmond@apppay.tech'	,'Apppay Sdn Bhd'	,'ip018'),
+				('IP019','Mr. Sean Koh Jia Sheng',	'0197725330',	'sean@simitgroup.com'	,'Sim IT Sdn. Bhd.'	,'ip019'),
+				('IP020','Mr. Loh Eng Keat',	'0194414023',	'loh.eng.keat@pentamaster.com.my'	,'Pentamaster Corporation Berhad'	,'ip020'),
+				('IP021','Ms. Angel Lim',	'0377115200',	'angel.lim@fusionexgroup.com'	,'Fusionex Corp Sdn Bhd'	,'ip021'),
+				('IP022','Mrs. Boey Kok Aik',	'046387099'	,'KokAik.Boey@my.bosch.com'	,'Robert Bosch (M) Sdn. Bhd.'	,'ip022'),
+				('IP023','Ms. Angel Lim',	'0377115200'	,'angel.lim@fusionexgroup.com'	,'Fusionex Corp Sdn Bhd'	,'ip023'),
+				('IP024','Mrs. Ng Hong Huwan',	'0162198680'	,'honghuwan.ng@integrosys.com'	,'Integro Technologies Sdn Bhd'	,'ip024'),
+				('IP025','Ms. Stephanie',	'0390764906'	,'stephanie@auto-id.com.my'	,'Global Barcoding Technology Sdn Bhd'	,'ip025'),
+				('IP026','Mr. Chris Lim',	'0168108380'	,'chrislim@hatiolab.com'	,'Hatio Sea Sdn Bhd'	,'ip026'),
+				('IP027','Mr. Lee Foo Keong',	'01133173417'	,'hr@vimigoapp.com'	,'Adev Ventures Sdn Bhd'	,'ip027'),
+				('IP028','Mr. Tan Loo Toon',	'0124622584'	,'lttan@maxwellcloudtech.com'	,'Maxwell Cloud Technology'	,'ip028'),
+				('IP029','Ms. Tan Yin Ru',	'039284828'	,'admin@xeersoft.com'	,'Xeersoft Sdn. Bhd.'	,'ip029'),
+				('IP030','Mr. Lim Guo Hong',	'6581631710'	,'admin@corsivalab.com'	,'Corsiva Lab Sdn Bhd'	,'ip030'),
+				('IP031','Mr. Nur Firdaus Bin Ghazali',	'0122668797	','nur.firdaus@sysarmy.net'	,'Sysarmy Sdn Bhd'	,'ip031'),
+				('IP032','Mr. Sundaram','0149216253'	,'alramahlingam.sundram@my.bosch.com','Robert Bosch Power Tools Sdn. Bhd','ip032'),	
+				('IP033','Mrs. Lee May Fang',	'0125377193'	,'mayfang@cyber-village.net'	,'Cyber Village Sdn Bhd'	,'ip033'),
+				('IP034','Mr. Alif Azuwan Bin Amiruddin','0125662644'	,'alif.byondsuccess@gmail.com'	,'Byond Tech Sdn Bhd'	,'ip034'),
+				('IP035','Mr. Hairizal Bin Hanapi','0126177876'	,'hairizal.hanapi@razer.com'	,'Razer Merchant Services Sdn Bhd' 	,'ip035'),
+				('IP036	','Mr. Sundaram','0149216253','alramahlingam.sundram@my.bosch.com','Robert Bosch Power Tools Sdn Bhd'	,'ip036'),
+				('IP037','Mrs. Norliza Mazni','0321730592','norliza.mazni.nawi@pwc.com'	,'Pricewaterhouse Coopers Associates Sdn Bhd (PwC)'	,'ip037'),
+				('IP038','Mr. Goh Chin Teong','048637341','Chin_Teong_Goh@DELL.com','DELL Global Business Center Sdn Bhd','ip038')
+			
+				"
 				or die(mysqli_connect_error());
 
 	$result = mysqli_query($link, $query);
@@ -265,108 +311,109 @@
 	    die("industrial_panel data insert failed <br>");
 	}
 
-	// Insert data into assigned_lecturer_evaluator table
-	$query = 	"insert into assigned_lecturer_evaluator values('EL001', 'S001', 'CB19124', 'Dr. Azlina Binti Zainuddin'),
-				('EL002', 'S002', 'CA18016', 'Dr Mohammad Amirulkhairi Bin Zubir')"
-				or die(mysqli_connect_error());
+    // Insert data into assigned_lecturer_evaluator table
+    $query =    "insert into assigned_lecturer_evaluator values('EL001', 'S001', 'CB19124', 'Dr. Azlina Binti Zainuddin'),
+                ('EL002', 'S002', 'CA18016', 'Dr Mohammad Amirulkhairi Bin Zubir')"
+                or die(mysqli_connect_error());
 
-	$result = mysqli_query($link, $query);
-	
-	if($result){      
-		echo("assigned_lecturer_evaluator data inserted <br>");			
-	}
-	else {       
-		die("assigned_lecturer_evaluator data insert failed <br>");
-	}
-	 
-	// Insert data into assigned_industrial_evaluator table
-	$query = 	"insert into assigned_industrial_evaluator values('EI001', 'IP001', 'CB19124', 'Mr Ooi Kai Cheng'),
-				('EI002', 'IP002', 'CA18016', 'Mr. Ali bin Washeed')"
-				or die(mysqli_connect_error());
+    $result = mysqli_query($link, $query);
+    
+    if($result){      
+        echo("assigned_lecturer_evaluator data inserted <br>");         
+    }
+    else {       
+        die("assigned_lecturer_evaluator data insert failed <br>");
+    }
+     
+    // Insert data into assigned_industrial_evaluator table
+    $query =    "insert into assigned_industrial_evaluator values('EI001', 'IP001', 'CB19124', 'Mr Ooi Kai Cheng'),
+                ('EI002', 'IP002', 'CA18016', 'Mr. Ali bin Washeed')"
+                or die(mysqli_connect_error());
 
-	$result = mysqli_query($link, $query);
-	
-	if($result){      
-		echo("assigned_industrial_evaluator data inserted <br>");			
-	}
-	else {       
-		die("assigned_industrial_evaluator data insert failed <br>");
-	}
+    $result = mysqli_query($link, $query);
+    
+    if($result){      
+        echo("assigned_industrial_evaluator data inserted <br>");           
+    }
+    else {       
+        die("assigned_industrial_evaluator data insert failed <br>");
+    }
 
-	// Insert data into evaluation_result table
-	$query = 	"insert into evaluation_result values('ER001', 'FP001', 'EL001', NULL, 'Advanced Mobile System', '1', 'Good', '24'),
-				('ER002', 'FP002', NULL,'EI002', 'Attendance System', '1', 'Please check your project plan', '23')"
-				or die(mysqli_connect_error());
+    // Insert data into evaluation_result table
+    $query =    "insert into evaluation_result values('ER001', 'FP001', 'EL001', NULL, 'Advanced Mobile System', '1', '24', 'Good'),
+                ('ER002', 'FP002', NULL,'EI002', 'Mr. Ali bin Washeed', '1', '23', 'Please check your project plan')"
+                or die(mysqli_connect_error());
 
-	$result = mysqli_query($link, $query);
-	
-	if($result){      
-		echo("evaluation_result data inserted <br>");			
-	}
-	else {       
-		die("evaluation_result data insert failed <br>");
-	}
+    $result = mysqli_query($link, $query);
+    
+    if($result){      
+        echo("evaluation_result data inserted <br>");           
+    }
+    else {       
+    //  die("evaluation_result data insert failed <br>");
+    }
 
-	// Insert data into evaluation_rubric table
-	$query = 	"insert into evaluation_rubric values('RU001', 'CLO1', 'Introduction', 'explanation should consist of domain background, importance of the subject and current issues according to proposed topic', '3.00', '1', 'PSM1'),
-				('RU002', 'CLO1', 'Problem Statement', 'explanation of problem should be related to the domain/ knowledge or solution gap', '3.00', '1', 'PSM1')"
-				or die(mysqli_connect_error());
+    // Insert data into evaluation_rubric table
+    $query =    "insert into evaluation_rubric values('RU001', 'CLO1', 'Introduction', 'explanation should consist of domain background, importance of the subject and current issues according to proposed topic', '3.00', '1', 'PSM1'),
+                ('RU002', 'CLO1', 'Problem Statement', 'explanation of problem should be related to the domain/ knowledge or solution gap', '3.00', '1', 'PSM1')"
+                or die(mysqli_connect_error());
 
-	$result = mysqli_query($link, $query);
-	
-	if($result){      
-		echo("evaluation_rubric inserted <br>");			
-	}
-	else {       
-		die("evaluation_rubric data insert failed <br>");
-	}
+    $result = mysqli_query($link, $query);
+    
+    if($result){      
+        echo("evaluation_rubric inserted <br>");            
+    }
+    else {       
+        die("evaluation_rubric data insert failed <br>");
+    }
 
-	// Insert data into announcement table
-	$query = 	"insert into announcement values('AN001', 'Attention to FYP 1 student', 'Please note that FYP 1 Submission 1 is open'),
-				('AN002', 'Attention to FYP 2 student', 'Please note that FYP 2 Submission 1 is open')"
-				or die(mysqli_connect_error());
+    // Insert data into announcement table
+    $query =    "insert into announcement values('AN001', 'Attention to FYP 1 student', 'Please note that FYP 1 Submission 1 is open'),
+                ('AN002', 'Attention to FYP 2 student', 'Please note that FYP 2 Submission 1 is open')"
+                or die(mysqli_connect_error());
 
-	$result = mysqli_query($link, $query);
-	
-	if($result){      
-		echo("announcement inserted <br>");			
-	}
-	else {       
-		die("announcement data insert failed <br>");
-	}
+    $result = mysqli_query($link, $query);
+    
+    if($result){      
+        echo("announcement inserted <br>");         
+    }
+    else {       
+        die("announcement data insert failed <br>");
+    }
 
-	// Insert data into activity table
-	$query = 	"insert into activity values('AC001', 'Submission 1 FYP 1', '1', 'PSM1', '2021-9-1', '2021-9-11'),
-				('AC002', 'Submission 2 FYP 1', '2', 'PSM1', '2021-9-12', '2021-9-30'),
-				('AC003', 'Submission 3 FYP 1', '3', 'PSM1', '2021-10-1', '2021-10-15'),
-				('AC004', 'Submission 1 FYP 2', '1', 'PSM2', '2021-9-1', '2021-9-11'),
-				('AC005', 'Submission 2 FYP 2', '2', 'PSM2', '2021-9-12', '2021-9-30'),
-				('AC006', 'Submission 3 FYP 2', '3', 'PSM2', '2021-10-1', '2021-10-15')"
-				or die(mysqli_connect_error());
+    // Insert data into activity table
+    $query =    "insert into activity values('AC001', 'Submission 1 FYP 1', '1', 'PSM1', '2021-9-1', '2021-9-11'),
+                ('AC002', 'Submission 2 FYP 1', '2', 'PSM1', '2021-9-12', '2021-9-30'),
+                ('AC003', 'Submission 3 FYP 1', '3', 'PSM1', '2021-10-1', '2021-10-15'),
+                ('AC004', 'Submission 1 FYP 2', '1', 'PSM2', '2021-9-1', '2021-9-11'),
+                ('AC005', 'Submission 2 FYP 2', '2', 'PSM2', '2021-9-12', '2021-9-30'),
+                ('AC006', 'Submission 3 FYP 2', '3', 'PSM2', '2021-10-1', '2021-10-15')"
+                or die(mysqli_connect_error());
 
-	$result = mysqli_query($link, $query);
-	
-	if($result){      
-		echo("activity inserted <br>");			
-	}
-	else {       
-		die("activity data insert failed <br>");
-	}
+    $result = mysqli_query($link, $query);
+    
+    if($result){      
+        echo("activity inserted <br>");         
+    }
+    else {       
+        die("activity data insert failed <br>");
+    }
 
-	// Insert data into project_logbook table
-	$query = 	"insert into project_logbook values('LG001', 'FP001', '2021-9-2', 'I start to research about my FYP project idea'),
-				('LG002', 'FP001', '2021-9-6', 'I start to plan my project')"
-				or die(mysqli_connect_error());
+    // Insert data into project_logbook table
+    $query =    "insert into project_logbook values('LG001', 'FP001', '2021-9-2', 'I start to research about my FYP project idea'),
+                ('LG002', 'FP001', '2021-9-6', 'I start to plan my project')"
+                or die(mysqli_connect_error());
 
-	$result = mysqli_query($link, $query);
-	
-	if($result){      
-		echo("project_logbook inserted <br>");			
-	}
-	else {       
-		die("project_logbook data insert failed <br>");
-	}
+    $result = mysqli_query($link, $query);
+    
+    if($result){      
+        echo("project_logbook inserted <br>");          
+    }
+    else {       
+        die("project_logbook data insert failed <br>");
+        }
 
-	//And finally we close the connection to the MySQL server
+    //And finally we close the connection to the MySQL server
     mysqli_close($link);
 ?>
+

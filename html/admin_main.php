@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- This is the main page for admin -->
-
+<!-- This html template is only for StudFYP admin only -->
+<?php session_start() ;
+include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php';
+?>
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -80,7 +82,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -108,9 +110,10 @@
                         <div class="collapse" id="collapseAddUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
+                                <a class="nav-link" href="#" id="gostudent">
+                                    <div class="sb-nav-link-icon" href="#addstudent">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                   
                                     </div>
                                     Student
                                 </a>
@@ -267,8 +270,14 @@
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                    username
+                    <div class="small">Logged in as:  </div>
+                 <?php $sql = "SELECT admin_name FROM administrator WHERE admin_id='".$_SESSION['id']."'";
+$statement = mysqli_query($db,$sql);
+// fetch the next row
+while ($row =mysqli_fetch_assoc($statement)) 
+{
+        echo $row['admin_name'] ;} 
+        $db->close();?>   
                 </div>
             </nav>
         </div>
@@ -280,12 +289,13 @@
                     <h1 class="mt-4">Dashboard</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">
-                            <a href="index.html">Dashboard</a>
+                            <a href="module_1/addstudent.php">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item active">Announcement</li>
                     </ol>
                     <div class="card mb-4">
                         <div class="card-body">
+                            
                             This page is an example of using the light side
                             navigation option. By appending the
                             <code>.sb-sidenav-light</code>
@@ -295,6 +305,10 @@
                             color scheme. The
                             <code>.sb-sidenav-dark</code>
                             is also available for a darker option.
+                        <ul>
+                            <li><a class="gostudent" href="module_1/addstudent.php"></a></li>  
+                        </ul>
+        
                         </div>
                     </div>
                 </div>
