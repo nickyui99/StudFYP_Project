@@ -22,8 +22,8 @@
 	// Insert data into student table
 	$query = 	"INSERT INTO student VALUES
 				('CA18016','Tan Chia Hui','ca18016', 'Jalan Sg Johor, Taman Cempeka, Johor', 'chiahui@gmail.com', '0175551111', 'FK', 'SysArmy.Sdn Bhd', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_CA18016.png')), 
-                ('CB19124', 'Aiman Basheer Abdulwareth Mohammed','cb19124', 'Jalan Lenga, Taman Singa, Kuala Lumpur', 'aiman@gmail.com', '0124411344', 'FK', 'Samsung Sdn Bhd', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_CD18001.png')), 
-                ('CD18001', 'Siti Binti Abu Bakar', 'cd18001','Jalan Bersatu, Taman Bahagia, Kedah', 'siti@gmail.com', '0164425512', 'FK', '-', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_CB19124.png')), 
+                ('CB19124', 'Aiman Basheer Abdulwareth Mohammed','cb19124', 'Jalan Lenga, Taman Singa, Kuala Lumpur', 'aiman@gmail.com', '0124411344', 'FK', 'Samsung Sdn Bhd', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_CB19124.png')), 
+                ('CD18001', 'Siti Binti Abu Bakar', 'cd18001','Jalan Bersatu, Taman Bahagia, Kedah', 'siti@gmail.com', '0164425512', 'FK', '-', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_CD18001.png')), 
                 ('CB19080', 'Nicholas Ooi Zhee Chen', 'cb19080','Jalan Ipoh, Taman Intan, Ipoh', 'nicholas@gmail.com', '01137002219', 'FK', 'New Digital Sdn Bhd', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_CB19080.png')),
                 ('CA18084', 'Muhammad Nizar Bin Abdullah', 'ca18084','Jalan Destinasi, Taman Impian, Johor', 'nizar@gmail.com', '01139599171', 'FK', 'Brunsfield Computer Sdn Bhd',''),
                 ('CA18020', 'Lee Min Hui', 'ca18020','Jalan Kasih, Taman Sayang, Kelantan', 'minhui@gmail.com', '0129937069', 'FK', 'LE Global Services Sdn Bhd',''),
@@ -52,7 +52,7 @@
 				('CD19126','Prasad Saravanan', 'cd19126','Jalan Wan, Taman Kadir, KL', 'prasad@gmail.com', '0162627053', 'FK', 'Pahanggo Sdn Bhd',''),
               
 				('CD17020','Muhammad Nazhan Bin Nazri', 'cd17020','Jalan Jingga, Taman Song, Terengganu', 'nazhan@gmail.com', '01127384315', 'FK','-',''),
-				('CB18014', 'Montira A/P Eh Pon', 'cb18014',	'Jalan Sungai, Taman Korok, Kedah','montiraehpon99@gmail.com','01116546617','FK','-',''),
+				('CB18014', 'Montira A/P Eh Pon', 'cb18014', 'Jalan Sungai, Taman Korok, Kedah','montiraehpon99@gmail.com','01116546617','FK','-',''),
 				('CB18015','Mohammad Alif Yasir Bin Soleh','cb18015','Jalan Sentiasa, KL','yasirsoleh@gmail.com','01125509087','FK','-',''),
 				('CB18016','Muhamad Aleef Firdaus Bin Yusuf Woo','cb18016','Jalan Langkawi, Taman Pendang, Kelantan','aleeffirdaus28@gmail.com','01111955265','FK','-',''),
 				('CB18017','Lailatul Nur Binti Arnizam Shah','cb18017','Jalan Pengkalan, Taman Kundor, Kedah','lailaarnizam99@gmail.com','0139204870','FK','-',''),
@@ -73,7 +73,7 @@
 				('CB18040','Mastura Binti Zainul Asri','cb18040','Jalan Batu, Taman Campbell, Melaka','mastura9906@gmail.com','0125345904','FK','-',''),
                 ('CA17083','Uthayasurian A/L Salavamani','ca17083','Jalan setiawai, Taman Senkon, Kelantan','uthayasurian@gmail.com','01114457623','FK','-',''),
 
-                  ('CA18007','Najwa Ramlan','ca18007','Jalan Setiawai, Taman Senkon, Kelantan','nramlan1509@gmail.com','01139335740','FK','-',''),
+                ('CA18007','Najwa Ramlan','ca18007','Jalan Setiawai, Taman Senkon, Kelantan','nramlan1509@gmail.com','01139335740','FK','-',''),
                 ('CA18037','Ahmad Shazrul Bin Muhammad Apandi','ca18037','Jalan Imbang, Taman Selimau, Kedah','shazrul@gmail.com','0111424534','FK','-',''),
                 ('CA18044','Jenny Yew Sook Peng','ca18044','Jalan Iskandar, Taman Sentosa, Johor','jennyyew98@live.com.my','0162647686','FK','-',''),
                 ('CA18053','Mohamad Farhan bin Md Yazid','ca18053','Jalan Nona, Taman Hari, Penang','farhan@gmail.com','01173643748','FK','-',''),
@@ -102,7 +102,7 @@
                 ('CC20025','Muhammad Yazid Bin Zulfar Shariel','cc20025','Jalan Sibal, Taman Sentiasa, Penang','umpyazid@gmail.com','01160500559','FK','-',''),
                 ('CC19112','Lakxhana A/P Selva Rajah','cc19112','Jalan Tebal, Taman Temerloh, Terengganu','lakxhana@gmail.com','0178722633','FK','-',''),
 
-               ('CC19283','Nur Syuhada Binti Muhammad Pauzi','cc19283','Jalan Air, Taman Kembung, Johor','syuha1608@gmail.com','01121097112','FK','-',''),
+                ('CC19283','Nur Syuhada Binti Muhammad Pauzi','cc19283','Jalan Air, Taman Kembung, Johor','syuha1608@gmail.com','01121097112','FK','-',''),
                 ('CC19255','Wan Aqilah Illyana Binti Rosli','cc19255','Jalan Sugai, Taman Keli, Kelantan','aqilahfhbbsl@gmail.com','0102580170','FK','-',''), 
                 ('CD17063','Nur Anis Farhain Binti Zurizam','cd17063','Jalan Kelantan, Taman Ringgit, Sarawak','afarhain98@gmail.com','0169788536','FK','-',''),
                 ('CD15039','Nurfarahin Binti Kamaruzaman','ca15039','Jalan Jitra, Taman Dana, Sabah','nurfarahin1501@gmail.com','0183924031','FK','-',''),
@@ -125,11 +125,8 @@
                 ('CD18034','Pang Wei Khee','cd18034','Jalan Meriah, Taman Bantuan, Terengganu','pang.weikhee@gmail.com','0166911939','FK','-',''),
                 ('CD18036','Wong Zelin','cd18036','Jalan Biru, Taman Klang, Kelantan','wongzelin.tiger@gmail.com','0187831314','FK','-',''),
                 ('CD18042','Nur Anis Binti Che Aziz','cd18042','Jalan Pangkal, Taman Port, Selangor','nuranischeaziz99@gmail.com','0146058998','FK','-',''),
-            ('CD18043','Dg Nur Sakinah Binti Armain','cd18043','Jalan Kundasang, Taman Genting, KL','dnsakinah00@gmail.com','0172050105','FK','-','')
-                				
-			
-				
-			"	or die(mysqli_connect_error());
+                ('CD18043','Dg Nur Sakinah Binti Armain','cd18043','Jalan Kundasang, Taman Genting, KL','dnsakinah00@gmail.com','0172050105','FK','-','')"
+                or die(mysqli_connect_error());
 
 	$result = mysqli_query($link, $query);
 	     
