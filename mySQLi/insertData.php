@@ -167,12 +167,49 @@
 	}
 
 	// Insert data into lecturer table
-	$query = 	"insert into lecturer values('S001', 'Dr. Azlina Binti Zainuddin', 's001', '0123336677', 'azlina@ump.edu.my', 'S352 Kampung Sri Langkas Batu 13 Jalan 47100 Puchong Malaysia', 'Senior Lecturer', 'Requirement Engineering, Software Quality Assurance and Software Testing', 'FK'),
-				('S002', 'Dr Mohammad Amirulkhairi Bin Zubir', 's002', '0145555777', 'amirulkhairi@ump.edu.my', 'A 6 Jln Sagu 1 Taman Daya 81100, Johor', 'Senior Lecturer', 'Civil Engineering', 'FTKA'),
-				('S003', 'Dr. Fatihah Ayu Bin Amin', 's003', '0454556772', 'fatihah@ump.edu.my', 'Jalan Geliga Sakti,Taman Permai,Terengganu', 'Lecturer', 'Biotech', 'FIST'),
-				('S012', 'Dr. Ali Abdulrahman Nasser', 's012', '0823456781', 'ali_abdulrahman012@ump.edu.my', 'No. 354 Jln Tok Ungku 70100 Negeri Sembilan', 'Senior Lecturer', 'Mechanical Engineering', 'FKM'),
-				('S191', 'Dr. Mohammed ben Salem Mustafa', 's191', '0128660630', 'mohammed55@ump.edu.my', '38st Floor, Imbi Plaza, Jalan Imbi', 'Senior Lecturer', 'Design integrated systems', 'FK')"
-				or die(mysqli_connect_error());
+	$query = 	"insert into lecturer values
+	('S001', 'Dr. Azlina Binti Zainuddin', 's001', '0123336677', 'azlina@ump.edu.my', 'S352 Kampung Sri Langkas Batu 13 Jalan 47100 Puchong Malaysia', 'Senior Lecturer', 'Requirement Engineering, Software Quality Assurance and Software Testing', 'FK'),
+	('S001', 'Dr. Azlina Binti Zainuddin','s001', '0123336677', 'azlina@ump.edu.my', 'S352 Kampung Sri Langkas Batu 13 Jalan 47100 Puchong Malaysia', 'Senior Lecturer', 'Requirement Engineering, Software Quality Assurance and Software Testing', 'FK'),
+	('S002', 'Dr Mohammad Amirulkhairi Bin Zubir', 's002', '0145555777', 'amirulkhairi@ump.edu.my', 'A 6 Jln Sagu 1 Taman Daya 81100, Johor', 'Senior Lecturer', 'Civil Engineering', 'FTKA'),
+	('S003', 'Dr. Fatihah Ayu Bin Amin', 's003', '0454556772', 'fatihah@ump.edu.my', 'Jalan Geliga Sakti,Taman Permai,Terengganu', 'Lecturer', 'Biotech', 'FIST'),
+	('S012', 'Dr. Ali Abdulrahman Nasser', 's012', '0823456781', 'ali_abdulrahman012@ump.edu.my', 'No. 354 Jln Tok Ungku 70100 Negeri Sembilan', 'Senior Lecturer', 'Mechanical Engineering', 'FKM'),
+	('S191', 'Dr. Mohammed ben Salem Mustafa', 's191', '0128660630', 'mohammed55@ump.edu.my', '38st Floor, Imbi Plaza, Jalan Imbi', 'Senior Lecturer', 'Design integrated systems', 'FK'),
+	('S005', 'Imran Edzereiq Bin Kamarudin', 's005',	'095492431',	'edzereiq@ump.edu.my'	,'18, Jalan Selangor, Taman Merdeka, Kedah'	,'Lecturer'	,'Data Communication Device, Pilot Plant Technology, Database','FK'),
+	('S006','Ts. Dr. Syahrulanuar Bin Ngah',	's006',	'094244721',	'syahrulanuar@ump.edu.my'	,'Jalan Ikhlas, Taman Senawang, Kelantan'	,'Senior Lecturer'	,'Communication Networks And Services','FK'),
+	('S007','Dr. Muhammad Arif Bin Mohamad',	's007',	'093311334',	'arifmohamad@ump.edu.my'	,'Jalan Bukit Angat, Taman BA/3, KL'	,'Lecturer'	,'Pattern Recognition And Image Recognition and Machine Learning'	,'FK'),
+	('S008','Ts. Dr. Mritha Ramalingam',		's008','094244683',	'mritha@ump.edu.my'	,'Jalan Seri, Taman Impian, Kelantan'	,'Senior Lecturer'	,'Embedded Systems,Computer Forensic and Educational Challenges'	,'FK'),
+	('S009','Dr. Nur Shamsiah Binti Abdul Rahman','s009','094244702', 'shamsiah@ump.edu.my'	,'Jalan Medan, Taman Bukit Mertajam, Perlis'	,'Senior Lecturer'	,'Adult Learning And Development, Information System (Is) Planning'	,'FK'),
+	('S010','Profesor Madya Ts. Dr. Awanis Binti Romli','s010','095492246',	'awanis@ump.edu.my','Jalan Kewajipan, Taman Betik, Sarawak','Associate Professor'	,'Decision Support System, Sustainability'	,'FK'),
+	('S011','Profesor Madya Ts. Dr. Adzhar Bin Kamaludin','s011','094245024',	'adzhar@ump.edu.my',	'Jalan Manis, Taman Manis, Pahang',	'Associate Professor',	'Computer-Based Teaching And Learning'	,'FK'),
+	('S004','Profesor Ts. Dr. Kamal Zuhairi Bin Zamli',	's004','094245401',	'kamalz@ump.edu.my',	'Jalan Village, Taman Lampung, Terengganu',	'Professor',	'My Main Areas Of Research Involves Developing Strategies For Combinatorial Test Data Generation'	,'FK'),
+	('S013','Profesor Ts. Dr. Ruzaini Bin Abdullah Arshah','s013','094433225',	'ruzaini@ump.edu.my',	'Jalan Subang, Taman Seti, Selangor',	'Professor',	'Information System (Is) Planning'	,'FK'),
+	('S014','Professor Dr. Rizalman Mamat',	's014',	'094246275' ,  	'rizalman@ump.edu.my',	'Jalan Eco, Taman Desa, Sarawak',	'Professor',	'Fuel & Energy, Internal combustion engines, Nanofluid heat transfer, Computational fluid dynamics (CFD)'	,'FKM'),
+	('S015','Associate Professor Dr. Mahadzir Ishak@Muhammad, C. Eng',	's015',	'094246235'  ,	'mahadzir@ump.edu.my',	'Jalan Bansar, Taman South, Kelantan',	'Associate Professor',	'Welding and joining, laser processing'	,'FKM'),
+	('S016','Dr. Ahmad Syahrizan Sulaiman',	's016',	'094246206'  ,  	'syahrizan@ump.edu.my',	'Jalan Axis, Taman Angin, Kedah',	'Senior Lecturer',	'Material failure'	,'FKM'),
+	('S017','Profesor Madya Dr. Cheng Jack Kie',	's017',	'095492311',	'jackkie@ump.edu.my',	'Jalan Dagang, Taman Dynaton, Johor',	'Associate Professor',	'Operations Research'	,'FIM'),
+	('S018','Profesor Madya Dr. Irene Ting Wei Kiong',	's018',	'095493234',	'irene@ump.edu.my',	'Jalan Kota, Taman Bahru, Kelantan',	'Associate Professor',	'Financial Management, Corporate Finance'	,'FIM'),
+	('S019','Dr. Fazeeda Bt. Mohamad',	's019',	'095492258',	'fazeedamohamad@ump.edu.my',	'Jalan Johor, Taman Pilah, Perak',	'Senior Lecturer',	'Supply Chain Management'	,'FIM'),
+	('S020','Dr. Diyana Binti Kamarudin',	's020','094245000',	'yanakamarudin@ump.edu.my',	'Jalan Tasik, Taman Permasuri, Kelantan',	'Senior Lecturer',	'Communications, Research And Development Management, Education'	,'FIM'),
+	('S021','Azizan Bin Hj. Azit',	's021',	'095492292',	'azizan@ump.edu.my',	'Jalan Kluang, Taman Setia, Selangor',	'Lecturer',	'asic Building Construction, Cost Estimating, Facility Maintenance, Construction Project Management.'	,'FIM'),
+	('S022','Profesor Madya Ts. Dr. Aishah Binti Abu Bakar',	's022',	 '094245000',	'aishahabubakar@ump.edu.my',	'Jalan Rakyat, Taman Sentral, KL',	'Associate Professor',	'Educational Administration, Concrete'	,'FTKA'),
+	('S024','Dr. SHARIFAH MASZURA SYED MOHSIN',	's024',	'095493011',	'maszura@ump.edu.my',	'Jalan Sunway, Taman Kelisa, Kelantan',	'Senior Lecturer',	'Simulation Modelling, Seismology (Including Earthquake And Tsunami, Seismic Exploration)'	,'FTKA'),
+	('S025','Dr. Syarifuddin Bin Misbari',	's025',	'098751331',	'syarifuddinm@ump.edu.my',	'Jalan Velocity, Taman USJ, KL',	'Senior Lecturer',	'Remote Sensing, Mapping And Gis'	,'FTKA'),
+	('S026','Profesor Ir. Ts. Dr. Kamarul Hawari Bin Ghazali',	's026',	'094246029',	'kamarul@ump.edu.my',	'Jalan Bukit, Taman Indah, Kelantan',	'Professor',	'Engineering Science And Technology, Engineering Science And Technology'	,'FTKEE'),
+	('S027','Profesor Madya Ts. Dr. Mohd Ashraf Bin Ahmad',	's027',	'094246041',	'mashraf@ump.edu.my',	'Jalan Park One, Taman Utama, Johor',	'Associate	Professor',	'Control And System'	,'FTKEE'),
+	('S028','Profesor Madya Dr. Ahmad Nor Kasruddin Bin Nasir',	's028',	'094245000',	'kasruddin@ump.edu.my',	'Jalan Seikat, Taman Berbakti, Kelantan',	'Associate Professor',	'Neural, Evolutionary And Fuzzy Computation, Soft Computing'	,'FTKEE'),
+	('S029','Profesor Madya Dr. Hamdan Bin Daniyal',	's029',	'094246023',	'hamdan@ump.edu.my',	'Jalan Indah, Taman Mahkota, Kelantan',	'Associate Professor',	'Power Quality Audit, Power Quality Analysis, Power Quality Mitigation, Consultation & Research In Power Electronics; Converter Design & Advanced Control','FTKEE'),
+	('S031','Fairuz Rizal Bin Mohamad Rashidi',	's031',	 '094246018',	'fairuz@ump.edu.my','Jalan PJS1, Taman Seti, Sarawak',	'Lecturer',	'Separation Of Audio Or Speech Signals That Are Convolutively Or Linearly Mixed In Different Environm'	,'FTKEE'),
+	('S032','Dr. Rozlina Binti Mohamed',	 's032',	'095492131',	'rozlina@ump.edu.my',	'Jalan Suria, Taman Sentiasa, Kelantan',	'Senior Lecturer',	'Food Tracebility, Database'	,'FK'),
+	('S033','Dr. Anis Farihan Binti Mat Raffei',	's033',	'09-5492474',	'anisfarihan@um,p.edu.my',	'Jalan Ria, Taman Derga, Kedah',	'Senior Lecturer',	'Computer Based Training'	,'FK'),
+	('S034','Dr. Ahmad Firdaus Bin Zainal Abidin',	's034',	'094244629',	'firdausza@ump.edu.my',	'Jalan Sembilan, Taman IKS, Kelantan',	'Senior Lecturer',	'Predictiion In Classifying Classes, Other Security System N.E.C.'	,'FK'),
+	('S035','Roslina Binti Mohd Sidek',	's035',	'094244709',	 'roslinams@ump.edu.my',	'Jalan Jaya, Taman One, Johor',	'Lecturer',	'Software Engineering'	,'FK'),
+	('S036','Ts. Azma Binti Abdullah',	's036',	'094244640',	 'azma@ump.edu.my',	'Jalan Bazar, Taman Raya, Kelantan',	'Lecturer',	'Component Based Software Development','FK'),
+	('S037','Dr. Siti Suhaila Binti Abdul Hamid',	's037',	'095529655',	'sitisuhaila@ump.edu.my',	'Jalan Bunga, Taman Tertib, KL',	'Senior Lecturer',	'Human Computer Interaction (Hci), Information System (Is) Planning','FK'),
+	('S038','Ts. Dr. Wan Isni Sofiah Binti Wan Din',	's038',	'094244726',	'sofiah@ump.edu.my',	'Jalan Damansara, Taman Kota, Penang',	'Senior Lecturer',	'Clustering In Sensor Network, Network Design, Simulation System'	,'FK'),
+	('S039','Dr. Nur Hafieza Binti Ismail',	's039',	'094427532',	'hafieza@ump.edu.my',	'Jalan Wisma, Taman Bandar, Kelantan',	'Senior Lecturer',	'Data Mining'	,'FK'),
+	('S040','Profesor Madya Dr. Mohamed Ariff Bin Ameedeen',	's040',	'095492472',	'mohamedariff@ump.edu.my',	'Jalan Tasik, Taman Selatan, Perak',	'Associate Professor',	'Computer System Organisation, Computer Software'	,'FK')
+	" 
+	or die(mysqli_connect_error());
 
 	$result = mysqli_query($link, $query);
 	     
