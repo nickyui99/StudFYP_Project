@@ -23,7 +23,4 @@ function displayFyp2Result($student_id){
     echo $output;
 }
 
-function displayProjectID($student_id){
-    
-}
 ?>
