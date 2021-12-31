@@ -309,14 +309,14 @@
 <script>
     $(document).ready(function() {
     
-        load_assigned_evaluator("", "S012");
+        load_assigned_evaluator("", "S001");
         
         $('#search').keyup(function() {
             var search = $(this).val();
             if (search != '') {
-                load_assigned_evaluator(search, "S012");
+                load_assigned_evaluator(search, "S001");
             } else {
-                load_assigned_evaluator("", "S012");
+                load_assigned_evaluator("", "S001");
             }
         });
     });

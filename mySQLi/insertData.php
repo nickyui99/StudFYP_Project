@@ -335,8 +335,8 @@
     }
 
     // Insert data into evaluation_result table
-    $query =    "insert into evaluation_result values('ER001', 'FP001', 'EL001', NULL, 'Advanced Mobile System', '1', '24', 'Good'),
-                ('ER002', 'FP002', NULL,'EI002', 'Mr. Ali bin Washeed', '1', '23', 'Please check your project plan')"
+    $query =    "insert into evaluation_result values('ER001', 'FP001', 'EL001', NULL, 'Advanced Mobile System', '1', 'Good', '24'),
+                ('ER002', 'FP002', NULL,'EI002', 'Mr. Ali bin Washeed', '1', 'Please check your project plan','23')"
                 or die(mysqli_connect_error());
 
     $result = mysqli_query($link, $query);

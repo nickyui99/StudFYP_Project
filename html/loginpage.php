@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+ require_once 'login.php';
+ ?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,7 +64,6 @@
                                     <option value="system_administrator">System administrator</option>
                                 </select>
                             </div>
-
 
                             <div class="form-group mt-3 mb-3">
                                 <input class="btn btn-primary form-control mt-3" type="submit" value="Login">
