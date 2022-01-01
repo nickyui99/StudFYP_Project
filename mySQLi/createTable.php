@@ -135,7 +135,7 @@
     }
 
     //create project_logbook table
-    $sql = "CREATE TABLE project_logbook (logbook_id VARCHAR(10), fyp_proj_id VARCHAR(10), logbook_date DATE, logbook_details VARCHAR(100), PRIMARY KEY(logbook_id), FOREIGN KEY(fyp_proj_id) REFERENCES fyp_project(fyp_proj_id))";
+    $sql = "CREATE TABLE project_logbook (logbook_id VARCHAR(10), fyp_proj_id VARCHAR(10), submission INT, logbook_date DATE, logbook_details VARCHAR(100), PRIMARY KEY(logbook_id), FOREIGN KEY(fyp_proj_id) REFERENCES fyp_project(fyp_proj_id))";
 
     if (mysqli_query($link, $sql)) {
         echo "Table project_logbook created successfully <br>";

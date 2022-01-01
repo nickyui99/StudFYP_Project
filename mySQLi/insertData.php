@@ -395,8 +395,8 @@
     }
 
     // Insert data into project_logbook table
-    $query =    "insert into project_logbook values('LG001', 'FP001', '2021-9-2', 'I start to research about my FYP project idea'),
-                ('LG002', 'FP001', '2021-9-6', 'I start to plan my project')"
+    $query =    "insert into project_logbook values('LG001', 'FP001', '1', '2021-9-2', 'I start to research about my FYP project idea'),
+                ('LG002', 'FP001', '1', '2021-9-6', 'I start to plan my project')"
                 or die(mysqli_connect_error());
 
     $result = mysqli_query($link, $query);

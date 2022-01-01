@@ -66,4 +66,8 @@ class LecturerDataService
             return $output;
         }
     }
+
+    function getEvaluationDetails(){
+        
+    }
 }
