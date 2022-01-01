@@ -254,29 +254,63 @@ include '../DAO/LecturerHandler.php';
                     </ol>
 
                     <form action="">
-                        <div class="form-group row">
-                            <div class="col-sm-9">
-                                <div class="row mb-1">
-                                    <label class="col-sm-2" for="project_id">Project ID: </label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control " name="project_id" id="project_id">
-                                    </div>
-                                </div>
+                        <div class="form-group">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr class="">
+                                        <td class="col-sm-2">Project ID: </td>
+                                        <td class="col-sm-7"><input type="text" class="form-control" id="inputProjId" disabled></td>
+                                        <td class="col-sm-3" rowspan="4">
+                                            <div class="card text-center">
+                                                <div class="card-body">
+                                                    <h4 class="">Project QR Code</h4>
+                                                    <img name="QR_code" src="../../../mySQLi/Resources/QR_CA18016.png" alt="Project QR Code" class="img-container">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Student ID: </td>
+                                        <td><input type="text" class="form-control" id="inputStudId" disabled></td>
+                                    </tr>
+                                    <tr>
+                                        <td>FYP Stage: </td>
+                                        <td><input type="text" class="form-control" id="inputFypStage" disabled></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Project title:</td>
+                                        <td><input type="text" class="form-control" id="inputProjTitle" disabled></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Project Logbook: </td>
+                                        <td>
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr class="header-bg">
+                                                        <th class="col-sm-3">Date</th>
+                                                        <th class="col-sm-9">Activity</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- Project logbook result -->
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Project Document: </td>
+                                        <td><button class="btn btn-outline-dark"><i class="fa fa-download"></i> Download</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Evaluation Mark: </td>
+                                        <td>
+                                            <table class="table table-bordered">
 
-                                <div class="row">
-                                    <label class="col-sm-2" for="project_id">Project ID: </label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control " name="project_id" id="project_id">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-3 img-container">
-                                <img src="../../../images/ump_logo.png" alt="" class="img-fluid">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
                         </div>
                     </form>
