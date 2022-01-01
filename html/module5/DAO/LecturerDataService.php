@@ -50,24 +50,44 @@ class LecturerDataService
 
             //Set output
             $output = "";
-            foreach($assigned_ev_array as $assigned_ev){
-                $output = '<tr>'.
-                    '<td>'. $assigned_ev->getProjectID() . '</td>'.
-                    '<td>'.$assigned_ev->getStudentID() .'</td>'.
-                    '<td>'.$assigned_ev->getStudentName() .'</td>'.
-                    '<td>'.$assigned_ev->getFypLevel() .'</td>'.
-                    '<td>'.$assigned_ev->getFypProgress() .'</td>'.
-                    '<td><a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=1"><button type="button" class="btn btn-light btn-outline-dark btn-sm">1</button></a> '.
-                        '<a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&submission=2"><button type="button" class="btn btn-light btn-outline-dark btn-sm">2</button></a>'.
-                        '<a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&submission=1"><button type="button" class="btn btn-light btn-outline-dark btn-sm">3</button></a>'.
-                    '</td>'.
+            foreach ($assigned_ev_array as $assigned_ev) {
+                $output = '<tr>' .
+                    '<td>' . $assigned_ev->getProjectID() . '</td>' .
+                    '<td>' . $assigned_ev->getStudentID() . '</td>' .
+                    '<td>' . $assigned_ev->getStudentName() . '</td>' .
+                    '<td>' . $assigned_ev->getFypLevel() . '</td>' .
+                    '<td>' . $assigned_ev->getFypProgress() . '</td>' .
+                    '<td><a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=1"><button type="button" class="btn btn-light btn-outline-dark btn-sm">1</button></a> ' .
+                    '<a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&submission=2"><button type="button" class="btn btn-light btn-outline-dark btn-sm">2</button></a>' .
+                    '<a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&submission=1"><button type="button" class="btn btn-light btn-outline-dark btn-sm">3</button></a>' .
+                    '</td>' .
                     '</tr>';
             }
             return $output;
         }
     }
 
-    function getEvaluationDetails(){
-        
+    function getEvaluationDetails($proj_id, $stud_id, $submission)
+    {
+
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "SELECT * FROM fyp_proj " .
+            "WHERE fyp_proj_id = '" . $proj_id . "' AND " .
+            "stud_id = '" . $stud_id . "' AND " .
+            "submission = '" . $submission . "'";
+
+        //Run SQL Query
+        $result = $connection->query($sql_query);
+
+        if ($result->num_rows == 0) {
+            return null;
+        } else {
+            $evaluateFypModel = new EvaluateFyp();
+            return $evaluateFypModel;
+        }
     }
 }

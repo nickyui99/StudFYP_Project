@@ -9,6 +9,8 @@ include '../DAO/LecturerHandler.php';
 $projID = $_GET['projID'];
 $studID = $_GET['studID'];
 $submission = $_GET['submission'];
+
+
 ?>
 
 <head>
@@ -248,7 +250,7 @@ $submission = $_GET['submission'];
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Evaluate FYP - Submission <?php echo $submission?></h1>
+                    <h1 class="mt-4">Evaluate FYP - Submission <?php echo $submission ?></h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">
                             FYP evaluation
@@ -263,7 +265,7 @@ $submission = $_GET['submission'];
                                 <tbody>
                                     <tr class="">
                                         <td class="col-sm-2">Project ID: </td>
-                                        <td class="col-sm-7"><input type="text" class="form-control" id="inputProjId" value="<?php echo $projID?>" disabled></td>
+                                        <td class="col-sm-7"><input type="text" class="form-control" id="inputProjId" value="<?php echo $projID ?>" disabled></td>
                                         <td class="col-sm-3" rowspan="4">
                                             <div class="card text-center">
                                                 <div class="card-body">
@@ -275,7 +277,7 @@ $submission = $_GET['submission'];
                                     </tr>
                                     <tr>
                                         <td>Student ID: </td>
-                                        <td><input type="text" class="form-control" id="inputStudId" value="<?php echo $studID?>" disabled></td>
+                                        <td><input type="text" class="form-control" id="inputStudId" value="<?php echo $studID ?>" disabled></td>
                                     </tr>
                                     <tr>
                                         <td>FYP Stage: </td>
