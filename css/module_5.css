@@ -27,3 +27,7 @@ tbody {
     background-color: rgb(0, 104, 107);
     color: white;
 }
+
+.img-container{
+    height: 100px;
+}
