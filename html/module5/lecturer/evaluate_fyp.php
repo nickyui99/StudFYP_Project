@@ -305,7 +305,13 @@ include '../DAO/LecturerHandler.php';
                                         <td>Evaluation Mark: </td>
                                         <td>
                                             <table class="table table-bordered">
-
+                                                <thead>
+                                                    <tr class="header-bg">
+                                                        <th>Num</th>
+                                                        <th>Item</th>
+                                                        <th>Mark</th>
+                                                    </tr>
+                                                </thead>
                                             </table>
                                         </td>
                                     </tr>
