@@ -57,9 +57,10 @@ class LecturerDataService
                     '<td>'.$assigned_ev->getStudentName() .'</td>'.
                     '<td>'.$assigned_ev->getFypLevel() .'</td>'.
                     '<td>'.$assigned_ev->getFypProgress() .'</td>'.
-                    '<td><button type="button" class="btn btn-light btn-outline-dark btn-sm">1</button> '.
-                        '<button type="button" class="btn btn-light btn-outline-dark btn-sm">2</button>'.
-                        ' <button type="button" class="btn btn-light btn-outline-dark btn-sm">3</button></td>'.
+                    '<td><a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=1"><button type="button" class="btn btn-light btn-outline-dark btn-sm">1</button></a> '.
+                        '<a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&submission=2"><button type="button" class="btn btn-light btn-outline-dark btn-sm">2</button></a>'.
+                        '<a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&submission=1"><button type="button" class="btn btn-light btn-outline-dark btn-sm">3</button></a>'.
+                    '</td>'.
                     '</tr>';
             }
             return $output;
