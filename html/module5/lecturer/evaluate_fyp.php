@@ -263,10 +263,10 @@ include '../DAO/LecturerHandler.php';
                                         <td class="col-sm-3" rowspan="4">
                                             <div class="card text-center">
                                                 <div class="card-body">
-                                                    <h4 class="">Project QR Code</h4>
-                                                    <img name="QR_code" src="../../../mySQLi/Resources/QR_CA18016.png" alt="Project QR Code" class="img-container">
+                                                    <h4 class="mb1">Project QR Code</h4>
+                                                    <img name="QR_code" src="../../../mySQLi/Resources/QR_CA18016.png" alt="Project QR Code" class="img-container mb-1">
+                                                    <button class="btn btn-outline-dark"><i class="fa fa-download me-2"></i>Download QR Code</button>
                                                 </div>
-                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -299,28 +299,43 @@ include '../DAO/LecturerHandler.php';
                                     </tr>
                                     <tr>
                                         <td>Project Document: </td>
-                                        <td><button class="btn btn-outline-dark"><i class="fa fa-download"></i> Download</button></td>
+                                        <td><button class="btn btn-outline-dark"><i class="fa fa-download me-2"></i> Download</button></td>
                                     </tr>
                                     <tr>
-                                        <td>Evaluation Mark: </td>
+                                        <td>Evaluation Rubric: </td>
                                         <td>
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr class="header-bg">
-                                                        <th>Num</th>
-                                                        <th>Item</th>
-                                                        <th>Mark</th>
+                                                        <th class="col-sm-2">Num</th>
+                                                        <th class="col-sm-7">Item</th>
+                                                        <th class="col-sm-3">Mark</th>
                                                     </tr>
                                                 </thead>
+                                                <tbody>
+                                                    <!-- Evaluation Rubric Result -->
+                                                </tbody>
                                             </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Project Feedback: </td>
+                                        <td>
+                                            <textarea name="inputProjFeedback" id="inputProjFeedback" class="form-control" cols="30" rows="5" maxLength="300"></textarea>
+                                            <div class="float-end" id="the-count">
+                                                <span id="current">0</span>
+                                                <span id="maximum">/ 300</span>
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-
+                            <div class="d-flex justify-content-center">
+                                <input type="submit" class="btn btn-outline-dark m-3" name="submit" id="submit" value="Submit">
+                                <input type="reset" class="btn btn-outline-dark m-3" name="reset" id="reset" value="Reset">
+                            </div>
                         </div>
                     </form>
-
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
@@ -335,18 +350,13 @@ include '../DAO/LecturerHandler.php';
 </body>
 
 <script>
-    $(document).ready(function() {
+    $('textarea').keyup(function() {
+        var characterCount = $(this).val().length,
+            current = $('#current'),
+            maximum = $('#maximum'),
+            theCount = $('#the-count');
 
-        load_assigned_evaluator("", "S012");
-
-        $('#search').keyup(function() {
-            var search = $(this).val();
-            if (search != '') {
-                load_assigned_evaluator(search, "S012");
-            } else {
-                load_assigned_evaluator("", "S012");
-            }
-        });
+        current.text(characterCount);
     });
 </script>
 
