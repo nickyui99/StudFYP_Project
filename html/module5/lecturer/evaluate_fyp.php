@@ -17,7 +17,6 @@ if (isset($_GET['projID']) && isset($_GET['studID']) && isset($_GET['submission'
 }
 
 $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
-
 ?>
 
 <head>
@@ -306,6 +305,7 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
                                                 </thead>
                                                 <tbody>
                                                     <!-- Project logbook result -->
+                                                    <?php printProjLogbook($projID, $submission)?>
                                                 </tbody>
                                             </table>
                                         </td>

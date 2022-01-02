@@ -2,6 +2,7 @@
 
 require_once 'LecturerDataService.php';
 require_once '../ClassModel/EvaluateFypModel.php';
+require_once '../ClassModel/ProjectlogbookModel.php';
 
 if (isset($_POST['search_assigned_evaluation']) && isset($_POST['lecturer_id'])) {
     viewAssignedFyp($_POST['search_assigned_evaluation'], $_POST['lecturer_id']);
@@ -19,4 +20,10 @@ function getEvaluationDetail($proj_id, $stud_id, $submission){
     $evaluateFypModel = new EvaluateFyp();
     $evaluateFypModel = $lds->getEvaluationDetails($proj_id, $stud_id, $submission);
     return $evaluateFypModel;
+}
+
+function printProjLogbook($proj_id, $submission){
+    $lds = new LecturerDataService();
+    $output = $lds->getProjectLog($proj_id, $submission);
+    echo $output;
 }

@@ -1,6 +1,7 @@
 <?php
 require_once 'Database.php';
 require_once '../ClassModel/AssignedEvaluationModel.php';
+require_once '../ClassModel/ProjectlogbookModel.php';
 
 class LecturerDataService
 {
@@ -130,12 +131,14 @@ class LecturerDataService
             echo $image;
         }
 
+        //Close connection
+        $connection->close();
+
         exit();
     }
 
     function getProjectDoc($project_id, $submission)
     {
-        echo $project_id;
         $db = new Database();
 
         //Create connection
@@ -143,8 +146,6 @@ class LecturerDataService
 
 
         $sql_query = "SELECT fyp_proj_id, document_submission_" . $submission . " FROM fyp_project WHERE fyp_proj_id = '" . $project_id . "'";
-
-
 
         //Run SQL Query
         $result = $connection->query($sql_query);
@@ -160,14 +161,60 @@ class LecturerDataService
 
             header('Expires: 0');
             header('Pragma: no-cache');
-            header('Content-Disposition: attachment; filename=' . $stud_id . '_Submission'. $submission .'.pdf');
+            header('Content-Disposition: attachment; filename=' . $stud_id . '_Submission' . $submission . '.pdf');
             header('Content-length: ' . strlen($document));
             header('Content-type: application/pdf');
             ob_clean();
             flush();
             echo $document;
         }
+        //Close connection
+        $connection->close();
 
         exit();
+    }
+
+    function getProjectLog($proj_id, $submission)
+    {
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "SELECT * FROM project_logbook " .
+            "WHERE fyp_proj_id ='" . $proj_id . "' AND " .
+            "submission = '" . $submission . "'";
+
+        //Run SQL Query
+        $result = $connection->query($sql_query);
+
+        if ($result->num_rows == 0) {
+            return null;
+        } else {
+            $i = 0;
+            $project_log_array = array();
+            while ($row = $result->fetch_assoc()) {
+                $project_log_model = new ProjectLogbook();
+                $project_log_model->setDate($row['logbook_date']);
+                $project_log_model->setActivity($row['logbook_details']);
+
+                //Add to array
+                $project_log_array[$i] = $project_log_model;
+                $i++;
+            }
+
+            //Close connection
+            $connection->close();
+        }
+        $output = "";
+        foreach($project_log_array as $project_log){
+            $output = $output . 
+                "<tr>" . 
+                    "<td>". $project_log->getDate() ."</td>" . 
+                    "<td>". $project_log->getActivity() ."</td>" . 
+                "</tr>";
+        }
+
+        return $output;
     }
 }
