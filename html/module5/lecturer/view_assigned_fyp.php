@@ -297,14 +297,14 @@ include '../DAO/LecturerHandler.php';
 <script>
     $(document).ready(function() {
 
-        load_assigned_evaluator("", "S001");
+        load_assigned_evaluator("", "S002");
 
         $('#search').keyup(function() {
             var search = $(this).val();
             if (search != '') {
-                load_assigned_evaluator(search, "S001");
+                load_assigned_evaluator(search, "S002");
             } else {
-                load_assigned_evaluator("", "S001");
+                load_assigned_evaluator("", "S002");
             }
         });
     });

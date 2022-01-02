@@ -6,10 +6,17 @@
 <?php
 include '../DAO/LecturerHandler.php';
 
-$projID = $_GET['projID'];
-$studID = $_GET['studID'];
-$submission = $_GET['submission'];
+$projID="invalid";
+$studID="invalid";
+$submission="invalid";
 
+if (isset($_GET['projID']) && isset($_GET['studID']) && isset($_GET['submission'])){
+    $projID = $_GET['projID'];
+    $studID = $_GET['studID'];
+    $submission = $_GET['submission'];
+}
+
+$evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
 
 ?>
 
@@ -270,8 +277,8 @@ $submission = $_GET['submission'];
                                             <div class="card text-center">
                                                 <div class="card-body">
                                                     <h4 class="mb1">Project QR Code</h4>
-                                                    <img name="QR_code" src="../../../mySQLi/Resources/QR_CA18016.png" alt="Project QR Code" class="img-container mb-1">
-                                                    <button class="btn btn-outline-dark"><i class="fa fa-download me-2"></i>Download QR Code</button>
+                                                    <img name="QR_code" src="data:image/jpeg;base64, <?php echo $evaluateDetails->getProjQR(); ?>" alt="Project QR Code" class="img-container mb-1">
+                                                    <input type="button" id="btnDownloadProjQR" value="Download Project QR Code" class="btn btn-outline-dark">
                                                 </div>
                                         </td>
                                     </tr>
@@ -281,11 +288,11 @@ $submission = $_GET['submission'];
                                     </tr>
                                     <tr>
                                         <td>FYP Stage: </td>
-                                        <td><input type="text" class="form-control" id="inputFypStage" disabled></td>
+                                        <td><input type="text" class="form-control" id="inputFypStage" value="<?php echo $evaluateDetails->getFypLevel(); ?>" disabled></td>
                                     </tr>
                                     <tr>
                                         <td>Project title:</td>
-                                        <td><input type="text" class="form-control" id="inputProjTitle" disabled></td>
+                                        <td><input type="text" class="form-control" id="inputProjTitle" value="<?php echo $evaluateDetails->getProjTitle(); ?>" disabled></td>
                                     </tr>
                                     <tr>
                                         <td>Project Logbook: </td>
@@ -305,7 +312,7 @@ $submission = $_GET['submission'];
                                     </tr>
                                     <tr>
                                         <td>Project Document: </td>
-                                        <td><button class="btn btn-outline-dark"><i class="fa fa-download me-2"></i> Download</button></td>
+                                        <td><a href="evaluate_fyp.php?projID=<?php echo $projID?>&studID=<?php echo $studID?>&submission=<?php echo $submission?>"><button class="btn btn-outline-dark"><i class="fa fa-download me-2"></i> Download</button></a></td>
                                     </tr>
                                     <tr>
                                         <td>Evaluation Rubric: </td>
@@ -327,7 +334,7 @@ $submission = $_GET['submission'];
                                     <tr>
                                         <td>Project Feedback: </td>
                                         <td>
-                                            <textarea name="inputProjFeedback" id="inputProjFeedback" class="form-control" cols="30" rows="5" maxLength="300"></textarea>
+                                            <textarea id="inputProjFeedback" class="form-control" cols="30" rows="5" maxLength="300"></textarea>
                                             <div class="float-end" id="the-count">
                                                 <span id="current">0</span>
                                                 <span id="maximum">/ 300</span>
@@ -356,6 +363,10 @@ $submission = $_GET['submission'];
 </body>
 
 <script>
+    $('#btnDownloadProjQR').click(function() {
+        window.open("http://localhost/StudFYP_Project/html/module5/DAO/DownloadService.php?projID=<?php echo $projID?>");
+    });
+
     $('textarea').keyup(function() {
         var characterCount = $(this).val().length,
             current = $('#current'),

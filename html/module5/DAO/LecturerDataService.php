@@ -58,8 +58,8 @@ class LecturerDataService
                     '<td>' . $assigned_ev->getFypLevel() . '</td>' .
                     '<td>' . $assigned_ev->getFypProgress() . '</td>' .
                     '<td><a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=1"><button type="button" class="btn btn-light btn-outline-dark btn-sm">1</button></a> ' .
-                    '<a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&submission=2"><button type="button" class="btn btn-light btn-outline-dark btn-sm">2</button></a>' .
-                    '<a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&submission=1"><button type="button" class="btn btn-light btn-outline-dark btn-sm">3</button></a>' .
+                    '<a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=2"><button type="button" class="btn btn-light btn-outline-dark btn-sm">2</button></a>' .
+                    '<a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=1"><button type="button" class="btn btn-light btn-outline-dark btn-sm">3</button></a>' .
                     '</td>' .
                     '</tr>';
             }
@@ -75,19 +75,61 @@ class LecturerDataService
         //Create connection
         $connection = $db->getConnection();
 
-        $sql_query = "SELECT * FROM fyp_proj " .
+        $sql_query = "SELECT * FROM fyp_project " .
             "WHERE fyp_proj_id = '" . $proj_id . "' AND " .
-            "stud_id = '" . $stud_id . "' AND " .
-            "submission = '" . $submission . "'";
+            "stud_id = '" . $stud_id . "'";
+
+        //Run SQL Query
+        $result = $connection->query($sql_query);
+
+        $evaluateFypModel = new EvaluateFyp();
+        if ($result->num_rows == 0) {
+            //Do nothing
+        } else {
+            $row = $result->fetch_assoc();
+
+            $evaluateFypModel->setFypLevel($row['proj_fyp_stage']);
+            $evaluateFypModel->setProjTitle($row['proj_title']);
+            $evaluateFypModel->setProjMark('');
+            $evaluateFypModel->setProjFeedback('');
+            $evaluateFypModel->setProjQR(base64_encode($row['fyp_qrcode']));
+        }
+        //Close connection
+        $connection->close();
+        return $evaluateFypModel;
+    }
+
+    function getProjectQr($project_id)
+    {
+        echo $project_id;
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "SELECT fyp_proj_id, fyp_qrcode FROM fyp_project WHERE fyp_proj_id = '" . $project_id . "'";
 
         //Run SQL Query
         $result = $connection->query($sql_query);
 
         if ($result->num_rows == 0) {
-            return null;
+            //Do nothing
+            echo "Download error";
         } else {
-            $evaluateFypModel = new EvaluateFyp();
-            return $evaluateFypModel;
+            while ($row = $result->fetch_assoc()) {
+                $image = $row['fyp_qrcode'];
+            }
+
+            header('Expires: 0');
+            header('Pragma: no-cache');
+            header('Content-Disposition: attachment; filename=ProjectQR_' . $project_id . '.png');
+            header('Content-length: ' . strlen($image));
+            header('Content-type: image/png');
+            ob_clean();
+            flush();
+            echo $image;
         }
+
+        exit();
     }
 }
