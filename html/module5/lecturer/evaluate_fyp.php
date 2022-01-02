@@ -278,7 +278,7 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
                                                 <div class="card-body">
                                                     <h4 class="mb1">Project QR Code</h4>
                                                     <img name="QR_code" src="data:image/jpeg;base64, <?php echo $evaluateDetails->getProjQR(); ?>" alt="Project QR Code" class="img-container mb-1">
-                                                    <input type="button" id="btnDownloadProjQR" value="Download Project QR Code" class="btn btn-outline-dark">
+                                                    <button type="button" id="btnDownloadProjQR" class="btn btn-outline-dark"><i class="fa fa-download me-3" aria-hidden="true"></i>Download QR Code</button>
                                                 </div>
                                         </td>
                                     </tr>
@@ -312,7 +312,7 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
                                     </tr>
                                     <tr>
                                         <td>Project Document: </td>
-                                        <td><a href="evaluate_fyp.php?projID=<?php echo $projID?>&studID=<?php echo $studID?>&submission=<?php echo $submission?>"><button class="btn btn-outline-dark"><i class="fa fa-download me-2"></i> Download</button></a></td>
+                                        <td><button type="button" id="btnDownloadProjDoc" class="btn btn-outline-dark"><i class="fa fa-download me-3" aria-hidden="true"></i>Download</button></td>
                                     </tr>
                                     <tr>
                                         <td>Evaluation Rubric: </td>
@@ -364,9 +364,12 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
 
 <script>
     $('#btnDownloadProjQR').click(function() {
-        window.open("http://localhost/StudFYP_Project/html/module5/DAO/DownloadService.php?projID=<?php echo $projID?>");
+        window.open("http://localhost/StudFYP_Project/html/module5/DAO/DownloadService.php?projQr=<?php echo $projID?>");
     });
 
+    $('#btnDownloadProjDoc').click(function() {
+        window.open("http://localhost/StudFYP_Project/html/module5/DAO/DownloadService.php?projDoc=<?php echo $projID?>&submission=<?php echo $submission?>");
+    });
     $('textarea').keyup(function() {
         var characterCount = $(this).val().length,
             current = $('#current'),

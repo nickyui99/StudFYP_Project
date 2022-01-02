@@ -132,4 +132,42 @@ class LecturerDataService
 
         exit();
     }
+
+    function getProjectDoc($project_id, $submission)
+    {
+        echo $project_id;
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+
+        $sql_query = "SELECT fyp_proj_id, document_submission_" . $submission . " FROM fyp_project WHERE fyp_proj_id = '" . $project_id . "'";
+
+
+
+        //Run SQL Query
+        $result = $connection->query($sql_query);
+
+        if ($result->num_rows == 0) {
+            //Do nothing
+            echo "Download error";
+        } else {
+            while ($row = $result->fetch_assoc()) {
+                $stud_id = $row['stud_id'];
+                $document = $row['document_submission_' . $submission];
+            }
+
+            header('Expires: 0');
+            header('Pragma: no-cache');
+            header('Content-Disposition: attachment; filename=' . $stud_id . '_Submission'. $submission .'.pdf');
+            header('Content-length: ' . strlen($document));
+            header('Content-type: application/pdf');
+            ob_clean();
+            flush();
+            echo $document;
+        }
+
+        exit();
+    }
 }
