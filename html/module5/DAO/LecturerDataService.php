@@ -2,6 +2,7 @@
 require_once 'Database.php';
 require_once '../ClassModel/AssignedEvaluationModel.php';
 require_once '../ClassModel/ProjectlogbookModel.php';
+require_once '../ClassModel/EvaluationRubricModel.php';
 
 class LecturerDataService
 {
@@ -59,7 +60,7 @@ class LecturerDataService
                     '<td>' . $assigned_ev->getFypLevel() . '</td>' .
                     '<td>' . $assigned_ev->getFypProgress() . '</td>' .
                     '<td><a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=1"><button type="button" class="btn btn-light btn-outline-dark btn-sm">1</button></a> ' .
-                    '<a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=2"><button type="button" class="btn btn-light btn-outline-dark btn-sm">2</button></a>' .
+                    '<a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=2"><button type="button" class="btn btn-light btn-outline-dark btn-sm">2</button></a> ' .
                     '<a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=1"><button type="button" class="btn btn-light btn-outline-dark btn-sm">3</button></a>' .
                     '</td>' .
                     '</tr>';
@@ -188,11 +189,12 @@ class LecturerDataService
         //Run SQL Query
         $result = $connection->query($sql_query);
 
+        $project_log_array = array();
+
         if ($result->num_rows == 0) {
-            return null;
+            //Do nothing
         } else {
             $i = 0;
-            $project_log_array = array();
             while ($row = $result->fetch_assoc()) {
                 $project_log_model = new ProjectLogbook();
                 $project_log_model->setDate($row['logbook_date']);
@@ -206,15 +208,50 @@ class LecturerDataService
             //Close connection
             $connection->close();
         }
-        $output = "";
-        foreach($project_log_array as $project_log){
-            $output = $output . 
-                "<tr>" . 
-                    "<td>". $project_log->getDate() ."</td>" . 
-                    "<td>". $project_log->getActivity() ."</td>" . 
-                "</tr>";
-        }
+        
 
-        return $output;
+        return $project_log_array;
     }
+
+    function getEvaluationRubric($submission, $fyp_level)
+    {
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "SELECT * FROM evaluation_rubric " .
+            "WHERE rubric_submission ='" . $submission . "' AND " .
+            "rubric_fyp = '" . $fyp_level . "' ".
+            "ORDER BY `evaluation_rubric`.`rubric_num` ASC";
+
+        //Run SQL Query
+        $result = $connection->query($sql_query);
+        
+        $evaluation_rubric_array = array();
+
+        if ($result->num_rows == 0) {
+            //Do nothing
+        } else {
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $ev_rubric_model = new EvaluationRubric();
+                $ev_rubric_model->setRubricId($row['evaluation_rubric_id']);
+                $ev_rubric_model->setRubricNum($row['rubric_num']);
+                $ev_rubric_model->setRubricTitle($row['rubric_title']);
+                $ev_rubric_model->setRubricDetails($row['rubric_details']);
+                $ev_rubric_model->setRubricMark($row['rubric_mark']);
+                $ev_rubric_model->setRubricWeightage($row['rubric_weightage']);
+
+                //Add to array
+                $evaluation_rubric_array[$i] = $ev_rubric_model;
+                $i++;
+            }
+
+            //Close connection
+            $connection->close();  
+        }
+        
+        return $evaluation_rubric_array;
+    }    
 }

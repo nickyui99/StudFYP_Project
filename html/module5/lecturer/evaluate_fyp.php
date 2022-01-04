@@ -6,11 +6,11 @@
 <?php
 include '../DAO/LecturerHandler.php';
 
-$projID="invalid";
-$studID="invalid";
-$submission="invalid";
+$projID = "invalid";
+$studID = "invalid";
+$submission = "invalid";
 
-if (isset($_GET['projID']) && isset($_GET['studID']) && isset($_GET['submission'])){
+if (isset($_GET['projID']) && isset($_GET['studID']) && isset($_GET['submission'])) {
     $projID = $_GET['projID'];
     $studID = $_GET['studID'];
     $submission = $_GET['submission'];
@@ -296,7 +296,7 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
                                     <tr>
                                         <td>Project Logbook: </td>
                                         <td>
-                                            <table class="table table-bordered">
+                                            <table class="table table-bordered table-striped">
                                                 <thead>
                                                     <tr class="header-bg">
                                                         <th class="col-sm-3">Date</th>
@@ -305,7 +305,7 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
                                                 </thead>
                                                 <tbody>
                                                     <!-- Project logbook result -->
-                                                    <?php printProjLogbook($projID, $submission)?>
+                                                    <?php printProjLogbook($projID, $submission) ?>
                                                 </tbody>
                                             </table>
                                         </td>
@@ -317,16 +317,19 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
                                     <tr>
                                         <td>Evaluation Rubric: </td>
                                         <td>
-                                            <table class="table table-bordered">
+                                            <table class="table table-bordered table-striped">
                                                 <thead>
                                                     <tr class="header-bg">
-                                                        <th class="col-sm-2">Num</th>
-                                                        <th class="col-sm-7">Item</th>
-                                                        <th class="col-sm-3">Mark</th>
+                                                        <th class="col-sm-1">Num</th>
+                                                        <th class="col-sm-2">Rubric Title</th>
+                                                        <th class="col-sm-4">Rubric Details</th>
+                                                        <th class="col-sm-2">Weightage</th>
+                                                        <th class="col-sm-2">Mark</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody id="">
+                                                <tbody>
                                                     <!-- Evaluation Rubric Result -->
+                                                    <?php printEvaluationRubric($submission, $evaluateDetails->getFypLevel()); ?>
                                                 </tbody>
                                             </table>
                                         </td>
@@ -364,11 +367,11 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
 
 <script>
     $('#btnDownloadProjQR').click(function() {
-        window.open("http://localhost/StudFYP_Project/html/module5/DAO/DownloadService.php?projQr=<?php echo $projID?>");
+        window.open("http://localhost/StudFYP_Project/html/module5/DAO/DownloadService.php?projQr=<?php echo $projID ?>");
     });
 
     $('#btnDownloadProjDoc').click(function() {
-        window.open("http://localhost/StudFYP_Project/html/module5/DAO/DownloadService.php?projDoc=<?php echo $projID?>&submission=<?php echo $submission?>");
+        window.open("http://localhost/StudFYP_Project/html/module5/DAO/DownloadService.php?projDoc=<?php echo $projID ?>&submission=<?php echo $submission ?>");
     });
     $('textarea').keyup(function() {
         var characterCount = $(this).val().length,

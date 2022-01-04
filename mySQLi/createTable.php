@@ -63,7 +63,7 @@
     }
 
     //create evaluation_rubric table
-    $sql = "CREATE TABLE evaluation_rubric (evaluation_rubric_id VARCHAR(10), rubric_num VARCHAR(10), rubric_title VARCHAR(20), rubric_details LONGTEXT, rubric_mark FLOAT(5), rubric_weightage FLOAT(5), rubric_submission INT(3), rubric_fyp VARCHAR(10), PRIMARY KEY(evaluation_rubric_id))";
+    $sql = "CREATE TABLE evaluation_rubric (evaluation_rubric_id VARCHAR(10), rubric_num VARCHAR(10), rubric_title VARCHAR(200), rubric_details LONGTEXT, rubric_mark FLOAT(5), rubric_weightage FLOAT(5), rubric_submission INT(3), rubric_fyp VARCHAR(10), PRIMARY KEY(evaluation_rubric_id))";
 
     if (mysqli_query($link, $sql)) {
         echo "Table evaluation_rubric created successfully <br>";

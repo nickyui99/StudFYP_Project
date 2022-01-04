@@ -8,13 +8,15 @@ if (isset($_POST['search_assigned_evaluation']) && isset($_POST['lecturer_id']))
     viewAssignedFyp($_POST['search_assigned_evaluation'], $_POST['lecturer_id']);
 }
 
-function viewAssignedFyp($query, $lect_id){
+function viewAssignedFyp($query, $lect_id)
+{
     $lds = new LecturerDataService();
     $output = $lds->getAssignedEvaluation($query, $lect_id);
     echo $output;
 }
 
-function getEvaluationDetail($proj_id, $stud_id, $submission){
+function getEvaluationDetail($proj_id, $stud_id, $submission)
+{
 
     $lds = new LecturerDataService();
     $evaluateFypModel = new EvaluateFyp();
@@ -22,8 +24,37 @@ function getEvaluationDetail($proj_id, $stud_id, $submission){
     return $evaluateFypModel;
 }
 
-function printProjLogbook($proj_id, $submission){
+function printProjLogbook($proj_id, $submission)
+{
     $lds = new LecturerDataService();
-    $output = $lds->getProjectLog($proj_id, $submission);
+    $project_log_array = $lds->getProjectLog($proj_id, $submission);
+    $output = "";
+    foreach($project_log_array as $project_log){
+        $output = $output . 
+            "<tr>" . 
+                "<td>". $project_log->getDate() ."</td>" . 
+                "<td>". $project_log->getActivity() ."</td>" . 
+            "</tr>";
+    }
+    echo $output;
+}
+
+function printEvaluationRubric($submission, $fyp_level)
+{
+    $lds = new LecturerDataService();
+    $evaluation_rubric_array = $lds->getEvaluationRubric($submission, $fyp_level);
+
+    $output = "";
+    foreach ($evaluation_rubric_array as $ev_rubric_model) {
+        $output = $output .
+            "<tr>" .
+            '<td class="small">' . $ev_rubric_model->getRubricNum() . "</td>" .
+            '<td class="small">' . $ev_rubric_model->getRubricTitle() . "</td>" .
+            '<td class="small">' . $ev_rubric_model->getRubricDetails() . "</td>" .
+            '<td class="small">' . $ev_rubric_model->getRubricWeightage() . "</td>" .
+            '<td class="small"> <input type="text" class="form-control" id="'. $ev_rubric_model->getRubricId(). '">' . $ev_rubric_model->getRubricMark() . "</td>" .
+            "</tr>";
+    }
+
     echo $output;
 }
