@@ -1,29 +1,28 @@
 <?php
-	// to make a connection with database
-	$link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
+// to make a connection with database
+$link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
 
-	// to select the targeted database
-	mysqli_select_db($link, "studfyp_db") or die(mysqli_error($link));
-		
-    // Insert data into administrator table
-    $query =    "INSERT INTO administrator values('A001', 'Ali', '1234'),
+// to select the targeted database
+mysqli_select_db($link, "studfyp_db") or die(mysqli_error($link));
+
+// Insert data into administrator table
+$query = "INSERT INTO administrator values('A001', 'Ali', '1234'),
                 ('A002', 'Fatimah', '5678')"
-                or die(mysqli_connect_error());
+or die(mysqli_connect_error());
 
-    $result = mysqli_query($link, $query);
+$result = mysqli_query($link, $query);
 
-    if($result){      
-         echo("administrator data inserted <br>");          
-    }
-    else {       
-        die("administrator data insert failed <br>");
-           }
+if ($result) {
+    echo ("administrator data inserted <br>");
+} else {
+    die("administrator data insert failed <br>");
+}
 
-	// Insert data into student table
-	$query = 	"INSERT INTO student VALUES
-				('CA18016','Tan Chia Hui','ca18016', 'Jalan Sg Johor, Taman Cempeka, Johor', 'chiahui@gmail.com', '0175551111', 'FK', 'SysArmy.Sdn Bhd', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_CA18016.png')), 
-                ('CB19124', 'Aiman Basheer Abdulwareth Mohammed','cb19124', 'Jalan Lenga, Taman Singa, Kuala Lumpur', 'aiman@gmail.com', '0124411344', 'FK', 'Samsung Sdn Bhd', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_CB19124.png')), 
-                ('CD18001', 'Siti Binti Abu Bakar', 'cd18001','Jalan Bersatu, Taman Bahagia, Kedah', 'siti@gmail.com', '0164425512', 'FK', '-', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_CD18001.png')), 
+// Insert data into student table
+$query = "INSERT INTO student VALUES
+				('CA18016','Tan Chia Hui','ca18016', 'Jalan Sg Johor, Taman Cempeka, Johor', 'chiahui@gmail.com', '0175551111', 'FK', 'SysArmy.Sdn Bhd', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_CA18016.png')),
+                ('CB19124', 'Aiman Basheer Abdulwareth Mohammed','cb19124', 'Jalan Lenga, Taman Singa, Kuala Lumpur', 'aiman@gmail.com', '0124411344', 'FK', 'Samsung Sdn Bhd', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_CB19124.png')),
+                ('CD18001', 'Siti Binti Abu Bakar', 'cd18001','Jalan Bersatu, Taman Bahagia, Kedah', 'siti@gmail.com', '0164425512', 'FK', '-', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_CD18001.png')),
                 ('CB19080', 'Nicholas Ooi Zhee Chen', 'cb19080','Jalan Ipoh, Taman Intan, Ipoh', 'nicholas@gmail.com', '01137002219', 'FK', 'New Digital Sdn Bhd', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_CB19080.png')),
                 ('CA18084', 'Muhammad Nizar Bin Abdullah', 'ca18084','Jalan Destinasi, Taman Impian, Johor', 'nizar@gmail.com', '01139599171', 'FK', 'Brunsfield Computer Sdn Bhd',''),
                 ('CA18020', 'Lee Min Hui', 'ca18020','Jalan Kasih, Taman Sayang, Kelantan', 'minhui@gmail.com', '0129937069', 'FK', 'LE Global Services Sdn Bhd',''),
@@ -40,7 +39,7 @@
                 ('CA18116', 'Siong Yong Chen', 'ca18116','Jalan Tun, Taman Seremban, Negeri Sembilan', 'yongchen@gmail.com', '0172226011', 'FK', 'Qubittech Sdn Bhd',''),
                 ('CA18119', 'Tan Ze Zhang', 'ca18119','Jalan Azam, Taman Jujur, Terengganu', 'zezhang@gmail.com', '0184714722', 'FK', 'HeiTech Padu Berhad',''),
               	('CA19011','Nurfarahi Naqibah Binti Mohd Azmi', 'ca19011','Jalan Shah, Taman Batu, Perlis', 'nakibah@gmail.com', '0189041243', 'FK', 'SETEL Ventures Sdn. Bhd.',''),
-                ('CD18020','Foo Jing Ying', 'cd18020','Jalan A2, Taman Selangit, Penang', 'jingying@gmail.com', '0135183347', 'FK', 'Ingenious Lab Sdn Bhd',''),	
+                ('CD18020','Foo Jing Ying', 'cd18020','Jalan A2, Taman Selangit, Penang', 'jingying@gmail.com', '0135183347', 'FK', 'Ingenious Lab Sdn Bhd',''),
 				('CD18021','Loh Jing Hui', 'cd18021','Jalan SS1, Taman Abadi, Sarawak', 'jinghui@gmail.com', '0179357709', 'FK', 'HyperQB Sdn Bhd',''),
 				('CD18024','Claine Foo Wai Nie', 'cd18024','Jalan Alam, Taman Aman, Sabah', 'claine@gmail.com', '0167976074', 'FK', 'GogoKids Technologies Sdn Bhd ',''),
 				('CD18027','Yeong Hui Ying', 'cd18027','Jalan Setia, Taman Damai, Penang', 'huiying@gmail.com', '01149428911', 'FK', 'Hitachi Digital Host Sdn Bhd',''),
@@ -50,7 +49,7 @@
 				('CD18072','Wong Ming Yue', 'cd18072','Jalan SS12, Taman SS15, Penang', 'mingyue@gmail.com', '0162065536', 'FK', 'Hitachi Digital Host Sdn Bhd',''),
 				('CD19011','Zualiana bt Johari', 'cd19011','Jalan Selamat, Taman Raya, Sabah', 'zualiana@gmail.com', '01119319255', 'FK', 'Rotarium Steamboat & Grill Sdn Bhd',''),
 				('CD19126','Prasad Saravanan', 'cd19126','Jalan Wan, Taman Kadir, KL', 'prasad@gmail.com', '0162627053', 'FK', 'Pahanggo Sdn Bhd',''),
-              
+
 				('CD17020','Muhammad Nazhan Bin Nazri', 'cd17020','Jalan Jingga, Taman Song, Terengganu', 'nazhan@gmail.com', '01127384315', 'FK','-',''),
 				('CB18014', 'Montira A/P Eh Pon', 'cb18014', 'Jalan Sungai, Taman Korok, Kedah','montiraehpon99@gmail.com','01116546617','FK','-',''),
 				('CB18015','Mohammad Alif Yasir Bin Soleh','cb18015','Jalan Sentiasa, KL','yasirsoleh@gmail.com','01125509087','FK','-',''),
@@ -103,7 +102,7 @@
                 ('CC19112','Lakxhana A/P Selva Rajah','cc19112','Jalan Tebal, Taman Temerloh, Terengganu','lakxhana@gmail.com','0178722633','FK','-',''),
 
                 ('CC19283','Nur Syuhada Binti Muhammad Pauzi','cc19283','Jalan Air, Taman Kembung, Johor','syuha1608@gmail.com','01121097112','FK','-',''),
-                ('CC19255','Wan Aqilah Illyana Binti Rosli','cc19255','Jalan Sugai, Taman Keli, Kelantan','aqilahfhbbsl@gmail.com','0102580170','FK','-',''), 
+                ('CC19255','Wan Aqilah Illyana Binti Rosli','cc19255','Jalan Sugai, Taman Keli, Kelantan','aqilahfhbbsl@gmail.com','0102580170','FK','-',''),
                 ('CD17063','Nur Anis Farhain Binti Zurizam','cd17063','Jalan Kelantan, Taman Ringgit, Sarawak','afarhain98@gmail.com','0169788536','FK','-',''),
                 ('CD15039','Nurfarahin Binti Kamaruzaman','ca15039','Jalan Jitra, Taman Dana, Sabah','nurfarahin1501@gmail.com','0183924031','FK','-',''),
                 ('CD16049','Murfiqah Binti Matarip','cd16049','Jalan Yan, Taman Tabung, Kelantan','murfiqah@gmail.com','0145941297','FK','-',''),
@@ -126,49 +125,46 @@
                 ('CD18036','Wong Zelin','cd18036','Jalan Biru, Taman Klang, Kelantan','wongzelin.tiger@gmail.com','0187831314','FK','-',''),
                 ('CD18042','Nur Anis Binti Che Aziz','cd18042','Jalan Pangkal, Taman Port, Selangor','nuranischeaziz99@gmail.com','0146058998','FK','-',''),
                 ('CD18043','Dg Nur Sakinah Binti Armain','cd18043','Jalan Kundasang, Taman Genting, KL','dnsakinah00@gmail.com','0172050105','FK','-','')"
-                or die(mysqli_connect_error());
+or die(mysqli_connect_error());
 
-	$result = mysqli_query($link, $query);
-	     
-	if($result){      
-    	 echo("student data inserted <br>");			
-	}
-	else {       
-	    die("student data insert failed <br>");
-	}
-    // Insert data into fyp_stud table
-    $query =    "insert into fyp_stud values
-                ('FS001', 'CA18016', 'Tan Chia Hui', 'PSM1', '2', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CA18016_Proposal.docx')), 
-                ('FS002', 'CB19124', 'Aiman Basheer Abdulwareth Mohammed', 'PSM2', '1', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CB19124_Proposal.docx'))"
-                or die(mysqli_connect_error());
+$result = mysqli_query($link, $query);
 
-    $result = mysqli_query($link, $query);
-         
-    if($result){      
-         echo("fyp_stud data inserted <br>");           
-            }
-    else {       
-        die("fyp_stud data insert failed <br>");
-    }
-    
-    // Insert data into fyp_project table
-    $query =    "insert into fyp_project values('FP001', 'CA18016', 'Advanced Mobile Store', 'PSM1', '2', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CA18016_Submission1.pdf'), LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CA18016_Submission2.pdf'), NULL, LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_FP001.png')),
-                ('FP002', 'CB19124', 'Attendance system', 'PSM1', '1', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CB19124_Submission1.pdf'), NULL, NULL, LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_FP002.png'))"
-                or die(mysqli_connect_error());
+if ($result) {
+    echo ("student data inserted <br>");
+} else {
+    die("student data insert failed <br>");
+}
+// Insert data into fyp_stud table
+$query = "insert into fyp_stud values
+                ('FS001', 'CA18016', 'Tan Chia Hui', 'PSM1', '2', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CA18016_Proposal.docx')),
+                ('FS002', 'CB19124', 'Aiman Basheer Abdulwareth Mohammed', 'PSM2', '1', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CB19124_Proposal.docx')),
+                ('FS003', 'CB19080', 'Nicholas Ooi Zhee Chen', 'PSM1', '1', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CB19124_Proposal.docx'))"
+or die(mysqli_connect_error());
 
-    $result = mysqli_query($link, $query);
-         
-    if($result){      
-         echo("fyp_project data inserted <br>");            
-    }
-    else {       
-        die("fyp_project data insert failed <br>");
-    }
+$result = mysqli_query($link, $query);
 
+if ($result) {
+    echo ("fyp_stud data inserted <br>");
+} else {
+    die("fyp_stud data insert failed <br>");
+}
 
+// Insert data into fyp_project table
+$query = "insert into fyp_project values('FP001', 'CA18016', 'Advanced Mobile Store', 'PSM1', '2', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CA18016_Submission1.pdf'), LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CA18016_Submission2.pdf'), NULL, LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_FP001.png')),
+                ('FP002', 'CB19124', 'Attendance system', 'PSM1', '1', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CB19124_Submission1.pdf'), NULL, NULL, LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_FP002.png')),
+                ('FP003', 'CB19080', 'Food Ordering system', 'PSM1', '1', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CB19124_Submission1.pdf'), NULL, NULL, LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_FP002.png'))"
+or die(mysqli_connect_error());
 
-	// Insert data into lecturer table
-	$query = 	"INSERT into lecturer values
+$result = mysqli_query($link, $query);
+
+if ($result) {
+    echo ("fyp_project data inserted <br>");
+} else {
+    die("fyp_project data insert failed <br>");
+}
+
+// Insert data into lecturer table
+$query = "INSERT into lecturer values
 				('S001', 'Dr. Azlina Binti Zainuddin','s001', '0123336677', 'azlina@ump.edu.my', 'S352 Kampung Sri Langkas Batu 13 Jalan 47100 Puchong Malaysia', 'Senior Lecturer', 'Requirement Engineering, Software Quality Assurance and Software Testing', 'FK'),
 				('S002', 'Dr Mohammad Amirulkhairi Bin Zubir', 's002', '0145555777', 'amirulkhairi@ump.edu.my', 'A 6 Jln Sagu 1 Taman Daya 81100, Johor', 'Senior Lecturer', 'Civil Engineering', 'FTKA'),
 				('S003', 'Dr. Fatihah Ayu Bin Amin', 's003', '0454556772', 'fatihah@ump.edu.my', 'Jalan Geliga Sakti,Taman Permai,Terengganu', 'Lecturer', 'Biotech', 'FIST'),
@@ -208,53 +204,49 @@
 				('S038','Ts. Dr. Wan Isni Sofiah Binti Wan Din',	's038',	'094244726',	'sofiah@ump.edu.my',	'Jalan Damansara, Taman Kota, Penang',	'Senior Lecturer',	'Clustering In Sensor Network, Network Design, Simulation System'	,'FK'),
 				('S039','Dr. Nur Hafieza Binti Ismail',	's039',	'094427532',	'hafieza@ump.edu.my',	'Jalan Wisma, Taman Bandar, Kelantan',	'Senior Lecturer',	'Data Mining'	,'FK'),
 				('S040','Profesor Madya Dr. Mohamed Ariff Bin Ameedeen',	's040',	'095492472',	'mohamedariff@ump.edu.my',	'Jalan Tasik, Taman Selatan, Perak',	'Associate Professor',	'Computer System Organisation, Computer Software'	,'FK')
-			
-			
-				"or die(mysqli_connect_error());
 
-	$result = mysqli_query($link, $query);
-	     
-	if($result){      
-    	 echo("lecturer data inserted <br>");			
-	}
-	else {       
-	    die("lecturer data insert failed <br>");
-	}
 
-    // Insert data into fyp_coordinator table
-    $query =    "insert into fyp_coordinator values('S001', 'Dr. Azlina Binti Zainuddin', 'FK', 'PSM 1,2', 'Requirement Engineering, Software Quality Assurance and Software Testing'),
+				" or die(mysqli_connect_error());
+
+$result = mysqli_query($link, $query);
+
+if ($result) {
+    echo ("lecturer data inserted <br>");
+} else {
+    die("lecturer data insert failed <br>");
+}
+
+// Insert data into fyp_coordinator table
+$query = "insert into fyp_coordinator values('S001', 'Dr. Azlina Binti Zainuddin', 'FK', 'PSM 1,2', 'Requirement Engineering, Software Quality Assurance and Software Testing'),
                 ('S002', 'Dr Mohammad Amirulkhairi Bin Zubir', 'FK', 'PSM 2', 'Civil Engineering'),
                 ('S012', 'Dr. Ali Abdulrahman Nasser', 'FTEK', 'PSM 1', 'Mechanical Engineering'),
                 ('S191', 'Dr. Mohammed ben Salem Mustafa', 'FKM', 'PSM 1,2', 'Design integrated systems')"
-                or die(mysqli_connect_error());
+or die(mysqli_connect_error());
 
-    $result = mysqli_query($link, $query);
-         
- if($result){      
-         echo("fyp_coordinator data inserted <br>");            
-    }
-    else {       
-        die("fyp_coordinator data insert failed <br>");
-    }
+$result = mysqli_query($link, $query);
 
-    // Insert data into fyp_supervisor table
-    $query =    "insert into fyp_supervisor values('SU001', 'S002', 'FS001', 'Dr. Mohammad Amirulkhairi Bin Zubir', 'amirulkhairi@ump.edu.my', '0145555777', 'A 6 Jln Sagu 1 Taman Daya, 81100 Johor'),
-                ('SU002', 'S003', 'FS002', 'Dr. Fatihah Ayu Bin Amin', 'fatihah@ump.edu.my', '0454556772', 'Jalan Geliga Sakti,Taman Permai,Terengganu')"
-                or die(mysqli_connect_error());
+if ($result) {
+    echo ("fyp_coordinator data inserted <br>");
+} else {
+    die("fyp_coordinator data insert failed <br>");
+}
 
-    $result = mysqli_query($link, $query);
-         
-    if($result){      
-         echo("fyp_supervisor data inserted <br>");         
-    }
-    else {       
-        die("fyp_supervisor data insert failed <br>");
-    }
+// Insert data into fyp_supervisor table
+$query = "insert into fyp_supervisor values('SU001', 'S002', 'FS001', 'Dr. Mohammad Amirulkhairi Bin Zubir', 'amirulkhairi@ump.edu.my', '0145555777', 'A 6 Jln Sagu 1 Taman Daya, 81100 Johor'),
+                ('SU002', 'S003', 'FS002', 'Dr. Fatihah Ayu Bin Amin', 'fatihah@ump.edu.my', '0454556772', 'Jalan Geliga Sakti,Taman Permai,Terengganu'),
+                ('SU003', 'S003', 'FS003', 'Dr. Fatihah Ayu Bin Amin', 'fatihah@ump.edu.my', '0454556772', 'Jalan Geliga Sakti,Taman Permai,Terengganu')"
+or die(mysqli_connect_error());
 
+$result = mysqli_query($link, $query);
 
+if ($result) {
+    echo ("fyp_supervisor data inserted <br>");
+} else {
+    die("fyp_supervisor data insert failed <br>");
+}
 
-	// Insert data into industrial_panel table
-	$query = 	"INSERT into industrial_panel values
+// Insert data into industrial_panel table
+$query = "INSERT into industrial_panel values
 				('IP001', 'Mr. Ooi Kai Cheng', '013324590', 'kaicheng@gmail.com', 'Google Inc.', 'ip001'),
 				('IP002', 'Mr. Ali bin Washeed', '019956342', 'abw@outlook.com', 'Microsoft Inc', 'ip002'),
 				('IP003', 'Mr. Warren Roller', '014556631', 'wroller@gmail.com', 'SinHub Inc.', 'ip003'),
@@ -286,70 +278,67 @@
 				('IP029','Ms. Tan Yin Ru',	'039284828'	,'admin@xeersoft.com'	,'Xeersoft Sdn. Bhd.'	,'ip029'),
 				('IP030','Mr. Lim Guo Hong',	'6581631710'	,'admin@corsivalab.com'	,'Corsiva Lab Sdn Bhd'	,'ip030'),
 				('IP031','Mr. Nur Firdaus Bin Ghazali',	'0122668797	','nur.firdaus@sysarmy.net'	,'Sysarmy Sdn Bhd'	,'ip031'),
-				('IP032','Mr. Sundaram','0149216253'	,'alramahlingam.sundram@my.bosch.com','Robert Bosch Power Tools Sdn. Bhd','ip032'),	
+				('IP032','Mr. Sundaram','0149216253'	,'alramahlingam.sundram@my.bosch.com','Robert Bosch Power Tools Sdn. Bhd','ip032'),
 				('IP033','Mrs. Lee May Fang',	'0125377193'	,'mayfang@cyber-village.net'	,'Cyber Village Sdn Bhd'	,'ip033'),
 				('IP034','Mr. Alif Azuwan Bin Amiruddin','0125662644'	,'alif.byondsuccess@gmail.com'	,'Byond Tech Sdn Bhd'	,'ip034'),
 				('IP035','Mr. Hairizal Bin Hanapi','0126177876'	,'hairizal.hanapi@razer.com'	,'Razer Merchant Services Sdn Bhd' 	,'ip035'),
 				('IP036	','Mr. Sundaram','0149216253','alramahlingam.sundram@my.bosch.com','Robert Bosch Power Tools Sdn Bhd'	,'ip036'),
 				('IP037','Mrs. Norliza Mazni','0321730592','norliza.mazni.nawi@pwc.com'	,'Pricewaterhouse Coopers Associates Sdn Bhd (PwC)'	,'ip037'),
 				('IP038','Mr. Goh Chin Teong','048637341','Chin_Teong_Goh@DELL.com','DELL Global Business Center Sdn Bhd','ip038')
-			
+
 				"
-				or die(mysqli_connect_error());
+or die(mysqli_connect_error());
 
-	$result = mysqli_query($link, $query);
-	     
-	if($result){      
-    	 echo("industrial_panel data inserted <br>");			
-	}
-	else {       
-	    die("industrial_panel data insert failed <br>");
-	}
+$result = mysqli_query($link, $query);
 
-    // Insert data into assigned_lecturer_evaluator table
-    $query =    "insert into assigned_lecturer_evaluator values('EL001', 'S001', 'CB19124', 'Dr. Azlina Binti Zainuddin'),
-                ('EL002', 'S002', 'CA18016', 'Dr Mohammad Amirulkhairi Bin Zubir')"
-                or die(mysqli_connect_error());
+if ($result) {
+    echo ("industrial_panel data inserted <br>");
+} else {
+    die("industrial_panel data insert failed <br>");
+}
 
-    $result = mysqli_query($link, $query);
-    
-    if($result){      
-        echo("assigned_lecturer_evaluator data inserted <br>");         
-    }
-    else {       
-        die("assigned_lecturer_evaluator data insert failed <br>");
-    }
-     
-    // Insert data into assigned_industrial_evaluator table
-    $query =    "insert into assigned_industrial_evaluator values('EI001', 'IP001', 'CB19124', 'Mr Ooi Kai Cheng'),
+// Insert data into assigned_lecturer_evaluator table
+$query = "insert into assigned_lecturer_evaluator values('EL001', 'S001', 'CB19124', 'Dr. Azlina Binti Zainuddin'),
+                ('EL002', 'S003', 'CA18016', 'Dr Mohammad Amirulkhairi Bin Zubir'),
+                ('EL003', 'S003', 'CB19080', 'Dr. Fatihah Ayu Bin Amin')"
+or die(mysqli_connect_error());
+
+$result = mysqli_query($link, $query);
+
+if ($result) {
+    echo ("assigned_lecturer_evaluator data inserted <br>");
+} else {
+    die("assigned_lecturer_evaluator data insert failed <br>");
+}
+
+// Insert data into assigned_industrial_evaluator table
+$query = "insert into assigned_industrial_evaluator values('EI001', 'IP001', 'CB19124', 'Mr Ooi Kai Cheng'),
                 ('EI002', 'IP002', 'CA18016', 'Mr. Ali bin Washeed')"
-                or die(mysqli_connect_error());
+or die(mysqli_connect_error());
 
-    $result = mysqli_query($link, $query);
-    
-    if($result){      
-        echo("assigned_industrial_evaluator data inserted <br>");           
-    }
-    else {       
-        die("assigned_industrial_evaluator data insert failed <br>");
-    }
+$result = mysqli_query($link, $query);
 
-    // Insert data into evaluation_result table
-    $query =    "insert into evaluation_result values('ER001', 'FP001', 'EL001', NULL, 'Advanced Mobile System', '1', 'Good', '24'),
+if ($result) {
+    echo ("assigned_industrial_evaluator data inserted <br>");
+} else {
+    die("assigned_industrial_evaluator data insert failed <br>");
+}
+
+// Insert data into evaluation_result table
+$query = "insert into evaluation_result values('ER001', 'FP001', 'EL001', NULL, 'Advanced Mobile System', '1', 'Good', '24'),
                 ('ER002', 'FP002', NULL,'EI002', 'Mr. Ali bin Washeed', '1', 'Please check your project plan','23')"
-                or die(mysqli_connect_error());
+or die(mysqli_connect_error());
 
-    $result = mysqli_query($link, $query);
-    
-    if($result){      
-        echo("evaluation_result data inserted <br>");           
-    }
-    else {       
+$result = mysqli_query($link, $query);
+
+if ($result) {
+    echo ("evaluation_result data inserted <br>");
+} else {
     //  die("evaluation_result data insert failed <br>");
-    }
+}
 
-    // Insert data into evaluation_rubric table
-    $query =    "INSERT INTO evaluation_rubric VALUES 
+// Insert data into evaluation_rubric table
+$query = "INSERT INTO evaluation_rubric VALUES
                 ('RU001', 'CLO1', 'INTRODUCTION', 'explanation should consist of domain background, importance of the subject and current issues according to proposed topic', '5.00', '3.00', '1', 'PSM1'),
                 ('RU002', 'CLO1', 'PROBLEM STATEMENT', 'explanation of problem should be related to the domain/ knowledge or solution gap', '5.00', '3.00', '1', 'PSM1'),
                 ('RU003', 'CLO1', 'OBJECTIVE', 'MUST be 3 Objectives (reflecting SMART concept)', '5.00', '3.00', '1', 'PSM1'),
@@ -367,7 +356,7 @@
                 ('RU014', 'CLO1', 'SCOPE', 'Must be related to the project', '5.00', '1.00', '2', 'PSM1'),
                 ('RU015', 'CLO1', 'LITERATURE REVIEW (WORK RELEVANCY)', 'Minimum 3 related work relevant to the project must be compared. Comparison on existing systems / proposed techniques must be relevant.', '5.00', '1.00', '2', 'PSM1'),
                 ('RU016', 'CLO1', 'LITERATURE REVIEW (WORK ANALYSIS) ', 'Analysis of comparison on previous system/method. Should highlight on features/strength/ weakness/ advantage/ disadvantage', '5.00', '1.00', '2', 'PSM1'),
-                ('RU017', 'CLO1', 'PROJECT MANAGEMENT FRAMEWORK', 'Should describe on applied / used project management framework in the project. Project Based: SDLC (Agile,RAD etc). Research Based: Research Framework', '5.00', '1.00', '2', 'PSM1'), 
+                ('RU017', 'CLO1', 'PROJECT MANAGEMENT FRAMEWORK', 'Should describe on applied / used project management framework in the project. Project Based: SDLC (Agile,RAD etc). Research Based: Research Framework', '5.00', '1.00', '2', 'PSM1'),
                 ('RU018', 'CLO1', 'PROJECT REQUIREMENT', 'Should describe the requirement related to the project. Project Based: Functional and Non-Functional Requirement, Constraints and limitations. Research Based: Input, Output, Process description, Constraints and limitations, Case Study', '5.00', '1.00', '2', 'PSM1'),
                 ('RU019', 'CLO2', 'PROPOSED DESIGN', 'Should describe the proposed design related to project requirement. Project Based: Context Diagram, Use Case Diagram & description, Activity diagram. Research Based: Pseudocode/Algorithm/Flowchart/Model', '5.00', '3.00', '2', 'PSM1'),
                 ('RU020', 'CLO2', 'DATA DESIGN', 'Should describe the data related to the project. Project Based: ERD, Database Dictionary (PK, FK). Research Based: Dataset description', '5.00', '2.00', '2', 'PSM1'),
@@ -410,7 +399,7 @@
                 ('RU055', 'CO1', 'Ability to identify the strength/weakness / challenges during the development process', '-', '5.00', '0.4', '1', 'PSM2'),
                 ('RU056', 'CO1', 'Ability to implement the propose solution to achieve the related objectives (development) follow the standard practices (e.g: conformance to specification', '-', '5.00', '1', '1', 'PSM2'),
                 ('RU057', 'CO1', 'Ability to explain inner working of the system (e.g:architecture/database design/implementation', '-', '5.00', '1 ', '1', 'PSM2'),
-                
+
                 ('RU058', 'CO1', 'The solution works without any logic error', '-', '5.00', '0.8', '2', 'PSM2'),
                 ('RU059', 'CO1', 'System works without any physical/coding error (e.g: crash, device error)', '-', '5.00', '0.8', '2', 'PSM2'),
                 ('RU060', 'CO2', 'System Interface (consistency, suitability, usability, efficiency)', '-', '5.00', '0.6', '2', 'PSM2'),
@@ -440,64 +429,58 @@
                 ('RU083', 'CO4', 'Meeting', '-', '5.00', '0.2', '3', 'PSM2'),
                 ('RU084', 'CO4', 'Submission on time ', '-', '5.00', '0.2', '3', 'PSM2')"
 
-                or die(mysqli_connect_error());
+or die(mysqli_connect_error());
 
-    $result = mysqli_query($link, $query);
-    
-    if($result){      
-        echo("evaluation_rubric inserted <br>");            
-    }
-    else {       
-        die("evaluation_rubric data insert failed <br>");
-    }
+$result = mysqli_query($link, $query);
 
-    // Insert data into announcement table
-    $query =    "insert into announcement values('AN001', 'Attention to FYP 1 student', 'Please note that FYP 1 Submission 1 is open'),
+if ($result) {
+    echo ("evaluation_rubric inserted <br>");
+} else {
+    die("evaluation_rubric data insert failed <br>");
+}
+
+// Insert data into announcement table
+$query = "insert into announcement values('AN001', 'Attention to FYP 1 student', 'Please note that FYP 1 Submission 1 is open'),
                 ('AN002', 'Attention to FYP 2 student', 'Please note that FYP 2 Submission 1 is open')"
-                or die(mysqli_connect_error());
+or die(mysqli_connect_error());
 
-    $result = mysqli_query($link, $query);
-    
-    if($result){      
-        echo("announcement inserted <br>");         
-    }
-    else {       
-        die("announcement data insert failed <br>");
-    }
+$result = mysqli_query($link, $query);
 
-    // Insert data into activity table
-    $query =    "insert into activity values('AC001', 'Submission 1 FYP 1', '1', 'PSM1', '2021-9-1', '2021-9-11'),
+if ($result) {
+    echo ("announcement inserted <br>");
+} else {
+    die("announcement data insert failed <br>");
+}
+
+// Insert data into activity table
+$query = "insert into activity values('AC001', 'Submission 1 FYP 1', '1', 'PSM1', '2021-9-1', '2021-9-11'),
                 ('AC002', 'Submission 2 FYP 1', '2', 'PSM1', '2021-9-12', '2021-9-30'),
                 ('AC003', 'Submission 3 FYP 1', '3', 'PSM1', '2021-10-1', '2021-10-15'),
                 ('AC004', 'Submission 1 FYP 2', '1', 'PSM2', '2021-9-1', '2021-9-11'),
                 ('AC005', 'Submission 2 FYP 2', '2', 'PSM2', '2021-9-12', '2021-9-30'),
                 ('AC006', 'Submission 3 FYP 2', '3', 'PSM2', '2021-10-1', '2021-10-15')"
-                or die(mysqli_connect_error());
+or die(mysqli_connect_error());
 
-    $result = mysqli_query($link, $query);
-    
-    if($result){      
-        echo("activity inserted <br>");         
-    }
-    else {       
-        die("activity data insert failed <br>");
-    }
+$result = mysqli_query($link, $query);
 
-    // Insert data into project_logbook table
-    $query =    "insert into project_logbook values('LG001', 'FP001', '1', '2021-9-2', 'I start to research about my FYP project idea'),
+if ($result) {
+    echo ("activity inserted <br>");
+} else {
+    die("activity data insert failed <br>");
+}
+
+// Insert data into project_logbook table
+$query = "insert into project_logbook values('LG001', 'FP001', '1', '2021-9-2', 'I start to research about my FYP project idea'),
                 ('LG002', 'FP001', '1', '2021-9-6', 'I start to plan my project')"
-                or die(mysqli_connect_error());
+or die(mysqli_connect_error());
 
-    $result = mysqli_query($link, $query);
-    
-    if($result){      
-        echo("project_logbook inserted <br>");          
-    }
-    else {       
-        die("project_logbook data insert failed <br>");
-        }
+$result = mysqli_query($link, $query);
 
-    //And finally we close the connection to the MySQL server
-    mysqli_close($link);
-?>
+if ($result) {
+    echo ("project_logbook inserted <br>");
+} else {
+    die("project_logbook data insert failed <br>");
+}
 
+//And finally we close the connection to the MySQL server
+mysqli_close($link);

@@ -30,7 +30,6 @@ class LecturerDataService
             $i = 0;
             $assigned_ev_array = array();
             while ($row = $result->fetch_assoc()) {
-
                 //Retrieve data
                 $assigned_ev = new AssignedEvaluation();
                 $assigned_ev->setProjectID($row['fyp_proj_id']);
@@ -53,7 +52,7 @@ class LecturerDataService
             //Set output
             $output = "";
             foreach ($assigned_ev_array as $assigned_ev) {
-                $output = '<tr>' .
+                $output = $output . '<tr>' .
                     '<td>' . $assigned_ev->getProjectID() . '</td>' .
                     '<td>' . $assigned_ev->getStudentID() . '</td>' .
                     '<td>' . $assigned_ev->getStudentName() . '</td>' .
