@@ -46,13 +46,18 @@ function printEvaluationRubric($submission, $fyp_level)
 
     $output = "";
     foreach ($evaluation_rubric_array as $ev_rubric_model) {
+        $dropdownMark = "";
+        for($i=0; $i<=$ev_rubric_model->getRubricMark(); $i++){
+            $dropdownMark = $dropdownMark . '<option value="'. $i .'">'.$i.'</option>';
+        }
+
         $output = $output .
             "<tr>" .
             '<td class="small">' . $ev_rubric_model->getRubricNum() . "</td>" .
             '<td class="small">' . $ev_rubric_model->getRubricTitle() . "</td>" .
             '<td class="small">' . $ev_rubric_model->getRubricDetails() . "</td>" .
             '<td class="small">' . $ev_rubric_model->getRubricWeightage() . "</td>" .
-            '<td class="small"> <input type="text" class="form-control" id="'. $ev_rubric_model->getRubricId(). '">' . $ev_rubric_model->getRubricMark() . "</td>" .
+            '<td class="small">'. '<select name="mark" class="form-select" id="'.$ev_rubric_model->getRubricId().'">' . $dropdownMark .'</select></td>'.
             "</tr>";
     }
 
