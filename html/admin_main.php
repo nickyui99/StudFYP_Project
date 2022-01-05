@@ -2,9 +2,10 @@
 <html lang="en">
 
 <!-- This html template is only for StudFYP admin only -->
-<?php session_start() ;
-include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php';
+<?php 
+    session_start();
 ?>
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -82,7 +83,7 @@ include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php';
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="login_controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -271,13 +272,9 @@ include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php';
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:  </div>
-                 <?php $sql = "SELECT admin_name FROM administrator WHERE admin_id='".$_SESSION['id']."'";
-$statement = mysqli_query($db,$sql);
-// fetch the next row
-while ($row =mysqli_fetch_assoc($statement)) 
-{
-        echo $row['admin_name'] ;} 
-        $db->close();?>   
+                    <?php 
+                        echo $_SESSION['username'];
+                    ?>
                 </div>
             </nav>
         </div>

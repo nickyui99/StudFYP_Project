@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
- require_once 'login_handler.php';
+ require_once 'login_controller/login_handler.php';
  ?>
 
 <head>
@@ -41,7 +41,7 @@
                 <div class="card mx-auto" style="width: 30rem;">
                     <div class="card-body">
                         <h1 class="card-title text-center mt-3 mb-3">StudFYP Login</h1>
-                        <form class="mt-3" action="login_handler.php" method="post">
+                        <form class="mt-3" action="login_controller/login_handler.php" method="post">
 
                             <!-- Username -->
                             <div class="form-group mb-3">
@@ -61,7 +61,7 @@
                                     <option value="student" selected>Student</option>
                                     <option value="staff">Staff</option>
                                     <option value="external">External</option>
-                                    <option value="system_administrator">System administrator</option>
+                                    <option value="administrator">System administrator</option>
                                 </select>
                             </div>
 
