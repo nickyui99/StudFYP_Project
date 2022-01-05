@@ -4,7 +4,7 @@
 <!-- This html template is only for StudFYP lecturer only -->
 
 <?php
-include '../DAO/LecturerHandler.php';
+include '../Controller/LecturerHandler.php';
 
 $projID = "invalid";
 $studID = "invalid";
@@ -265,13 +265,13 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
                         <li class="breadcrumb-item active">Evaluate FYP</li>
                     </ol>
 
-                    <form action="">
+                    <form action="../Controller/EvaluateFormHandler.php" method="post">
                         <div class="form-group">
                             <table class="table table-borderless">
                                 <tbody>
                                     <tr class="">
                                         <td class="col-sm-2">Project ID: </td>
-                                        <td class="col-sm-7"><input type="text" class="form-control" id="inputProjId" value="<?php echo $projID ?>" disabled></td>
+                                        <td class="col-sm-7"><input type="text" class="form-control" id="inputProjId" name="inputProjId" value="<?php echo $projID ?>" readonly></td>
                                         <td class="col-sm-3" rowspan="4">
                                             <div class="card text-center">
                                                 <div class="card-body">
@@ -283,15 +283,15 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
                                     </tr>
                                     <tr>
                                         <td>Student ID: </td>
-                                        <td><input type="text" class="form-control" id="inputStudId" value="<?php echo $studID ?>" disabled></td>
+                                        <td><input type="text" class="form-control" id="inputStudId" name="inputStudId" value="<?php echo $studID ?>" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>FYP Stage: </td>
-                                        <td><input type="text" class="form-control" id="inputFypStage" value="<?php echo $evaluateDetails->getFypLevel(); ?>" disabled></td>
+                                        <td><input type="text" class="form-control" id="inputFypStage" name="inputFypStage" value="<?php echo $evaluateDetails->getFypLevel(); ?>" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>Project title:</td>
-                                        <td><input type="text" class="form-control" id="inputProjTitle" value="<?php echo $evaluateDetails->getProjTitle(); ?>" disabled></td>
+                                        <td><input type="text" class="form-control" id="inputProjTitle" name="inputProjTitle" value="<?php echo $evaluateDetails->getProjTitle(); ?>" readonly></td>
                                     </tr>
                                     <tr>
                                         <td>Project Logbook: </td>
@@ -317,27 +317,34 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
                                     <tr>
                                         <td>Evaluation Rubric: </td>
                                         <td>
-                                            <table class="table table-bordered table-striped">
-                                                <thead>
-                                                    <tr class="header-bg">
-                                                        <th class="col-sm-1">Num</th>
-                                                        <th class="col-sm-2">Rubric Title</th>
-                                                        <th class="col-sm-4">Rubric Details</th>
-                                                        <th class="col-sm-2">Weightage</th>
-                                                        <th class="col-sm-2">Mark</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <!-- Evaluation Rubric Result -->
-                                                    <?php printEvaluationRubric($submission, $evaluateDetails->getFypLevel()); ?>
-                                                </tbody>
-                                            </table>
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered border-dark table-sm">
+                                                    <thead class="">
+                                                        <tr class="header-bg">
+                                                            <th class="small" style="width: 10%;">Num</th>
+                                                            <th class="small" style="width: 20%;">Rubric Title</th>
+                                                            <th class="small" style="width: 25%;">Rubric Details</th>
+                                                            <th class="small" style="width: 15%;">Weightage</th>
+                                                            <th class="small" style="width: 15%;">Mark</th>
+                                                            <th class="small"style="width: 15%;">Actual Mark</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!-- Evaluation Rubric Result -->
+                                                        <?php printEvaluationRubric($submission, $evaluateDetails->getFypLevel()); ?>
+                                                        <tr class="table-info border-dark">
+                                                            <td class="text-end" colspan="5"><b>Total:</b></td>
+                                                            <td><b id="total-mark">0</b></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Project Feedback: </td>
                                         <td>
-                                            <textarea id="inputProjFeedback" class="form-control" cols="30" rows="5" maxLength="300"></textarea>
+                                            <textarea id="inputProjFeedback" name="inputProjFeedback" class="form-control" cols="30" rows="5" maxLength="300" required></textarea>
                                             <div class="float-end" id="the-count">
                                                 <span id="current">0</span>
                                                 <span id="maximum">/ 300</span>
@@ -373,6 +380,7 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
     $('#btnDownloadProjDoc').click(function() {
         window.open("http://localhost/StudFYP_Project/html/module5/DAO/DownloadService.php?projDoc=<?php echo $projID ?>&submission=<?php echo $submission ?>");
     });
+
     $('textarea').keyup(function() {
         var characterCount = $(this).val().length,
             current = $('#current'),

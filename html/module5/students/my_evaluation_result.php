@@ -4,7 +4,7 @@
 <!-- This page is for students to view their evaluation result-->
 
 <?php
-    include '../DAO/StudentHandler.php';
+    include '../Controller/StudentHandler.php';
 ?>
 
 <head>

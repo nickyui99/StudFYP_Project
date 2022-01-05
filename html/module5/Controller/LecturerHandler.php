@@ -1,6 +1,6 @@
 <?php
 
-require_once 'LecturerDataService.php';
+require_once '../DAO/LecturerDataService.php';
 require_once '../ClassModel/EvaluateFypModel.php';
 require_once '../ClassModel/ProjectlogbookModel.php';
 
@@ -56,10 +56,12 @@ function printEvaluationRubric($submission, $fyp_level)
             '<td class="small">' . $ev_rubric_model->getRubricNum() . "</td>" .
             '<td class="small">' . $ev_rubric_model->getRubricTitle() . "</td>" .
             '<td class="small">' . $ev_rubric_model->getRubricDetails() . "</td>" .
-            '<td class="small">' . $ev_rubric_model->getRubricWeightage() . "</td>" .
-            '<td class="small">'. '<select name="mark" class="form-select" id="'.$ev_rubric_model->getRubricId().'">' . $dropdownMark .'</select></td>'.
+            '<td>' . $ev_rubric_model->getRubricWeightage() . "</td>" .
+            '<td> <select name="mark" class="form-select" id="'.$ev_rubric_model->getRubricId().'">' . $dropdownMark .'</select> </td>'.
+            '<td></td>'.
             "</tr>";
     }
 
     echo $output;
 }
+

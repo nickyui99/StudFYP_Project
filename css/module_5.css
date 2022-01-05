@@ -19,11 +19,19 @@
     color: white;
 }
 
+.table-footer-bg {
+    background-color: rgb(198, 226, 245);
+}
+
 .img-container {
     height: 125px;
     width: 125px;
 }
 
-
-
-
+table {
+    table-layout: fixed;
+}
+table th,
+table td {
+    overflow: hidden;
+}

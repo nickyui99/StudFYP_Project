@@ -4,7 +4,7 @@
 <!-- This html template is only for StudFYP lecturer only -->
 
 <?php
-include '../DAO/LecturerHandler.php';
+include '../Controller/LecturerHandler.php';
 ?>
 
 <head>
@@ -309,8 +309,4 @@ include '../DAO/LecturerHandler.php';
         });
     });
 </script>
-
-<?php 
-    
-?>
 </html>

@@ -1,5 +1,5 @@
 <?php
-require_once 'LecturerDataService.php';
+require_once '../Controller/LecturerDataService.php';
 
 if(isset($_GET['projQr'])){
     $lds = new LecturerDataService();
