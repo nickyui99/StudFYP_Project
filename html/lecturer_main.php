@@ -2,6 +2,9 @@
 <html lang="en">
 
 <!-- This is the main page for lecturer -->
+<?php 
+    session_start();
+?>
 
 <head>
     <meta charset="UTF-8" />
@@ -80,7 +83,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="login_controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -239,13 +242,9 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    <?php $sql = "SELECT lect_name FROM lecturer WHERE lect_id='".$_SESSION['id']."'";
-$statement = mysqli_query($db,$sql);
-// fetch the next row
-while ($row =mysqli_fetch_assoc($statement)) 
-{
-        echo $row['lect_name'] ;} 
-        $db->close();?>   
+                    <?php 
+                        echo $_SESSION['username'];
+                    ?>
                 </div>
             </nav>
         </div>
