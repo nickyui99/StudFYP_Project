@@ -3,6 +3,10 @@
 
 <!-- This is the main page for student-->
 
+<?php 
+    session_start();
+?>
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,8 +18,7 @@
 
     <!-- Bootstrap 5 JavaScript -->
     <script src="../bootstrap_v5.1/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
@@ -42,8 +45,7 @@
         <ul class="navbar-nav d-md- ms-auto me-1">
             <!-- Announcement -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-bell fa-fw"></i> Notification</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell fa-fw"></i> Notification</a>
                 <ul class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="navbarDropdown">
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
@@ -71,8 +73,7 @@
 
             <!-- Profile -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li>
                         <a class="dropdown-item" href="#!">My profile</a>
@@ -80,7 +81,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -117,9 +118,7 @@
                         </a>
 
                         <!-- My FYP -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseFYP" aria-expanded="false"
-                            aria-controls="collapseFYP">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseFYP" aria-expanded="false" aria-controls="collapseFYP">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -128,8 +127,7 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseFYP" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseFYP" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
@@ -161,9 +159,7 @@
                         </div>
 
                         <!-- My FYP Supervisor -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseSupervisor" aria-expanded="false"
-                            aria-controls="collapseSupervisor">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSupervisor" aria-expanded="false" aria-controls="collapseSupervisor">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -172,8 +168,7 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
@@ -189,9 +184,7 @@
                         </div>
 
                         <!-- FYP Evaluation -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseEvaluation" aria-expanded="false"
-                            aria-controls="collapseEvaluation">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEvaluation" aria-expanded="false" aria-controls="collapseEvaluation">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -200,8 +193,7 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
@@ -227,13 +219,9 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    <?php $sql = "SELECT stud_name FROM student WHERE stud_id='".$_SESSION['id']."'";
-$statement = mysqli_query($db,$sql);
-// fetch the next row
-while ($row =mysqli_fetch_assoc($statement)) 
-{
-        echo $row['stud_name'] ;} 
-        $db->close();?>   
+                    <?php 
+                        echo $_SESSION['username'];
+                    ?>
                 </div>
             </nav>
         </div>
