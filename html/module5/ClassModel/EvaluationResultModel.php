@@ -4,14 +4,16 @@ class EvaluationResult{
     private $submission;
     private $evaluator_id;
     private $evaluator_name;
+    private $project_title;
     private $project_feedback;
     private $evaluation_mark;
 
     //Constructor
-    public function EvaluationResult($submission, $evaluator_id, $evaluator_name, $project_feedback, $evaluation_mark){
+    public function EvaluationResult($submission, $evaluator_id, $evaluator_name, $project_title, $project_feedback, $evaluation_mark){
         $this->submission = $submission;
         $this->evaluator_id = $evaluator_id;
         $this->evaluator_name = $evaluator_name;
+        $this->project_title = $project_title;
         $this->project_feedback = $project_feedback;
         $this->evaluation_mark = $evaluation_mark;
     }
@@ -39,6 +41,14 @@ class EvaluationResult{
 
     public function setEvaluatorName($evaluator_name){
         $this->evaluator_name = $evaluator_name;
+    }
+
+    public function getProjectTitle(){
+        return $this->project_title;
+    }
+
+    public function setProjectTitle($project_title){
+        $this->project_title = $project_title;
     }
 
     public function getProjectFeedback(){

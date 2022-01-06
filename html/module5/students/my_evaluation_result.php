@@ -5,6 +5,10 @@
 
 <?php
     include '../Controller/StudentHandler.php';
+
+    session_start();
+
+    $projectDetails = getProjectDetails($_SESSION['stud_id']);
 ?>
 
 <head>
@@ -84,7 +88,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="../../login_controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -222,7 +226,9 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    username
+                    <?php
+                        echo $_SESSION['username']
+                    ?>
                 </div>
             </nav>
         </div>
@@ -246,7 +252,7 @@
                             <p>Project ID: </p>
                         </div>
                         <div class="col-3">
-                            <p>P001</p>
+                            <p><?php echo $projectDetails->getProjID(); ?></p>
                         </div>
                     </div>
 
@@ -255,7 +261,7 @@
                             <p>Project Title: </p>
                         </div>
                         <div class="col-3">
-                            <p>Advanced Mobile Store</p>
+                            <p><?php echo $projectDetails->getProjTitle(); ?></p>
                         </div>
                     </div>
 
@@ -277,7 +283,7 @@
                         <tbody id="result_fyp_1">
                             <!-- Show datatable here -->
                             <?php 
-                            displayFyp1Result("");
+                            displayFyp1Result($_SESSION['stud_id']);
                             ?>
                         </tbody>
                     </table>
@@ -301,7 +307,7 @@
                         <tbody id="result_fyp_2">
                             <!-- Show datatable here -->
                             <?php 
-                            displayFyp2Result("");
+                            displayFyp2Result($_SESSION['stud_id']);
                             ?>
                         </tbody>
                     </table>

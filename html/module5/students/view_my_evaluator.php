@@ -3,6 +3,10 @@
 
 <!-- This page is for students to view their assigned evaluator-->
 
+<?php
+session_start();
+?>
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -80,7 +84,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="../../login_controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -194,12 +198,12 @@
                         </a>
                         <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link text-light active" href="#">
+                                <a class="nav-link text-light active" href="view_my_evaluator.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                                     </div>View my evaluator
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="my_evaluation_result.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>My evaluation result
@@ -218,7 +222,9 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    username
+                    <?php
+                        echo $_SESSION['username']
+                    ?>
                 </div>
             </nav>
         </div>
@@ -283,14 +289,15 @@
 
 <script>
     $(document).ready(function() {
-        load_evaluator("");
+        var stud_id = "<?php echo $_SESSION['stud_id']; ?>";
+        load_evaluator("", stud_id);
 
         $('#search').keyup(function() {
             var search = $(this).val();
             if (search != '') {
-                load_evaluator(search);
+                load_evaluator(search, stud_id);
             } else {
-                load_evaluator("");
+                load_evaluator("", stud_id);
             }
         });
     });

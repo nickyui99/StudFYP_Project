@@ -1,8 +1,9 @@
-function load_evaluator(query) {
+function load_evaluator(query, id) {
   $.ajax({
     method: "POST",
     data: {
-      search_evaluator: query
+      search_evaluator: query,
+      stud_id: id
     },
     url: "http://localhost/StudFYP_Project/html/module5/Controller/StudentHandler.php",
     success: function (data) {

@@ -5,6 +5,7 @@
 
 <?php
 include '../Controller/LecturerHandler.php';
+session_start();
 ?>
 
 <head>
@@ -85,7 +86,7 @@ include '../Controller/LecturerHandler.php';
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="../../login_controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -235,7 +236,9 @@ include '../Controller/LecturerHandler.php';
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    username
+                    <?php 
+                        echo $_SESSION['username'];
+                    ?>
                 </div>
             </nav>
         </div>
@@ -296,15 +299,15 @@ include '../Controller/LecturerHandler.php';
 
 <script>
     $(document).ready(function() {
-
-        load_assigned_evaluator("", "S003");
+        var lect_id = "<?php echo $_SESSION['lect_id']; ?>";
+        load_assigned_evaluator("", lect_id);
 
         $('#search').keyup(function() {
             var search = $(this).val();
             if (search != '') {
-                load_assigned_evaluator(search, "S003");
+                load_assigned_evaluator(search, lect_id);
             } else {
-                load_assigned_evaluator("", "S003");
+                load_assigned_evaluator("", lect_id);
             }
         });
     });
