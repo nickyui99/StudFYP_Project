@@ -1,4 +1,5 @@
 <?php
+/**UPDATED 7/1/2022 */
 // to make a connection with database
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
 
@@ -8,7 +9,7 @@ mysqli_select_db($link, "studfyp_db") or die(mysqli_error($link));
 // Insert data into administrator table
 $query = "INSERT INTO administrator values('A001', 'Ali', '1234'),
                 ('A002', 'Fatimah', '5678')"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -125,7 +126,7 @@ $query = "INSERT INTO student VALUES
                 ('CD18036','Wong Zelin','cd18036','Jalan Biru, Taman Klang, Kelantan','wongzelin.tiger@gmail.com','0187831314','FK','-',''),
                 ('CD18042','Nur Anis Binti Che Aziz','cd18042','Jalan Pangkal, Taman Port, Selangor','nuranischeaziz99@gmail.com','0146058998','FK','-',''),
                 ('CD18043','Dg Nur Sakinah Binti Armain','cd18043','Jalan Kundasang, Taman Genting, KL','dnsakinah00@gmail.com','0172050105','FK','-','')"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -139,7 +140,7 @@ $query = "insert into fyp_stud values
                 ('FS001', 'CA18016', 'Tan Chia Hui', 'PSM1', '2', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CA18016_Proposal.docx')),
                 ('FS002', 'CB19124', 'Aiman Basheer Abdulwareth Mohammed', 'PSM2', '1', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CB19124_Proposal.docx')),
                 ('FS003', 'CB19080', 'Nicholas Ooi Zhee Chen', 'PSM1', '1', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CB19124_Proposal.docx'))"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -153,7 +154,7 @@ if ($result) {
 $query = "insert into fyp_project values('FP001', 'CA18016', 'Advanced Mobile Store', 'PSM1', '2', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CA18016_Submission1.pdf'), LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CA18016_Submission2.pdf'), NULL, LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_FP001.png')),
                 ('FP002', 'CB19124', 'Attendance system', 'PSM1', '1', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CB19124_Submission1.pdf'), NULL, NULL, LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_FP002.png')),
                 ('FP003', 'CB19080', 'Food Ordering system', 'PSM1', '1', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CB19124_Submission1.pdf'), NULL, NULL, LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_FP002.png'))"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -221,7 +222,7 @@ $query = "insert into fyp_coordinator values('S001', 'Dr. Azlina Binti Zainuddin
                 ('S002', 'Dr Mohammad Amirulkhairi Bin Zubir', 'FK', 'PSM 2', 'Civil Engineering'),
                 ('S012', 'Dr. Ali Abdulrahman Nasser', 'FTEK', 'PSM 1', 'Mechanical Engineering'),
                 ('S191', 'Dr. Mohammed ben Salem Mustafa', 'FKM', 'PSM 1,2', 'Design integrated systems')"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -235,7 +236,7 @@ if ($result) {
 $query = "insert into fyp_supervisor values('SU001', 'S002', 'FS001', 'Dr. Mohammad Amirulkhairi Bin Zubir', 'amirulkhairi@ump.edu.my', '0145555777', 'A 6 Jln Sagu 1 Taman Daya, 81100 Johor'),
                 ('SU002', 'S003', 'FS002', 'Dr. Fatihah Ayu Bin Amin', 'fatihah@ump.edu.my', '0454556772', 'Jalan Geliga Sakti,Taman Permai,Terengganu'),
                 ('SU003', 'S003', 'FS003', 'Dr. Fatihah Ayu Bin Amin', 'fatihah@ump.edu.my', '0454556772', 'Jalan Geliga Sakti,Taman Permai,Terengganu')"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -287,7 +288,7 @@ $query = "INSERT into industrial_panel values
 				('IP038','Mr. Goh Chin Teong','048637341','Chin_Teong_Goh@DELL.com','DELL Global Business Center Sdn Bhd','ip038')
 
 				"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -298,10 +299,10 @@ if ($result) {
 }
 
 // Insert data into assigned_lecturer_evaluator table
-$query = "insert into assigned_lecturer_evaluator values('EL001', 'S001', 'CB19124', 'Dr. Azlina Binti Zainuddin'),
-                ('EL002', 'S003', 'CA18016', 'Dr Mohammad Amirulkhairi Bin Zubir'),
-                ('EL003', 'S003', 'CB19080', 'Dr. Fatihah Ayu Bin Amin')"
-or die(mysqli_connect_error());
+$query = "insert into assigned_lecturer_evaluator values('EL001', 'S001', 'CB19124'),
+                ('EL002', 'S003', 'CA18016'),
+                ('EL003', 'S003', 'CB19080')"
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -312,9 +313,9 @@ if ($result) {
 }
 
 // Insert data into assigned_industrial_evaluator table
-$query = "insert into assigned_industrial_evaluator values('EI001', 'IP001', 'CB19124', 'Mr Ooi Kai Cheng'),
-                ('EI002', 'IP002', 'CA18016', 'Mr. Ali bin Washeed')"
-or die(mysqli_connect_error());
+$query = "insert into assigned_industrial_evaluator values('EI001', 'IP001', 'CB19124'),
+                ('EI002', 'IP002', 'CA18016')"
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -325,9 +326,9 @@ if ($result) {
 }
 
 // Insert data into evaluation_result table
-$query = "insert into evaluation_result values('ER001', 'FP001', 'EL001', NULL, 'Advanced Mobile System', '1', 'Good', '24'),
-                ('ER002', 'FP002', NULL,'EI002', 'Mr. Ali bin Washeed', '1', 'Please check your project plan','23')"
-or die(mysqli_connect_error());
+$query = "insert into evaluation_result values('ER001', 'FP001', 'EL001', NULL, 'Advanced Mobile System', '1', 'Good','24', '2021-12-2'),
+                ('ER002', 'FP002', NULL,'EI002', 'Mr. Ali bin Washeed', '1', 'Please check your project plan', '23', '2022-1-3')"
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -429,7 +430,7 @@ $query = "INSERT INTO evaluation_rubric VALUES
                 ('RU083', 'CO4', 'Meeting', '-', '5.00', '0.2', '3', 'PSM2'),
                 ('RU084', 'CO4', 'Submission on time ', '-', '5.00', '0.2', '3', 'PSM2')"
 
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -442,7 +443,7 @@ if ($result) {
 // Insert data into announcement table
 $query = "insert into announcement values('AN001', 'Attention to FYP 1 student', 'Please note that FYP 1 Submission 1 is open'),
                 ('AN002', 'Attention to FYP 2 student', 'Please note that FYP 2 Submission 1 is open')"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -459,7 +460,7 @@ $query = "insert into activity values('AC001', 'Submission 1 FYP 1', '1', 'PSM1'
                 ('AC004', 'Submission 1 FYP 2', '1', 'PSM2', '2021-9-1', '2021-9-11'),
                 ('AC005', 'Submission 2 FYP 2', '2', 'PSM2', '2021-9-12', '2021-9-30'),
                 ('AC006', 'Submission 3 FYP 2', '3', 'PSM2', '2021-10-1', '2021-10-15')"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -472,7 +473,7 @@ if ($result) {
 // Insert data into project_logbook table
 $query = "insert into project_logbook values('LG001', 'FP001', '1', '2021-9-2', 'I start to research about my FYP project idea'),
                 ('LG002', 'FP001', '1', '2021-9-6', 'I start to plan my project')"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
