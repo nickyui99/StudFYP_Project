@@ -228,7 +228,7 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
                                         <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                                     </div>View assigned FYP
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="evaluation_report.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Evaluation report

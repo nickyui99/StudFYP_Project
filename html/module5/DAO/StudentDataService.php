@@ -18,7 +18,7 @@ class StudentDataService
             "INNER JOIN lecturer ON assigned_lecturer_evaluator.lect_id = lecturer.lect_id ".
             "WHERE stud_id = '". $id . "' AND ".
             "(assigned_lect_id LIKE '%". $search ."%' OR ". 
-            "evaluator_name LIKE '%". $search ."%')";
+            "lect_name LIKE '%". $search ."%')";
 
         //Run SQL Query
         $result = $connection->query($sql_query);
@@ -34,7 +34,7 @@ class StudentDataService
                 $lecturer_evaluator = new LecturerEvaluator();
                 $lecturer_evaluator->setEvaluatorID($row['assigned_lect_id']);
                 $lecturer_evaluator->setLecturerID($row['lect_id']);
-                $lecturer_evaluator->setEvaluatorName($row['evaluator_name']);
+                $lecturer_evaluator->setEvaluatorName($row['lect_name']);
                 $lecturer_evaluator->setContactNum($row['lect_contact_num']);
                 $lecturer_evaluator->setEmail($row['lect_email']);
 
@@ -64,12 +64,11 @@ class StudentDataService
     {
         $db = new Database();
 
-        $sql_query = "SELECT assigned_industrial_evaluator.assigned_ip_id, assigned_industrial_evaluator.ip_id, assigned_industrial_evaluator.evaluator_name, industrial_panel.ip_contact_num, industrial_panel.ip_email, industrial_panel.ip_company " . 
-            "FROM assigned_industrial_evaluator " . 
+        $sql_query = "SELECT * FROM assigned_industrial_evaluator " . 
             "INNER JOIN industrial_panel ON assigned_industrial_evaluator.ip_id = industrial_panel.ip_id " . 
             "WHERE stud_id = '". $id . "' AND ".
             "(assigned_ip_id LIKE '%" . $search . "%' OR ".
-            "evaluator_name LIKE '%" . $search . "%')";
+            "ip_name LIKE '%" . $search . "%')";
 
         //Connect database
         $connection = $db->getConnection();
@@ -88,7 +87,7 @@ class StudentDataService
                 $industrial_evaluator = new IndustrialEvaluator();
                 $industrial_evaluator->setEvaluatorID($row['assigned_ip_id']);
                 $industrial_evaluator->setIPID($row['ip_id']);
-                $industrial_evaluator->setEvaluatorName($row['evaluator_name']);
+                $industrial_evaluator->setEvaluatorName($row['ip_name']);
                 $industrial_evaluator->setContactNum($row['ip_contact_num']);
                 $industrial_evaluator->setEmail($row['ip_email']);
                 $industrial_evaluator->setCompany($row['ip_company']);
@@ -124,10 +123,10 @@ class StudentDataService
         //Create connection
         $connection = $db->getConnection();
 
-        $sql_query = "SELECT evaluation_result.submission_level, evaluation_result.assigned_lect_id, assigned_lecturer_evaluator.evaluator_name, evaluation_result.evaluation_feedback, evaluation_result.evaluation_mark, evaluation_result.fyp_proj_id, fyp_project.stud_id, fyp_project.proj_title " . 
-            "FROM ((evaluation_result " . 
+        $sql_query = "SELECT * FROM (((evaluation_result " . 
             "INNER JOIN assigned_lecturer_evaluator ON evaluation_result.assigned_lect_id = assigned_lecturer_evaluator.assigned_lect_id) " . 
-            "INNER JOIN fyp_project ON evaluation_result.fyp_proj_id = fyp_project.fyp_proj_id )" .
+            "INNER JOIN fyp_project ON evaluation_result.fyp_proj_id = fyp_project.fyp_proj_id) " .
+            "INNER JOIN lecturer ON lecturer.lect_id = assigned_lecturer_evaluator.lect_id) " . 
             "WHERE evaluation_result.assigned_lect_id IS NOT NULL AND " . 
             "fyp_project.proj_fyp_stage = 'PSM1' AND " . 
             "fyp_project.stud_id = '" . $student_id . "'";     
@@ -146,7 +145,7 @@ class StudentDataService
             //Retrieve data
             while ($row = $result->fetch_assoc()) {
                 $evaluation_result = new EvaluationResult();
-                $evaluation_result->EvaluationResult($row['submission_level'], $row['assigned_lect_id'], $row['evaluator_name'], $row['proj_title'], $row['evaluation_feedback'], $row['evaluation_mark']);
+                $evaluation_result->EvaluationResult($row['submission_level'], $row['assigned_lect_id'], $row['lect_name'], $row['proj_title'], $row['evaluation_feedback'], $row['evaluation_mark']);
 
                 //Add to array
                 $evaluationResultArray[$i] = $evaluation_result;
@@ -167,10 +166,10 @@ class StudentDataService
         //Create connection
         $connection = $db->getConnection();
 
-        $sql_query = "SELECT evaluation_result.submission_level, evaluation_result.assigned_lect_id, assigned_lecturer_evaluator.evaluator_name, evaluation_result.evaluation_feedback, evaluation_result.evaluation_mark, evaluation_result.fyp_proj_id, fyp_project.stud_id " . 
-            "FROM ((evaluation_result " . 
+        $sql_query = "SELECT * FROM (((evaluation_result " . 
             "INNER JOIN assigned_lecturer_evaluator ON evaluation_result.assigned_lect_id = assigned_lecturer_evaluator.assigned_lect_id) " . 
-            "INNER JOIN fyp_project ON evaluation_result.fyp_proj_id = fyp_project.fyp_proj_id )" .
+            "INNER JOIN fyp_project ON evaluation_result.fyp_proj_id = fyp_project.fyp_proj_id ) " .
+            "INNER JOIN lecturer ON lecturer.lect_id = assigned_lecturer_evaluator.lect_id) ".
             "WHERE evaluation_result.assigned_lect_id IS NOT NULL AND " . 
             "fyp_project.proj_fyp_stage = 'PSM2' AND " . 
             "fyp_project.stud_id = '" . $student_id . "'";     
@@ -186,7 +185,7 @@ class StudentDataService
             //Retrieve data
             while ($row = $result->fetch_assoc()) {
                 $evaluation_result = new EvaluationResult();
-                $evaluation_result->EvaluationResult($row['submission_level'], $row['assigned_lect_id'], $row['evaluator_name'], $row['proj_title'], $row['evaluation_feedback'], $row['evaluation_mark']);
+                $evaluation_result->EvaluationResult($row['submission_level'], $row['assigned_lect_id'], $row['lect_name'], $row['proj_title'], $row['evaluation_feedback'], $row['evaluation_mark']);
 
                 //Add to array
                 $evaluationResultArray[$i] = $evaluation_result;
