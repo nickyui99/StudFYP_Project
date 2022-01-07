@@ -4,18 +4,20 @@ class EvaluationReport{
     private $result_id;
     private $proj_id;
     private $proj_title;
+    private $fyp_stage;
     private $submission;
-    private $feedback;
+    private $evaluation_date;
     private $mark;
     private $stud_id;
 
-    function EvaluationReport($result_id, $proj_id, $proj_title, $submission, $feedback, $mark, $stud_id){
+    function EvaluationReport($result_id, $proj_id, $proj_title, $fyp_stage, $submission, $mark, $evaluation_date, $stud_id){
         $this->result_id = $result_id;
         $this->proj_id = $proj_id;
         $this->proj_title = $proj_title;
+        $this->fyp_stage = $fyp_stage;
         $this->submission = $submission;
-        $this->feedback = $feedback;
         $this->mark = $mark;
+        $this->$evaluation_date = $evaluation_date;
         $this->stud_id = $stud_id;
     }
 
@@ -43,6 +45,14 @@ class EvaluationReport{
         $this->proj_title = $proj_title;
     }
 
+    function getFypStage(){
+        return $this->fyp_stage;
+    }
+
+    function setFypStage($fyp_stage){
+        $this->fyp_stage = $fyp_stage;
+    }
+
     function getSubmission(){
         return $this->submission;
     }
@@ -51,12 +61,12 @@ class EvaluationReport{
         $this->submission = $submission;
     }
 
-    function getFeedback(){
-        return $this->feedback;
+    function getEvaluationDate(){
+        return $this->evaluationDate;
     }
 
-    function setFeedback($feedback){
-        $this->feedback = $feedback;
+    function setEvaluationDate($evaluation_date){
+        $this->evaluation_date = $evaluation_date;
     }
 
     function getMark(){

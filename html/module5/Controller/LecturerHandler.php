@@ -9,7 +9,7 @@ if (isset($_POST['search_assigned_evaluation']) && isset($_POST['lecturer_id']))
 }
 
 if (isset($_POST['search_evaluation_report']) && isset($_POST['lecturer_id'])) {
-    
+    printEvaluationReport($_POST['search_evaluation_report'], $_POST['lecturer_id']);
 }
 
 function viewAssignedFyp($query, $lect_id)
@@ -69,7 +69,25 @@ function printEvaluationRubric($submission, $fyp_level)
     echo $output;
 }
 
-function printEvaluationReport(){
+function printEvaluationReport($query, $lect_id){
     $lds = new LecturerDataService();
+    $ev_report_array = $lds->getEvaluationReport($query, $lect_id);
+
+    $output = "";
+    foreach($ev_report_array as $ev_report){
+        $output = $output . 
+        '<tr>'.
+            '<td><input class="form-check-input" type="checkbox" value="" id="' . $ev_report->getResultID() . '"></td>'.
+            '<td>' . $ev_report->getProjID() . '</td>'.
+            '<td>' . $ev_report->getStudID() . '</td>'.
+            '<td>' . $ev_report->getProjTitle() . '</td>'.
+            '<td>' . $ev_report->getSubmission() . '</td>'.
+            '<td>' . $ev_report->getSubmission() . '</td>'.
+            '<td>' . $ev_report->getMark() . '</td>'.
+            
+        '</tr>';
+    }
+
+    echo $output;
 }
 

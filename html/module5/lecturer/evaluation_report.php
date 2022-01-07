@@ -325,8 +325,6 @@ session_start();
         var lect_id = "<?php echo $_SESSION['lect_id']; ?>";
         load_evaluation_report("", lect_id);
 
-        $('#myTable').DataTable({ });
-
         $('#search').keyup(function() {
             var search = $(this).val();
             if (search != '') {
@@ -334,20 +332,6 @@ session_start();
             } else {
                 load_evaluation_report("", lect_id);
             }
-        });
-
-        /* To hide column 2 and 3 */
-        $('#tableID').DataTable({
-            "columnDefs": [{
-                    "targets": [2],
-                    "visible": false,
-                    "searchable": false
-                },
-                {
-                    "targets": [3],
-                    "visible": false
-                }
-            ]
         });
     });
 </script>
