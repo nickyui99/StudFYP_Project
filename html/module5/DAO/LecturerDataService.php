@@ -3,6 +3,7 @@ require_once 'Database.php';
 require_once '../ClassModel/AssignedEvaluationModel.php';
 require_once '../ClassModel/ProjectlogbookModel.php';
 require_once '../ClassModel/EvaluationRubricModel.php';
+require_once '../ClassModel/EvaluationReportModel.php';
 
 class LecturerDataService
 {
@@ -95,8 +96,10 @@ class LecturerDataService
             $evaluateFypModel->setProjFeedback('');
             $evaluateFypModel->setProjQR(base64_encode($row['fyp_qrcode']));
         }
+
         //Close connection
         $connection->close();
+
         return $evaluateFypModel;
     }
 
@@ -168,6 +171,7 @@ class LecturerDataService
             flush();
             echo $document;
         }
+
         //Close connection
         $connection->close();
 
@@ -203,11 +207,10 @@ class LecturerDataService
                 $project_log_array[$i] = $project_log_model;
                 $i++;
             }
-
-            //Close connection
-            $connection->close();
         }
         
+        //Close connection
+        $connection->close();
 
         return $project_log_array;
     }
@@ -246,11 +249,41 @@ class LecturerDataService
                 $evaluation_rubric_array[$i] = $ev_rubric_model;
                 $i++;
             }
-
-            //Close connection
-            $connection->close();  
         }
-        
+        //Close connection
+        $connection->close();  
+
         return $evaluation_rubric_array;
     }    
+
+    function getEvaluationReport($query, $id){
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "SELECT evaluation_result.result_id, evaluation_result.fyp_proj_id, evaluation_result.assigned_lect_id, evaluation_result.project_title, 
+            evaluation_result.submission_level, evaluation_result.evaluation_feedback, evaluation_result.evaluation_mark, assigned_lecturer_evaluator.lect_id, assigned_lecturer_evaluator.stud_id 
+            FROM evaluation_result INNER JOIN assigned_lecturer_evaluator 
+            ON assigned_lecturer_evaluator.assigned_lect_id = evaluation_result.assigned_lect_id 
+            WHERE assigned_lecturer_evaluator.lect_id = '$id' AND 
+            (evaluation_result.fyp_proj_id LIKE '%$query%' OR 
+            evaluation_result.project_title LIKE '%$query%' OR 
+            assigned_lecturer_evaluator.stud_id LIKE '%$query%')";
+
+        //Run SQL Query
+        $result = $connection->query($sql_query);
+        
+        $evaluation_report_array = array();
+
+        if ($result->num_rows == 0) {
+            //Do nothing
+        } else {
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $ev_report = new EvaluationReport();
+                $ev_report->EvaluationReport($row['result_id'], $row['fyp_proj_id'], $row[''])
+            }
+        }
+    }
 }

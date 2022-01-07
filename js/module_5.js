@@ -27,4 +27,16 @@ function load_assigned_evaluator(query, id) {
   });
 }
 
-
+function load_evaluation_report(query, id) {
+  $.ajax({
+    method: "POST",
+    data: {
+      search_evaluation_report: query, lecturer_id: id
+    },
+    url: "http://localhost/StudFYP_Project/html/module5/Controller/LecturerHandler.php",
+    success: function (data) {
+      var row_count = $('#result').html(data).find('tr').length;
+      $('#row_counter').html("Total " + row_count + " Evaluation Report");
+    }
+  });
+}

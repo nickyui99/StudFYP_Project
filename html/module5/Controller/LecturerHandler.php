@@ -8,6 +8,10 @@ if (isset($_POST['search_assigned_evaluation']) && isset($_POST['lecturer_id']))
     viewAssignedFyp($_POST['search_assigned_evaluation'], $_POST['lecturer_id']);
 }
 
+if (isset($_POST['search_evaluation_report']) && isset($_POST['lecturer_id'])) {
+    
+}
+
 function viewAssignedFyp($query, $lect_id)
 {
     $lds = new LecturerDataService();
@@ -63,5 +67,9 @@ function printEvaluationRubric($submission, $fyp_level)
     }
 
     echo $output;
+}
+
+function printEvaluationReport(){
+    $lds = new LecturerDataService();
 }
 
