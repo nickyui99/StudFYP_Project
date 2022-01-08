@@ -263,7 +263,7 @@ class LecturerDataService
         //Create connection
         $connection = $db->getConnection();
 
-        $sql_query = "SELECT evaluation_result.result_id, evaluation_result.fyp_proj_id, evaluation_result.assigned_lect_id, evaluation_result.project_title, evaluation_result.submission_level, 
+        $sql_query = "SELECT evaluation_result.result_id, evaluation_result.fyp_proj_id, evaluation_result.assigned_lect_id, fyp_project.proj_title, evaluation_result.submission_level, 
             evaluation_result.evaluation_feedback, evaluation_result.evaluation_mark, assigned_lecturer_evaluator.lect_id, fyp_project.proj_fyp_stage, assigned_lecturer_evaluator.stud_id, evaluation_result.evaluation_date
             FROM evaluation_result INNER JOIN assigned_lecturer_evaluator 
             ON assigned_lecturer_evaluator.assigned_lect_id = evaluation_result.assigned_lect_id 
@@ -271,7 +271,7 @@ class LecturerDataService
             ON evaluation_result.fyp_proj_id = fyp_project.fyp_proj_id
             WHERE assigned_lecturer_evaluator.lect_id = '$id' AND 
             (evaluation_result.fyp_proj_id LIKE '%$query%' OR 
-            evaluation_result.project_title LIKE '%$query%' OR 
+            fyp_project.proj_title LIKE '%$query%' OR 
             assigned_lecturer_evaluator.stud_id LIKE '%$query%')";
 
         //Run SQL Query
@@ -291,10 +291,10 @@ class LecturerDataService
                 $ev_report->setFypStage($row['proj_fyp_stage']);
                 $ev_report->setSubmission($row['submission_level']);
                 $ev_report->setMark($row['evaluation_mark']);
-                $ev_report->setProjTitle($row['project_title']);
+                $ev_report->setProjTitle($row['proj_title']);
                 $ev_report->setEvaluationDate($row['evaluation_date']);
                 $ev_report->setStudID($row['stud_id']);
-                
+
                 //Add to array
                 $evaluation_report_array[$i] = $ev_report;
                 $i++;

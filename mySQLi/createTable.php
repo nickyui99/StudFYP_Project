@@ -127,7 +127,7 @@
     }
 
     //create evaluation_result table
-    $sql = "CREATE TABLE evaluation_result (result_id VARCHAR(10), fyp_proj_id VARCHAR(10), assigned_lect_id VARCHAR(10), assigned_ip_id VARCHAR(10), project_title VARCHAR(50), submission_level INT(3), evaluation_feedback VARCHAR(300), evaluation_mark FLOAT, evaluation_date DATE, PRIMARY KEY (result_id), FOREIGN KEY (fyp_proj_id) REFERENCES fyp_project(fyp_proj_id))";
+    $sql = "CREATE TABLE evaluation_result (result_id VARCHAR(10), fyp_proj_id VARCHAR(10), assigned_lect_id VARCHAR(10), assigned_ip_id VARCHAR(10), submission_level INT(3), evaluation_feedback VARCHAR(300), evaluation_mark FLOAT, evaluation_date DATE, PRIMARY KEY (result_id), FOREIGN KEY (fyp_proj_id) REFERENCES fyp_project(fyp_proj_id))";
 
     if (mysqli_query($link, $sql)) {
         echo "Table evaluation_result created successfully <br>";

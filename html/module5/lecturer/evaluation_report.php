@@ -269,9 +269,29 @@ session_start();
                                 <i class="fa fa-plus me-2"></i>Update
                             </button>
 
-                            <button type="button" name="btn_delete" id="btn_delete" class="btn btn-outline-danger btn-sm" aria-label="Left Align">
+                            <button type="button" name="btn_delete" id="btn_delete" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 <i class="fa fa-trash me-2" aria-hidden="true"></i>Delete
                             </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ...
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                         <!-- Search bar -->
@@ -347,25 +367,31 @@ session_start();
 
     });
 
-    $('#btn_delete').click(function() {
-        checkedArrays = [];
-        <?php
-        $i = 0;
-        $checkedResultId = array();
-        $ev_report_array = getEvaluationReport($_SESSION['lect_id']);
-        foreach ($ev_report_array as $ev_report) {
-            echo 
-            'if(document.getElementById("cb_' . $ev_report->getResultID() . '").checked == true){
-                checkedArrays.push("'.$ev_report->getResultID().'");
-            }';
-        }
-        ?>
-        
-        for(let i=0; i<checkedArrays.length; i++){
-            
-        }
-        
-    });
+    // $('#btn_delete').click(function() {
+    //     checkedArrays = [];
+    //     <?php
+            //     $i = 0;
+            //     $checkedResultId = array();
+            //     $ev_report_array = getEvaluationReport($_SESSION['lect_id']);
+            //     foreach ($ev_report_array as $ev_report) {
+            //         echo
+            //         'if(document.getElementById("cb_' . $ev_report->getResultID() . '").checked == true){
+            //             checkedArrays.push("' . $ev_report->getResultID() . '");
+            //         }';
+            //     }
+            //     
+            ?>
+
+    //     if (checkedArrays.length = 0) {
+
+    //     }
+
+
+    //     for (let i = 0; i < checkedArrays.length; i++) {
+
+    //     }
+
+    // });
 
     $('#btn_update').click(function() {
         alert("update");
