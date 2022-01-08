@@ -4,7 +4,19 @@
 <!-- This html template is only for StudFYP lecturer only -->
 
 <?php
-    include '../DAO/LecturerHandler.php';
+include '../Controller/LecturerHandler.php';
+
+$projID = "invalid";
+$studID = "invalid";
+$submission = "invalid";
+
+if (isset($_GET['projID']) && isset($_GET['studID']) && isset($_GET['submission'])) {
+    $projID = $_GET['projID'];
+    $studID = $_GET['studID'];
+    $submission = $_GET['submission'];
+}
+
+$evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
 ?>
 
 <head>
@@ -18,8 +30,7 @@
 
     <!-- Bootstrap 5 JavaScript -->
     <script src="../../../bootstrap_v5.1/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
@@ -50,8 +61,7 @@
         <ul class="navbar-nav d-md- ms-auto me-1">
             <!-- Announcement -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-bell fa-fw"></i> Notification</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell fa-fw"></i> Notification</a>
                 <ul class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="navbarDropdown">
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
@@ -79,8 +89,7 @@
 
             <!-- Profile -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li>
                         <a class="dropdown-item" href="#!">My profile</a>
@@ -88,7 +97,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="../../login_controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -117,9 +126,7 @@
                         </a>
 
                         <!-- FYP Coordinator -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseCoordinator" aria-expanded="false"
-                            aria-controls="collapseCoordinator">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCoordinator" aria-expanded="false" aria-controls="collapseCoordinator">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -128,8 +135,7 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseCoordinator" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseCoordinator" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
@@ -176,9 +182,7 @@
                         </div>
 
                         <!-- FYP Supervisor -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseSupervisor" aria-expanded="false"
-                            aria-controls="collapseSupervisor">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSupervisor" aria-expanded="false" aria-controls="collapseSupervisor">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -187,8 +191,7 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
@@ -209,9 +212,7 @@
                         </div>
 
                         <!-- FYP Evaluation -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseEvaluation" aria-expanded="false"
-                            aria-controls="collapseEvaluation">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEvaluation" aria-expanded="false" aria-controls="collapseEvaluation">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -220,15 +221,14 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
                                 <a class="nav-link text-light active" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                                     </div>View assigned FYP
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="evaluation_report.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Evaluation report
@@ -256,7 +256,7 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Evaluate FYP</h1>
+                    <h1 class="mt-4">Evaluate FYP - Submission <?php echo $submission ?></h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">
                             FYP evaluation
@@ -265,24 +265,100 @@
                         <li class="breadcrumb-item active">Evaluate FYP</li>
                     </ol>
 
-                    <form action="">
-                        <div class="form-group row">
-                            <label class="col-sm-2" for="project_id">Project ID: </label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control " name="project_id" id="project_id">
+                    <form action="../Controller/EvaluateFormHandler.php" method="post">
+                        <div class="form-group">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr class="">
+                                        <td class="col-sm-2">Project ID: </td>
+                                        <td class="col-sm-7"><input type="text" class="form-control" id="inputProjId" name="inputProjId" value="<?php echo $projID ?>" readonly></td>
+                                        <td class="col-sm-3" rowspan="4">
+                                            <div class="card text-center">
+                                                <div class="card-body">
+                                                    <h4 class="mb1">Project QR Code</h4>
+                                                    <img name="QR_code" src="data:image/jpeg;base64, <?php echo $evaluateDetails->getProjQR(); ?>" alt="Project QR Code" class="img-container mb-1">
+                                                    <button type="button" id="btnDownloadProjQR" class="btn btn-outline-dark"><i class="fa fa-download me-3" aria-hidden="true"></i>Download QR Code</button>
+                                                </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Student ID: </td>
+                                        <td><input type="text" class="form-control" id="inputStudId" name="inputStudId" value="<?php echo $studID ?>" readonly></td>
+                                    </tr>
+                                    <tr>
+                                        <td>FYP Stage: </td>
+                                        <td><input type="text" class="form-control" id="inputFypStage" name="inputFypStage" value="<?php echo $evaluateDetails->getFypLevel(); ?>" readonly></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Project title:</td>
+                                        <td><input type="text" class="form-control" id="inputProjTitle" name="inputProjTitle" value="<?php echo $evaluateDetails->getProjTitle(); ?>" readonly></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Project Logbook: </td>
+                                        <td>
+                                            <table class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr class="header-bg">
+                                                        <th class="col-sm-3">Date</th>
+                                                        <th class="col-sm-9">Activity</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- Project logbook result -->
+                                                    <?php printProjLogbook($projID, $submission) ?>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Project Document: </td>
+                                        <td><button type="button" id="btnDownloadProjDoc" class="btn btn-outline-dark"><i class="fa fa-download me-3" aria-hidden="true"></i>Download</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Evaluation Rubric: </td>
+                                        <td>
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered border-dark table-sm">
+                                                    <thead class="">
+                                                        <tr class="header-bg">
+                                                            <th class="small" style="width: 10%;">Num</th>
+                                                            <th class="small" style="width: 20%;">Rubric Title</th>
+                                                            <th class="small" style="width: 25%;">Rubric Details</th>
+                                                            <th class="small" style="width: 15%;">Weightage</th>
+                                                            <th class="small" style="width: 15%;">Mark</th>
+                                                            <th class="small"style="width: 15%;">Actual Mark</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!-- Evaluation Rubric Result -->
+                                                        <?php printEvaluationRubric($submission, $evaluateDetails->getFypLevel()); ?>
+                                                        <tr class="table-info border-dark">
+                                                            <td class="text-end" colspan="5"><b>Total:</b></td>
+                                                            <td><b id="total-mark">0</b></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Project Feedback: </td>
+                                        <td>
+                                            <textarea id="inputProjFeedback" name="inputProjFeedback" class="form-control" cols="30" rows="5" maxLength="300" required></textarea>
+                                            <div class="float-end" id="the-count">
+                                                <span id="current">0</span>
+                                                <span id="maximum">/ 300</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="d-flex justify-content-center">
+                                <input type="submit" class="btn btn-outline-dark m-3" name="submit" id="submit" value="Submit">
+                                <input type="reset" class="btn btn-outline-dark m-3" name="reset" id="reset" value="Reset">
                             </div>
-                            <div class="col-sm-2">
-                                <img src="../../../images/ump_logo.png" alt="" class="img-thumbnail">
-                            </div>           
-                        </div>
-
-                        <div class="form-group row">
-                            
                         </div>
                     </form>
-                    
-                    
-
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
@@ -297,18 +373,21 @@
 </body>
 
 <script>
-    $(document).ready(function() {
-    
-        load_assigned_evaluator("", "S012");
-        
-        $('#search').keyup(function() {
-            var search = $(this).val();
-            if (search != '') {
-                load_assigned_evaluator(search, "S012");
-            } else {
-                load_assigned_evaluator("", "S012");
-            }
-        });
+    $('#btnDownloadProjQR').click(function() {
+        window.open("http://localhost/StudFYP_Project/html/module5/DAO/DownloadService.php?projQr=<?php echo $projID ?>");
+    });
+
+    $('#btnDownloadProjDoc').click(function() {
+        window.open("http://localhost/StudFYP_Project/html/module5/DAO/DownloadService.php?projDoc=<?php echo $projID ?>&submission=<?php echo $submission ?>");
+    });
+
+    $('textarea').keyup(function() {
+        var characterCount = $(this).val().length,
+            current = $('#current'),
+            maximum = $('#maximum'),
+            theCount = $('#the-count');
+
+        current.text(characterCount);
     });
 </script>
 

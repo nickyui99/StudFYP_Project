@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+ require_once 'login_controller/login_handler.php';
+ ?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,33 +41,32 @@
                 <div class="card mx-auto" style="width: 30rem;">
                     <div class="card-body">
                         <h1 class="card-title text-center mt-3 mb-3">StudFYP Login</h1>
-                        <form class="mt-3" action="">
+                        <form class="mt-3" action="login_controller/login_handler.php" method="post">
 
                             <!-- Username -->
                             <div class="form-group mb-3">
                                 <label for="f_userID">Username: </label>
-                                <input class="form-control" type="text" name="f_loginUserID">
+                                <input class="form-control" type="text" name="f_loginUserID" required>
                             </div>
 
                             <!-- Password -->
                             <div class="form-group mb-3">
                                 <label for="f_loginUserPass">Password: </label>
-                                <input class="form-control" type="password" name="f_loginUserPass">
+                                <input class="form-control" type="password" name="f_loginUserPass" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="f_userClass">Login as: </label>
-                                <select class="form-select form-control" id="f_userClass">
+                                <select class="form-select form-control" name="f_userClass" id="f_userClass">
                                     <option value="student" selected>Student</option>
                                     <option value="staff">Staff</option>
                                     <option value="external">External</option>
-                                    <option value="system_administrator">System administrator</option>
+                                    <option value="administrator">System administrator</option>
                                 </select>
                             </div>
 
-
                             <div class="form-group mt-3 mb-3">
-                                <input class="btn btn-primary form-control mt-3" type="submit" value="Login">
+                                <input class="btn btn-primary form-control mt-3" type="submit" name="Login" value="Login">
                             </div>
                         </form>
                     </div>
