@@ -267,6 +267,7 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
                     </ol>
 
                     <form action="../Controller/EvaluateFormHandler.php" method="post">
+                        <input type="hidden" id="submission" name="submission" value="<?php echo $submission ?>">
                         <div class="form-group">
                             <table class="table table-borderless">
                                 <tbody>
@@ -375,11 +376,11 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
 
 <script>
     $('#btnDownloadProjQR').click(function() {
-        window.open("http://localhost/StudFYP_Project/html/module5/DAO/DownloadService.php?projQr=<?php echo $projID ?>");
+        window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projQr=<?php echo $projID ?>");
     });
 
     $('#btnDownloadProjDoc').click(function() {
-        window.open("http://localhost/StudFYP_Project/html/module5/DAO/DownloadService.php?projDoc=<?php echo $projID ?>&submission=<?php echo $submission ?>");
+        window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projDoc=<?php echo $projID ?>&submission=<?php echo $submission ?>");
     });
 
     $('textarea').keyup(function() {
@@ -403,18 +404,16 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
         calcTotalMark();
     }
 
-    function calcTotalMark(){
+    function calcTotalMark() {
         var total = 0;
-        var num_rubric = <?php echo count($ev_rubric_array);?>;
-        <?php 
-        foreach($ev_rubric_array as $ev_rubric){
-            echo 'total = total + parseFloat(document.getElementById("am_'.$ev_rubric->getRubricId().'").innerHTML);';
+        var num_rubric = <?php echo count($ev_rubric_array); ?>;
+        <?php
+        foreach ($ev_rubric_array as $ev_rubric) {
+            echo 'total = total + parseFloat(document.getElementById("am_' . $ev_rubric->getRubricId() . '").innerHTML);';
         }
         ?>
         document.getElementById("total_mark").value = total.toFixed(2)
     }
-
-
 </script>
 
 </html>

@@ -1,16 +1,19 @@
 <?php
 
 class EvaluationResult{
-    private $submission;
     private $evaluator_id;
+    private $proj_id;
+    private $submission;
     private $evaluator_name;
     private $project_title;
     private $project_feedback;
     private $evaluation_mark;
+    private $evaluation_date;
 
     //Constructor
-    public function EvaluationResult($submission, $evaluator_id, $evaluator_name, $project_title, $project_feedback, $evaluation_mark){
+    public function EvaluationResult($submission, $proj_id, $evaluator_id, $evaluator_name, $project_title, $project_feedback, $evaluation_mark){
         $this->submission = $submission;
+        $this->$proj_id = $proj_id;
         $this->evaluator_id = $evaluator_id;
         $this->evaluator_name = $evaluator_name;
         $this->project_title = $project_title;
@@ -19,12 +22,12 @@ class EvaluationResult{
     }
 
     // Getter and Setter
-    public function getSubmission(){
-        return $this->submission;
+    public function getProjID(){
+        return $this->proj_id;
     }
 
-    public function setSubmission($submission){
-        $this->submission = $submission;
+    public function setProjID($proj_id){
+        $this->proj_id = $proj_id;
     }
 
     public function getEvaluatorID(){
@@ -33,6 +36,14 @@ class EvaluationResult{
 
     public function setEvaluatorID($evaluator_id){
         $this->evaluator_id = $evaluator_id;
+    }
+
+    public function getSubmission(){
+        return $this->submission;
+    }
+
+    public function setSubmission($submission){
+        $this->submission = $submission;
     }
 
     public function getEvaluatorName(){
@@ -65,5 +76,13 @@ class EvaluationResult{
 
     public function setEvaluationMark($evaluation_mark){
         $this->evaluation_mark = $evaluation_mark;
+    }
+
+    public function getEvaluationDate(){
+        return $this->evaluation_date;
+    }
+
+    public function setEvaluationDate($evaluation_date){
+        $this->evaluation_date = $evaluation_date;
     }
 }
