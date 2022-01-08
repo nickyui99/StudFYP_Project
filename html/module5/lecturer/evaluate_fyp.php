@@ -17,6 +17,7 @@ if (isset($_GET['projID']) && isset($_GET['studID']) && isset($_GET['submission'
 }
 
 $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
+$ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLevel());
 ?>
 
 <head>
@@ -329,12 +330,12 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
                                                             <th class="small" style="width: 15%;">Actual Mark</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody id="rubric_result">
                                                         <!-- Evaluation Rubric Result -->
                                                         <?php printEvaluationRubric($submission, $evaluateDetails->getFypLevel()); ?>
                                                         <tr class="table-info border-dark">
                                                             <td class="text-end" colspan="5"><b>Total:</b></td>
-                                                            <td><b id="total-mark">0</b></td>
+                                                            <td><input type="text" readonly class="form-control-plaintext" id="total_mark" name="total_mark" value=""></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -391,8 +392,29 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
     });
 
     $(document).ready(function() {
-        
+        calcTotalMark();
     });
+
+    function calcActualMark(object) {
+        var id = $(object).attr('id');
+        var weightage = $("#w_" + id).html();
+        var actual_mark = weightage * object.value;
+        document.getElementById("am_" + id).innerHTML = actual_mark.toFixed(2);
+        calcTotalMark();
+    }
+
+    function calcTotalMark(){
+        var total = 0;
+        var num_rubric = <?php echo count($ev_rubric_array);?>;
+        <?php 
+        foreach($ev_rubric_array as $ev_rubric){
+            echo 'total = total + parseFloat(document.getElementById("am_'.$ev_rubric->getRubricId().'").innerHTML);';
+        }
+        ?>
+        document.getElementById("total_mark").value = total.toFixed(2)
+    }
+
+
 </script>
 
 </html>

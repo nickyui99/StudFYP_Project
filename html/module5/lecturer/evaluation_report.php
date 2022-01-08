@@ -215,7 +215,7 @@ session_start();
                         </a>
                         <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="view_assigned_fyp.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View assigned FYP
@@ -269,24 +269,47 @@ session_start();
                                 <i class="fa fa-plus me-2"></i>Update
                             </button>
 
-                            <button type="button" name="btn_delete" id="btn_delete" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button type="button" name="btn_delete" id="btn_delete" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal">
                                 <i class="fa fa-trash me-2" aria-hidden="true"></i>Delete
                             </button>
 
                             <!-- Modal -->
-                            <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade " id="confirm_delete_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <h5 class="modal-title" id="deleteModalLabel">Confirm Delete </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            ...
+                                            
+                                            <div id="checked_report">
+
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <button type="button" class="btn btn-danger" id="btn_confirm_delete">Delete</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade " id="alert_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="alertModalLabel">Alert</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            
+                                            <div id="alert_message" class="alert alert-danger" role="alert">
+
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" id="btn_ok_alert" data-bs-dismiss="modal">OK</button>
                                         </div>
                                     </div>
                                 </div>
@@ -364,34 +387,36 @@ session_start();
                 load_evaluation_report("", lect_id);
             }
         });
-
     });
 
-    // $('#btn_delete').click(function() {
-    //     checkedArrays = [];
-    //     <?php
-            //     $i = 0;
-            //     $checkedResultId = array();
-            //     $ev_report_array = getEvaluationReport($_SESSION['lect_id']);
-            //     foreach ($ev_report_array as $ev_report) {
-            //         echo
-            //         'if(document.getElementById("cb_' . $ev_report->getResultID() . '").checked == true){
-            //             checkedArrays.push("' . $ev_report->getResultID() . '");
-            //         }';
-            //     }
-            //     
-            ?>
+    $('#btn_delete').click(function() {
+        checkedArrays = [];
+        <?php
+        $i = 0;
+        $checkedResultId = array();
+        $ev_report_array = getEvaluationReport($_SESSION['lect_id']);
+        foreach ($ev_report_array as $ev_report) {
+            echo
+            'if(document.getElementById("cb_' . $ev_report->getResultID() . '").checked == true){
+                checkedArrays.push("' . $ev_report->getResultID() . '");
+            }';
+        }
+        ?>    
 
-    //     if (checkedArrays.length = 0) {
-
-    //     }
-
-
-    //     for (let i = 0; i < checkedArrays.length; i++) {
-
-    //     }
-
-    // });
+        if (checkedArrays.length == 0) {
+            var output = "No row selected";
+            document.getElementById("alert_message").innerHTML = output;
+            $('#alert_modal').modal('show');
+        } else {
+            var output = "Are you sure to DELETE this evaluation report? <ul>";
+            for (let i = 0; i < checkedArrays.length; i++) {
+                output = output + "<li>" + checkedArrays[i] + "</li>";
+            }
+            output = output + "</ul>"
+            document.getElementById("checked_report").innerHTML = output;
+            $('#confirm_delete_modal').modal('show');
+        }
+    });
 
     $('#btn_update').click(function() {
         alert("update");

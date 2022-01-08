@@ -43,6 +43,12 @@ function printProjLogbook($proj_id, $submission)
     echo $output;
 }
 
+function getEvaluationRubric($submission, $fyp_level){
+    $lds = new LecturerDataService();
+    $evaluation_rubric_array = $lds->getEvaluationRubric($submission, $fyp_level);
+    return $evaluation_rubric_array;
+}
+
 function printEvaluationRubric($submission, $fyp_level)
 {
     $lds = new LecturerDataService();
@@ -59,10 +65,10 @@ function printEvaluationRubric($submission, $fyp_level)
             "<tr>" .
             '<td class="small">' . $ev_rubric_model->getRubricNum() . "</td>" .
             '<td class="small">' . $ev_rubric_model->getRubricTitle() . "</td>" .
-            '<td class="small">' . $ev_rubric_model->getRubricDetails() . "</td>" .
-            '<td>' . $ev_rubric_model->getRubricWeightage() . "</td>" .
-            '<td> <select name="mark" class="form-select" id="'.$ev_rubric_model->getRubricId().'">' . $dropdownMark .'</select> </td>'.
-            '<td></td>'.
+            '<td class="small" >' . $ev_rubric_model->getRubricDetails() . "</td>" .
+            '<td id="w_' . $ev_rubric_model->getRubricId() . '">' . $ev_rubric_model->getRubricWeightage() . "</td>" .
+            '<td> <select name="mark" class="form-select" id="'.$ev_rubric_model->getRubricId().'" onChange="calcActualMark(this);">' . $dropdownMark .'</select> </td>'.
+            '<td id="am_' .$ev_rubric_model->getRubricId(). '"> 0.00 </td>'.
             "</tr>";
     }
 

@@ -138,7 +138,6 @@ class LecturerDataService
         //Close connection
         $connection->close();
 
-        exit();
     }
 
     function getProjectDoc($project_id, $submission)
@@ -176,7 +175,6 @@ class LecturerDataService
         //Close connection
         $connection->close();
 
-        exit();
     }
 
     function getProjectLog($proj_id, $submission)
