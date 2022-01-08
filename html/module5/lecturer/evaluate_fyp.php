@@ -318,7 +318,7 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
                                         <td>Evaluation Rubric: </td>
                                         <td>
                                             <div class="table-responsive">
-                                                <table class="table table-bordered border-dark table-sm">
+                                                <table id="rubrics" class="table table-bordered border-dark table-sm">
                                                     <thead class="">
                                                         <tr class="header-bg">
                                                             <th class="small" style="width: 10%;">Num</th>
@@ -326,7 +326,7 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
                                                             <th class="small" style="width: 25%;">Rubric Details</th>
                                                             <th class="small" style="width: 15%;">Weightage</th>
                                                             <th class="small" style="width: 15%;">Mark</th>
-                                                            <th class="small"style="width: 15%;">Actual Mark</th>
+                                                            <th class="small" style="width: 15%;">Actual Mark</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -388,6 +388,10 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
             theCount = $('#the-count');
 
         current.text(characterCount);
+    });
+
+    $(document).ready(function() {
+        
     });
 </script>
 

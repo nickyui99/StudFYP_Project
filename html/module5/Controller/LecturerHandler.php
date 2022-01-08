@@ -77,17 +77,24 @@ function printEvaluationReport($query, $lect_id){
     foreach($ev_report_array as $ev_report){
         $output = $output . 
         '<tr>'.
-            '<td><input class="form-check-input" type="checkbox" value="" id="' . $ev_report->getResultID() . '"></td>'.
+            '<td><input type="checkbox" class="form-check-input" value="'. $ev_report->getResultID() .'" id="cb_' . $ev_report->getResultID() . '"></td>'.
             '<td>' . $ev_report->getProjID() . '</td>'.
             '<td>' . $ev_report->getStudID() . '</td>'.
             '<td>' . $ev_report->getProjTitle() . '</td>'.
             '<td>' . $ev_report->getSubmission() . '</td>'.
             '<td>' . $ev_report->getSubmission() . '</td>'.
             '<td>' . $ev_report->getMark() . '</td>'.
-            
+            '<td>' . $ev_report->getEvaluationDate() . '</td>'.
         '</tr>';
     }
 
     echo $output;
 }
+
+function getEvaluationReport($lect_id){
+    $lds = new LecturerDataService();
+    $ev_report_array = $lds->getEvaluationReport("", $lect_id);
+    return $ev_report_array;
+}
+
 

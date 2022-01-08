@@ -35,7 +35,6 @@ session_start();
     <!-- JS -->
     <script src="../../../js/module_5.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
 </head>
 
 <body class="sb-nav-fixed">
@@ -266,11 +265,11 @@ session_start();
 
                         <div class="col-sm-8">
 
-                            <button type="button" class="btn btn-outline-success btn-sm">
+                            <button type="button" name="btn_update" id="btn_update" class="btn btn-outline-success btn-sm">
                                 <i class="fa fa-plus me-2"></i>Update
                             </button>
 
-                            <button type="button" class="btn btn-outline-danger btn-sm" aria-label="Left Align">
+                            <button type="button" name="btn_delete" id="btn_delete" class="btn btn-outline-danger btn-sm" aria-label="Left Align">
                                 <i class="fa fa-trash me-2" aria-hidden="true"></i>Delete
                             </button>
                         </div>
@@ -304,6 +303,18 @@ session_start();
                                 <tbody id="result">
                                     <!-- Show datatable here -->
                                 </tbody>
+                                <tfoot>
+                                    <tr class="header-bg">
+                                        <th class="small" style="width: 4%;">List</th>
+                                        <th class="small" style="width: 8%;">Project ID</th>
+                                        <th class="small" style="width: 8%;">Student ID</th>
+                                        <th class="small" style="width: 15%;">Project Title</th>
+                                        <th class="small" style="width: 10%;">FYP Stage</th>
+                                        <th class="small" style="width: 10%;">Submission</th>
+                                        <th class="small" style="width: 10%;">Evaluation Mark</th>
+                                        <th class="small" style="width: 10%;">Evaluation Date</th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>
@@ -333,6 +344,31 @@ session_start();
                 load_evaluation_report("", lect_id);
             }
         });
+
+    });
+
+    $('#btn_delete').click(function() {
+        checkedArrays = [];
+        <?php
+        $i = 0;
+        $checkedResultId = array();
+        $ev_report_array = getEvaluationReport($_SESSION['lect_id']);
+        foreach ($ev_report_array as $ev_report) {
+            echo 
+            'if(document.getElementById("cb_' . $ev_report->getResultID() . '").checked == true){
+                checkedArrays.push("'.$ev_report->getResultID().'");
+            }';
+        }
+        ?>
+        
+        for(let i=0; i<checkedArrays.length; i++){
+            
+        }
+        
+    });
+
+    $('#btn_update').click(function() {
+        alert("update");
     });
 </script>
 

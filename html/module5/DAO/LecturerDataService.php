@@ -263,8 +263,8 @@ class LecturerDataService
         //Create connection
         $connection = $db->getConnection();
 
-        $sql_query = "SELECT evaluation_result.result_id, evaluation_result.fyp_proj_id, evaluation_result.assigned_lect_id, evaluation_result.project_title, 
-            evaluation_result.submission_level, evaluation_result.evaluation_feedback, evaluation_result.evaluation_mark, assigned_lecturer_evaluator.lect_id, fyp_project.proj_fyp_stage, assigned_lecturer_evaluator.stud_id 
+        $sql_query = "SELECT evaluation_result.result_id, evaluation_result.fyp_proj_id, evaluation_result.assigned_lect_id, evaluation_result.project_title, evaluation_result.submission_level, 
+            evaluation_result.evaluation_feedback, evaluation_result.evaluation_mark, assigned_lecturer_evaluator.lect_id, fyp_project.proj_fyp_stage, assigned_lecturer_evaluator.stud_id, evaluation_result.evaluation_date
             FROM evaluation_result INNER JOIN assigned_lecturer_evaluator 
             ON assigned_lecturer_evaluator.assigned_lect_id = evaluation_result.assigned_lect_id 
             INNER JOIN fyp_project 
@@ -285,8 +285,15 @@ class LecturerDataService
             $i = 0;
             while ($row = $result->fetch_assoc()) {
                 $ev_report = new EvaluationReport();
-                $ev_report->EvaluationReport($row['result_id'], $row['fyp_proj_id'], $row['project_title'], $row['proj_fyp_stage'],
-                    $row['submission_level'], $row['evaluation_feedback'], $row['evaluation_mark'], $row['evaluation_date'], $row['stud_id']);
+                
+                $ev_report->setResultId($row['result_id']);
+                $ev_report->setProjID($row['fyp_proj_id']);
+                $ev_report->setFypStage($row['proj_fyp_stage']);
+                $ev_report->setSubmission($row['submission_level']);
+                $ev_report->setMark($row['evaluation_mark']);
+                $ev_report->setProjTitle($row['project_title']);
+                $ev_report->setEvaluationDate($row['evaluation_date']);
+                $ev_report->setStudID($row['stud_id']);
                 
                 //Add to array
                 $evaluation_report_array[$i] = $ev_report;
