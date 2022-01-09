@@ -12,6 +12,10 @@ if (isset($_POST['search_evaluation_report']) && isset($_POST['lecturer_id'])) {
     printEvaluationReport($_POST['search_evaluation_report'], $_POST['lecturer_id']);
 }
 
+if(isset($_POST['er_array'])){
+    deleteEvaluationReport($_POST['er_array']);
+}
+
 function viewAssignedFyp($query, $lect_id)
 {
     $lds = new LecturerDataService();
@@ -101,6 +105,13 @@ function getEvaluationReport($lect_id){
     $lds = new LecturerDataService();
     $ev_report_array = $lds->getEvaluationReport("", $lect_id);
     return $ev_report_array;
+}
+
+function deleteEvaluationReport($er_id_array){
+    $lds = new LecturerDataService();
+    foreach($er_id_array as $er_id){
+        $lds->deleteEvaluationReport($er_id);
+    }
 }
 
 

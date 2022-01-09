@@ -262,7 +262,7 @@ class LecturerDataService
         $connection = $db->getConnection();
 
         $sql_query = "SELECT evaluation_result.result_id, evaluation_result.fyp_proj_id, evaluation_result.assigned_lect_id, fyp_project.proj_title, evaluation_result.submission_level, 
-            evaluation_result.evaluation_feedback, evaluation_result.evaluation_mark, assigned_lecturer_evaluator.lect_id, fyp_project.proj_fyp_stage, assigned_lecturer_evaluator.stud_id, evaluation_result.evaluation_date
+            evaluation_result.evaluation_feedback, evaluation_result.evaluation_mark, assigned_lecturer_evaluator.lect_id, fyp_project.proj_fyp_stage, fyp_project.stud_id, evaluation_result.evaluation_date
             FROM evaluation_result INNER JOIN assigned_lecturer_evaluator 
             ON assigned_lecturer_evaluator.assigned_lect_id = evaluation_result.assigned_lect_id 
             INNER JOIN fyp_project 
@@ -270,7 +270,8 @@ class LecturerDataService
             WHERE assigned_lecturer_evaluator.lect_id = '$id' AND 
             (evaluation_result.fyp_proj_id LIKE '%$query%' OR 
             fyp_project.proj_title LIKE '%$query%' OR 
-            assigned_lecturer_evaluator.stud_id LIKE '%$query%')";
+            assigned_lecturer_evaluator.stud_id LIKE '%$query%')
+            ORDER BY evaluation_result.fyp_proj_id ASC";
 
         //Run SQL Query
         $result = $connection->query($sql_query);
@@ -325,7 +326,7 @@ class LecturerDataService
         }
     }
 
-    function insertEvaluationResult($ev_result, $ev_id)
+    function insertEvaluationResult($ev_result, $ev_id, $stud_id)
     {
         $db = new Database();
 
@@ -347,8 +348,8 @@ class LecturerDataService
             //check last id number
             $rubric_num = preg_replace('/[^0-9]/', '', $last_id);
 
-            $new_rubric_num = (int)($rubric_num)+ 1;
-            $new_rubric_id = "ER". sprintf("%03d", $new_rubric_num);
+            $new_rubric_num = (int)($rubric_num) + 1;
+            $new_rubric_id = "ER" . sprintf("%03d", $new_rubric_num);
             $sql_query = "INSERT INTO evaluation_result 
             VALUES ('" . $new_rubric_id . "', '" . $ev_result->getProjID() . "', '" . $ev_id . "', 
             'NULL', '" . $ev_result->getSubmission() . "', '" . $ev_result->getProjectFeedback() . "', 
@@ -362,5 +363,24 @@ class LecturerDataService
 
             $connection->close();
         }
+    }
+
+
+    function deleteEvaluationReport($er_id)
+    {
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "DELETE FROM evaluation_result WHERE result_id = '$er_id'";
+
+        if ($connection->query($sql_query) === TRUE) {
+            echo "Evaluation report deleted successfully";
+        } else {
+            echo "Error deleting evaluation report: " . $connection->error;
+        }
+
+        $connection->close();
     }
 }

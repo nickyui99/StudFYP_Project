@@ -20,7 +20,6 @@ session_start();
     <!-- Bootstrap 5 JavaScript -->
     <script src="../../../bootstrap_v5.1/js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script type=”text/javascript” src=”https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js”></script>
 
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
@@ -28,9 +27,6 @@ session_start();
     <!-- CSS -->
     <link rel="stylesheet" href="../../../css/main.css" />
     <link rel="stylesheet" href="../../../css/module_5.css" />
-
-    <!-- CDN Datatables API -->
-    <link rel=”stylesheet” href=”https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css” />
 
     <!-- JS -->
     <script src="../../../js/module_5.js"></script>
@@ -282,13 +278,13 @@ session_start();
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            
+
                                             <div id="checked_report">
 
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" id="btn_confirm_delete">Delete</button>
+                                            <button type="button" class="btn btn-danger" id="btn_confirm_delete" onclick="load_er_array(checkList());">Delete</button>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                         </div>
                                     </div>
@@ -303,7 +299,7 @@ session_start();
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                         </div>
                                         <div class="modal-body">
-                                            
+
                                             <div id="alert_message" class="alert alert-danger" role="alert">
 
                                             </div>
@@ -387,21 +383,29 @@ session_start();
                 load_evaluation_report("", lect_id);
             }
         });
+
+        $('#btn_confirm_delete').click(function() {
+            pass_er_array(checkedList());
+        });
     });
 
-    $('#btn_delete').click(function() {
-        checkedArrays = [];
+    function checkedList() {
+        checkList = [];
         <?php
-        $i = 0;
-        $checkedResultId = array();
         $ev_report_array = getEvaluationReport($_SESSION['lect_id']);
         foreach ($ev_report_array as $ev_report) {
             echo
             'if(document.getElementById("cb_' . $ev_report->getResultID() . '").checked == true){
-                checkedArrays.push("' . $ev_report->getResultID() . '");
+                checkList.push("' . $ev_report->getResultID() . '");
             }';
         }
-        ?>    
+        ?>
+        return checkList;
+    }
+
+    $('#btn_delete').click(function() {
+
+        checkedArrays = checkedList();
 
         if (checkedArrays.length == 0) {
             var output = "No row selected";
@@ -409,7 +413,7 @@ session_start();
             $('#alert_modal').modal('show');
         } else {
             var output = "Are you sure to DELETE this evaluation report? <ul>";
-            for (let i = 0; i < checkedArrays.length; i++) {
+            for (var i = 0; i < checkedArrays.length; i++) {
                 output = output + "<li>" + checkedArrays[i] + "</li>";
             }
             output = output + "</ul>"
@@ -419,7 +423,7 @@ session_start();
     });
 
     $('#btn_update').click(function() {
-        alert("update");
+
     });
 </script>
 

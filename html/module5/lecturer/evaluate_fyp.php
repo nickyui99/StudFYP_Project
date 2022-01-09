@@ -266,7 +266,7 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
                         <li class="breadcrumb-item active">Evaluate FYP</li>
                     </ol>
 
-                    <form action="../Controller/EvaluateFormHandler.php" method="post">
+                    <form id="evaluation_form">
                         <input type="hidden" id="submission" name="submission" value="<?php echo $submission ?>">
                         <div class="form-group">
                             <table class="table table-borderless">
@@ -394,6 +394,11 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
 
     $(document).ready(function() {
         calcTotalMark();
+
+        $('#evaluation_form').submit(function(e) {
+            e.preventDefault();
+            submit_evaluation_form($('#evaluation_form').serialize());
+        });
     });
 
     function calcActualMark(object) {

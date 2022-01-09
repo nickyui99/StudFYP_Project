@@ -12,9 +12,8 @@ if (isset($_POST['inputProjId']) && isset($_POST['inputStudId']) && isset($_POST
     $ev_result->setProjectFeedback($_POST['inputProjFeedback']);
     $ev_result->setEvaluationDate(date("Y-m-d"));
     $assigned_id = $lds->getAssignedLectId($_SESSION['lect_id']);
-    $lds->insertEvaluationResult($ev_result, $assigned_id);
+    $lds->insertEvaluationResult($ev_result, $assigned_id, $_POST['inputStudId']);
 } else {
     echo "error";
 }
 
-exit();
