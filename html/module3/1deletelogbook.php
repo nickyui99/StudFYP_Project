@@ -11,6 +11,7 @@ include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php';
 <body>
 <div class="container">
 <form action="" method="post" >
+<h1>Delete LogBook </h1>
  <table class="au" margin-left="auto" margin-right="auto">
  <tr>
 <th>Enter LogBook ID: </th>
