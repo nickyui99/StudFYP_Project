@@ -326,7 +326,7 @@ if ($result) {
 }
 
 // Insert data into evaluation_result table
-$query = "insert into evaluation_result values('ER001', 'FP001', 'EL001', NULL, '1', 'Good','24', '2021-12-2'),
+$query = "insert into evaluation_result values('ER001', 'FP002', 'EL001', NULL, '1', 'Good','24', '2021-12-2'),
                 ('ER002', 'FP002', NULL,'EI002', '1', 'Please check your project plan', '23', '2022-1-3')"
     or die(mysqli_connect_error());
 

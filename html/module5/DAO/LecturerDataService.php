@@ -17,12 +17,13 @@ class LecturerDataService
         //Create connection
         $connection = $db->getConnection();
 
-        $sql_query = "SELECT * FROM assigned_lecturer_evaluator " .
-            "INNER JOIN fyp_project " .
-            "ON assigned_lecturer_evaluator.stud_id = fyp_project.stud_id " .
-            "INNER JOIN lecturer ON lecturer.lect_id = assigned_lecturer_evaluator.lect_id " .
-            "WHERE assigned_lecturer_evaluator.lect_id = '" . $id . "' AND " .
-            "fyp_project.stud_id LIKE '%" . $query . "%'";
+        $sql_query = "SELECT * FROM assigned_lecturer_evaluator 
+            INNER JOIN fyp_project
+            ON assigned_lecturer_evaluator.stud_id = fyp_project.stud_id 
+            INNER JOIN lecturer ON lecturer.lect_id = assigned_lecturer_evaluator.lect_id 
+            INNER JOIN student ON assigned_lecturer_evaluator.stud_id = student.stud_id 
+            WHERE assigned_lecturer_evaluator.lect_id = '$id' AND 
+            fyp_project.stud_id LIKE '%$query%'";
 
         //Run SQL Query
         $result = $connection->query($sql_query);
@@ -37,7 +38,7 @@ class LecturerDataService
                 $assigned_ev = new AssignedEvaluation();
                 $assigned_ev->setProjectID($row['fyp_proj_id']);
                 $assigned_ev->setStudentID($row['stud_id']);
-                $assigned_ev->setStudentName($row['lect_name']);
+                $assigned_ev->setStudentName($row['stud_name']);
                 $assigned_ev->setFypLevel($row['proj_fyp_stage']);
                 $assigned_ev->setFypProgress($row['fyp_proj_progress']);
                 $assigned_ev->setEvaluation1($row['document_submission_1']);
