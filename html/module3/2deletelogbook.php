@@ -249,21 +249,6 @@ include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php';
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="../../../css/module_3.css" type="text/css"/>  
-</head>
-<body>
-<div class="container">
-<form action="" method="post" >
- <table class="au" margin-left="auto" margin-right="auto">
- <tr>
-<th>Enter LogBook ID: </th>
-<td><input type="text" name="getlogbookid" class="form-control"><input type="submit" class="Search btn btn-primary" name="Search" value="Search"></td>
-</tr> 
-</table>
-
  <?php 
   session_start(); 
 if(isset($_POST['Search']))
@@ -310,6 +295,7 @@ $sql = "DELETE  FROM project_logbook where logbook_id = '".$_SESSION['getlogbook
  }
  $db->close();
 } 
+
 ?> 
  </form>
  </div>
