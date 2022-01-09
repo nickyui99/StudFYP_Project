@@ -17,6 +17,7 @@ if (isset($_GET['projID']) && isset($_GET['studID']) && isset($_GET['submission'
 }
 
 $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
+$ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLevel());
 ?>
 
 <head>
@@ -265,7 +266,8 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
                         <li class="breadcrumb-item active">Evaluate FYP</li>
                     </ol>
 
-                    <form action="../Controller/EvaluateFormHandler.php" method="post">
+                    <form id="evaluation_form">
+                        <input type="hidden" id="submission" name="submission" value="<?php echo $submission ?>">
                         <div class="form-group">
                             <table class="table table-borderless">
                                 <tbody>
@@ -318,7 +320,7 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
                                         <td>Evaluation Rubric: </td>
                                         <td>
                                             <div class="table-responsive">
-                                                <table class="table table-bordered border-dark table-sm">
+                                                <table id="rubrics" class="table table-bordered border-dark table-sm">
                                                     <thead class="">
                                                         <tr class="header-bg">
                                                             <th class="small" style="width: 10%;">Num</th>
@@ -326,15 +328,15 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
                                                             <th class="small" style="width: 25%;">Rubric Details</th>
                                                             <th class="small" style="width: 15%;">Weightage</th>
                                                             <th class="small" style="width: 15%;">Mark</th>
-                                                            <th class="small"style="width: 15%;">Actual Mark</th>
+                                                            <th class="small" style="width: 15%;">Actual Mark</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody id="rubric_result">
                                                         <!-- Evaluation Rubric Result -->
                                                         <?php printEvaluationRubric($submission, $evaluateDetails->getFypLevel()); ?>
                                                         <tr class="table-info border-dark">
                                                             <td class="text-end" colspan="5"><b>Total:</b></td>
-                                                            <td><b id="total-mark">0</b></td>
+                                                            <td><input type="text" readonly class="form-control-plaintext" id="total_mark" name="total_mark" value=""></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -374,11 +376,11 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
 
 <script>
     $('#btnDownloadProjQR').click(function() {
-        window.open("http://localhost/StudFYP_Project/html/module5/DAO/DownloadService.php?projQr=<?php echo $projID ?>");
+        window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projQr=<?php echo $projID ?>");
     });
 
     $('#btnDownloadProjDoc').click(function() {
-        window.open("http://localhost/StudFYP_Project/html/module5/DAO/DownloadService.php?projDoc=<?php echo $projID ?>&submission=<?php echo $submission ?>");
+        window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projDoc=<?php echo $projID ?>&submission=<?php echo $submission ?>");
     });
 
     $('textarea').keyup(function() {
@@ -389,6 +391,34 @@ $evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
 
         current.text(characterCount);
     });
+
+    $(document).ready(function() {
+        calcTotalMark();
+
+        $('#evaluation_form').submit(function(e) {
+            e.preventDefault();
+            submit_evaluation_form($('#evaluation_form').serialize());
+        });
+    });
+
+    function calcActualMark(object) {
+        var id = $(object).attr('id');
+        var weightage = $("#w_" + id).html();
+        var actual_mark = weightage * object.value;
+        document.getElementById("am_" + id).innerHTML = actual_mark.toFixed(2);
+        calcTotalMark();
+    }
+
+    function calcTotalMark() {
+        var total = 0;
+        var num_rubric = <?php echo count($ev_rubric_array); ?>;
+        <?php
+        foreach ($ev_rubric_array as $ev_rubric) {
+            echo 'total = total + parseFloat(document.getElementById("am_' . $ev_rubric->getRubricId() . '").innerHTML);';
+        }
+        ?>
+        document.getElementById("total_mark").value = total.toFixed(2)
+    }
 </script>
 
 </html>

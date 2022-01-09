@@ -12,6 +12,10 @@ if (isset($_POST['search_evaluation_report']) && isset($_POST['lecturer_id'])) {
     printEvaluationReport($_POST['search_evaluation_report'], $_POST['lecturer_id']);
 }
 
+if(isset($_POST['er_array'])){
+    deleteEvaluationReport($_POST['er_array']);
+}
+
 function viewAssignedFyp($query, $lect_id)
 {
     $lds = new LecturerDataService();
@@ -43,6 +47,12 @@ function printProjLogbook($proj_id, $submission)
     echo $output;
 }
 
+function getEvaluationRubric($submission, $fyp_level){
+    $lds = new LecturerDataService();
+    $evaluation_rubric_array = $lds->getEvaluationRubric($submission, $fyp_level);
+    return $evaluation_rubric_array;
+}
+
 function printEvaluationRubric($submission, $fyp_level)
 {
     $lds = new LecturerDataService();
@@ -59,10 +69,10 @@ function printEvaluationRubric($submission, $fyp_level)
             "<tr>" .
             '<td class="small">' . $ev_rubric_model->getRubricNum() . "</td>" .
             '<td class="small">' . $ev_rubric_model->getRubricTitle() . "</td>" .
-            '<td class="small">' . $ev_rubric_model->getRubricDetails() . "</td>" .
-            '<td>' . $ev_rubric_model->getRubricWeightage() . "</td>" .
-            '<td> <select name="mark" class="form-select" id="'.$ev_rubric_model->getRubricId().'">' . $dropdownMark .'</select> </td>'.
-            '<td></td>'.
+            '<td class="small" >' . $ev_rubric_model->getRubricDetails() . "</td>" .
+            '<td id="w_' . $ev_rubric_model->getRubricId() . '">' . $ev_rubric_model->getRubricWeightage() . "</td>" .
+            '<td> <select name="mark" class="form-select" id="'.$ev_rubric_model->getRubricId().'" onChange="calcActualMark(this);">' . $dropdownMark .'</select> </td>'.
+            '<td id="am_' .$ev_rubric_model->getRubricId(). '"> 0.00 </td>'.
             "</tr>";
     }
 
@@ -77,17 +87,31 @@ function printEvaluationReport($query, $lect_id){
     foreach($ev_report_array as $ev_report){
         $output = $output . 
         '<tr>'.
-            '<td><input class="form-check-input" type="checkbox" value="" id="' . $ev_report->getResultID() . '"></td>'.
+            '<td><input type="checkbox" class="form-check-input" value="'. $ev_report->getResultID() .'" id="cb_' . $ev_report->getResultID() . '"></td>'.
             '<td>' . $ev_report->getProjID() . '</td>'.
             '<td>' . $ev_report->getStudID() . '</td>'.
             '<td>' . $ev_report->getProjTitle() . '</td>'.
             '<td>' . $ev_report->getSubmission() . '</td>'.
             '<td>' . $ev_report->getSubmission() . '</td>'.
             '<td>' . $ev_report->getMark() . '</td>'.
-            
+            '<td>' . $ev_report->getEvaluationDate() . '</td>'.
         '</tr>';
     }
 
     echo $output;
 }
+
+function getEvaluationReport($lect_id){
+    $lds = new LecturerDataService();
+    $ev_report_array = $lds->getEvaluationReport("", $lect_id);
+    return $ev_report_array;
+}
+
+function deleteEvaluationReport($er_id_array){
+    $lds = new LecturerDataService();
+    foreach($er_id_array as $er_id){
+        $lds->deleteEvaluationReport($er_id);
+    }
+}
+
 

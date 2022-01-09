@@ -1,12 +1,14 @@
 <?php
-require_once '../Controller/LecturerDataService.php';
+require_once '../DAO/LecturerDataService.php';
 
 if(isset($_GET['projQr'])){
     $lds = new LecturerDataService();
     $lds->getProjectQr($_GET['projQr']);
+    exit();
 }
 
 if(isset($_GET['projDoc']) && isset($_GET['submission'])){
     $lds = new LecturerDataService();
     $lds->getProjectDoc($_GET['projDoc'], $_GET['submission']);
+    exit();
 }

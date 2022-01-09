@@ -4,6 +4,7 @@ require_once '../ClassModel/AssignedEvaluationModel.php';
 require_once '../ClassModel/ProjectlogbookModel.php';
 require_once '../ClassModel/EvaluationRubricModel.php';
 require_once '../ClassModel/EvaluationReportModel.php';
+require_once '../ClassModel/EvaluationResultModel.php';
 
 class LecturerDataService
 {
@@ -16,12 +17,13 @@ class LecturerDataService
         //Create connection
         $connection = $db->getConnection();
 
-        $sql_query = "SELECT * FROM assigned_lecturer_evaluator " .
-            "INNER JOIN fyp_project " .
-            "ON assigned_lecturer_evaluator.stud_id = fyp_project.stud_id " .
-            "INNER JOIN lecturer ON lecturer.lect_id = assigned_lecturer_evaluator.lect_id " . 
-            "WHERE assigned_lecturer_evaluator.lect_id = '" . $id . "' AND " .
-            "fyp_project.stud_id LIKE '%" . $query . "%'";
+        $sql_query = "SELECT * FROM assigned_lecturer_evaluator 
+            INNER JOIN fyp_project
+            ON assigned_lecturer_evaluator.stud_id = fyp_project.stud_id 
+            INNER JOIN lecturer ON lecturer.lect_id = assigned_lecturer_evaluator.lect_id 
+            INNER JOIN student ON assigned_lecturer_evaluator.stud_id = student.stud_id 
+            WHERE assigned_lecturer_evaluator.lect_id = '$id' AND 
+            fyp_project.stud_id LIKE '%$query%'";
 
         //Run SQL Query
         $result = $connection->query($sql_query);
@@ -36,7 +38,7 @@ class LecturerDataService
                 $assigned_ev = new AssignedEvaluation();
                 $assigned_ev->setProjectID($row['fyp_proj_id']);
                 $assigned_ev->setStudentID($row['stud_id']);
-                $assigned_ev->setStudentName($row['lect_name']);
+                $assigned_ev->setStudentName($row['stud_name']);
                 $assigned_ev->setFypLevel($row['proj_fyp_stage']);
                 $assigned_ev->setFypProgress($row['fyp_proj_progress']);
                 $assigned_ev->setEvaluation1($row['document_submission_1']);
@@ -137,8 +139,6 @@ class LecturerDataService
 
         //Close connection
         $connection->close();
-
-        exit();
     }
 
     function getProjectDoc($project_id, $submission)
@@ -175,8 +175,6 @@ class LecturerDataService
 
         //Close connection
         $connection->close();
-
-        exit();
     }
 
     function getProjectLog($proj_id, $submission)
@@ -209,7 +207,7 @@ class LecturerDataService
                 $i++;
             }
         }
-        
+
         //Close connection
         $connection->close();
 
@@ -225,12 +223,12 @@ class LecturerDataService
 
         $sql_query = "SELECT * FROM evaluation_rubric " .
             "WHERE rubric_submission ='" . $submission . "' AND " .
-            "rubric_fyp = '" . $fyp_level . "' ".
+            "rubric_fyp = '" . $fyp_level . "' " .
             "ORDER BY `evaluation_rubric`.`rubric_num` ASC";
 
         //Run SQL Query
         $result = $connection->query($sql_query);
-        
+
         $evaluation_rubric_array = array();
 
         if ($result->num_rows == 0) {
@@ -252,31 +250,33 @@ class LecturerDataService
             }
         }
         //Close connection
-        $connection->close();  
+        $connection->close();
 
         return $evaluation_rubric_array;
-    }    
+    }
 
-    function getEvaluationReport($query, $id){
+    function getEvaluationReport($query, $id)
+    {
         $db = new Database();
 
         //Create connection
         $connection = $db->getConnection();
 
-        $sql_query = "SELECT evaluation_result.result_id, evaluation_result.fyp_proj_id, evaluation_result.assigned_lect_id, evaluation_result.project_title, 
-            evaluation_result.submission_level, evaluation_result.evaluation_feedback, evaluation_result.evaluation_mark, assigned_lecturer_evaluator.lect_id, fyp_project.proj_fyp_stage, assigned_lecturer_evaluator.stud_id 
+        $sql_query = "SELECT evaluation_result.result_id, evaluation_result.fyp_proj_id, evaluation_result.assigned_lect_id, fyp_project.proj_title, evaluation_result.submission_level, 
+            evaluation_result.evaluation_feedback, evaluation_result.evaluation_mark, assigned_lecturer_evaluator.lect_id, fyp_project.proj_fyp_stage, fyp_project.stud_id, evaluation_result.evaluation_date
             FROM evaluation_result INNER JOIN assigned_lecturer_evaluator 
             ON assigned_lecturer_evaluator.assigned_lect_id = evaluation_result.assigned_lect_id 
             INNER JOIN fyp_project 
             ON evaluation_result.fyp_proj_id = fyp_project.fyp_proj_id
             WHERE assigned_lecturer_evaluator.lect_id = '$id' AND 
             (evaluation_result.fyp_proj_id LIKE '%$query%' OR 
-            evaluation_result.project_title LIKE '%$query%' OR 
-            assigned_lecturer_evaluator.stud_id LIKE '%$query%')";
+            fyp_project.proj_title LIKE '%$query%' OR 
+            assigned_lecturer_evaluator.stud_id LIKE '%$query%')
+            ORDER BY evaluation_result.fyp_proj_id ASC";
 
         //Run SQL Query
         $result = $connection->query($sql_query);
-        
+
         $evaluation_report_array = array();
 
         if ($result->num_rows == 0) {
@@ -285,17 +285,103 @@ class LecturerDataService
             $i = 0;
             while ($row = $result->fetch_assoc()) {
                 $ev_report = new EvaluationReport();
-                $ev_report->EvaluationReport($row['result_id'], $row['fyp_proj_id'], $row['project_title'], $row['proj_fyp_stage'],
-                    $row['submission_level'], $row['evaluation_feedback'], $row['evaluation_mark'], $row['evaluation_date'], $row['stud_id']);
-                
+
+                $ev_report->setResultId($row['result_id']);
+                $ev_report->setProjID($row['fyp_proj_id']);
+                $ev_report->setFypStage($row['proj_fyp_stage']);
+                $ev_report->setSubmission($row['submission_level']);
+                $ev_report->setMark($row['evaluation_mark']);
+                $ev_report->setProjTitle($row['proj_title']);
+                $ev_report->setEvaluationDate($row['evaluation_date']);
+                $ev_report->setStudID($row['stud_id']);
+
                 //Add to array
                 $evaluation_report_array[$i] = $ev_report;
                 $i++;
             }
         }
         //Close connection
-        $connection->close();  
+        $connection->close();
 
         return $evaluation_report_array;
+    }
+
+    function getAssignedLectId($lect_id)
+    {
+
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "SELECT * FROM assigned_lecturer_evaluator WHERE lect_id = '$lect_id'";
+
+        //Run SQL Query
+        $result = $connection->query($sql_query);
+
+        if ($result->num_rows == 0) {
+            return null;
+        } else {
+            $row = $result->fetch_assoc();
+            return $row['assigned_lect_id'];
+        }
+    }
+
+    function insertEvaluationResult($ev_result, $ev_id, $stud_id)
+    {
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "SELECT * FROM evaluation_result " .
+            "ORDER BY `result_id` DESC";
+
+        //Run SQL Query
+        $result = $connection->query($sql_query);
+
+        if ($result->num_rows == 0) {
+            //Do nothing
+        } else {
+            $row = $result->fetch_assoc();
+            $last_id = $row['result_id'];
+
+            //check last id number
+            $rubric_num = preg_replace('/[^0-9]/', '', $last_id);
+
+            $new_rubric_num = (int)($rubric_num) + 1;
+            $new_rubric_id = "ER" . sprintf("%03d", $new_rubric_num);
+            $sql_query = "INSERT INTO evaluation_result 
+            VALUES ('" . $new_rubric_id . "', '" . $ev_result->getProjID() . "', '" . $ev_id . "', 
+            'NULL', '" . $ev_result->getSubmission() . "', '" . $ev_result->getProjectFeedback() . "', 
+            '" . $ev_result->getEvaluationMark() . "', '" . $ev_result->getEvaluationDate() . "')";
+
+            if ($connection->query($sql_query) === TRUE) {
+                echo "New record created successfully";
+            } else {
+                echo "Error: " . $sql_query . "<br>" . $connection->error;
+            }
+
+            $connection->close();
+        }
+    }
+
+
+    function deleteEvaluationReport($er_id)
+    {
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "DELETE FROM evaluation_result WHERE result_id = '$er_id'";
+
+        if ($connection->query($sql_query) === TRUE) {
+            echo "Evaluation report deleted successfully";
+        } else {
+            echo "Error deleting evaluation report: " . $connection->error;
+        }
+
+        $connection->close();
     }
 }

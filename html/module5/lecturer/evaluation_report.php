@@ -20,7 +20,6 @@ session_start();
     <!-- Bootstrap 5 JavaScript -->
     <script src="../../../bootstrap_v5.1/js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script type=”text/javascript” src=”https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js”></script>
 
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
@@ -29,13 +28,9 @@ session_start();
     <link rel="stylesheet" href="../../../css/main.css" />
     <link rel="stylesheet" href="../../../css/module_5.css" />
 
-    <!-- CDN Datatables API -->
-    <link rel=”stylesheet” href=”https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css” />
-
     <!-- JS -->
     <script src="../../../js/module_5.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
 </head>
 
 <body class="sb-nav-fixed">
@@ -216,7 +211,7 @@ session_start();
                         </a>
                         <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="view_assigned_fyp.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View assigned FYP
@@ -266,13 +261,56 @@ session_start();
 
                         <div class="col-sm-8">
 
-                            <button type="button" class="btn btn-outline-success btn-sm">
+                            <button type="button" name="btn_update" id="btn_update" class="btn btn-outline-success btn-sm">
                                 <i class="fa fa-plus me-2"></i>Update
                             </button>
 
-                            <button type="button" class="btn btn-outline-danger btn-sm" aria-label="Left Align">
+                            <button type="button" name="btn_delete" id="btn_delete" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal">
                                 <i class="fa fa-trash me-2" aria-hidden="true"></i>Delete
                             </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade " id="confirm_delete_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel">Confirm Delete </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div id="checked_report">
+
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" id="btn_confirm_delete" onclick="load_er_array(checkList());">Delete</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade " id="alert_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="alertModalLabel">Alert</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div id="alert_message" class="alert alert-danger" role="alert">
+
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" id="btn_ok_alert" data-bs-dismiss="modal">OK</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                         <!-- Search bar -->
@@ -304,6 +342,18 @@ session_start();
                                 <tbody id="result">
                                     <!-- Show datatable here -->
                                 </tbody>
+                                <tfoot>
+                                    <tr class="header-bg">
+                                        <th class="small" style="width: 4%;">List</th>
+                                        <th class="small" style="width: 8%;">Project ID</th>
+                                        <th class="small" style="width: 8%;">Student ID</th>
+                                        <th class="small" style="width: 15%;">Project Title</th>
+                                        <th class="small" style="width: 10%;">FYP Stage</th>
+                                        <th class="small" style="width: 10%;">Submission</th>
+                                        <th class="small" style="width: 10%;">Evaluation Mark</th>
+                                        <th class="small" style="width: 10%;">Evaluation Date</th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>
@@ -333,6 +383,47 @@ session_start();
                 load_evaluation_report("", lect_id);
             }
         });
+
+        $('#btn_confirm_delete').click(function() {
+            pass_er_array(checkedList());
+        });
+    });
+
+    function checkedList() {
+        checkList = [];
+        <?php
+        $ev_report_array = getEvaluationReport($_SESSION['lect_id']);
+        foreach ($ev_report_array as $ev_report) {
+            echo
+            'if(document.getElementById("cb_' . $ev_report->getResultID() . '").checked == true){
+                checkList.push("' . $ev_report->getResultID() . '");
+            }';
+        }
+        ?>
+        return checkList;
+    }
+
+    $('#btn_delete').click(function() {
+
+        checkedArrays = checkedList();
+
+        if (checkedArrays.length == 0) {
+            var output = "No row selected";
+            document.getElementById("alert_message").innerHTML = output;
+            $('#alert_modal').modal('show');
+        } else {
+            var output = "Are you sure to DELETE this evaluation report? <ul>";
+            for (var i = 0; i < checkedArrays.length; i++) {
+                output = output + "<li>" + checkedArrays[i] + "</li>";
+            }
+            output = output + "</ul>"
+            document.getElementById("checked_report").innerHTML = output;
+            $('#confirm_delete_modal').modal('show');
+        }
+    });
+
+    $('#btn_update').click(function() {
+
     });
 </script>
 

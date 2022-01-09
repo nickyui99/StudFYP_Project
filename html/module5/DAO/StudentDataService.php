@@ -145,7 +145,12 @@ class StudentDataService
             //Retrieve data
             while ($row = $result->fetch_assoc()) {
                 $evaluation_result = new EvaluationResult();
-                $evaluation_result->EvaluationResult($row['submission_level'], $row['assigned_lect_id'], $row['lect_name'], $row['proj_title'], $row['evaluation_feedback'], $row['evaluation_mark']);
+                $evaluation_result->setSubmission($row['submission_level']);
+                $evaluation_result ->setEvaluatorID($row['assigned_lect_id']);
+                $evaluation_result->setEvaluatorName($row['lect_name']);
+                $evaluation_result->setProjectTitle($row['proj_title']);
+                $evaluation_result ->setProjectFeedback($row['evaluation_feedback']);
+                $evaluation_result->setEvaluationMark($row['evaluation_mark']); 
 
                 //Add to array
                 $evaluationResultArray[$i] = $evaluation_result;
@@ -185,8 +190,12 @@ class StudentDataService
             //Retrieve data
             while ($row = $result->fetch_assoc()) {
                 $evaluation_result = new EvaluationResult();
-                $evaluation_result->EvaluationResult($row['submission_level'], $row['assigned_lect_id'], $row['lect_name'], $row['proj_title'], $row['evaluation_feedback'], $row['evaluation_mark']);
-
+                $evaluation_result->setSubmission($row['submission_level']);
+                $evaluation_result ->setEvaluatorID($row['assigned_lect_id']);
+                $evaluation_result->setEvaluatorName($row['lect_name']);
+                $evaluation_result->setProjectTitle($row['proj_title']);
+                $evaluation_result ->setProjectFeedback($row['evaluation_feedback']);
+                $evaluation_result->setEvaluationMark($row['evaluation_mark']); 
                 //Add to array
                 $evaluationResultArray[$i] = $evaluation_result;
                 $i++;

@@ -61,12 +61,12 @@ class EvaluationReport{
         $this->submission = $submission;
     }
 
-    function getEvaluationDate(){
-        return $this->evaluationDate;
-    }
-
     function setEvaluationDate($evaluation_date){
         $this->evaluation_date = $evaluation_date;
+    }
+
+    function getEvaluationDate(){
+        return $this->evaluation_date;
     }
 
     function getMark(){
