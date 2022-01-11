@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- This html template is only for StudFYP lecturer only -->
-
 <?php
-include '../Controller/LecturerHandler.php';
-session_start();
+if (isset($_GET['result_id']) && isset($_GET['lect_id'])) {
+    echo 'ok';
+}
 ?>
 
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>View Assigned FYP</title>
+    <title>Evaluate FYP</title>
 
     <!-- Bootstrap 5 CSS -->
     <link rel="stylesheet" href="../../../bootstrap_v5.1/css/styles.css" />
@@ -31,6 +30,7 @@ session_start();
     <!-- JS -->
     <script src="../../../js/module_5.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
 </head>
 
 <body class="sb-nav-fixed">
@@ -211,14 +211,14 @@ session_start();
                         </a>
                         <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link" href="view_assigned_fyp.php">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>View assigned FYP
-                                </a>
                                 <a class="nav-link text-light active" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
+                                    </div>View assigned FYP
+                                </a>
+                                <a class="nav-link" href="evaluation_report.php">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Evaluation report
                                 </a>
                             </nav>
@@ -235,9 +235,7 @@ session_start();
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    <?php
-                    echo $_SESSION['username'];
-                    ?>
+                    username
                 </div>
             </nav>
         </div>
@@ -246,115 +244,110 @@ session_start();
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Evaluation Report</h1>
+                    <h1 class="mt-4">Evaluate FYP - Submission <?php echo $submission ?></h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">
                             FYP evaluation
                         </li>
-                        <li class="breadcrumb-item active">Evaluation report</li>
+                        <li class="breadcrumb-item active">Assigned FYP for Evaluation</li>
+                        <li class="breadcrumb-item active">Evaluate FYP</li>
                     </ol>
-                    <div class="d-flex justify-content-center mb-2">
-                        <img src="https://chartio.com/assets/25c0ab/tutorials/charts/pie-charts/8f2915ab9024902155c5d27d430831be813de071853c69d778102722a4d0efbf/pie-chart-example-1.png" alt="">
-                    </div>
-                    <div class="row mb-2">
-                        <p class="col-sm-1">Actions: </p>
 
-                        <div class="col-sm-8">
-
-                            <button type="button" name="btn_update" id="btn_update" class="btn btn-outline-success btn-sm">
-                                <i class="fa fa-plus me-2"></i>Update
-                            </button>
-
-                            <button type="button" name="btn_delete" id="btn_delete" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal">
-                                <i class="fa fa-trash me-2" aria-hidden="true"></i>Delete
-                            </button>
-
-                            <!-- Delete Modal -->
-                            <div class="modal fade " id="confirm_delete_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="deleteModalLabel">Confirm Delete </h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div id="checked_report">
-
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" id="btn_confirm_delete" onclick="load_er_array(checkList());">Delete</button>
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="modal fade " id="alert_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="alertModalLabel">Alert</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                        </div>
-                                        <div class="modal-body">
-
-                                            <div id="alert_message" class="alert alert-danger" role="alert">
-
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" id="btn_ok_alert" data-bs-dismiss="modal">OK</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Search bar -->
-                        <div class="form-outline col-sm-3">
-                            <div class="form-group has-search">
-                                <span class="fa fa-search form-control-feedback"></span>
-                                <input type="text" name="search" id="search" class="form-control" placeholder="Search Student ID or Name">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mb-2">
-                        <!-- Evaluation panel counter -->
-                        <p id="row_counter" class="col-sm-3 my-auto text-secondary">Total 0 Evaluation Report</p>
-                        <div class="table-responsive">
-                            <table id="myTable" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr class="header-bg">
-                                        <th class="small" style="width: 4%;">List</th>
-                                        <th class="small" style="width: 8%;">Project ID</th>
-                                        <th class="small" style="width: 8%;">Student ID</th>
-                                        <th class="small" style="width: 15%;">Project Title</th>
-                                        <th class="small" style="width: 10%;">FYP Stage</th>
-                                        <th class="small" style="width: 10%;">Submission</th>
-                                        <th class="small" style="width: 10%;">Evaluation Mark</th>
-                                        <th class="small" style="width: 10%;">Evaluation Date</th>
+                    <form id="evaluation_form">
+                        <input type="hidden" id="submission" name="submission" value="<?php echo $submission ?>">
+                        <div class="form-group">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr class="">
+                                        <td class="col-sm-2">Project ID: </td>
+                                        <td class="col-sm-7"><input type="text" class="form-control" id="inputProjId" name="inputProjId" value="<?php echo $projID ?>" readonly></td>
+                                        <td class="col-sm-3" rowspan="4">
+                                            <div class="card text-center">
+                                                <div class="card-body">
+                                                    <h4 class="mb1">Project QR Code</h4>
+                                                    <img name="QR_code" src="data:image/jpeg;base64, <?php echo $evaluateDetails->getProjQR(); ?>" alt="Project QR Code" class="img-container mb-1">
+                                                    <button type="button" id="btnDownloadProjQR" class="btn btn-outline-dark"><i class="fa fa-download me-3" aria-hidden="true"></i>Download QR Code</button>
+                                                </div>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody id="result">
-                                    <!-- Show datatable here -->
+                                    <tr>
+                                        <td>Student ID: </td>
+                                        <td><input type="text" class="form-control" id="inputStudId" name="inputStudId" value="<?php echo $studID ?>" readonly></td>
+                                    </tr>
+                                    <tr>
+                                        <td>FYP Stage: </td>
+                                        <td><input type="text" class="form-control" id="inputFypStage" name="inputFypStage" value="<?php echo $evaluateDetails->getFypLevel(); ?>" readonly></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Project title:</td>
+                                        <td><input type="text" class="form-control" id="inputProjTitle" name="inputProjTitle" value="<?php echo $evaluateDetails->getProjTitle(); ?>" readonly></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Project Logbook: </td>
+                                        <td>
+                                            <table class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr class="header-bg">
+                                                        <th class="col-sm-3">Date</th>
+                                                        <th class="col-sm-9">Activity</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- Project logbook result -->
+                                                    <?php printProjLogbook($projID, $submission) ?>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Project Document: </td>
+                                        <td><button type="button" id="btnDownloadProjDoc" class="btn btn-outline-dark"><i class="fa fa-download me-3" aria-hidden="true"></i>Download</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Evaluation Rubric: </td>
+                                        <td>
+                                            <div class="table-responsive">
+                                                <table id="rubrics" class="table table-bordered border-dark table-sm">
+                                                    <thead class="">
+                                                        <tr class="header-bg">
+                                                            <th class="small" style="width: 10%;">Num</th>
+                                                            <th class="small" style="width: 20%;">Rubric Title</th>
+                                                            <th class="small" style="width: 25%;">Rubric Details</th>
+                                                            <th class="small" style="width: 15%;">Weightage</th>
+                                                            <th class="small" style="width: 15%;">Mark</th>
+                                                            <th class="small" style="width: 15%;">Actual Mark</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="rubric_result">
+                                                        <!-- Evaluation Rubric Result -->
+                                                        <?php printEvaluationRubric($submission, $evaluateDetails->getFypLevel()); ?>
+                                                        <tr class="table-info border-dark">
+                                                            <td class="text-end" colspan="5"><b>Total:</b></td>
+                                                            <td><input type="text" readonly class="form-control-plaintext" id="total_mark" name="total_mark" value=""></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Project Feedback: </td>
+                                        <td>
+                                            <textarea id="inputProjFeedback" name="inputProjFeedback" class="form-control" cols="30" rows="5" maxLength="300" required></textarea>
+                                            <div class="float-end" id="the-count">
+                                                <span id="current">0</span>
+                                                <span id="maximum">/ 300</span>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </tbody>
-                                <tfoot>
-                                    <tr class="header-bg">
-                                        <th class="small" style="width: 4%;">List</th>
-                                        <th class="small" style="width: 8%;">Project ID</th>
-                                        <th class="small" style="width: 8%;">Student ID</th>
-                                        <th class="small" style="width: 15%;">Project Title</th>
-                                        <th class="small" style="width: 10%;">FYP Stage</th>
-                                        <th class="small" style="width: 10%;">Submission</th>
-                                        <th class="small" style="width: 10%;">Evaluation Mark</th>
-                                        <th class="small" style="width: 10%;">Evaluation Date</th>
-                                    </tr>
-                                </tfoot>
                             </table>
+                            <div class="d-flex justify-content-center">
+                                <input type="submit" class="btn btn-outline-dark m-3" name="submit" id="submit" value="Submit">
+                                <input type="reset" class="btn btn-outline-dark m-3" name="reset" id="reset" value="Reset">
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
@@ -367,62 +360,3 @@ session_start();
         </div>
     </div>
 </body>
-
-<script>
-    $(document).ready(function() {
-        var lect_id = "<?php echo $_SESSION['lect_id']; ?>";
-        load_evaluation_report("", lect_id);
-
-        $('#search').keyup(function() {
-            var search = $(this).val();
-            if (search != '') {
-                load_evaluation_report(search, lect_id);
-            } else {
-                load_evaluation_report("", lect_id);
-            }
-        });
-
-        $('#btn_confirm_delete').click(function() {
-            pass_er_array(checkedList());
-        });
-    });
-
-    function checkedList() {
-        checkList = [];
-        <?php
-        $ev_report_array = getEvaluationReport($_SESSION['lect_id']);
-        foreach ($ev_report_array as $ev_report) {
-            echo
-            'if(document.getElementById("cb_' . $ev_report->getResultID() . '").checked == true){
-                checkList.push("' . $ev_report->getResultID() . '");
-            }';
-        }
-        ?>
-        return checkList;
-    }
-
-    $('#btn_delete').click(function() {
-
-        checkedArrays = checkedList();
-
-        if (checkedArrays.length == 0) {
-            var output = "No row selected";
-            document.getElementById("alert_message").innerHTML = output;
-            $('#alert_modal').modal('show');
-        } else {
-            var output = "Are you sure to DELETE this evaluation report? <ul>";
-            for (var i = 0; i < checkedArrays.length; i++) {
-                output = output + "<li>" + checkedArrays[i] + "</li>";
-            }
-            output = output + "</ul>"
-            document.getElementById("checked_report").innerHTML = output;
-            $('#confirm_delete_modal').modal('show');
-        }
-    });
-
-    $('#btn_update').click(function() {
-        $('#confirm_update_modal').modal('show');
-    });
-</script>
-
-</html>

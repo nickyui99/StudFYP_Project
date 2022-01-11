@@ -1,5 +1,6 @@
 <?php
-/**UPDATED 7/1/2022 */
+
+/**UPDATED 11/1/2022 */
 // to make a connection with database
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
 
@@ -326,8 +327,8 @@ if ($result) {
 }
 
 // Insert data into evaluation_result table
-$query = "insert into evaluation_result values('ER001', 'FP002', 'EL001', NULL, '1', 'Good','24', '2021-12-2'),
-                ('ER002', 'FP002', NULL,'EI002', '1', 'Please check your project plan', '23', '2022-1-3')"
+$query = "insert into evaluation_result values('ER001', 'FP002', 'EL001', NULL, '1', 'Good', '2021-12-2'),
+                ('ER002', 'FP002', NULL,'EI002', '1', 'Please check your project plan', '2022-1-3')"
     or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
@@ -481,6 +482,20 @@ if ($result) {
     echo ("project_logbook inserted <br>");
 } else {
     die("project_logbook data insert failed <br>");
+}
+
+
+// Insert data into ev_mark_details table
+$query = "insert into ev_mark_details values('1', 'ER001', 'RU001', '2'),
+                ('2', 'ER001', 'RU002', '3')"
+    or die(mysqli_connect_error());
+
+$result = mysqli_query($link, $query);
+
+if ($result) {
+    echo ("ev_mark_details inserted <br>");
+} else {
+    die("ev_mark_details data insert failed <br>");
 }
 
 //And finally we close the connection to the MySQL server
