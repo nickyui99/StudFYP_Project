@@ -23,16 +23,23 @@ function displayFyp1Result($student_id){
         $counter = 0;
         $total_mark = 0;
         foreach ($evaluationResultArray as $result){
+            $ev_mark_array = $result->getEvMarkDetails();
+            $sub_total_mark = 0;
+
+            foreach($ev_mark_array as $ev_mark_details){
+                $sub_total_mark += $ev_mark_details->getActualMark();
+            }
+
             $output = $output . 
                 "<tr>" . 
                 "<td>". $result->getSubmission() . "</td>" . 
                 "<td>". $result->getEvaluatorID() . "</td>" . 
                 "<td>". $result->getEvaluatorName() ."</td>" .
                 "<td>". $result->getProjectFeedback() ."</td>" .
-                '<td style="text-align: right;">'. $result->getEvaluationMark() ."</td>" .
+                '<td style="text-align: right;">'. $sub_total_mark ."</td>" .
                 "</tr>";
             $counter++;
-            $total_mark = $total_mark + $result->getEvaluationMark();
+            $total_mark = $total_mark + $sub_total_mark;
         }
         if($counter<3){
             for($i=$counter+1; $i<=3; $i++){
@@ -60,25 +67,32 @@ function displayFyp2Result($student_id){
         $counter = 0;
         $total_mark = 0;
         foreach ($evaluationResultArray as $result){
+            $ev_mark_array = $result->getEvMarkDetails();
+            $sub_total_mark = 0;
+            
+            foreach($ev_mark_array as $ev_mark_details){
+                $sub_total_mark += $ev_mark_details->getActualMark();
+            }
+
             $output = $output . 
                 "<tr>" . 
                 "<td>". $result->getSubmission() . "</td>" . 
                 "<td>". $result->getEvaluatorID() . "</td>" . 
                 "<td>". $result->getEvaluatorName() ."</td>" .
                 "<td>". $result->getProjectFeedback() ."</td>" .
-                '<td style="text-align: right;">'. $result->getEvaluationMark() ."</td>" .
+                '<td style="text-align: right;">'. $sub_total_mark ."</td>" .
                 "</tr>";
             $counter++;
-            $total_mark = $total_mark + $result->getEvaluationMark();
-            if($counter<3){
-                for($i=$counter+1; $i<=3; $i++){
-                    $output = $output . '<tr> <td>' . $i . '</td>  <td> - </td> <td> - </td> <td> - </td> <td style="text-align: right;"> - </td> </tr>';
-                }
-            }
-            $output = $output . '<tr><td style="text-align: right; font-weight: bold; padding: 10px;" colspan="4">Total: </td> <td style="text-align: right;"> '. $total_mark.' </td></tr>';
+            $total_mark = $total_mark + $sub_total_mark;
         }
+        if($counter<3){
+            for($i=$counter+1; $i<=3; $i++){
+                $output = $output . '<tr> <td>' . $i . '</td>  <td> - </td> <td> - </td> <td> - </td> <td style="text-align: right;"> - </td> </tr>';
+            }
+        }
+        $output = $output . '<tr><td style="text-align: right; font-weight: bold; padding: 10px;" colspan="4">Total: </td> <td style="text-align: right;"> '. $total_mark.' </td></tr>';
     }
-
+            
     echo $output;
 }
 
