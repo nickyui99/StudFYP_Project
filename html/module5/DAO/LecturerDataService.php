@@ -363,9 +363,13 @@ class LecturerDataService
         //Run SQL Query
         $result = $connection->query($sql_query);
 
+        $new_result_id = null;
+
         if ($result->num_rows == 0) {
-            //Do nothing
+            //If no result in the database set ID from ER001
+            $new_result_id = "ER001";
         } else {
+            //If there is id in it check the last id in the record and increment it by one
             $row = $result->fetch_assoc();
             $last_id = $row['result_id'];
 
@@ -374,30 +378,31 @@ class LecturerDataService
 
             $new_result_num = (int)($result_num) + 1;
             $new_result_id = "ER" . sprintf("%03d", $new_result_num);
-            $sql_query = "INSERT INTO evaluation_result 
-            VALUES ('" . $new_result_id . "', '" . $ev_result->getProjID() . "', '" . $ev_id . "', 
-            'NULL', '" . $ev_result->getSubmission() . "', '" . $ev_result->getProjectFeedback() . "', 
-            '" . $ev_result->getEvaluationDate() . "')";
-
-            if ($connection->query($sql_query) === TRUE) {
-                $ev_mark_arrray = $ev_result->getEvMarkDetails();
-                echo "Data inserted <br>";
-
-                foreach ($ev_mark_arrray as $ev_mark) {
-                    $sql_query = "INSERT INTO ev_mark_details
-                    VALUES ('0', '$new_result_id','" . $ev_mark->getEvaluationRubricId() . "', '" . $ev_mark->getActualMark() . "')";
-                    if ($connection->query($sql_query) === TRUE) {
-                        echo $ev_mark->getEvaluationRubricId() . " mark inserted<br>";
-                    } else {
-                        echo $ev_mark->getEvaluationRubricId() . " insert failed";
-                    }
-                }
-            } else {
-                echo "Error: " . $sql_query . "<br>" . $connection->error;
-            }
-
-            $connection->close();
         }
+
+        $sql_query = "INSERT INTO evaluation_result 
+        VALUES ('" . $new_result_id . "', '" . $ev_result->getProjID() . "', '" . $ev_id . "', 
+        'NULL', '" . $ev_result->getSubmission() . "', '" . $ev_result->getProjectFeedback() . "', 
+        '" . $ev_result->getEvaluationDate() . "')";
+
+        if ($connection->query($sql_query) === TRUE) {
+            $ev_mark_arrray = $ev_result->getEvMarkDetails();
+            echo "Data inserted <br>";
+
+            foreach ($ev_mark_arrray as $ev_mark) {
+                $sql_query = "INSERT INTO ev_mark_details
+                VALUES ('0', '$new_result_id','" . $ev_mark->getEvaluationRubricId() . "', '" . $ev_mark->getActualMark() . "')";
+                if ($connection->query($sql_query) === TRUE) {
+                    echo $ev_mark->getEvaluationRubricId() . " mark inserted<br>";
+                } else {
+                    echo $ev_mark->getEvaluationRubricId() . " insert failed";
+                }
+            }
+        } else {
+            echo "Error: " . $sql_query . "<br>" . $connection->error;
+        }
+
+        $connection->close();
     }
 
     function deleteEvaluationReport($er_id)
