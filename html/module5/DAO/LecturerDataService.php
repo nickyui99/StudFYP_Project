@@ -298,6 +298,26 @@ class LecturerDataService
                 $evaluation_report_array[$i] = $ev_report;
                 $i++;
             }
+
+            foreach($evaluation_report_array as $ev_report) {
+
+                //get total marks
+                $sql_query = "SELECT actual_mark FROM ev_mark_details WHERE result_id = '" . $ev_report->getResultId() . "'";
+
+                //Run SQL Query
+                $result = $connection->query($sql_query);
+
+                if ($result->num_rows == 0) {
+                    $ev_report->setMark(0);
+                } else {
+                    $total_actual_mark = 0;
+                    while ($row = $result->fetch_assoc()) {
+                        $total_actual_mark = $total_actual_mark + $row['actual_mark'];
+                    }
+
+                    $ev_report->setMark($total_actual_mark);
+                }
+            }
         }
         //Close connection
         $connection->close();
@@ -346,17 +366,28 @@ class LecturerDataService
             $last_id = $row['result_id'];
 
             //check last id number
-            $rubric_num = preg_replace('/[^0-9]/', '', $last_id);
+            $result_num = preg_replace('/[^0-9]/', '', $last_id);
 
-            $new_rubric_num = (int)($rubric_num) + 1;
-            $new_rubric_id = "ER" . sprintf("%03d", $new_rubric_num);
+            $new_result_num = (int)($result_num) + 1;
+            $new_result_id = "ER" . sprintf("%03d", $new_result_num);
             $sql_query = "INSERT INTO evaluation_result 
-            VALUES ('" . $new_rubric_id . "', '" . $ev_result->getProjID() . "', '" . $ev_id . "', 
+            VALUES ('" . $new_result_id . "', '" . $ev_result->getProjID() . "', '" . $ev_id . "', 
             'NULL', '" . $ev_result->getSubmission() . "', '" . $ev_result->getProjectFeedback() . "', 
-            '" . $ev_result->getEvaluationMark() . "', '" . $ev_result->getEvaluationDate() . "')";
+            '" . $ev_result->getEvaluationDate() . "')";
 
             if ($connection->query($sql_query) === TRUE) {
-                echo "New record created successfully";
+                $ev_mark_arrray = $ev_result->getEvMarkDetails();
+                echo "Data inserted <br>";
+
+                foreach ($ev_mark_arrray as $ev_mark) {
+                    $sql_query = "INSERT INTO ev_mark_details
+                    VALUES ('0', '$new_result_id','" . $ev_mark->getEvaluationRubricId() . "', '" . $ev_mark->getActualMark() . "')";
+                    if ($connection->query($sql_query) === TRUE) {
+                        echo $ev_mark->getEvaluationRubricId() . " mark inserted<br>";
+                    } else {
+                        echo $ev_mark->getEvaluationRubricId() . " insert failed";
+                    }
+                }
             } else {
                 echo "Error: " . $sql_query . "<br>" . $connection->error;
             }
@@ -364,7 +395,6 @@ class LecturerDataService
             $connection->close();
         }
     }
-
 
     function deleteEvaluationReport($er_id)
     {

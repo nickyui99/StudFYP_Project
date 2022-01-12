@@ -37,13 +37,18 @@ function printProjLogbook($proj_id, $submission)
     $lds = new LecturerDataService();
     $project_log_array = $lds->getProjectLog($proj_id, $submission);
     $output = "";
-    foreach($project_log_array as $project_log){
+    if(count($project_log_array)==0){
+        $output = "<tr><td>No records</td><td>No records</td></tr>";
+    }else{
+        foreach($project_log_array as $project_log){
         $output = $output . 
             "<tr>" . 
                 "<td>". $project_log->getDate() ."</td>" . 
                 "<td>". $project_log->getActivity() ."</td>" . 
             "</tr>";
+        }
     }
+    
     echo $output;
 }
 
@@ -72,7 +77,7 @@ function printEvaluationRubric($submission, $fyp_level)
             '<td class="small" >' . $ev_rubric_model->getRubricDetails() . "</td>" .
             '<td id="w_' . $ev_rubric_model->getRubricId() . '">' . $ev_rubric_model->getRubricWeightage() . "</td>" .
             '<td> <select name="mark" class="form-select" id="'.$ev_rubric_model->getRubricId().'" onChange="calcActualMark(this);">' . $dropdownMark .'</select> </td>'.
-            '<td id="am_' .$ev_rubric_model->getRubricId(). '"> 0.00 </td>'.
+            '<td><input type="text" readonly class="form-control" id="am_' .$ev_rubric_model->getRubricId(). '" name="am_' .$ev_rubric_model->getRubricId(). '" value="0.00"></td>'.
             "</tr>";
     }
 
@@ -91,7 +96,7 @@ function printEvaluationReport($query, $lect_id){
             '<td>' . $ev_report->getProjID() . '</td>'.
             '<td>' . $ev_report->getStudID() . '</td>'.
             '<td>' . $ev_report->getProjTitle() . '</td>'.
-            '<td>' . $ev_report->getSubmission() . '</td>'.
+            '<td>' . $ev_report->getFypStage() . '</td>'.
             '<td>' . $ev_report->getSubmission() . '</td>'.
             '<td>' . $ev_report->getMark() . '</td>'.
             '<td>' . $ev_report->getEvaluationDate() . '</td>'.

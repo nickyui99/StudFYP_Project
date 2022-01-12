@@ -27,18 +27,6 @@ function load_assigned_evaluator(query, id) {
   });
 }
 
-function submit_evaluation_form(form){
-  $.ajax({
-    url: 'http://localhost/StudFYP_Project/html/module5/Controller/EvaluateFormHandler.php',
-    type: 'post',
-    data: form,
-    success: function() {
-        // Whatever you want to do after the form is successfully submitted
-        alert("data inserted")
-    }
-});
-}
-
 function load_evaluation_report(query, id) {
   $.ajax({
     method: "POST",

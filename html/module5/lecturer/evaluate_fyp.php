@@ -6,6 +6,8 @@
 <?php
 include '../Controller/LecturerHandler.php';
 
+session_start();
+
 $projID = "invalid";
 $studID = "invalid";
 $submission = "invalid";
@@ -248,7 +250,9 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    username
+                    <?php 
+                        echo $_SESSION['username'];
+                    ?>
                 </div>
             </nav>
         </div>
@@ -266,7 +270,7 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
                         <li class="breadcrumb-item active">Evaluate FYP</li>
                     </ol>
 
-                    <form id="evaluation_form">
+                    <form id="evaluation_form" action="../Controller/EvaluateFormHandler.php" method="POST">
                         <input type="hidden" id="submission" name="submission" value="<?php echo $submission ?>">
                         <div class="form-group">
                             <table class="table table-borderless">
@@ -334,7 +338,7 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
                                                     <tbody id="rubric_result">
                                                         <!-- Evaluation Rubric Result -->
                                                         <?php printEvaluationRubric($submission, $evaluateDetails->getFypLevel()); ?>
-                                                        <tr class="table-info border-dark">
+                                                        <tr class="header-bg border-dark">
                                                             <td class="text-end" colspan="5"><b>Total:</b></td>
                                                             <td><input type="text" readonly class="form-control-plaintext" id="total_mark" name="total_mark" value=""></td>
                                                         </tr>
@@ -394,18 +398,13 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
 
     $(document).ready(function() {
         calcTotalMark();
-
-        $('#evaluation_form').submit(function(e) {
-            e.preventDefault();
-            submit_evaluation_form($('#evaluation_form').serialize());
-        });
     });
 
     function calcActualMark(object) {
         var id = $(object).attr('id');
         var weightage = $("#w_" + id).html();
         var actual_mark = weightage * object.value;
-        document.getElementById("am_" + id).innerHTML = actual_mark.toFixed(2);
+        document.getElementById("am_" + id).value = actual_mark.toFixed(2);
         calcTotalMark();
     }
 
@@ -414,7 +413,7 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
         var num_rubric = <?php echo count($ev_rubric_array); ?>;
         <?php
         foreach ($ev_rubric_array as $ev_rubric) {
-            echo 'total = total + parseFloat(document.getElementById("am_' . $ev_rubric->getRubricId() . '").innerHTML);';
+            echo 'total = total + parseFloat(document.getElementById("am_' . $ev_rubric->getRubricId() . '").value);';
         }
         ?>
         document.getElementById("total_mark").value = total.toFixed(2)

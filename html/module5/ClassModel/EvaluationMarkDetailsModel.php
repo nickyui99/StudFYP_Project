@@ -23,8 +23,8 @@ class EvaluationMarkDetails{
         return $this->evaluation_rubric_id;
     }
 
-    function setEvaluationRubricId($evaluation_mark_id){
-        $this->evaluation_mark_id = $evaluation_mark_id;
+    function setEvaluationRubricId($evaluation_rubric_id){
+        $this->evaluation_rubric_id = $evaluation_rubric_id;
     }
 
     function getActualMark(){
