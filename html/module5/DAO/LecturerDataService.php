@@ -50,13 +50,28 @@ class LecturerDataService
                 $i++;
             }
 
-            foreach($assigned_ev_array as $assigned_ev){
+            //Check if the submission already done, if done return true, else return false
+            $evaluation_status = array();
+            foreach ($assigned_ev_array as $assigned_ev) {
+                for ($i = 1; $i <= 3; $i++) {
+                    $sql_query = "SELECT * FROM evaluation_result 
+                    INNER JOIN fyp_project ON evaluation_result.fyp_proj_id = fyp_project.fyp_proj_id 
+                    WHERE fyp_project.fyp_proj_id = '" . $assigned_ev->getProjectId() . "' AND evaluation_result.submission_level = '$i';";
+
+                    $result = $connection->query($sql_query);
+                    if ($result->num_rows > 0) {
+                        $evaluation_status[$i] = true;
+                    } else {
+                        $evaluation_status[$i] = false;
+                    }
+                }
                 
+                $assigned_ev->setEvaluationStatus($evaluation_status);
             }
 
             //Close connection
             $connection->close();
-    
+
             return $assigned_ev_array;
         }
     }
@@ -288,7 +303,7 @@ class LecturerDataService
                 $i++;
             }
 
-            foreach($evaluation_report_array as $ev_report) {
+            foreach ($evaluation_report_array as $ev_report) {
 
                 //get total marks
                 $sql_query = "SELECT actual_mark FROM ev_mark_details WHERE result_id = '" . $ev_report->getResultId() . "'";
