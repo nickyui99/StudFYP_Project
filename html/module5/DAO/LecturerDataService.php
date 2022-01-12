@@ -263,7 +263,7 @@ class LecturerDataService
         $connection = $db->getConnection();
 
         $sql_query = "SELECT evaluation_result.result_id, evaluation_result.fyp_proj_id, evaluation_result.assigned_lect_id, fyp_project.proj_title, evaluation_result.submission_level, 
-            evaluation_result.evaluation_feedback, evaluation_result.evaluation_mark, assigned_lecturer_evaluator.lect_id, fyp_project.proj_fyp_stage, fyp_project.stud_id, evaluation_result.evaluation_date
+            evaluation_result.evaluation_feedback, assigned_lecturer_evaluator.lect_id, fyp_project.proj_fyp_stage, fyp_project.stud_id, evaluation_result.evaluation_date
             FROM evaluation_result INNER JOIN assigned_lecturer_evaluator 
             ON assigned_lecturer_evaluator.assigned_lect_id = evaluation_result.assigned_lect_id 
             INNER JOIN fyp_project 
@@ -290,7 +290,6 @@ class LecturerDataService
                 $ev_report->setProjID($row['fyp_proj_id']);
                 $ev_report->setFypStage($row['proj_fyp_stage']);
                 $ev_report->setSubmission($row['submission_level']);
-                $ev_report->setMark($row['evaluation_mark']);
                 $ev_report->setProjTitle($row['proj_title']);
                 $ev_report->setEvaluationDate($row['evaluation_date']);
                 $ev_report->setStudID($row['stud_id']);
