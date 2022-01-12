@@ -19,8 +19,25 @@ if(isset($_POST['er_array'])){
 function viewAssignedFyp($query, $lect_id)
 {
     $lds = new LecturerDataService();
-    $output = $lds->getAssignedEvaluation($query, $lect_id);
-    echo $output;
+    $assigned_ev_array = $lds->getAssignedEvaluation($query, $lect_id);
+     //Set output
+     $output = "";
+     foreach ($assigned_ev_array as $assigned_ev) {
+         $output = $output . '<tr>' .
+             '<td>' . $assigned_ev->getProjectID() . '</td>' .
+             '<td>' . $assigned_ev->getStudentID() . '</td>' .
+             '<td>' . $assigned_ev->getStudentName() . '</td>' .
+             '<td>' . $assigned_ev->getFypLevel() . '</td>' .
+             '<td>' . $assigned_ev->getFypProgress() . '</td>' .
+             '<td>
+                <a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=1" class="btn btn-light btn-outline-dark btn-sm" role="button" aria-disabled="true">1</a>
+                <a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=2" class="btn btn-light btn-outline-dark btn-sm" role="button" aria-disabled="true">2</a> 
+                <a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=3" class="btn btn-light btn-outline-dark btn-sm" role="button" aria-disabled="true">3</a>
+             </td>
+             </tr>';
+     }
+
+     echo $output;
 }
 
 function getEvaluationDetail($proj_id, $stud_id, $submission)
@@ -98,7 +115,7 @@ function printEvaluationReport($query, $lect_id){
             '<td>' . $ev_report->getProjTitle() . '</td>'.
             '<td>' . $ev_report->getFypStage() . '</td>'.
             '<td>' . $ev_report->getSubmission() . '</td>'.
-            '<td>' . $ev_report->getMark() . '</td>'.
+            '<td>' . number_format($ev_report->getMark(), 2) . '</td>'.
             '<td>' . $ev_report->getEvaluationDate() . '</td>'.
         '</tr>';
     }

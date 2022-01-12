@@ -50,25 +50,14 @@ class LecturerDataService
                 $i++;
             }
 
+            foreach($assigned_ev_array as $assigned_ev){
+                
+            }
+
             //Close connection
             $connection->close();
-
-            //Set output
-            $output = "";
-            foreach ($assigned_ev_array as $assigned_ev) {
-                $output = $output . '<tr>' .
-                    '<td>' . $assigned_ev->getProjectID() . '</td>' .
-                    '<td>' . $assigned_ev->getStudentID() . '</td>' .
-                    '<td>' . $assigned_ev->getStudentName() . '</td>' .
-                    '<td>' . $assigned_ev->getFypLevel() . '</td>' .
-                    '<td>' . $assigned_ev->getFypProgress() . '</td>' .
-                    '<td><a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=1"><button type="button" class="btn btn-light btn-outline-dark btn-sm">1</button></a> ' .
-                    '<a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=2"><button type="button" class="btn btn-light btn-outline-dark btn-sm">2</button></a> ' .
-                    '<a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=3"><button type="button" class="btn btn-light btn-outline-dark btn-sm">3</button></a>' .
-                    '</td>' .
-                    '</tr>';
-            }
-            return $output;
+    
+            return $assigned_ev_array;
         }
     }
 

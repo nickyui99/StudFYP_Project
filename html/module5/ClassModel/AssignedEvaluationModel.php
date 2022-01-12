@@ -11,9 +11,10 @@ class AssignedEvaluation
     private $evaluation_1;
     private $evaluation_2;
     private $evaluation_3;
+    private $evaluation_status;
 
     //Constructor
-    function AssignedEvaluation($project_id, $student_id, $student_name, $fyp_level, $fyp_progress, $evaluation_1, $evaluation_2, $evaluation_3)
+    function AssignedEvaluation($project_id, $student_id, $student_name, $fyp_level, $fyp_progress, $evaluation_1, $evaluation_2, $evaluation_3, $evaluation_status)
     {
         $this->project_id = $project_id;
         $this->student_id = $student_id;
@@ -23,6 +24,7 @@ class AssignedEvaluation
         $this->evaluation_1 = $evaluation_1;
         $this->evaluation_2 = $evaluation_2;
         $this->evaluation_3 = $evaluation_3;
+        $this->evaluation_status = $evaluation_status;
     }
 
     //Getter and Setter
@@ -104,5 +106,15 @@ class AssignedEvaluation
     function setEvaluation3($evaluation_3)
     {
         $this->evaluation_3 = $evaluation_3;
+    }
+
+    function getEvaluationStatus()
+    {
+        return $this->evaluation_status;
+    }
+
+    function setEvaluationStatus($evaluation_status)
+    {
+        $this->evaluation_status = $evaluation_status;
     }
 }
