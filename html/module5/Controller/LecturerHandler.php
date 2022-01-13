@@ -12,8 +12,8 @@ if (isset($_POST['search_evaluation_report']) && isset($_POST['lecturer_id'])) {
     printEvaluationReport($_POST['search_evaluation_report'], $_POST['lecturer_id']);
 }
 
-if (isset($_POST['er_array'])) {
-    deleteEvaluationReport($_POST['er_array']);
+if (isset($_POST['delete_er'])) {
+    deleteEvaluationReport($_POST['delete_er']);
 }
 
 function viewAssignedFyp($query, $lect_id)
@@ -117,6 +117,7 @@ function printEvaluationReport($query, $lect_id)
         $output = $output .
             '<tr>' .
             '<td><input type="checkbox" class="form-check-input" value="' . $ev_report->getResultID() . '" id="cb_' . $ev_report->getResultID() . '"></td>' .
+            '<td>' . $ev_report->getResultID() . '</td>' .
             '<td>' . $ev_report->getProjID() . '</td>' .
             '<td>' . $ev_report->getStudID() . '</td>' .
             '<td>' . $ev_report->getProjTitle() . '</td>' .

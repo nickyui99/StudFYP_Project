@@ -42,11 +42,11 @@ function load_evaluation_report(query, id) {
 }
 
 
-function pass_er_array(er_id_array) {
+function delete_er_array(er_id_array) {
   $.ajax({
     method: "POST",
     data: {
-      er_array: er_id_array
+      delete_er: er_id_array
     },
     url: "http://localhost/StudFYP_Project/html/module5/Controller/LecturerHandler.php",
     success: function (data) {

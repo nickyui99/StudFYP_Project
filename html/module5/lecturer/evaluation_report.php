@@ -327,13 +327,14 @@ session_start();
                             <table id="myTable" class="table table-bordered table-striped">
                                 <thead>
                                     <tr class="header-bg">
-                                        <th class="small" style="width: 4%;">List</th>
+                                    <th class="small" style="width: 4%;">List</th>
+                                        <th class="small" style="width: 8%;">Result ID</th>
                                         <th class="small" style="width: 8%;">Project ID</th>
                                         <th class="small" style="width: 8%;">Student ID</th>
-                                        <th class="small" style="width: 15%;">Project Title</th>
-                                        <th class="small" style="width: 10%;">FYP Stage</th>
-                                        <th class="small" style="width: 10%;">Submission</th>
-                                        <th class="small" style="width: 10%;">Evaluation Mark</th>
+                                        <th class="small" style="width: 13%;">Project Title</th>
+                                        <th class="small" style="width: 8%;">FYP Stage</th>
+                                        <th class="small" style="width: 8%;">Submission</th>
+                                        <th class="small" style="width: 8%;">Evaluation Mark</th>
                                         <th class="small" style="width: 10%;">Evaluation Date</th>
                                     </tr>
                                 </thead>
@@ -343,12 +344,13 @@ session_start();
                                 <tfoot>
                                     <tr class="header-bg">
                                         <th class="small" style="width: 4%;">List</th>
+                                        <th class="small" style="width: 8%;">Result ID</th>
                                         <th class="small" style="width: 8%;">Project ID</th>
                                         <th class="small" style="width: 8%;">Student ID</th>
-                                        <th class="small" style="width: 15%;">Project Title</th>
-                                        <th class="small" style="width: 10%;">FYP Stage</th>
-                                        <th class="small" style="width: 10%;">Submission</th>
-                                        <th class="small" style="width: 10%;">Evaluation Mark</th>
+                                        <th class="small" style="width: 13%;">Project Title</th>
+                                        <th class="small" style="width: 8%;">FYP Stage</th>
+                                        <th class="small" style="width: 8%;">Submission</th>
+                                        <th class="small" style="width: 8%;">Evaluation Mark</th>
                                         <th class="small" style="width: 10%;">Evaluation Date</th>
                                     </tr>
                                 </tfoot>
@@ -383,7 +385,7 @@ session_start();
         });
 
         $('#btn_confirm_delete').click(function() {
-            pass_er_array(checkedList());
+            delete_er_array(checkedList());
         });
     });
 

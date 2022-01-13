@@ -412,12 +412,22 @@ class LecturerDataService
         //Create connection
         $connection = $db->getConnection();
 
-        $sql_query = "DELETE FROM evaluation_result WHERE result_id = '$er_id'";
+        //Delete Data from
+        $sql_query = "DELETE FROM ev_mark_details WHERE result_id = '$er_id'";
 
-        if ($connection->query($sql_query) === TRUE) {
-            echo "Evaluation report deleted successfully";
+        if ($connection->query($sql_query) == TRUE) {
+            echo "Evaluation mark data deleted successfully";
+
+            //Delete Data from Evaluation Result
+            $sql_query = "DELETE FROM evaluation_result WHERE result_id = '$er_id'";
+            if ($connection->query($sql_query) == TRUE) {
+                echo "Evaluation mark data deleted successfully";
+            }
+            else{
+                echo "Error deleting evaluation report data: " . $connection->error;
+            }
         } else {
-            echo "Error deleting evaluation report: " . $connection->error;
+            echo "Error deleting evaluation mark data: " . $connection->error;
         }
 
         $connection->close();
