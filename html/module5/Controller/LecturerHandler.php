@@ -24,11 +24,11 @@ function viewAssignedFyp($query, $lect_id)
     $output = "";
     foreach ($assigned_ev_array as $assigned_ev) {
         $output = $output . '<tr>' .
-            '<td>' . $assigned_ev->getProjectID() . '</td>' .
-            '<td>' . $assigned_ev->getStudentID() . '</td>' .
-            '<td>' . $assigned_ev->getStudentName() . '</td>' .
-            '<td>' . $assigned_ev->getFypLevel() . '</td>' .
-            '<td>' . $assigned_ev->getFypProgress() . '</td>' .
+        '<td>' . $assigned_ev->getProjectID() . '</td>' .
+        '<td>' . $assigned_ev->getStudentID() . '</td>' .
+        '<td>' . $assigned_ev->getStudentName() . '</td>' .
+        '<td>' . $assigned_ev->getFypLevel() . '</td>' .
+        '<td>' . $assigned_ev->getFypProgress() . '</td>' .
             '<td>';
 
         $evaluation_status = $assigned_ev->getEvaluationStatus();
@@ -41,7 +41,6 @@ function viewAssignedFyp($query, $lect_id)
         }
         $output = $output . '</td></tr>';
     }
-
     echo $output;
 }
 
@@ -64,10 +63,10 @@ function printProjLogbook($proj_id, $submission)
     } else {
         foreach ($project_log_array as $project_log) {
             $output = $output .
-                "<tr>" .
-                "<td>" . $project_log->getDate() . "</td>" .
-                "<td>" . $project_log->getActivity() . "</td>" .
-                "</tr>";
+            "<tr>" .
+            "<td>" . $project_log->getDate() . "</td>" .
+            "<td>" . $project_log->getActivity() . "</td>" .
+            "</tr>";
         }
     }
 
@@ -94,13 +93,13 @@ function printEvaluationRubric($submission, $fyp_level)
         }
 
         $output = $output .
-            "<tr>" .
-            '<td class="small">' . $ev_rubric_model->getRubricNum() . "</td>" .
-            '<td class="small">' . $ev_rubric_model->getRubricTitle() . "</td>" .
-            '<td class="small" >' . $ev_rubric_model->getRubricDetails() . "</td>" .
-            '<td id="w_' . $ev_rubric_model->getRubricId() . '">' . $ev_rubric_model->getRubricWeightage() . "</td>" .
-            '<td> <select name="mark" class="form-select" id="' . $ev_rubric_model->getRubricId() . '" onChange="calcActualMark(this);">' . $dropdownMark . '</select> </td>' .
-            '<td><input type="text" readonly class="form-control" id="am_' . $ev_rubric_model->getRubricId() . '" name="am_' . $ev_rubric_model->getRubricId() . '" value="0.00"></td>' .
+        "<tr>" .
+        '<td class="small">' . $ev_rubric_model->getRubricNum() . "</td>" .
+        '<td class="small">' . $ev_rubric_model->getRubricTitle() . "</td>" .
+        '<td class="small" >' . $ev_rubric_model->getRubricDetails() . "</td>" .
+        '<td id="w_' . $ev_rubric_model->getRubricId() . '">' . $ev_rubric_model->getRubricWeightage() . "</td>" .
+        '<td> <select name="mark" class="form-select" id="' . $ev_rubric_model->getRubricId() . '" onChange="calcActualMark(this);">' . $dropdownMark . '</select> </td>' .
+        '<td><input type="text" readonly class="form-control" id="am_' . $ev_rubric_model->getRubricId() . '" name="am_' . $ev_rubric_model->getRubricId() . '" value="0.00"></td>' .
             "</tr>";
     }
 
@@ -115,16 +114,16 @@ function printEvaluationReport($query, $lect_id)
     $output = "";
     foreach ($ev_report_array as $ev_report) {
         $output = $output .
-            '<tr>' .
-            '<td><input type="checkbox" class="form-check-input" value="' . $ev_report->getResultID() . '" id="cb_' . $ev_report->getResultID() . '"></td>' .
-            '<td>' . $ev_report->getResultID() . '</td>' .
-            '<td>' . $ev_report->getProjID() . '</td>' .
-            '<td>' . $ev_report->getStudID() . '</td>' .
-            '<td>' . $ev_report->getProjTitle() . '</td>' .
-            '<td>' . $ev_report->getFypStage() . '</td>' .
-            '<td>' . $ev_report->getSubmission() . '</td>' .
-            '<td>' . number_format($ev_report->getMark(), 2) . '</td>' .
-            '<td>' . $ev_report->getEvaluationDate() . '</td>' .
+        '<tr>' .
+        '<td><input type="checkbox" class="form-check-input" value="' . $ev_report->getResultID() . '" id="cb_' . $ev_report->getResultID() . '"></td>' .
+        '<td>' . $ev_report->getResultID() . '</td>' .
+        '<td>' . $ev_report->getProjID() . '</td>' .
+        '<td>' . $ev_report->getStudID() . '</td>' .
+        '<td>' . $ev_report->getProjTitle() . '</td>' .
+        '<td>' . $ev_report->getFypStage() . '</td>' .
+        '<td>' . $ev_report->getSubmission() . '</td>' .
+        '<td>' . number_format($ev_report->getMark(), 2) . '</td>' .
+        '<td>' . $ev_report->getEvaluationDate() . '</td>' .
             '</tr>';
     }
 
@@ -138,6 +137,13 @@ function getEvaluationReport($lect_id)
     return $ev_report_array;
 }
 
+function getUpdateEvaluationReportList($er_id_array)
+{
+    $lds = new LecturerDataService();
+    $ev_report_array = $lds->getEvaluationReportFromERID($er_id_array);
+    return $ev_report_array;
+}
+
 function deleteEvaluationReport($er_id_array)
 {
     $lds = new LecturerDataService();
@@ -145,3 +151,5 @@ function deleteEvaluationReport($er_id_array)
         $lds->deleteEvaluationReport($er_id);
     }
 }
+
+

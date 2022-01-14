@@ -261,11 +261,11 @@ session_start();
 
                         <div class="col-sm-8">
 
-                            <button type="button" name="btn_update" id="btn_update" class="btn btn-outline-success btn-sm">
+                            <button type="button" name="btn_update" id="btn_update" class="btn btn-success btn-sm">
                                 <i class="fa fa-plus me-2"></i>Update
                             </button>
 
-                            <button type="button" name="btn_delete" id="btn_delete" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal">
+                            <button type="button" name="btn_delete" id="btn_delete" class="btn btn-danger btn-sm" data-bs-toggle="modal">
                                 <i class="fa fa-trash me-2" aria-hidden="true"></i>Delete
                             </button>
 
@@ -283,7 +283,28 @@ session_start();
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" id="btn_confirm_delete" onclick="load_er_array(checkList());">Delete</button>
+                                            <button type="button" class="btn btn-danger" id="btn_confirm_delete">Delete</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Update modal -->
+                            <div class="modal fade " id="confirm_update_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="update_modal_label">Confirm Update </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">                                           
+                                            <div id="checked_list">
+
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" id="btn_confirm_update">Update</button>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                         </div>
                                     </div>
@@ -327,7 +348,7 @@ session_start();
                             <table id="myTable" class="table table-bordered table-striped">
                                 <thead>
                                     <tr class="header-bg">
-                                    <th class="small" style="width: 4%;">List</th>
+                                        <th class="small" style="width: 4%;">List</th>
                                         <th class="small" style="width: 8%;">Result ID</th>
                                         <th class="small" style="width: 8%;">Project ID</th>
                                         <th class="small" style="width: 8%;">Student ID</th>
@@ -387,6 +408,12 @@ session_start();
         $('#btn_confirm_delete').click(function() {
             delete_er_array(checkedList());
         });
+
+        $('#btn_confirm_update').click(function() {
+            update_er_array(checkedList());
+            // window.open("http://localhost/StudFYP_Project/html/module5/lecturer/update_evaluation_report.php");
+        });
+
     });
 
     function checkedList() {
@@ -423,7 +450,21 @@ session_start();
     });
 
     $('#btn_update').click(function() {
-        $('#confirm_update_modal').modal('show');
+        checkedArrays = checkedList();
+
+        if (checkedArrays.length == 0) {
+            var output = "No row selected";
+            document.getElementById("alert_message").innerHTML = output;
+            $('#alert_modal').modal('show');
+        } else {
+            var output = "Are you sure to UPDATE this evaluation report? <ul>";
+            for (var i = 0; i < checkedArrays.length; i++) {
+                output = output + "<li>" + checkedArrays[i] + "</li>";
+            }
+            output = output + "</ul>"
+            document.getElementById("checked_list").innerHTML = output;
+            $('#confirm_update_modal').modal('show');
+        }
     });
 </script>
 

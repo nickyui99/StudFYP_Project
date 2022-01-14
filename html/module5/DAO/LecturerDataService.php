@@ -65,7 +65,7 @@ class LecturerDataService
                         $evaluation_status[$i] = false;
                     }
                 }
-                
+
                 $assigned_ev->setEvaluationStatus($evaluation_status);
             }
 
@@ -329,6 +329,56 @@ class LecturerDataService
         return $evaluation_report_array;
     }
 
+    function getEvaluationReportFromERID($er_id_array)
+    {
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $evaluation_report_array = array();
+        $i = 0;
+
+        foreach ($er_id_array as $er_id) {
+            $sql_query = "SELECT evaluation_result.result_id, evaluation_result.fyp_proj_id, evaluation_result.assigned_lect_id, fyp_project.proj_title, evaluation_result.submission_level, 
+            evaluation_result.evaluation_feedback, assigned_lecturer_evaluator.lect_id, fyp_project.proj_fyp_stage, fyp_project.stud_id, evaluation_result.evaluation_date
+            FROM evaluation_result INNER JOIN assigned_lecturer_evaluator 
+            ON assigned_lecturer_evaluator.assigned_lect_id = evaluation_result.assigned_lect_id 
+            INNER JOIN fyp_project 
+            ON evaluation_result.fyp_proj_id = fyp_project.fyp_proj_id
+            WHERE evaluation_result.result_id = '$er_id'";
+
+            //Run SQL Query
+            $result = $connection->query($sql_query);
+
+            if ($result->num_rows == 0) {
+                //Do nothing
+            } else {
+
+                while ($row = $result->fetch_assoc()) {
+                    $ev_report = new EvaluationReport();
+
+                    $ev_report->setResultId($row['result_id']);
+                    $ev_report->setProjID($row['fyp_proj_id']);
+                    $ev_report->setFypStage($row['proj_fyp_stage']);
+                    $ev_report->setSubmission($row['submission_level']);
+                    $ev_report->setProjTitle($row['proj_title']);
+                    $ev_report->setEvaluationDate($row['evaluation_date']);
+                    $ev_report->setStudID($row['stud_id']);
+
+                    //Add to array
+                    $evaluation_report_array[$i] = $ev_report;
+                    $i++;
+                }
+            }
+
+            //Close connection
+            $connection->close();
+
+            return $evaluation_report_array;
+        }
+    }
+
     function getAssignedLectId($lect_id)
     {
 
@@ -422,8 +472,7 @@ class LecturerDataService
             $sql_query = "DELETE FROM evaluation_result WHERE result_id = '$er_id'";
             if ($connection->query($sql_query) == TRUE) {
                 echo "Evaluation mark data deleted successfully";
-            }
-            else{
+            } else {
                 echo "Error deleting evaluation report data: " . $connection->error;
             }
         } else {

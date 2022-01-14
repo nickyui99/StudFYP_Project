@@ -41,6 +41,19 @@ function load_evaluation_report(query, id) {
   });
 }
 
+function update_er_array(er_id_array) {
+  $.ajax({
+    method: "POST",
+    data: {
+      update_er: er_id_array
+    },
+    url: "http://localhost/StudFYP_Project/html/module5/Controller/SessionHandler.php",
+    success: function (data) {
+      window.open("http://localhost/StudFYP_Project/html/module5/lecturer/update_evaluation_report.php?view=0");
+    }
+  });
+}
+
 
 function delete_er_array(er_id_array) {
   $.ajax({
@@ -54,3 +67,4 @@ function delete_er_array(er_id_array) {
     }
   });
 }
+
