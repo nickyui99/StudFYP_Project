@@ -137,6 +137,14 @@ function getEvaluationReport($lect_id)
     return $ev_report_array;
 }
 
+function getEvaluationMarkArray($er_id_array){
+    $lds = new LecturerDataService();
+    $ev_mark_array = array();
+    foreach($er_id_array as $er_id){
+        
+    }
+}
+
 function getUpdateEvaluationReportList($er_id_array)
 {
     $lds = new LecturerDataService();

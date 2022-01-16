@@ -461,7 +461,6 @@ class LecturerDataService
         //Create connection
         $connection = $db->getConnection();
 
-        //Delete Data from
         $sql_query = "DELETE FROM ev_mark_details WHERE result_id = '$er_id'";
 
         if ($connection->query($sql_query) == TRUE) {
@@ -479,5 +478,31 @@ class LecturerDataService
         }
 
         $connection->close();
+    }
+
+    function getEvaluationMarkDetails($er_id){
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "SELECT * FROM ev_mark_details WHERE result_id = '$er_id'";
+
+         //Run SQL Query
+         $result = $connection->query($sql_query);
+
+         if ($result->num_rows == 0) {
+             return null;
+         } else {
+             $row = $result->fetch_assoc();
+
+             $ev_mark_det = new EvaluationMarkDetails();
+             $ev_mark_det->setEvMarkId($row['ev_mark_id']);
+             $ev_mark_det->setEvaluationRubricId($row['evaluation_rubric_id']);
+             $ev_mark_det->setActualMark($row['actual_mark']);
+
+             return $ev_mark_det;
+         }
+        
     }
 }
