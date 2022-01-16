@@ -371,12 +371,11 @@ class LecturerDataService
                     $i++;
                 }
             }
-
-            //Close connection
-            $connection->close();
-
-            return $evaluation_report_array;
         }
+        //Close connection
+        $connection->close();
+
+        return $evaluation_report_array;
     }
 
     function getAssignedLectId($lect_id)

@@ -13,6 +13,8 @@ if (isset($_SESSION['update_er_array'])) {
     $er_array = $_SESSION['update_er_array'];
     $er_report_array = getUpdateEvaluationReportList($er_array);
 
+    $current = $er_report_array[$_GET['view']];
+    $evaluateDetails = getEvaluationDetail($current->getProjID(), $current->getStudID(), $current->getSubmission());
 } else {
     //if there is no update er id return back to evaluation report page
     header("evaluation_report.php");
@@ -270,20 +272,41 @@ if (isset($_SESSION['update_er_array'])) {
 
                     <nav aria-label="...">
                         <ul class="pagination">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                            </li>
+
                             <?php
 
-                                for($i = 0 ; $i < count($er_report_array); $i++){
-                                    $page_num = $i+1;
-                                    echo '<li class="page-item-"><a class="page-link" href="update_evaluation_report?view=' . $i .'">' . $page_num . '</a></li>';
+                            //Previous button
+                            if ($_GET['view'] == 0) {
+                                echo '<li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                        </li>';
+                            } else {
+                                echo '<li class="page-item">
+                                        <a class="page-link" href="update_evaluation_report.php?view=' . $_GET['view'] - 1 . '" tabindex="-1" aria-disabled="true">Previous</a>
+                                        </li>';
+                            }
+
+                            //Print All Available Page
+                            for ($i = 0; $i < count($er_report_array); $i++) {
+                                $page_num = $i + 1;
+                                if ($i == $_GET['view']) {
+                                    echo '<li class="page-item active"><a class="page-link" href="update_evaluation_report.php?view=' . $i . '">' . $page_num . '</a></li>';
+                                } else {
+                                    echo '<li class="page-item"><a class="page-link" href="update_evaluation_report.php?view=' . $i . '">' . $page_num . '</a></li>';
                                 }
+                            }
+
+                            //Pagination Next Button
+                            if ($_GET['view'] == count($er_report_array) - 1) {
+                                echo    '<li class="page-item disabled">
+                                        <a class="page-link" href="update_evaluation_report.php?view=' . $_GET['view'] + 1 . '">Next</a>
+                                        </li>';
+                            } else {
+                                echo    '<li class="page-item">
+                                        <a class="page-link" href="update_evaluation_report.php?view=' . $_GET['view'] + 1 . '">Next</a>
+                                        </li>';
+                            }
                             ?>
-                           
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
                         </ul>
                     </nav>
 
@@ -293,29 +316,35 @@ if (isset($_SESSION['update_er_array'])) {
                                 <table class="table table-borderless">
                                     <tbody>
                                         <tr class="">
-                                            <td class="col-sm-2">Project ID: <?php echo $er_report_array[0] ->getResultId(); ?> </td>
-                                            <td class="col-sm-7"><input type="text" class="form-control" id="inputProjId" name="inputProjId" value="<?php ?>" readonly></td>
+                                            <td class="col-sm-2">Result ID: </td>
+                                            <td class="col-sm-7"><input type="text" class="form-control" id="inputResultId" name="inputResultId" value="<?php echo $current->getResultId(); ?>" readonly></td>
                                             <td class="col-sm-3" rowspan="4">
                                                 <div class="card text-center">
                                                     <div class="card-body">
                                                         <h4 class="mb1">Project QR Code</h4>
-                                                        <img name="QR_code" src="data:image/jpeg;base64, <?php  ?>" alt="Project QR Code" class="img-container mb-1">
+                                                        <img name="QR_code" src="data:image/jpeg;base64, <?php echo $evaluateDetails->getProjQR(); ?>" alt="Project QR Code" class="img-container mb-1">
                                                         <button type="button" id="btnDownloadProjQR" class="btn btn-outline-dark"><i class="fa fa-download me-3" aria-hidden="true"></i>Download QR Code</button>
                                                     </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Student ID: </td>
-                                            <td><input type="text" class="form-control" id="inputStudId" name="inputStudId" value="<?php  ?>" readonly></td>
+                                            <td><input type="text" class="form-control" id="inputStudId" name="inputStudId" value="<?php echo $current->getStudId() ?>" readonly></td>
                                         </tr>
                                         <tr>
-                                            <td>FYP Stage: </td>
-                                            <td><input type="text" class="form-control" id="inputFypStage" name="inputFypStage" value="<?php  ?>" readonly></td>
+                                            <td class="col-sm-2">Project ID: </td>
+                                            <td class="col-sm-7"><input type="text" class="form-control" id="inputProjId" name="inputProjId" value="<?php echo $current->getProjId() ?>" readonly></td>
                                         </tr>
                                         <tr>
                                             <td>Project title:</td>
-                                            <td><input type="text" class="form-control" id="inputProjTitle" name="inputProjTitle" value="<?php  ?>" readonly></td>
+                                            <td><input type="text" class="form-control" id="inputProjTitle" name="inputProjTitle" value="<?php echo $current->getProjTitle() ?>" readonly></td>
                                         </tr>
+
+                                        <tr>
+                                            <td>FYP Stage: </td>
+                                            <td><input type="text" class="form-control" id="inputFypStage" name="inputFypStage" value="<?php echo $current->getFypStage() ?>" readonly></td>
+                                        </tr>
+
                                         <tr>
                                             <td>Project Logbook: </td>
                                             <td>
@@ -328,7 +357,7 @@ if (isset($_SESSION['update_er_array'])) {
                                                     </thead>
                                                     <tbody>
                                                         <!-- Project logbook result -->
-                                                        <?php ?>
+                                                        <?php printProjLogbook($current->getProjID(), $current->getSubmission()) ?>
                                                     </tbody>
                                                 </table>
                                             </td>
@@ -354,7 +383,7 @@ if (isset($_SESSION['update_er_array'])) {
                                                         </thead>
                                                         <tbody id="rubric_result">
                                                             <!-- Evaluation Rubric Result -->
-                                                            <?php ?>
+                                                            <?php printEvaluationRubric($current->getSubmission(), $evaluateDetails->getFypLevel()); ?>
                                                             <tr class="header-bg border-dark">
                                                                 <td class="text-end" colspan="5"><b>Total:</b></td>
                                                                 <td><input type="text" readonly class="form-control-plaintext" id="total_mark" name="total_mark" value=""></td>
@@ -399,14 +428,6 @@ if (isset($_SESSION['update_er_array'])) {
 </body>
 
 <script>
-    $('#btnDownloadProjQR').click(function() {
-        window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projQr=<?php echo $projID ?>");
-    });
-
-    $('#btnDownloadProjDoc').click(function() {
-        window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projDoc=<?php echo $projID ?>&submission=<?php echo $submission ?>");
-    });
-
     $('textarea').keyup(function() {
         var characterCount = $(this).val().length,
             current = $('#current'),
@@ -418,6 +439,14 @@ if (isset($_SESSION['update_er_array'])) {
 
     $(document).ready(function() {
         calcTotalMark();
+
+        $('#btnDownloadProjQR').click(function() {
+            window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projQr=<?php echo $current->getProjID(); ?>");
+        });
+
+        $('#btnDownloadProjDoc').click(function() {
+            window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projDoc=<?php echo $current->getProjID(); ?>&submission=<?php echo $current->getSubmission(); ?>");
+        });
     });
 
     function calcActualMark(object) {

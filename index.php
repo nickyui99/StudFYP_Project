@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
- require_once 'login_controller/login_handler.php';
+ require_once 'html/login_controller/login_handler.php';
  ?>
 
 <head>
