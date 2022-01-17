@@ -13,10 +13,16 @@ if (isset($_SESSION['update_er_array'])) {
     $er_array = $_SESSION['update_er_array'];
     $er_report_array = getUpdateEvaluationReportList($er_array);
 
+    //Current pagination evaluation data
     $current = $er_report_array[$_GET['view']];
     $evaluateDetails = getEvaluationDetail($current->getProjID(), $current->getStudID(), $current->getSubmission());
-    $ev_rubric_array = getEvaluationRubric( $current->getSubmission(),  $evaluateDetails->getFypLevel());
-    $ev_mark_details = "";
+
+    //Retrieve all the rubrics
+    $ev_rubric_array = getEvaluationRubric($current->getSubmission(),  $evaluateDetails->getFypLevel());
+
+    //Get previous mark given
+    $ev_mark_details = getEvaluationMarkArray($er_array);
+    $current_mark = $ev_mark_details[$_GET['view']];
 } else {
     //if there is no update er id return back to evaluation report page
     header("evaluation_report.php");
@@ -440,6 +446,7 @@ if (isset($_SESSION['update_er_array'])) {
     });
 
     $(document).ready(function() {
+        setPreviousEvaluationResults();
         calcTotalMark();
 
         $('#btnDownloadProjQR').click(function() {
@@ -450,6 +457,20 @@ if (isset($_SESSION['update_er_array'])) {
             window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projDoc=<?php echo $current->getProjID(); ?>&submission=<?php echo $current->getSubmission(); ?>");
         });
     });
+
+
+    function setPreviousEvaluationResults() {
+        <?php
+        foreach ($current_mark as $mark) {
+            echo 'var weightage = $("#w_' .$mark->getEvaluationRubricId(). '").html();' ; 
+            echo 'var selected_val = Math.round(' . $mark->getActualMark() . '/ weightage);';
+            echo "$('#".$mark->getEvaluationRubricId()." option[value=' + selected_val + ']').attr('selected','selected');";
+            echo "$('#am_" .$mark->getEvaluationRubricId(). "').val('" . $mark->getActualMark() . "');";
+        }
+
+        echo "$('#inputProjFeedback').val('" .$current->getEvaluationFeedback() . "');";
+        ?>
+    }
 
     function calcActualMark(object) {
         var id = $(object).attr('id');

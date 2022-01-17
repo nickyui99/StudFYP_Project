@@ -140,9 +140,12 @@ function getEvaluationReport($lect_id)
 function getEvaluationMarkArray($er_id_array){
     $lds = new LecturerDataService();
     $ev_mark_array = array();
+    $i = 0;
     foreach($er_id_array as $er_id){
-        
+        $ev_mark_array[$i] = $lds->getEvaluationMarkDetails($er_id);
+        $i++;
     }
+    return $ev_mark_array;
 }
 
 function getUpdateEvaluationReportList($er_id_array)

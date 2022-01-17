@@ -276,7 +276,7 @@ class LecturerDataService
             (evaluation_result.fyp_proj_id LIKE '%$query%' OR 
             fyp_project.proj_title LIKE '%$query%' OR 
             assigned_lecturer_evaluator.stud_id LIKE '%$query%')
-            ORDER BY evaluation_result.fyp_proj_id ASC";
+            ORDER BY evaluation_result.result_id ASC";
 
         //Run SQL Query
         $result = $connection->query($sql_query);
@@ -365,6 +365,7 @@ class LecturerDataService
                     $ev_report->setProjTitle($row['proj_title']);
                     $ev_report->setEvaluationDate($row['evaluation_date']);
                     $ev_report->setStudID($row['stud_id']);
+                    $ev_report->setEvaluationFeeaback($row['evaluation_feedback']);
 
                     //Add to array
                     $evaluation_report_array[$i] = $ev_report;
@@ -480,7 +481,8 @@ class LecturerDataService
         $connection->close();
     }
 
-    function getEvaluationMarkDetails($er_id){
+    function getEvaluationMarkDetails($er_id)
+    {
         $db = new Database();
 
         //Create connection
@@ -488,21 +490,27 @@ class LecturerDataService
 
         $sql_query = "SELECT * FROM ev_mark_details WHERE result_id = '$er_id'";
 
-         //Run SQL Query
-         $result = $connection->query($sql_query);
+        //Run SQL Query
+        $result = $connection->query($sql_query);
 
-         if ($result->num_rows == 0) {
-             return null;
-         } else {
-             $row = $result->fetch_assoc();
+        $ev_mark_array = array();
+        if ($result->num_rows == 0) {
+            //Do nothing
+        } else {
+            $i = 0;
 
-             $ev_mark_det = new EvaluationMarkDetails();
-             $ev_mark_det->setEvMarkId($row['ev_mark_id']);
-             $ev_mark_det->setEvaluationRubricId($row['evaluation_rubric_id']);
-             $ev_mark_det->setActualMark($row['actual_mark']);
+            while ($row = $result->fetch_assoc()) {
+                $ev_mark_det = new EvaluationMarkDetails();
+                $ev_mark_det->setEvMarkId($row['ev_mark_id']);
+                $ev_mark_det->setEvaluationRubricId($row['evaluation_rubric_id']);
+                $ev_mark_det->setActualMark($row['actual_mark']);
 
-             return $ev_mark_det;
-         }
-        
+                //Add to array
+                $ev_mark_array[$i] = $ev_mark_det;
+                $i++;
+            }
+
+            return $ev_mark_array;
+        }
     }
 }
