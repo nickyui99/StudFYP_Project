@@ -92,7 +92,7 @@ class EvaluationReport{
         return $this->feedback;
     }
 
-    function setEvaluationFeeaback($feedback){
+    function setEvaluationFeedback($feedback){
         $this->feedback = $feedback;
     }
 

@@ -336,6 +336,7 @@ class LecturerDataService
         //Create connection
         $connection = $db->getConnection();
 
+        //Initiate array
         $evaluation_report_array = array();
         $i = 0;
 
@@ -355,22 +356,48 @@ class LecturerDataService
                 //Do nothing
             } else {
 
-                while ($row = $result->fetch_assoc()) {
-                    $ev_report = new EvaluationReport();
+                $row = $result->fetch_assoc();
 
-                    $ev_report->setResultId($row['result_id']);
-                    $ev_report->setProjID($row['fyp_proj_id']);
-                    $ev_report->setFypStage($row['proj_fyp_stage']);
-                    $ev_report->setSubmission($row['submission_level']);
-                    $ev_report->setProjTitle($row['proj_title']);
-                    $ev_report->setEvaluationDate($row['evaluation_date']);
-                    $ev_report->setStudID($row['stud_id']);
-                    $ev_report->setEvaluationFeeaback($row['evaluation_feedback']);
+                $ev_report = new EvaluationReport();
+                $ev_report->setResultId($row['result_id']);
+                $ev_report->setProjID($row['fyp_proj_id']);
+                $ev_report->setFypStage($row['proj_fyp_stage']);
+                $ev_report->setSubmission($row['submission_level']);
+                $ev_report->setProjTitle($row['proj_title']);
+                $ev_report->setEvaluationDate($row['evaluation_date']);
+                $ev_report->setStudID($row['stud_id']);
+                $ev_report->setEvaluationFeedback($row['evaluation_feedback']);
 
-                    //Add to array
-                    $evaluation_report_array[$i] = $ev_report;
-                    $i++;
+                //get total marks
+                $sql_query = "SELECT * FROM ev_mark_details WHERE result_id = '" . $ev_report->getResultId() . "'";
+
+                //Run SQL Query
+                $result = $connection->query($sql_query);
+
+                if ($result->num_rows == 0) {
+                    //Do nothing
+                } else {
+
+                    $ev_mark_array = array();
+                    while ($row = $result->fetch_assoc()) {
+                        $ev_mark_det = new EvaluationMarkDetails();
+                        $ev_mark_det->setEvMarkId($row['ev_mark_id']);
+                        $ev_mark_det->setResultId($row['result_id']);
+                        $ev_mark_det->setEvaluationRubricId($row['evaluation_rubric_id']);
+                        $ev_mark_det->setActualMark($row['actual_mark']);
+
+                        //Push evaluation mark details into ev_mark_array
+                        array_push($ev_mark_array, $ev_mark_det);
+                    }
+
+                    //Set evaluation mark array into evaluation report
+                    $ev_report->setMark($ev_mark_array);
                 }
+
+
+                //Add to array
+                $evaluation_report_array[$i] = $ev_report;
+                $i++;
             }
         }
         //Close connection
@@ -452,6 +479,7 @@ class LecturerDataService
             echo "Error: " . $sql_query . "<br>" . $connection->error;
         }
 
+        //Close connection
         $connection->close();
     }
 
@@ -478,6 +506,7 @@ class LecturerDataService
             echo "Error deleting evaluation mark data: " . $connection->error;
         }
 
+        //Close connection
         $connection->close();
     }
 
@@ -502,6 +531,7 @@ class LecturerDataService
             while ($row = $result->fetch_assoc()) {
                 $ev_mark_det = new EvaluationMarkDetails();
                 $ev_mark_det->setEvMarkId($row['ev_mark_id']);
+                $ev_mark_det->setResultId($row['result_id']);
                 $ev_mark_det->setEvaluationRubricId($row['evaluation_rubric_id']);
                 $ev_mark_det->setActualMark($row['actual_mark']);
 
@@ -509,8 +539,10 @@ class LecturerDataService
                 $ev_mark_array[$i] = $ev_mark_det;
                 $i++;
             }
-
-            return $ev_mark_array;
         }
+        //Close connection
+        $connection->close();
+
+        return $ev_mark_array;
     }
 }

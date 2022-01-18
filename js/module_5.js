@@ -49,7 +49,26 @@ function update_er_array(er_id_array) {
     },
     url: "http://localhost/StudFYP_Project/html/module5/Controller/SessionHandler.php",
     success: function (data) {
-      window.open("http://localhost/StudFYP_Project/html/module5/lecturer/update_evaluation_report.php?view=0");
+      window.location.replace("http://localhost/StudFYP_Project/html/module5/lecturer/update_evaluation_report.php?view=0");
+    }
+  });
+}
+
+function save_temp_ev(result_id, rubric_id_array, rubric_mark_array, feedback) {
+  $.ajax({
+    method: "POST",
+    data: {
+      m_result_id: result_id,
+      m_rubric_id_array: rubric_id_array,
+      m_rubric_mark_array: rubric_mark_array,
+      m_feedback: feedback
+    },
+    url: "http://localhost/StudFYP_Project/html/module5/Controller/SessionHandler.php",
+    success: function (data) {
+
+    },
+    error: function (request, status, error) {
+      alert(request.responseText);
     }
   });
 }
@@ -67,4 +86,5 @@ function delete_er_array(er_id_array) {
     }
   });
 }
+
 

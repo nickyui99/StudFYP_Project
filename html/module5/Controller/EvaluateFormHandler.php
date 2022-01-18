@@ -35,6 +35,13 @@ if (isset($_POST['inputProjId']) && isset($_POST['inputStudId']) && isset($_POST
     $lds->insertEvaluationResult($ev_result, $assigned_id, $_POST['inputStudId']);
 
     header("Location: ../lecturer/view_assigned_fyp.php");
-} else {
-    echo "error";
+}
+
+if (isset($_SESSION['er_report_array']) && isset($_SESSION['is_updated'])) {
+    $ev_report_array = $_SESSION['er_report_array'];
+
+    if ($_SESSION['is_updated'] == false) {
+        foreach ($ev_report_array as $ev_report) {
+        }
+    }
 }

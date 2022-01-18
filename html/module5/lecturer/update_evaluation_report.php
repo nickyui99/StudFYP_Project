@@ -11,8 +11,14 @@ session_start();
 if (isset($_SESSION['update_er_array'])) {
 
     $er_array = $_SESSION['update_er_array'];
-    $er_report_array = getUpdateEvaluationReportList($er_array);
-
+    $er_report_array = array();
+    
+    if(isset($_SESSION['er_report_array'])){
+        $er_report_array = $_SESSION['er_report_array'];
+    }else{
+        $er_report_array = getUpdateEvaluationReportList($er_array);
+    }
+    
     //Current pagination evaluation data
     $current = $er_report_array[$_GET['view']];
     $evaluateDetails = getEvaluationDetail($current->getProjID(), $current->getStudID(), $current->getSubmission());
@@ -21,8 +27,11 @@ if (isset($_SESSION['update_er_array'])) {
     $ev_rubric_array = getEvaluationRubric($current->getSubmission(),  $evaluateDetails->getFypLevel());
 
     //Get previous mark given
-    $ev_mark_details = getEvaluationMarkArray($er_array);
-    $current_mark = $ev_mark_details[$_GET['view']];
+    
+    
+    $current_mark = $current->getMark();
+
+    // $current_mark = $ev_mark_details[$_GET['view']];
 } else {
     //if there is no update er id return back to evaluation report page
     header("evaluation_report.php");
@@ -286,11 +295,11 @@ if (isset($_SESSION['update_er_array'])) {
                             //Previous button
                             if ($_GET['view'] == 0) {
                                 echo '<li class="page-item disabled">
-                                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                        <a class="page-link" href="#" tabindex="-1" id="btn_previous" aria-disabled="true">Previous</a>
                                         </li>';
                             } else {
                                 echo '<li class="page-item">
-                                        <a class="page-link" href="update_evaluation_report.php?view=' . $_GET['view'] - 1 . '" tabindex="-1" aria-disabled="true">Previous</a>
+                                        <a class="page-link" href="update_evaluation_report.php?view=' . $_GET['view'] - 1 . '" tabindex="-1" id="btn_previous" onClick="saveSession();" aria-disabled="true">Previous</a>
                                         </li>';
                             }
 
@@ -298,16 +307,16 @@ if (isset($_SESSION['update_er_array'])) {
                             for ($i = 0; $i < count($er_report_array); $i++) {
                                 $page_num = $i + 1;
                                 if ($i == $_GET['view']) {
-                                    echo '<li class="page-item active"><a class="page-link" href="update_evaluation_report.php?view=' . $i . '">' . $page_num . '</a></li>';
+                                    echo '<li class="page-item active"><a class="page-link" href="update_evaluation_report.php?view=' . $i . '" onClick="saveSession();">' . $page_num . '</a></li>';
                                 } else {
-                                    echo '<li class="page-item"><a class="page-link" href="update_evaluation_report.php?view=' . $i . '">' . $page_num . '</a></li>';
+                                    echo '<li class="page-item"><a class="page-link" href="update_evaluation_report.php?view=' . $i . '" onClick="saveSession();">' . $page_num . '</a></li>';
                                 }
                             }
 
                             //Pagination Next Button
                             if ($_GET['view'] == count($er_report_array) - 1) {
                                 echo    '<li class="page-item disabled">
-                                        <a class="page-link" href="update_evaluation_report.php?view=' . $_GET['view'] + 1 . '">Next</a>
+                                        <a class="page-link" href="#" onClick="saveSession();">Next</a>
                                         </li>';
                             } else {
                                 echo    '<li class="page-item">
@@ -414,7 +423,7 @@ if (isset($_SESSION['update_er_array'])) {
                                     </tbody>
                                 </table>
                                 <div class="d-flex justify-content-center">
-                                    <input type="submit" class="btn btn-outline-dark m-3" name="submit" id="submit" value="Submit">
+                                    <input type="submit" class="btn btn-outline-dark m-3" name="submit" id="submit" value="Submit" onclick="saveSession();">
                                     <input type="reset" class="btn btn-outline-dark m-3" name="reset" id="reset" value="Reset">
                                 </div>
                             </div>
@@ -456,19 +465,43 @@ if (isset($_SESSION['update_er_array'])) {
         $('#btnDownloadProjDoc').click(function() {
             window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projDoc=<?php echo $current->getProjID(); ?>&submission=<?php echo $current->getSubmission(); ?>");
         });
+
     });
+
+    function saveSession() {
+
+        const result_id = "<?php echo $current->getResultId();?>";
+
+        const rubric_id_array =
+            <?php
+                $rubric_id_array = array();
+                foreach ($current_mark as $mark) {
+                    array_push($rubric_id_array, $mark->getEvaluationRubricId());
+                }
+                echo json_encode($rubric_id_array);
+            ?>;  
+        
+        const rubric_mark_array = [];
+        for (var i=0; i<rubric_id_array.length; i++) {
+            rubric_mark_array.push($('#am_' + rubric_id_array[i]).val());
+        }
+
+        const feedback = $('#inputProjFeedback').val();
+
+        save_temp_ev(result_id, rubric_id_array, rubric_mark_array, feedback);
+    }
 
 
     function setPreviousEvaluationResults() {
         <?php
         foreach ($current_mark as $mark) {
-            echo 'var weightage = $("#w_' .$mark->getEvaluationRubricId(). '").html();' ; 
+            echo 'var weightage = $("#w_' . $mark->getEvaluationRubricId() . '").html();';
             echo 'var selected_val = Math.round(' . $mark->getActualMark() . '/ weightage);';
-            echo "$('#".$mark->getEvaluationRubricId()." option[value=' + selected_val + ']').attr('selected','selected');";
-            echo "$('#am_" .$mark->getEvaluationRubricId(). "').val('" . $mark->getActualMark() . "');";
+            echo "$('#" . $mark->getEvaluationRubricId() . " option[value=' + selected_val + ']').attr('selected','selected');";
+            echo "$('#am_" . $mark->getEvaluationRubricId() . "').val('" . $mark->getActualMark() . "');";
         }
 
-        echo "$('#inputProjFeedback').val('" .$current->getEvaluationFeedback() . "');";
+        echo "$('#inputProjFeedback').val('" . $current->getEvaluationFeedback() . "');";
         ?>
     }
 
