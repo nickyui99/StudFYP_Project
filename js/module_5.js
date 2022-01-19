@@ -42,6 +42,7 @@ function load_evaluation_report(query, id) {
 }
 
 function update_er_array(er_id_array) {
+  alert(er_id_array);
   $.ajax({
     method: "POST",
     data: {

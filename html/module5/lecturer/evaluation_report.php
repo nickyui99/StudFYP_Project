@@ -298,7 +298,7 @@ session_start();
                                             <h5 class="modal-title" id="update_modal_label">Confirm Update </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body">                                           
+                                        <div class="modal-body">
                                             <div id="checked_list">
 
                                             </div>
@@ -411,23 +411,31 @@ session_start();
 
         $('#btn_confirm_update').click(function() {
             update_er_array(checkedList());
-            // window.open("http://localhost/StudFYP_Project/html/module5/lecturer/update_evaluation_report.php");
         });
 
     });
 
     function checkedList() {
-        checkList = [];
-        <?php
-        $ev_report_array = getEvaluationReport($_SESSION['lect_id']);
-        foreach ($ev_report_array as $ev_report) {
-            echo
-            'if(document.getElementById("cb_' . $ev_report->getResultID() . '").checked == true){
-                checkList.push("' . $ev_report->getResultID() . '");
-            }';
+        var check_list = [];
+        const result_id_array =
+            <?php
+            $ev_report_array = getEvaluationReport($_SESSION['lect_id']);
+            $result_id_array = array();
+            foreach ($ev_report_array as $ev_report) {
+                //Push result id array
+                array_push($result_id_array, $ev_report->getResultId());
+            }
+            //Print result id array
+            echo json_encode($result_id_array);
+            ?>;
+
+        for(let i = 0; i<result_id_array.length; i++){
+            if (document.getElementById("cb_" + result_id_array[i]).checked == true) {
+                check_list.push(result_id_array[i]);
+            };
         }
-        ?>
-        return checkList;
+
+        return check_list;
     }
 
     $('#btn_delete').click(function() {

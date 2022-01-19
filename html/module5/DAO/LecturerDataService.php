@@ -441,6 +441,7 @@ class LecturerDataService
         $result = $connection->query($sql_query);
 
         $new_result_id = null;
+        $insert_status = true;
 
         if ($result->num_rows == 0) {
             //If no result in the database set ID from ER001
@@ -462,25 +463,33 @@ class LecturerDataService
         'NULL', '" . $ev_result->getSubmission() . "', '" . $ev_result->getProjectFeedback() . "', 
         '" . $ev_result->getEvaluationDate() . "')";
 
-        if ($connection->query($sql_query) === TRUE) {
+        if ($connection->query($sql_query) == TRUE) {
             $ev_mark_arrray = $ev_result->getEvMarkDetails();
             echo "Data inserted <br>";
 
             foreach ($ev_mark_arrray as $ev_mark) {
                 $sql_query = "INSERT INTO ev_mark_details
                 VALUES ('0', '$new_result_id','" . $ev_mark->getEvaluationRubricId() . "', '" . $ev_mark->getActualMark() . "')";
-                if ($connection->query($sql_query) === TRUE) {
+                if ($connection->query($sql_query) == TRUE) {
                     echo $ev_mark->getEvaluationRubricId() . " mark inserted<br>";
+                    $insert_status = true;
                 } else {
                     echo $ev_mark->getEvaluationRubricId() . " insert failed";
+                    //Set insert status as false and break for loop
+                    $insert_status = false;
+                    break;
                 }
             }
         } else {
             echo "Error: " . $sql_query . "<br>" . $connection->error;
+            $insert_status = false;
         }
 
         //Close connection
         $connection->close();
+
+        //Return SQL insert status
+        return $insert_status;
     }
 
     function deleteEvaluationReport($er_id)
@@ -544,5 +553,34 @@ class LecturerDataService
         $connection->close();
 
         return $ev_mark_array;
+    }
+
+
+    function updateEvaluationResult($ev_report)
+    {
+
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "UPDATE evaluation_result
+            SET evaluation_feedback = '" . $ev_report->getEvaluationFeedback() . "',
+            evaluation_date = '" . date("Y-m-d") . "'
+            WHERE result_id = '" . $ev_report->getResultId() . "'";
+
+
+        if ($connection->query($sql_query) === TRUE) {
+            echo "Record updated successfully";
+        } else {
+            echo "Error updating record: " . $connection->error;
+        }
+
+        //Close conection
+        $connection->close();
+    }
+
+    function updateEvaluationMark()
+    {
     }
 }

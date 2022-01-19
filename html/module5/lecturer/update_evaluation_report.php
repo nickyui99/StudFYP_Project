@@ -423,7 +423,7 @@ if (isset($_SESSION['update_er_array'])) {
                                     </tbody>
                                 </table>
                                 <div class="d-flex justify-content-center">
-                                    <input type="submit" class="btn btn-outline-dark m-3" name="submit" id="submit" value="Submit" onclick="saveSession();">
+                                    <input type="submit" class="btn btn-outline-dark m-3" name="submit" id="submit" value="Submit" onclick="form_submit();">
                                     <input type="reset" class="btn btn-outline-dark m-3" name="reset" id="reset" value="Reset">
                                 </div>
                             </div>

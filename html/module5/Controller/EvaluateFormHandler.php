@@ -2,6 +2,7 @@
 require_once '../DAO/LecturerDataService.php';
 require_once '../ClassModel/EvaluationResultModel.php';
 require_once '../ClassModel/EvaluationMarkDetailsModel.php';
+require_once 'LecturerHandler.php';
 
 session_start();
 
@@ -31,17 +32,26 @@ if (isset($_POST['inputProjId']) && isset($_POST['inputStudId']) && isset($_POST
     $ev_result->setEvaluationDate(date("Y-m-d"));
     $ev_result->setEvMarkDetails($ev_mark_array);
 
-    //Insert evaluation result data
-    $lds->insertEvaluationResult($ev_result, $assigned_id, $_POST['inputStudId']);
-
-    header("Location: ../lecturer/view_assigned_fyp.php");
+    $status = submitEvaluationForm($ev_result, $assigned_id, $_POST['inputStudId']);
+    if($status == true){
+        header("Location: ../lecturer/view_assigned_fyp.php");
+    }else{
+        echo "ERROR INSERTING EVALUATION";
+    }
 }
 
 if (isset($_SESSION['er_report_array']) && isset($_SESSION['is_updated'])) {
     $ev_report_array = $_SESSION['er_report_array'];
 
     if ($_SESSION['is_updated'] == false) {
-        foreach ($ev_report_array as $ev_report) {
-        }
+
+        $status = updateEvaluationResult($ev_report_array);
+        
+    }else{
+
+        //Invalid update submission because is_updated is true
+        unset($_SESSION['is_updated']);
+        unset($_SESSION['er_report_array']);
+        header("Location: ../lecturer/evaluate_report.php");
     }
 }

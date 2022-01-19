@@ -2,7 +2,17 @@
 require_once 'LecturerHandler.php';
 
 session_start();
+
 if (isset($_POST['update_er'])) {
+
+    //Unset previous session data
+    if(isset($_SESSION['update_er_array'])){
+        unset($_SESSION['update_er_array']);
+    }
+    if(isset($_SESSION['er_report_array'])){
+        unset($_SESSION['er_report_array']);
+    }
+    
     $_SESSION['update_er_array'] = $_POST['update_er'];
     $_SESSION['is_updated'] = false;
 }
