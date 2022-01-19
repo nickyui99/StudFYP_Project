@@ -2,23 +2,25 @@
 
 class EvaluationReport{
     private $result_id;
+    private $stud_id;
     private $proj_id;
     private $proj_title;
     private $fyp_stage;
     private $submission;
     private $evaluation_date;
     private $mark;
-    private $stud_id;
+    private $feedback;
 
-    function EvaluationReport($result_id, $proj_id, $proj_title, $fyp_stage, $submission, $mark, $evaluation_date, $stud_id){
+    function EvaluationReport($result_id, $stud_id, $proj_id, $proj_title, $fyp_stage, $submission,  $evaluation_date, $mark, $feedback){
         $this->result_id = $result_id;
+        $this->stud_id = $stud_id;
         $this->proj_id = $proj_id;
         $this->proj_title = $proj_title;
         $this->fyp_stage = $fyp_stage;
         $this->submission = $submission;
-        $this->mark = $mark;
         $this->$evaluation_date = $evaluation_date;
-        $this->stud_id = $stud_id;
+        $this->mark = $mark; 
+        $this->feedback = $feedback;
     }
 
     function getResultId(){
@@ -27,6 +29,14 @@ class EvaluationReport{
 
     function setResultId($result_id){
         $this->result_id = $result_id;
+    }
+
+    function getStudID(){
+        return $this->stud_id;
+    }
+
+    function setStudID($stud_id){
+        $this->stud_id = $stud_id;
     }
 
     function getProjID(){
@@ -77,12 +87,13 @@ class EvaluationReport{
         $this->mark = $mark;
     }
 
-    function getStudID(){
-        return $this->stud_id;
+
+    function getEvaluationFeedback(){
+        return $this->feedback;
     }
 
-    function setStudID($stud_id){
-        $this->stud_id = $stud_id;
+    function setEvaluationFeedback($feedback){
+        $this->feedback = $feedback;
     }
 
 }

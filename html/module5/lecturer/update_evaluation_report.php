@@ -8,18 +8,34 @@ include '../Controller/LecturerHandler.php';
 
 session_start();
 
-$projID = "invalid";
-$studID = "invalid";
-$submission = "invalid";
+if (isset($_SESSION['update_er_array'])) {
 
-if (isset($_GET['projID']) && isset($_GET['studID']) && isset($_GET['submission'])) {
-    $projID = $_GET['projID'];
-    $studID = $_GET['studID'];
-    $submission = $_GET['submission'];
+    $er_array = $_SESSION['update_er_array'];
+    $er_report_array = array();
+
+    if (isset($_SESSION['er_report_array'])) {
+        $er_report_array = $_SESSION['er_report_array'];
+    } else {
+        $er_report_array = getUpdateEvaluationReportList($er_array);
+    }
+
+    //Current pagination evaluation data
+    $current = $er_report_array[$_GET['view']];
+    $evaluateDetails = getEvaluationDetail($current->getProjID(), $current->getStudID(), $current->getSubmission());
+
+    //Retrieve all the rubrics
+    $ev_rubric_array = getEvaluationRubric($current->getSubmission(),  $evaluateDetails->getFypLevel());
+
+    //Get previous mark given
+
+
+    $current_mark = $current->getMark();
+
+    // $current_mark = $ev_mark_details[$_GET['view']];
+} else {
+    //if there is no update er id return back to evaluation report page
+    header("evaluation_report.php");
 }
-
-$evaluateDetails = getEvaluationDetail($projID, $studID, $submission);
-$ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLevel());
 ?>
 
 <head>
@@ -226,14 +242,14 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
                         </a>
                         <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link text-light active" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
-                                    </div>View assigned FYP
-                                </a>
-                                <a class="nav-link" href="evaluation_report.php">
+                                <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                    </div>View assigned FYP
+                                </a>
+                                <a class="nav-link text-light active" href="evaluation_report.php">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                                     </div>Evaluation report
                                 </a>
                             </nav>
@@ -250,8 +266,8 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    <?php 
-                        echo $_SESSION['username'];
+                    <?php
+                    echo $_SESSION['username'];
                     ?>
                 </div>
             </nav>
@@ -261,110 +277,160 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Evaluate FYP - Submission <?php echo $submission ?></h1>
+                    <h1 class="mt-4">Update FYP Evaluation</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">
                             FYP evaluation
                         </li>
-                        <li class="breadcrumb-item active">Assigned FYP for Evaluation</li>
-                        <li class="breadcrumb-item active">Evaluate FYP</li>
+                        <li class="breadcrumb-item active">Evaluation Report</li>
+                        <li class="breadcrumb-item active">Update FYP</li>
                     </ol>
 
+
+                    <nav aria-label="...">
+                        <ul class="pagination">
+
+                            <?php
+
+                            //Previous button
+                            if ($_GET['view'] == 0) {
+                                echo '<li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1" id="btn_previous" aria-disabled="true">Previous</a>
+                                        </li>';
+                            } else {
+                                echo '<li class="page-item">
+                                        <a class="page-link" href="update_evaluation_report.php?view=' . $_GET['view'] - 1 . '" tabindex="-1" id="btn_previous" onClick="saveSession();" aria-disabled="true">Previous</a>
+                                        </li>';
+                            }
+
+                            //Print All Available Page
+                            for ($i = 0; $i < count($er_report_array); $i++) {
+                                $page_num = $i + 1;
+                                if ($i == $_GET['view']) {
+                                    echo '<li class="page-item active"><a class="page-link" href="update_evaluation_report.php?view=' . $i . '" onClick="saveSession();">' . $page_num . '</a></li>';
+                                } else {
+                                    echo '<li class="page-item"><a class="page-link" href="update_evaluation_report.php?view=' . $i . '" onClick="saveSession();">' . $page_num . '</a></li>';
+                                }
+                            }
+
+                            //Pagination Next Button
+                            if ($_GET['view'] == count($er_report_array) - 1) {
+                                echo    '<li class="page-item disabled">
+                                        <a class="page-link" href="#" onClick="saveSession();">Next</a>
+                                        </li>';
+                            } else {
+                                echo    '<li class="page-item">
+                                        <a class="page-link" href="update_evaluation_report.php?view=' . $_GET['view'] + 1 . '">Next</a>
+                                        </li>';
+                            }
+                            ?>
+                        </ul>
+                    </nav>
+
                     <form id="evaluation_form" action="../Controller/EvaluateFormHandler.php" method="POST">
-                        <input type="hidden" id="submission" name="submission" value="<?php echo $submission ?>">
-                        <div class="form-group">
-                            <table class="table table-borderless">
-                                <tbody>
-                                    <tr class="">
-                                        <td class="col-sm-2">Project ID: </td>
-                                        <td class="col-sm-7"><input type="text" class="form-control" id="inputProjId" name="inputProjId" value="<?php echo $projID ?>" readonly></td>
-                                        <td class="col-sm-3" rowspan="4">
-                                            <div class="card text-center">
-                                                <div class="card-body">
-                                                    <h4 class="mb1">Project QR Code</h4>
-                                                    <img name="QR_code" src="data:image/jpeg;base64, <?php echo $evaluateDetails->getProjQR(); ?>" alt="Project QR Code" class="img-container mb-1">
-                                                    <button type="button" id="btnDownloadProjQR" class="btn btn-outline-dark"><i class="fa fa-download me-3" aria-hidden="true"></i>Download QR Code</button>
-                                                </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Student ID: </td>
-                                        <td><input type="text" class="form-control" id="inputStudId" name="inputStudId" value="<?php echo $studID ?>" readonly></td>
-                                    </tr>
-                                    <tr>
-                                        <td>FYP Stage: </td>
-                                        <td><input type="text" class="form-control" id="inputFypStage" name="inputFypStage" value="<?php echo $evaluateDetails->getFypLevel(); ?>" readonly></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Project title:</td>
-                                        <td><input type="text" class="form-control" id="inputProjTitle" name="inputProjTitle" value="<?php echo $evaluateDetails->getProjTitle(); ?>" readonly></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Project Logbook: </td>
-                                        <td>
-                                            <table class="table table-bordered table-striped">
-                                                <thead>
-                                                    <tr class="header-bg">
-                                                        <th class="col-sm-3">Date</th>
-                                                        <th class="col-sm-9">Activity</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <!-- Project logbook result -->
-                                                    <?php printProjLogbook($projID, $submission) ?>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Project Document: </td>
-                                        <td><button type="button" id="btnDownloadProjDoc" class="btn btn-outline-dark"><i class="fa fa-download me-3" aria-hidden="true"></i>Download</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Evaluation Rubric: </td>
-                                        <td>
-                                            <div class="table-responsive">
-                                                <table id="rubrics" class="table table-bordered border-dark table-sm">
-                                                    <thead class="">
+                        <div class="card mb-3 p-3">
+                            <div class="form-group">
+                                <table class="table table-borderless">
+                                    <tbody>
+                                        <tr class="">
+                                            <td class="col-sm-2">Result ID: </td>
+                                            <td class="col-sm-7"><input type="text" class="form-control" id="inputResultId" name="inputResultId" value="<?php echo $current->getResultId(); ?>" readonly></td>
+                                            <td class="col-sm-3" rowspan="4">
+                                                <div class="card text-center">
+                                                    <div class="card-body">
+                                                        <h4 class="mb1">Project QR Code</h4>
+                                                        <img name="QR_code" src="data:image/jpeg;base64, <?php echo $evaluateDetails->getProjQR(); ?>" alt="Project QR Code" class="img-container mb-1">
+                                                        <button type="button" id="btnDownloadProjQR" class="btn btn-outline-dark"><i class="fa fa-download me-3" aria-hidden="true"></i>Download QR Code</button>
+                                                    </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Student ID: </td>
+                                            <td><input type="text" class="form-control" id="inputStudId" name="inputStudId" value="<?php echo $current->getStudId() ?>" readonly></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-sm-2">Project ID: </td>
+                                            <td class="col-sm-7"><input type="text" class="form-control" id="inputProjId" name="inputProjId" value="<?php echo $current->getProjId() ?>" readonly></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Project title:</td>
+                                            <td><input type="text" class="form-control" id="inputProjTitle" name="inputProjTitle" value="<?php echo $current->getProjTitle() ?>" readonly></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>FYP Stage: </td>
+                                            <td><input type="text" class="form-control" id="inputFypStage" name="inputFypStage" value="<?php echo $current->getFypStage() ?>" readonly></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Project Logbook: </td>
+                                            <td>
+                                                <table class="table table-bordered table-striped">
+                                                    <thead>
                                                         <tr class="header-bg">
-                                                            <th class="small" style="width: 10%;">Num</th>
-                                                            <th class="small" style="width: 20%;">Rubric Title</th>
-                                                            <th class="small" style="width: 25%;">Rubric Details</th>
-                                                            <th class="small" style="width: 15%;">Weightage</th>
-                                                            <th class="small" style="width: 15%;">Mark</th>
-                                                            <th class="small" style="width: 15%;">Actual Mark</th>
+                                                            <th class="col-sm-3">Date</th>
+                                                            <th class="col-sm-9">Activity</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody id="rubric_result">
-                                                        <!-- Evaluation Rubric Result -->
-                                                        <?php printEvaluationRubric($submission, $evaluateDetails->getFypLevel()); ?>
-                                                        <tr class="header-bg border-dark">
-                                                            <td class="text-end" colspan="5"><b>Total:</b></td>
-                                                            <td><input type="text" readonly class="form-control-plaintext" id="total_mark" name="total_mark" value=""></td>
-                                                        </tr>
+                                                    <tbody>
+                                                        <!-- Project logbook result -->
+                                                        <?php printProjLogbook($current->getProjID(), $current->getSubmission()) ?>
                                                     </tbody>
                                                 </table>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Project Feedback: </td>
-                                        <td>
-                                            <textarea id="inputProjFeedback" name="inputProjFeedback" class="form-control" cols="30" rows="5" maxLength="300" required></textarea>
-                                            <div class="float-end" id="the-count">
-                                                <span id="current">0</span>
-                                                <span id="maximum">/ 300</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="d-flex justify-content-center">
-                                <input type="submit" class="btn btn-outline-dark m-3" name="submit" id="submit" value="Submit">
-                                <input type="reset" class="btn btn-outline-dark m-3" name="reset" id="reset" value="Reset">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Project Document: </td>
+                                            <td><button type="button" id="btnDownloadProjDoc" class="btn btn-outline-dark"><i class="fa fa-download me-3" aria-hidden="true"></i>Download</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Evaluation Rubric: </td>
+                                            <td>
+                                                <div class="table-responsive">
+                                                    <table id="rubrics" class="table table-bordered border-dark table-sm">
+                                                        <thead class="">
+                                                            <tr class="header-bg">
+                                                                <th class="small" style="width: 10%;">Num</th>
+                                                                <th class="small" style="width: 20%;">Rubric Title</th>
+                                                                <th class="small" style="width: 25%;">Rubric Details</th>
+                                                                <th class="small" style="width: 15%;">Weightage</th>
+                                                                <th class="small" style="width: 15%;">Mark</th>
+                                                                <th class="small" style="width: 15%;">Actual Mark</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="rubric_result">
+                                                            <!-- Evaluation Rubric Result -->
+                                                            <?php printEvaluationRubric($current->getSubmission(), $evaluateDetails->getFypLevel()); ?>
+                                                            <tr class="header-bg border-dark">
+                                                                <td class="text-end" colspan="5"><b>Total:</b></td>
+                                                                <td><input type="text" readonly class="form-control-plaintext" id="total_mark" name="total_mark" value=""></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Project Feedback: </td>
+                                            <td>
+                                                <textarea id="inputProjFeedback" name="inputProjFeedback" class="form-control" cols="30" rows="5" maxLength="300" required></textarea>
+                                                <div class="float-end" id="the-count">
+                                                    <span id="current">0</span>
+                                                    <span id="maximum">/ 300</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="d-flex justify-content-center">
+                                    <input type="submit" class="btn btn-outline-dark m-3" name="submit" id="submit" value="Submit" onclick="saveSession();">
+                                    <input type="reset" class="btn btn-outline-dark m-3" name="reset" id="reset" value="Reset">
+                                </div>
                             </div>
                         </div>
                     </form>
+
+
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
@@ -379,14 +445,6 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
 </body>
 
 <script>
-    $('#btnDownloadProjQR').click(function() {
-        window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projQr=<?php echo $projID ?>");
-    });
-
-    $('#btnDownloadProjDoc').click(function() {
-        window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projDoc=<?php echo $projID ?>&submission=<?php echo $submission ?>");
-    });
-
     $('textarea').keyup(function() {
         var characterCount = $(this).val().length,
             current = $('#current'),
@@ -397,8 +455,55 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
     });
 
     $(document).ready(function() {
+        setPreviousEvaluationResults();
         calcTotalMark();
+
+        $('#btnDownloadProjQR').click(function() {
+            window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projQr=<?php echo $current->getProjID(); ?>");
+        });
+
+        $('#btnDownloadProjDoc').click(function() {
+            window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projDoc=<?php echo $current->getProjID(); ?>&submission=<?php echo $current->getSubmission(); ?>");
+        });
+
     });
+
+    function saveSession() {
+
+        const result_id = "<?php echo $current->getResultId(); ?>";
+
+        const rubric_id_array =
+            <?php
+            $rubric_id_array = array();
+            foreach ($current_mark as $mark) {
+                array_push($rubric_id_array, $mark->getEvaluationRubricId());
+            }
+            echo json_encode($rubric_id_array);
+            ?>;
+
+        const rubric_mark_array = [];
+        for (var i = 0; i < rubric_id_array.length; i++) {
+            rubric_mark_array.push($('#am_' + rubric_id_array[i]).val());
+        }
+
+        const feedback = $('#inputProjFeedback').val();
+
+        save_temp_ev(result_id, rubric_id_array, rubric_mark_array, feedback);
+    }
+
+
+    function setPreviousEvaluationResults() {
+        <?php
+        foreach ($current_mark as $mark) {
+            echo 'var weightage = $("#w_' . $mark->getEvaluationRubricId() . '").html();';
+            echo 'var selected_val = Math.round(' . $mark->getActualMark() . '/ weightage);';
+            echo "$('#" . $mark->getEvaluationRubricId() . " option[value=' + selected_val + ']').attr('selected','selected');";
+            echo "$('#am_" . $mark->getEvaluationRubricId() . "').val('" . $mark->getActualMark() . "');";
+        }
+
+        echo "$('#inputProjFeedback').val('" . $current->getEvaluationFeedback() . "');";
+        ?>
+    }
 
     function calcActualMark(object) {
         var id = $(object).attr('id');

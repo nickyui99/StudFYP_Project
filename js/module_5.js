@@ -27,18 +27,6 @@ function load_assigned_evaluator(query, id) {
   });
 }
 
-function submit_evaluation_form(form){
-  $.ajax({
-    url: 'http://localhost/StudFYP_Project/html/module5/Controller/EvaluateFormHandler.php',
-    type: 'post',
-    data: form,
-    success: function() {
-        // Whatever you want to do after the form is successfully submitted
-        alert("data inserted")
-    }
-});
-}
-
 function load_evaluation_report(query, id) {
   $.ajax({
     method: "POST",
@@ -53,12 +41,44 @@ function load_evaluation_report(query, id) {
   });
 }
 
-
-function pass_er_array(er_id_array) {
+function update_er_array(er_id_array) {
   $.ajax({
     method: "POST",
     data: {
-      er_array: er_id_array
+      update_er: er_id_array
+    },
+    url: "http://localhost/StudFYP_Project/html/module5/Controller/SessionHandler.php",
+    success: function (data) {
+      window.location.replace("http://localhost/StudFYP_Project/html/module5/lecturer/update_evaluation_report.php?view=0");
+    }
+  });
+}
+
+function save_temp_ev(result_id, rubric_id_array, rubric_mark_array, feedback) {
+  $.ajax({
+    method: "POST",
+    data: {
+      m_result_id: result_id,
+      m_rubric_id_array: rubric_id_array,
+      m_rubric_mark_array: rubric_mark_array,
+      m_feedback: feedback
+    },
+    url: "http://localhost/StudFYP_Project/html/module5/Controller/SessionHandler.php",
+    success: function (data) {
+
+    },
+    error: function (request, status, error) {
+      alert(request.responseText);
+    }
+  });
+}
+
+
+function delete_er_array(er_id_array) {
+  $.ajax({
+    method: "POST",
+    data: {
+      delete_er: er_id_array
     },
     url: "http://localhost/StudFYP_Project/html/module5/Controller/LecturerHandler.php",
     success: function (data) {
@@ -66,3 +86,5 @@ function pass_er_array(er_id_array) {
     }
   });
 }
+
+

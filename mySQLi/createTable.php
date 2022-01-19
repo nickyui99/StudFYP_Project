@@ -1,5 +1,5 @@
 <?php
-    /**UPDATED 7/1/2022 */
+    /**UPDATED 11/1/2022 */
     //First, connect to the MySQL server.
 
     $link = mysqli_connect("localhost", "root", "");
@@ -127,7 +127,7 @@
     }
 
     //create evaluation_result table
-    $sql = "CREATE TABLE evaluation_result (result_id VARCHAR(10), fyp_proj_id VARCHAR(10), assigned_lect_id VARCHAR(10), assigned_ip_id VARCHAR(10), submission_level INT(3), evaluation_feedback VARCHAR(300), evaluation_mark FLOAT, evaluation_date DATE, PRIMARY KEY (result_id), FOREIGN KEY (fyp_proj_id) REFERENCES fyp_project(fyp_proj_id))";
+    $sql = "CREATE TABLE evaluation_result (result_id VARCHAR(10), fyp_proj_id VARCHAR(10), assigned_lect_id VARCHAR(10), assigned_ip_id VARCHAR(10), submission_level INT(3), evaluation_feedback VARCHAR(300), evaluation_date DATE, PRIMARY KEY (result_id), FOREIGN KEY (fyp_proj_id) REFERENCES fyp_project(fyp_proj_id))";
 
     if (mysqli_query($link, $sql)) {
         echo "Table evaluation_result created successfully <br>";
@@ -140,6 +140,15 @@
 
     if (mysqli_query($link, $sql)) {
         echo "Table project_logbook created successfully <br>";
+    } else {
+        echo 'Error creating table: ' . mysqli_error($link) . "<br>";
+    }
+
+    //create ev_mark_details table
+    $sql = "CREATE TABLE ev_mark_details (ev_mark_id INT NOT NULL AUTO_INCREMENT, result_id VARCHAR(10), evaluation_rubric_id VARCHAR(10), actual_mark FLOAT, PRIMARY KEY(ev_mark_id), FOREIGN KEY(result_id) REFERENCES evaluation_result(result_id), FOREIGN KEY(evaluation_rubric_id) REFERENCES evaluation_rubric(evaluation_rubric_id))";
+
+    if (mysqli_query($link, $sql)) {
+        echo "Table ev_mark_details created successfully <br>";
     } else {
         echo 'Error creating table: ' . mysqli_error($link) . "<br>";
     }

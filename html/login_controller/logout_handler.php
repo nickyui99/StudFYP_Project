@@ -25,4 +25,4 @@ else if(isset($_SESSION['ip_id'])){
     unset($_SESSION["username"]);
 }
 
-header("Location:../index.php");
+header("Location:../../index.php");
