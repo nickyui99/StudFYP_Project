@@ -177,15 +177,13 @@ function updateEvaluationResult($ev_report_array)
 
     $lds = new LecturerDataService();
 
+    $status = true;
+    echo count($ev_report_array);
     foreach ($ev_report_array as $ev_report) {
         $status = $lds->updateEvaluationResult($ev_report);
 
         if ($status == true) {
-            $status = $lds->updateEvaluationMark();
-            if($status == false){
-                //Break loop when update status false;
-                break;
-            }
+            $status = $lds->updateEvaluationMark($ev_report->getMark());
         }
     }
 

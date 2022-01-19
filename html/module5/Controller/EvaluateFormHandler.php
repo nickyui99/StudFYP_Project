@@ -44,9 +44,7 @@ if (isset($_SESSION['er_report_array']) && isset($_SESSION['is_updated'])) {
     $ev_report_array = $_SESSION['er_report_array'];
 
     if ($_SESSION['is_updated'] == false) {
-
         $status = updateEvaluationResult($ev_report_array);
-        
     }else{
 
         //Invalid update submission because is_updated is true

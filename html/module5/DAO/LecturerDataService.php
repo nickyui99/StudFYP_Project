@@ -558,7 +558,6 @@ class LecturerDataService
 
     function updateEvaluationResult($ev_report)
     {
-
         $db = new Database();
 
         //Create connection
@@ -569,18 +568,53 @@ class LecturerDataService
             evaluation_date = '" . date("Y-m-d") . "'
             WHERE result_id = '" . $ev_report->getResultId() . "'";
 
+        echo "</br>" . $sql_query;
 
-        if ($connection->query($sql_query) === TRUE) {
-            echo "Record updated successfully";
+        $is_update_success = "";
+        if ($connection->query($sql_query) == TRUE) {
+            echo "</br>Record " . $ev_report->getResultId() . " updated successfully";
+            $is_update_success = true;
         } else {
-            echo "Error updating record: " . $connection->error;
+            echo "</br>Error updating record: " . $connection->error;
+            $is_update_success = false;
         }
 
         //Close conection
         $connection->close();
+
+        //Return update status
+        return $is_update_success;
     }
 
-    function updateEvaluationMark()
+    function updateEvaluationMark($ev_mark_array)
     {
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        foreach ($ev_mark_array as $ev_mark) {
+            $sql_query = "UPDATE ev_mark_details
+                SET actual_mark = '" . $ev_mark->getActualMark() . "'
+                WHERE result_id = '" . $ev_mark->getResultId() . "'
+                AND ev_mark_id = '" . $ev_mark->getEvMarkId() . "'";
+
+            echo "</br>" . $sql_query;
+
+            $is_update_success = true;
+            if ($connection->query($sql_query) == true) {
+                echo "</br>Record " .$ev_mark->getEvMarkId(). " updated successfully";
+                $is_update_success = true;
+            } else {
+                echo "</br>Error updating record: " . $connection->error;
+                $is_update_success = false;
+                break;
+            }
+        }
+
+        //Close conection
+        $connection->close();
+
+        // return $is_update_success;
     }
 }

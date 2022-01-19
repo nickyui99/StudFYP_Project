@@ -12,13 +12,13 @@ if (isset($_SESSION['update_er_array'])) {
 
     $er_array = $_SESSION['update_er_array'];
     $er_report_array = array();
-    
-    if(isset($_SESSION['er_report_array'])){
+
+    if (isset($_SESSION['er_report_array'])) {
         $er_report_array = $_SESSION['er_report_array'];
-    }else{
+    } else {
         $er_report_array = getUpdateEvaluationReportList($er_array);
     }
-    
+
     //Current pagination evaluation data
     $current = $er_report_array[$_GET['view']];
     $evaluateDetails = getEvaluationDetail($current->getProjID(), $current->getStudID(), $current->getSubmission());
@@ -27,8 +27,8 @@ if (isset($_SESSION['update_er_array'])) {
     $ev_rubric_array = getEvaluationRubric($current->getSubmission(),  $evaluateDetails->getFypLevel());
 
     //Get previous mark given
-    
-    
+
+
     $current_mark = $current->getMark();
 
     // $current_mark = $ev_mark_details[$_GET['view']];
@@ -242,14 +242,14 @@ if (isset($_SESSION['update_er_array'])) {
                         </a>
                         <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link text-light active" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
-                                    </div>View assigned FYP
-                                </a>
-                                <a class="nav-link" href="evaluation_report.php">
+                                <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                    </div>View assigned FYP
+                                </a>
+                                <a class="nav-link text-light active" href="evaluation_report.php">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                                     </div>Evaluation report
                                 </a>
                             </nav>
@@ -423,7 +423,7 @@ if (isset($_SESSION['update_er_array'])) {
                                     </tbody>
                                 </table>
                                 <div class="d-flex justify-content-center">
-                                    <input type="submit" class="btn btn-outline-dark m-3" name="submit" id="submit" value="Submit" onclick="form_submit();">
+                                    <input type="submit" class="btn btn-outline-dark m-3" name="submit" id="submit" value="Submit" onclick="saveSession();">
                                     <input type="reset" class="btn btn-outline-dark m-3" name="reset" id="reset" value="Reset">
                                 </div>
                             </div>
@@ -470,19 +470,19 @@ if (isset($_SESSION['update_er_array'])) {
 
     function saveSession() {
 
-        const result_id = "<?php echo $current->getResultId();?>";
+        const result_id = "<?php echo $current->getResultId(); ?>";
 
         const rubric_id_array =
             <?php
-                $rubric_id_array = array();
-                foreach ($current_mark as $mark) {
-                    array_push($rubric_id_array, $mark->getEvaluationRubricId());
-                }
-                echo json_encode($rubric_id_array);
-            ?>;  
-        
+            $rubric_id_array = array();
+            foreach ($current_mark as $mark) {
+                array_push($rubric_id_array, $mark->getEvaluationRubricId());
+            }
+            echo json_encode($rubric_id_array);
+            ?>;
+
         const rubric_mark_array = [];
-        for (var i=0; i<rubric_id_array.length; i++) {
+        for (var i = 0; i < rubric_id_array.length; i++) {
             rubric_mark_array.push($('#am_' + rubric_id_array[i]).val());
         }
 
