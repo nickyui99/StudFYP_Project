@@ -24,6 +24,9 @@ session_start();
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
 
+    <!-- Chart js  -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- CSS -->
     <link rel="stylesheet" href="../../../css/main.css" />
     <link rel="stylesheet" href="../../../css/module_5.css" />
@@ -254,7 +257,10 @@ session_start();
                         <li class="breadcrumb-item active">Evaluation report</li>
                     </ol>
                     <div class="d-flex justify-content-center mb-2">
-                        <img src="https://chartio.com/assets/25c0ab/tutorials/charts/pie-charts/8f2915ab9024902155c5d27d430831be813de071853c69d778102722a4d0efbf/pie-chart-example-1.png" alt="">
+                        <!-- Pie Chart -->
+                        <div>
+                            <canvas id="myChart"></canvas>
+                        </div>
                     </div>
                     <div class="row mb-2">
                         <p class="col-sm-1">Actions: </p>
@@ -413,6 +419,70 @@ session_start();
             update_er_array(checkedList());
         });
 
+        $('#btn_delete').click(function() {
+
+            checkedArrays = checkedList();
+
+            if (checkedArrays.length == 0) {
+                var output = "No row selected";
+                document.getElementById("alert_message").innerHTML = output;
+                $('#alert_modal').modal('show');
+            } else {
+                var output = "Are you sure to DELETE this evaluation report? <ul>";
+                for (var i = 0; i < checkedArrays.length; i++) {
+                    output = output + "<li>" + checkedArrays[i] + "</li>";
+                }
+                output = output + "</ul>"
+                document.getElementById("checked_report").innerHTML = output;
+                $('#confirm_delete_modal').modal('show');
+            }
+        });
+
+        $('#btn_update').click(function() {
+            checkedArrays = checkedList();
+
+            if (checkedArrays.length == 0) {
+                var output = "No row selected";
+                document.getElementById("alert_message").innerHTML = output;
+                $('#alert_modal').modal('show');
+            } else {
+                var output = "Are you sure to UPDATE this evaluation report? <ul>";
+                for (var i = 0; i < checkedArrays.length; i++) {
+                    output = output + "<li>" + checkedArrays[i] + "</li>";
+                }
+                output = output + "</ul>"
+                document.getElementById("checked_list").innerHTML = output;
+                $('#confirm_update_modal').modal('show');
+            }
+        });
+
+        //Chart Js Configuration
+        const data = {
+            labels: [
+                'Evaluated PSM 1 Student',
+                'Evaluated PSM 2 Student'
+            ],
+            datasets: [{
+                label: 'My First Dataset',
+                data: [300, 300],
+                backgroundColor: [
+                    'rgb(155, 89, 182)',
+                    'rgb(22, 160, 133)',
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        const config = {
+            type: 'pie',
+            data: data,
+        };
+
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
     });
 
     function checkedList() {
@@ -429,7 +499,7 @@ session_start();
             echo json_encode($result_id_array);
             ?>;
 
-        for(let i = 0; i<result_id_array.length; i++){
+        for (let i = 0; i < result_id_array.length; i++) {
             if (document.getElementById("cb_" + result_id_array[i]).checked == true) {
                 check_list.push(result_id_array[i]);
             };
@@ -437,43 +507,6 @@ session_start();
 
         return check_list;
     }
-
-    $('#btn_delete').click(function() {
-
-        checkedArrays = checkedList();
-
-        if (checkedArrays.length == 0) {
-            var output = "No row selected";
-            document.getElementById("alert_message").innerHTML = output;
-            $('#alert_modal').modal('show');
-        } else {
-            var output = "Are you sure to DELETE this evaluation report? <ul>";
-            for (var i = 0; i < checkedArrays.length; i++) {
-                output = output + "<li>" + checkedArrays[i] + "</li>";
-            }
-            output = output + "</ul>"
-            document.getElementById("checked_report").innerHTML = output;
-            $('#confirm_delete_modal').modal('show');
-        }
-    });
-
-    $('#btn_update').click(function() {
-        checkedArrays = checkedList();
-
-        if (checkedArrays.length == 0) {
-            var output = "No row selected";
-            document.getElementById("alert_message").innerHTML = output;
-            $('#alert_modal').modal('show');
-        } else {
-            var output = "Are you sure to UPDATE this evaluation report? <ul>";
-            for (var i = 0; i < checkedArrays.length; i++) {
-                output = output + "<li>" + checkedArrays[i] + "</li>";
-            }
-            output = output + "</ul>"
-            document.getElementById("checked_list").innerHTML = output;
-            $('#confirm_update_modal').modal('show');
-        }
-    });
 </script>
 
 </html>
