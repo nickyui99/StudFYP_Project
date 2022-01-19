@@ -66,5 +66,4 @@ if (isset($_POST['m_result_id']) &&
 
     $_SESSION['er_report_array'] = $er_report_array;
 
-    header("../lecturer/evaluation_report.php");
 }

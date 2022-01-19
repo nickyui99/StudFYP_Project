@@ -46,10 +46,8 @@ if (isset($_SESSION['er_report_array']) && isset($_SESSION['is_updated'])) {
     if ($_SESSION['is_updated'] == false) {
         $status = updateEvaluationResult($ev_report_array);
     }else{
-
         //Invalid update submission because is_updated is true
         unset($_SESSION['is_updated']);
         unset($_SESSION['er_report_array']);
-        header("Location: ../lecturer/evaluate_report.php");
     }
 }

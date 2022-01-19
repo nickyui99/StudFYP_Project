@@ -568,8 +568,6 @@ class LecturerDataService
             evaluation_date = '" . date("Y-m-d") . "'
             WHERE result_id = '" . $ev_report->getResultId() . "'";
 
-        echo "</br>" . $sql_query;
-
         $is_update_success = "";
         if ($connection->query($sql_query) == TRUE) {
             echo "</br>Record " . $ev_report->getResultId() . " updated successfully";
@@ -599,8 +597,6 @@ class LecturerDataService
                 WHERE result_id = '" . $ev_mark->getResultId() . "'
                 AND ev_mark_id = '" . $ev_mark->getEvMarkId() . "'";
 
-            echo "</br>" . $sql_query;
-
             $is_update_success = true;
             if ($connection->query($sql_query) == true) {
                 echo "</br>Record " .$ev_mark->getEvMarkId(). " updated successfully";
@@ -616,5 +612,6 @@ class LecturerDataService
         $connection->close();
 
         // return $is_update_success;
+        return $is_update_success;
     }
 }

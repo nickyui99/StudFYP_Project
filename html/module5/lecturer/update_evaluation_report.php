@@ -327,7 +327,7 @@ if (isset($_SESSION['update_er_array'])) {
                         </ul>
                     </nav>
 
-                    <form id="evaluation_form" action="../Controller/EvaluateFormHandler.php" method="POST">
+                    <form id="evaluation_form" action="evaluation_report.php">
                         <div class="card mb-3 p-3">
                             <div class="form-group">
                                 <table class="table table-borderless">
@@ -423,7 +423,7 @@ if (isset($_SESSION['update_er_array'])) {
                                     </tbody>
                                 </table>
                                 <div class="d-flex justify-content-center">
-                                    <input type="submit" class="btn btn-outline-dark m-3" name="submit" id="submit" value="Submit" onclick="saveSession();">
+                                    <input type="submit" class="btn btn-outline-dark m-3" name="submit" id="submit" value="Submit">
                                     <input type="reset" class="btn btn-outline-dark m-3" name="reset" id="reset" value="Reset">
                                 </div>
                             </div>
@@ -466,6 +466,19 @@ if (isset($_SESSION['update_er_array'])) {
             window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projDoc=<?php echo $current->getProjID(); ?>&submission=<?php echo $current->getSubmission(); ?>");
         });
 
+        $('#evaluation_form').submit(function() {
+            saveSession();
+            var form = $(this);
+
+            $.ajax({
+                type: "POST",
+                url: "../Controller/EvaluateFormHandler.php",
+                data: form.serialize(), // serializes the form's elements.
+                success: function(data) {
+                    alert("Evaluation result updated");
+                }
+            });
+        });
     });
 
     function saveSession() {
@@ -490,6 +503,7 @@ if (isset($_SESSION['update_er_array'])) {
 
         save_temp_ev(result_id, rubric_id_array, rubric_mark_array, feedback);
     }
+
 
 
     function setPreviousEvaluationResults() {
@@ -521,7 +535,7 @@ if (isset($_SESSION['update_er_array'])) {
             echo 'total = total + parseFloat(document.getElementById("am_' . $ev_rubric->getRubricId() . '").value);';
         }
         ?>
-        document.getElementById("total_mark").value = total.toFixed(2)
+        document.getElementById("total_mark").value = total.toFixed(2);
     }
 </script>
 
