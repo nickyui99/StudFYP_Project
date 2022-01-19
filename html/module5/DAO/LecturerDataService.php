@@ -28,11 +28,11 @@ class LecturerDataService
         //Run SQL Query
         $result = $connection->query($sql_query);
 
+        $assigned_ev_array = array();
         if ($result->num_rows == 0) {
-            return null;
+            //Do nothing
         } else {
-            $i = 0;
-            $assigned_ev_array = array();
+            $i = 0; 
             while ($row = $result->fetch_assoc()) {
                 //Retrieve data
                 $assigned_ev = new AssignedEvaluation();
@@ -68,12 +68,12 @@ class LecturerDataService
 
                 $assigned_ev->setEvaluationStatus($evaluation_status);
             }
-
-            //Close connection
-            $connection->close();
-
-            return $assigned_ev_array;
         }
+
+        //Close connection
+        $connection->close();
+
+        return $assigned_ev_array;
     }
 
     function getEvaluationDetails($proj_id, $stud_id, $submission)

@@ -256,10 +256,15 @@ session_start();
                         </li>
                         <li class="breadcrumb-item active">Evaluation report</li>
                     </ol>
+
+                    <div id="message_box">
+                        <!-- This div is for showing message purpose only -->
+                    </div>
+
                     <div class="d-flex justify-content-center mb-2">
                         <!-- Pie Chart -->
-                        <div>
-                            <canvas id="myChart"></canvas>
+                        <div id="chart_container">
+                            <canvas id="my_chart"></canvas>
                         </div>
                     </div>
                     <div class="row mb-2">
@@ -385,6 +390,8 @@ session_start();
                         </div>
                     </div>
                 </div>
+
+
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
@@ -456,32 +463,43 @@ session_start();
             }
         });
 
-        //Chart Js Configuration
-        const data = {
-            labels: [
-                'Evaluated PSM 1 Student',
-                'Evaluated PSM 2 Student'
-            ],
-            datasets: [{
-                label: 'My First Dataset',
-                data: [300, 300],
-                backgroundColor: [
-                    'rgb(155, 89, 182)',
-                    'rgb(22, 160, 133)',
+        //Retrieve data
+        var fyp1_stud_num = <?php echo getEvaluatedFyp1StudentNum($_SESSION['lect_id']); ?>;
+        var fyp2_stud_num = <?php echo getEvaluatedFyp2StudentNum($_SESSION['lect_id']); ?>;
+
+        if (fyp1_stud_num + fyp2_stud_num <= 0) {
+            // $('#chart_container').html("No data");
+        } else {
+            //Chart Js Configuration
+            const data = {
+                labels: [
+                    'Evaluated PSM 1 Student',
+                    'Evaluated PSM 2 Student'
                 ],
-                hoverOffset: 4
-            }]
-        };
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [
+                        fyp1_stud_num,
+                        fyp2_stud_num
+                    ],
+                    backgroundColor: [
+                        'rgb(155, 89, 182)',
+                        'rgb(22, 160, 133)',
+                    ],
+                    hoverOffset: 4
+                }]
+            };
 
-        const config = {
-            type: 'pie',
-            data: data,
-        };
+            const config = {
+                type: 'pie',
+                data: data,
+            };
 
-        const myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
+            const myChart = new Chart(
+                document.getElementById('my_chart'),
+                config
+            );
+        }
 
     });
 
