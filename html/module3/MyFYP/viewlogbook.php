@@ -10,12 +10,11 @@
     <title>Dashboard</title>
 
     <!-- Bootstrap 5 CSS -->
-    <link rel="stylesheet" href="../../bootstrap_v5.1/css/styles.css" />
+    <link rel="stylesheet" href="../../../bootstrap_v5.1/css/styles.css" />
 
     <!-- Bootstrap 5 JavaScript -->
-    <script src="../../bootstrap_v5.1/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
+    <script src="../../../bootstrap_v5.1/js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
@@ -42,8 +41,7 @@
         <ul class="navbar-nav d-md- ms-auto me-1">
             <!-- Announcement -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-bell fa-fw"></i> Notification</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell fa-fw"></i> Notification</a>
                 <ul class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="navbarDropdown">
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
@@ -71,8 +69,7 @@
 
             <!-- Profile -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li>
                         <a class="dropdown-item" href="#!">My profile</a>
@@ -117,9 +114,7 @@
                         </a>
 
                         <!-- My FYP -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseFYP" aria-expanded="false"
-                            aria-controls="collapseFYP">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseFYP" aria-expanded="false" aria-controls="collapseFYP">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -128,8 +123,7 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseFYP" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseFYP" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="viewlogbook.php">
                                     <div class="sb-nav-link-icon">
@@ -161,9 +155,7 @@
                         </div>
 
                         <!-- My FYP Supervisor -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseSupervisor" aria-expanded="false"
-                            aria-controls="collapseSupervisor">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSupervisor" aria-expanded="false" aria-controls="collapseSupervisor">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -172,8 +164,7 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
@@ -189,9 +180,7 @@
                         </div>
 
                         <!-- FYP Evaluation -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseEvaluation" aria-expanded="false"
-                            aria-controls="collapseEvaluation">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEvaluation" aria-expanded="false" aria-controls="collapseEvaluation">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -200,8 +189,7 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
@@ -245,34 +233,34 @@
                     </ol>
                     <?php
 
-include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php' ;  
+                    include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php';
 
-$sql = "SELECT * FROM project_logbook";
-$result = $db->query($sql);
-echo"<div class='container'>" ; 
-echo"<form>" ; 
-echo"<table class = 'dl' width=max-content border=1 cellspacing=0 cellpadding=10>";	
-if ($result->num_rows > 0) {	
-	echo"<tr>";
-	echo"<th>Date</th>";
-	echo"<th>Activity</th>";
-	echo"</tr>";
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-	echo"<tr>";
-	echo "<td>".$row["logbook_date"]."</td>";
-	echo "<td>".$row["logbook_details"]."</td>";
-	 echo"</tr>";	
-  }  
-	  echo"</table>";
-} else {
-  echo "0 results";
-}
-$db->close();
-echo"</form>"; 
-echo"</div>"; 
+                    $sql = "SELECT * FROM project_logbook";
+                    $result = $db->query($sql);
+                    echo "<div class='container'>";
+                    echo "<form>";
+                    echo "<table class = 'dl' width=max-content border=1 cellspacing=0 cellpadding=10>";
+                    if ($result->num_rows > 0) {
+                        echo "<tr>";
+                        echo "<th>Date</th>";
+                        echo "<th>Activity</th>";
+                        echo "</tr>";
+                        // output data of each row
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . $row["logbook_date"] . "</td>";
+                            echo "<td>" . $row["logbook_details"] . "</td>";
+                            echo "</tr>";
+                        }
+                        echo "</table>";
+                    } else {
+                        echo "0 results";
+                    }
+                    $db->close();
+                    echo "</form>";
+                    echo "</div>";
 
-?>
+                    ?>
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
