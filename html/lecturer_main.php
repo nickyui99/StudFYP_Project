@@ -50,23 +50,11 @@ session_start();
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
                     </li>
+                    <?php
+                    printNotificationList();
+                    ?>
                     <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 1</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 2</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 2</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item see-more-notification" href="#">See more ...</a>
+                        <a class="dropdown-item see-more-notification" href="lecturer_main.php">See more ...</a>
                     </li>
                 </ul>
             </li>

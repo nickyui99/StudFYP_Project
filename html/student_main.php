@@ -53,23 +53,11 @@ session_start();
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
                     </li>
+                    <?php
+                    printNotificationList();
+                    ?>
                     <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 1</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 2</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 2</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item see-more-notification" href="#">See more ...</a>
+                        <a class="dropdown-item see-more-notification" href="student_main.php">See more ...</a>
                     </li>
                 </ul>
             </li>
@@ -233,6 +221,7 @@ session_start();
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
+
                     <h1 class="mt-4">Dashboard</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">
@@ -240,7 +229,9 @@ session_start();
                         </li>
                         <li class="breadcrumb-item active">Announcement</li>
                     </ol>
-                    <div class="card p-2 mb-4">
+
+                    <!-- Announcement Board -->
+                    <div class="card mb-4">
                         <div class="card-header">Announcement Board</div>
                         <div class="card-body">
 
