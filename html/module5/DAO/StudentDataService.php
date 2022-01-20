@@ -1,5 +1,5 @@
 <?php
-require_once '../../database/Database.php';
+require_once '../../model/Database.php';
 require_once '../ClassModel/LecturerEvaluatorModel.php';
 require_once '../ClassModel/IndustrialEvaluatorModel.php';
 require_once '../ClassModel/EvaluationResultModel.php';

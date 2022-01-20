@@ -4,7 +4,10 @@
 <!-- This is the main page for student-->
 
 <?php
+include 'controller/AnnouncementHandler.php';
+
 session_start();
+
 ?>
 
 <head>
@@ -238,34 +241,13 @@ session_start();
                         <li class="breadcrumb-item active">Announcement</li>
                     </ol>
                     <div class="card p-2 mb-4">
-                        <div class="card-body ">
-                            <h3 class="card-title">Announcement Board</h3>
+                        <div class="card-header">Announcement Board</div>
+                        <div class="card-body">
 
                             <ol class="list-group list-group-numbered">
-                                <?php 
-
+                                <?php
+                                    printAnnouncementBoardList();
                                 ?>
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">Subheading</div>
-                                        Content for list item
-                                    </div>
-                                    <span class="badge bg-primary rounded-pill">14</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">Subheading</div>
-                                        Content for list item
-                                    </div>
-                                    <span class="badge bg-primary rounded-pill">14</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-start">
-                                    <div class="ms-2 me-auto">
-                                        <div class="fw-bold">Subheading</div>
-                                        Content for list item
-                                    </div>
-                                    <span class="badge bg-primary rounded-pill">14</span>
-                                </li>
                             </ol>
                         </div>
                     </div>
