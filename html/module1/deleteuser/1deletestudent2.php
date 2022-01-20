@@ -337,7 +337,9 @@ echo"</table>"; ?>
  <?php
 } }
   else {
- echo "0 results";
+    echo '<script type="text/javascript">';
+    echo ' alert("Record not found !")'; 
+    echo '</script>';	
   }
   if(isset($_POST['Delete']))
   {		

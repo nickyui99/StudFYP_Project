@@ -351,12 +351,14 @@ if(isset($_POST['Search']))
 $result = $db->query($delete);
 echo"<table class= table table-hover table-bordered >";	
 if ($result->num_rows > 0) {
-  $_SESSION['getlectid'] = $getlectid;
+  $_SESSION['getcorid'] = $getcorid;
   echo "<script>window.open('http://localhost/StudFYP_Project/html/module_1/deleteuser/3deletecoordinator2.php','_self')</script>";
 } 
   else {
 
-  echo "0 results";
+    echo '<script type="text/javascript">';
+    echo ' alert("Record not found !")'; 
+    echo '</script>';	
   }}}
   if(isset($_POST['Delete']))
   {		
