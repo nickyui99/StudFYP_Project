@@ -1,35 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<!-- This html template is only for StudFYP admin only -->
-
 <?php
-include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php' ;  
-session_start(); 
-$stdid=$stdname=$stdpassword=$stdaddress=$stdemail=$stdhpnum=$stdfaculty=$stdevcomp = " "; 
-if(isset($_POST['Add']))
-{  
-  $stdid = $_POST['stdid'];  
-     $stdname = $_POST['stdname'];
-     $stdpassword = $_POST['stdpassword'];
-     $stdaddress = $_POST['stdaddress'];
-	  $stdemail = $_POST['stdemail'];
-	  $stdhpnum = $_POST['stdhpnum'];    
-    $stdfaculty = $_POST['stdfaculty'];
-     $stdevcomp = $_POST['stdevcomp'];
-     $sql = "INSERT INTO student (stud_id,stud_name,stud_password,stud_address,stud_email,stud_contact_num,stud_faculty,stud_company_attached)
-     VALUES ('$stdid','$stdname',' $stdpassword',' $stdaddress','$stdemail','$stdhpnum','$stdfaculty','$stdevcomp')";
-
-     if (mysqli_query($db, $sql)) {
-      echo '<script type="text/javascript">';
-      echo ' alert("New record has been added successfully !")'; 
-      echo '</script>';
-     } else {
-        echo "Error: " . $sql . ":-" . mysqli_error($db);
-     }
-     mysqli_close($db);
-}
-   ?>
+include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php';
+session_start();
+?>
 
 <head>
     <meta charset="UTF-8" />
@@ -61,7 +33,7 @@ if(isset($_POST['Add']))
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <img class="logo ms-3" src="../../../images/ump_logo.png" alt="UMP" />
-        <a class="navbar-brand ms-3 me-0" href="index.php">StudFYP</a>
+        <a class="navbar-brand ms-3 me-0" href="index.html">StudFYP</a>
 
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
@@ -139,9 +111,9 @@ if(isset($_POST['Add']))
                         <div class="collapse show" id="collapseAddUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/adduser/1addstudent.php" >
+                                <a class="nav-link " href="http://localhost/StudFYP_Project/html/module_1/adduser/1addstudent.php" >
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin " aria-hidden="true"></i>
                                    
                                     </div>
                                     Student
@@ -151,9 +123,9 @@ if(isset($_POST['Add']))
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Lecturer
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/adduser/3addcoordinator.php">
+                                <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/adduser/3addcoordinator.php">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                                     </div>Coordinator
                                 </a>
                                 <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/adduser/4addindustrialpanel.php">
@@ -306,76 +278,105 @@ if(isset($_POST['Add']))
                 </div>
             </nav>
         </div>
-
-        <!-- Main Content -->
-        <div id="layoutSidenav_content">
+    <!-- Main Content -->
+    <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Add User</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item">Student</li>
-                        <li class="breadcrumb-item active">Student Registration Form</li>
+                        <li class="breadcrumb-item">Coordinator</li>
+                        <li class="breadcrumb-item active">Coordinator Registration Form</li>
                     </ol>
-                    
-     <form class="needs-validation"  action="" method="post" novalidate> 
-   <div class="form-group mb-3">
-    <label for="stdid">Student ID</label>
-    <input type="text" class="form-control" name="stdid" aria-describedby="stdidhelp" required>
-    <small id="stdidhelp" class="form-text text-muted">ID will not be allowed to modify. Please ensure the ID is correct.</small>
-    <div class="invalid-feedback">Please enter student's ID.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdname">Name</label>
-    <input type="text" name="stdname" class="form-control" required>
-    <div class="invalid-feedback">Please provide student's name.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdpassword">Password</label>
-    <input type="text" name="stdpassword" class="form-control" required> 
-    <div class="invalid-feedback">Please provide a password.</div>
-  </div>
+                   
+                    <div class="input-group mb-3">
+                    <span class="input-group-text">Coordinator's ID</span>
+            
+  <input type="text" class="form-control" disabled="disabled" value="<?php echo $_SESSION['getcorid'] ?>"/>
+  <div class="input-group-append">
+    <button class="btn btn-secondary btn-bg" disabled="disabled" type="submit" name="Search" value="Search">Search</button>
 
-  <div class="form-group mb-3">
-    <label for="stdaddress">Address</label>
-    <input type="text" name="stdaddress" class="form-control" required>
-    <div class="invalid-feedback"> Please provide student's address.</div>
   </div>
-  <div class="form-group mb-3">
-    <label for="stdemail">Email</label>
-    <input type="email" name="stdemail" class="form-control" required>
-    <div class="invalid-feedback"> Please provide a valid email.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdhpnum">Phone Number</label>
-    <input type="text" name="stdhpnum" class="form-control" required>
-    <div class="invalid-feedback">Please provide phone number.</div>
-  </div>
+</div>
+                  
 
-  <div class="form-group  mb-3">
-    <label for="stdfaculty">Faculty</label>
-    <select class="form-select form-select-sm" id="stdfaculty">
-    <option value = "FK" >FK</option>
-    <option value = "FIST" >FIST</option>
-    <option value = "FTEK" >FTEK</option>
-    <option value ="FKM" >FKM</option>
-    <option value = "FIM" >FIM</option>
-    <option value = "FTKA" >FTKA</option>
-    <option value = "FTKEE" >FTKEE</option>
-    </select>
-  </div>
+   <?php 
+     
+        $view = "SELECT * FROM lecturer where lect_id = '".$_SESSION['getcorid']."'";
+        $result = $db->query($view);
+        echo"<table class= table table-hover table-bordered >";  
+        if ($result->num_rows > 0) {  
+           echo" <thead class = thead-dark>"; 
+            echo"<tr class=text-center>";
+            echo"<th scope=col>Name</th>";
+            echo"<th scope=col>Password</th>";
+             echo"<th scope=col>Phone Number</th>";
+             echo"<th scope=col>Email</th>";
+            echo"<th scope=col>Address</th>";
+            echo"<th scope=col>Position</th>";
+             echo"<th scope=col>Expertise</th>";
+             echo"<th scope=col>Faculty</th>";
+            echo"</tr>";
+          echo"</thead>";
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+            echo"<tbody>";
+           echo"<tr>";
+          echo "<td>".$row["lect_name"]."</td>";
+          echo "<td>".$row["lect_password"]."</td>";
+          echo "<td>".$row["lect_contact_num"]."</td>";
+          echo "<td>".$row["lect_email"]."</td>";
+          echo "<td >".$row["lect_address"]."</td>";  
+          echo "<td>".$row["lect_position"]."</td>";
+          echo "<td >".$row["lect_expertise"]."</td>";  
+          echo "<td >".$row["lect_faculty"]."</td>"; 
+           echo"</tr>"; 
+           echo"</tbody>";
+           echo"</table>";
+      
+           echo"\n";
+            }?>
+         <div class="card text-center">
+  <div class="card-body">
   <div class="form-group mb-3">
-    <label for="stdevcomp">Evaluate Company</label>
-    <input type="text" name="stdevcomp" class="form-control" required>
-    <div class="invalid-feedback">Please insert "-" if the student isn't enroll final year project.</div>
-  </div>
+          <form action="" method="post">     
+    <label class="fw-bold mb-3" >Assign PSM level </label>
+  <div class="form-check d-flex justify-content-center">
+  <input type="checkbox" class="form-check-input"  id="psmlevel[]"  name="psmlevel[]" value="PSM 1"><label for="PSM 1">PSM 1</label></div>
+<div class="form-check d-flex justify-content-center">
+<input type="checkbox" class="form-check-input" id="psmlevel[]" name="psmlevel[]" value="PSM 2"><label for="PSM 2">PSM 2</label></div>
+        </div>
 
-  <div class="form-group mb-3">
+<div class="form-group mb-3">
   <div class="d-flex justify-content-center">
-  <button type="submit" class="btn btn-secondary btn-bg mb-2" name="Add" value="Add">Add</button>
-  </div></div>
+  <button type="submit" class="btn btn-secondary btn-bg mb-2" name="Assign" value="Assign">Assign</button>
+  </div></div></div> </div>
+        <?php  
+         }
+          else {
+          echo "0 results";
+          }
+
+          if(isset($_POST['Assign']))
+          { 
+        $gopsm=implode(",", $_POST['psmlevel']);
+        $psm = "INSERT INTO fyp_coordinator(lect_id,coordinator_name,coordinate_faculty,coordinator_expertise) SELECT lect_id,lect_name,lect_faculty,lect_expertise FROM lecturer WHERE lect_id  = '".$_SESSION['getcorid']."';";
+        $psm.= "UPDATE fyp_coordinator SET coordinate_psm_level ='$gopsm' WHERE lect_id  = '".$_SESSION['getcorid']."'"; 
+           if ($db->multi_query($psm) === TRUE){
+            echo '<script type="text/javascript">';
+           echo 'alert("Coordinator assigned successfully")' ;
+           echo '</script>'; 
+        } else {
+        echo "Error adding record: " . $db->error;
+        }
+         $db->close();
+        } 
+        ?> 
 </form>
 
-                </div>
+</tbody>
+</div>
+    </body>
+
                     </div>
                 </div>
             </main>
@@ -389,5 +390,3 @@ if(isset($_POST['Add']))
         </div>
     </div>
 </body>
-
-</html>
