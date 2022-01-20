@@ -237,7 +237,7 @@ session_start();
                         </li>
                         <li class="breadcrumb-item active">Announcement</li>
                     </ol>
-                    <div class="card p-2 mb-4">
+                    <div class="card mb-4">
                         <div class="card-header">Announcement Board</div>
                         <div class="card-body">
 
