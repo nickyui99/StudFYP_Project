@@ -15,7 +15,7 @@
       $lectaddress = $_POST['lectaddress'];
       $lectposition = $_POST['lectposition'];
       $lectexp = $_POST['lectexp'];
-      $lectfaculty=$_POST['lectfaculty']; 
+   $lectfaculty=$_POST['lectfaculty']; 
       $sql = "INSERT INTO lecturer (lect_id,lect_name,lect_password,lect_contact_num,lect_email,lect_address,lect_position,lect_expertise,lect_faculty)
       VALUES ('$lectid','$lectname',' $lectpassword','$lecthpnum','$lectemail','$lectaddress','$lectposition','$lectexp', '$lectfaculty')";
 

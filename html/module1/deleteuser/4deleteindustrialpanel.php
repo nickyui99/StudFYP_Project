@@ -328,7 +328,7 @@ session_start();
                         <li class="breadcrumb-item active">Delete Industrial Panel's Data </li>
                     </ol>
                   
-					<form class="needs-validation" action="" method="post" novalidate> 
+                    <form class="needs-validation" action="" method="post" novalidate> 
                     <div class="input-group mb-3">
   <input type="text" class="form-control" placeholder="Industrial Panel's ID" name="getipid" aria-label="Industrial Panel's ID" aria-describedby="basic-addon2" required>
   <div class="invalid-feedback"> Please enter Lecturer's ID.</div>

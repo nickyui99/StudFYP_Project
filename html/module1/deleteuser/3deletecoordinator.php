@@ -328,7 +328,6 @@ session_start();
                         <li class="breadcrumb-item active">Delete Coordinator's Data </li>
                     </ol>
                   
-  
                     <form class="needs-validation" action="" method="post" novalidate> 
                     <div class="input-group mb-3">
   <input type="text" class="form-control" placeholder="Coordinator's ID" name="getcorid" aria-label="Coordinator's ID" aria-describedby="basic-addon2" required>

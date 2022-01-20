@@ -33,7 +33,7 @@ session_start(); ?>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <img class="logo ms-3" src="../.././images/ump_logo.png" alt="UMP" />
+        <img class="logo ms-3" src="../../../images/ump_logo.png" alt="UMP" />
         <a class="navbar-brand ms-3 me-0" href="index.html">StudFYP</a>
 
         <!-- Sidebar Toggle-->

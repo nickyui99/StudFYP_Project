@@ -290,7 +290,7 @@ session_start();
                     </ol>
                     <form class="needs-validation" action="" method="post" novalidate> 
                     <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Coordinator's ID" name="getcorid" aria-label="Coordinator's ID" aria-describedby="basic-addon2" required>
+  <input type="text" class="form-control" placeholder="Coordinator's ID" name="getcoorid" aria-label="Coordinator's ID" aria-describedby="basic-addon2" required>
   <div class="invalid-feedback"> Please enter Coordinator's ID.</div>
   <div class="input-group-append">
     <button class="btn btn-secondary btn-bg" id="btnhide" type="submit" name="Search" value="Search">Search</button>
