@@ -126,7 +126,7 @@ session_start();
                                     </div>
                                     View logbook
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module3\2updatelogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Update logbook

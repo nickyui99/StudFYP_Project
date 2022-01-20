@@ -310,7 +310,9 @@ session_start();
            echo "<script>window.open('http://localhost/StudFYP_Project/html/module_1/adduser/3addcoordinator2.php','_self')</script>";
             }
           else {
-          echo "0 results";
+            echo '<script type="text/javascript">';
+            echo ' alert("Record not found !")'; 
+            echo '</script>';	
           }}
         ?> 
         

@@ -257,15 +257,15 @@ session_start();
                         <!-- Total user -->
                         <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/total&report/totaluser.php">
                             <div class="sb-nav-link-icon">
-                                <i class="fa fa-file-o " aria-hidden="true"></i>
+                                <i class="fa fa-file-o" aria-hidden="true"></i>
                             </div>
                             Total user
                         </a>
 
                         <!-- My report -->
-                        <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/total&report/report.php">
+                        <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/total&report/report.php">
                             <div class="sb-nav-link-icon ">
-                                <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
+                                <i class="fa fa-file-o" aria-hidden="true"></i>
                             </div>
                             Report
                         </a>
@@ -310,7 +310,7 @@ session_start();
          text: "UMP Stud FYP "
      },
      subtitles: [{
-         text: "Total Registered Student"
+         text: "Total Registered User"
      }],
      data: [{
          type: "pie",

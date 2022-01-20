@@ -326,6 +326,7 @@ session_start();
                         <li class="breadcrumb-item">Lecturer</li>
                         <li class="breadcrumb-item active">Delete Lecturer's Data </li>
                     </ol>
+                  
                     <form class="needs-validation" action="" method="post" novalidate> 
                     <div class="input-group mb-3">
   <input type="text" class="form-control" placeholder="Lecturer's ID" name="getlectid" aria-label="Lecturer's ID" aria-describedby="basic-addon2" required>
@@ -334,7 +335,8 @@ session_start();
     <button class="btn btn-secondary btn-bg" id="btnhide" type="submit" name="Search" value="Search">Search</button>
   </div>
 </form>
-<?php
+<?php 
+
 if(isset($_POST['Search']))
 {    if(empty($_POST['getlectid']))
   {
@@ -351,7 +353,9 @@ if ($result->num_rows > 0) {
   $_SESSION['getlectid'] = $getlectid;	
   echo "<script>window.open('http://localhost/StudFYP_Project/html/module_1/deleteuser/2deletelecturer2.php','_self')</script>";}
   else {
-  echo "0 results";
+    echo '<script type="text/javascript">';
+    echo ' alert("Record not found !")'; 
+    echo '</script>';	
   }}}
   
 ?> 

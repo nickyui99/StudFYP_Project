@@ -255,9 +255,9 @@ session_start();
                         </div>
 
                         <!-- Total user -->
-                        <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/total&report/totaluser.php">
+                        <a class="nav-link " href="http://localhost/StudFYP_Project/html/module_1/total&report/totaluser.php">
                             <div class="sb-nav-link-icon ">
-                                <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
+                                <i class="fa fa-file-o" aria-hidden="true"></i>
                             </div>
                             Total user
                         </a>

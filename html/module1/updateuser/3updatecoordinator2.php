@@ -333,7 +333,9 @@ session_start();
 <?php
   } }
   else {
-  echo "0 results";
+    echo '<script type="text/javascript">';
+    echo ' alert("Record not found !")'; 
+    echo '</script>';	
 }
 if(isset($_POST['Update']))
     {	if( empty($_POST['psmlevel']))
@@ -344,7 +346,7 @@ if(isset($_POST['Update']))
 
         }else{
              $gopsm=implode(",", $_POST['psmlevel']);
-  $update =  "UPDATE fyp_coordinator SET coordinate_psm_level ='$gopsm' WHERE lect_id  = '".$_SESSION['getcorid']."'"; 
+  $update =  "UPDATE fyp_coordinator SET coordinate_psm_level ='$gopsm' WHERE lect_id  = '".$_SESSION['getcoorid']."'"; 
      if (mysqli_query($db, $update)) {
       echo '<script type="text/javascript">';
       echo ' alert("Record has been updated successfully !")'; 
