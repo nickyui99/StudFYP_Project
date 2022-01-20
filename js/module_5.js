@@ -51,8 +51,8 @@ function load_evaluation_report(query, id) {
         success: function (data) {
             var row_count = $("#result").html(data).find("tr").length;
             if (row_count == 0) {
-                $("#message_box").html(
-                    '<div class="alert alert-primary" role="alert">There are currently no evaluated FYP</div>'
+                $("#result").html(
+                    '<tr><td colspan = "9"><div class="alert alert-primary" role="alert">There are currently no evaluated FYP</div></td></tr>'
                 );
             } else {
                 $("#row_counter").html(

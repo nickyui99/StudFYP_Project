@@ -257,11 +257,10 @@ session_start();
                         <li class="breadcrumb-item active">Evaluation report</li>
                     </ol>
 
-                    <div id="message_box">
-                        <!-- This div is for showing message purpose only -->
-                    </div>
-
                     <div class="d-flex justify-content-center mb-2">
+                        <div id="message_box">
+                            <!-- This div is for showing message purpose only -->
+                        </div>
                         <!-- Pie Chart -->
                         <div id="chart_container">
                             <canvas id="my_chart"></canvas>
@@ -372,6 +371,7 @@ session_start();
                                 </thead>
                                 <tbody id="result">
                                     <!-- Show datatable here -->
+
                                 </tbody>
                                 <tfoot>
                                     <tr class="header-bg">
@@ -468,7 +468,7 @@ session_start();
         var fyp2_stud_num = <?php echo getEvaluatedFyp2StudentNum($_SESSION['lect_id']); ?>;
 
         if (fyp1_stud_num + fyp2_stud_num <= 0) {
-            // $('#chart_container').html("No data");
+            $('#message_box').html('<div class="alert alert-warning" role="alert">No data</div>');
         } else {
             //Chart Js Configuration
             const data = {
