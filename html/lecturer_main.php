@@ -135,7 +135,7 @@ session_start();
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Student mark
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module2/ManageSubmissionDate/SubmissionDate.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Manage FYP submission date
