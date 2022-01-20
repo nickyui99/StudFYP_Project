@@ -3,8 +3,11 @@
 
 <!-- This is the main page for student-->
 
-<?php 
-    session_start();
+<?php
+include 'controller/AnnouncementHandler.php';
+
+session_start();
+
 ?>
 
 <head>
@@ -81,7 +84,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="login_controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -94,7 +97,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav mt-3">
                         <!-- Dashboard -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="student_mai.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-tachometer" aria-hidden="true"></i>
                             </div>
@@ -219,8 +222,8 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    <?php 
-                        echo $_SESSION['username'];
+                    <?php
+                    echo $_SESSION['username'];
                     ?>
                 </div>
             </nav>
@@ -237,17 +240,15 @@
                         </li>
                         <li class="breadcrumb-item active">Announcement</li>
                     </ol>
-                    <div class="card mb-4">
+                    <div class="card p-2 mb-4">
+                        <div class="card-header">Announcement Board</div>
                         <div class="card-body">
-                            This page is an example of using the light side
-                            navigation option. By appending the
-                            <code>.sb-sidenav-light</code>
-                            class to the
-                            <code>.sb-sidenav</code>
-                            class, the side navigation will take on a light
-                            color scheme. The
-                            <code>.sb-sidenav-dark</code>
-                            is also available for a darker option.
+
+                            <ol class="list-group list-group-numbered">
+                                <?php
+                                    printAnnouncementBoardList();
+                                ?>
+                            </ol>
                         </div>
                     </div>
                 </div>

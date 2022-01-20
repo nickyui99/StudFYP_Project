@@ -1,41 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<!-- This html template is only for StudFYP admin only -->
-
 <?php
-include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php' ;  
+include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php';
 session_start(); 
-$stdid=$stdname=$stdpassword=$stdaddress=$stdemail=$stdhpnum=$stdfaculty=$stdevcomp = " "; 
-if(isset($_POST['Add']))
-{  
-  $stdid = $_POST['stdid'];  
-     $stdname = $_POST['stdname'];
-     $stdpassword = $_POST['stdpassword'];
-     $stdaddress = $_POST['stdaddress'];
-	  $stdemail = $_POST['stdemail'];
-	  $stdhpnum = $_POST['stdhpnum'];    
-    $stdfaculty = $_POST['stdfaculty'];
-     $stdevcomp = $_POST['stdevcomp'];
-     $sql = "INSERT INTO student (stud_id,stud_name,stud_password,stud_address,stud_email,stud_contact_num,stud_faculty,stud_company_attached)
-     VALUES ('$stdid','$stdname',' $stdpassword',' $stdaddress','$stdemail','$stdhpnum','$stdfaculty','$stdevcomp')";
 
-     if (mysqli_query($db, $sql)) {
-      echo '<script type="text/javascript">';
-      echo ' alert("New record has been added successfully !")'; 
-      echo '</script>';
-     } else {
-        echo "Error: " . $sql . ":-" . mysqli_error($db);
-     }
-     mysqli_close($db);
-}
-   ?>
-
+?>
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add User Details</title>
+    <title>Delete User Details</title>
 
     <!-- Bootstrap 5 CSS -->
     <link rel="stylesheet" href="../../../bootstrap_v5.1/css/styles.css" />
@@ -61,7 +33,7 @@ if(isset($_POST['Add']))
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <img class="logo ms-3" src="../../../images/ump_logo.png" alt="UMP" />
-        <a class="navbar-brand ms-3 me-0" href="index.php">StudFYP</a>
+        <a class="navbar-brand ms-3 me-0" href="index.html">StudFYP</a>
 
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
@@ -136,12 +108,12 @@ if(isset($_POST['Add']))
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse show" id="collapseAddUser" aria-labelledby="headingOne"
+                        <div class="collapse " id="collapseAddUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/adduser/1addstudent.php" >
+                                <a class="nav-link " href="http://localhost/StudFYP_Project/html/module_1/adduser/1addstudent.php" >
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin " aria-hidden="true"></i>
                                    
                                     </div>
                                     Student
@@ -176,12 +148,12 @@ if(isset($_POST['Add']))
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseDeleteUser" aria-labelledby="headingOne"
+                        <div class="collapse show" id="collapseDeleteUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/deleteuser/1deletestudent.php">
+							<nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
+                                <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/deleteuser/1deletestudent.php">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                                     </div>
                                     Student
                                 </a>
@@ -311,71 +283,80 @@ if(isset($_POST['Add']))
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Add User</h1>
+
+                    <h1 class="mt-4">Delete User</h1>
+               
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">Student</li>
-                        <li class="breadcrumb-item active">Student Registration Form</li>
+                        <li class="breadcrumb-item active">Delete Student's Data</li>
                     </ol>
-                    
-     <form class="needs-validation"  action="" method="post" novalidate> 
-   <div class="form-group mb-3">
-    <label for="stdid">Student ID</label>
-    <input type="text" class="form-control" name="stdid" aria-describedby="stdidhelp" required>
-    <small id="stdidhelp" class="form-text text-muted">ID will not be allowed to modify. Please ensure the ID is correct.</small>
-    <div class="invalid-feedback">Please enter student's ID.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdname">Name</label>
-    <input type="text" name="stdname" class="form-control" required>
-    <div class="invalid-feedback">Please provide student's name.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdpassword">Password</label>
-    <input type="text" name="stdpassword" class="form-control" required> 
-    <div class="invalid-feedback">Please provide a password.</div>
-  </div>
 
-  <div class="form-group mb-3">
-    <label for="stdaddress">Address</label>
-    <input type="text" name="stdaddress" class="form-control" required>
-    <div class="invalid-feedback"> Please provide student's address.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdemail">Email</label>
-    <input type="email" name="stdemail" class="form-control" required>
-    <div class="invalid-feedback"> Please provide a valid email.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdhpnum">Phone Number</label>
-    <input type="text" name="stdhpnum" class="form-control" required>
-    <div class="invalid-feedback">Please provide phone number.</div>
-  </div>
+                    <div class="input-group mb-3">
+                    <span class="input-group-text">Student's ID</span>
+            
+  <input type="text" class="form-control" disabled="disabled" value="<?php echo $_SESSION['getstdid'] ?>"/>
+  <div class="input-group-append">
+    <button class="btn btn-secondary btn-bg" disabled="disabled" type="submit" name="Search" value="Search">Search</button>
 
-  <div class="form-group  mb-3">
-    <label for="stdfaculty">Faculty</label>
-    <select class="form-select form-select-sm" id="stdfaculty">
-    <option value = "FK" >FK</option>
-    <option value = "FIST" >FIST</option>
-    <option value = "FTEK" >FTEK</option>
-    <option value ="FKM" >FKM</option>
-    <option value = "FIM" >FIM</option>
-    <option value = "FTKA" >FTKA</option>
-    <option value = "FTKEE" >FTKEE</option>
-    </select>
   </div>
-  <div class="form-group mb-3">
-    <label for="stdevcomp">Evaluate Company</label>
-    <input type="text" name="stdevcomp" class="form-control" required>
-    <div class="invalid-feedback">Please insert "-" if the student isn't enroll final year project.</div>
-  </div>
-
-  <div class="form-group mb-3">
-  <div class="d-flex justify-content-center">
-  <button type="submit" class="btn btn-secondary btn-bg mb-2" name="Add" value="Add">Add</button>
-  </div></div>
-</form>
-
+</div>
                 </div>
+</form>
+<?php 
+
+$view = "SELECT * FROM student where stud_id = '".$_SESSION['getstdid']."'";
+$result = $db->query($view);
+echo"<table class= table table-hover table-bordered >";  
+
+if ($result->num_rows > 0) {	
+    echo" <thead class = thead-dark>"; 
+	echo"<th class='text-center'>Student ID</th>";
+	echo"<th class='text-center'>Name</th>";
+	echo"<th class='text-center'>Password</th>";
+	echo"<th class='text-center'>Address</th>";
+	echo"<th class='text-center'>Email</th>";
+	echo"<th class='text-center'>Phone Number</th>";
+    echo"<th class='text-center'>Faculty</th>";
+	echo"<th class='text-center'>Evaluate Company</th>";
+	echo"</tr>";
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+	echo"<tr>";
+	echo "<td class='text-center'>".$row["stud_id"]."</td>";
+	echo "<td class='text-center'>".$row["stud_name"]."</td>";
+	echo "<td class='text-center'>".$row["stud_password"]."</td>";
+	echo "<td class='text-center'>".$row["stud_address"]."</td>";
+	echo "<td class='text-center'>".$row["stud_email"]."</td>";
+	echo "<td class='text-center'>".$row["stud_contact_num"]."</td>";  
+    echo "<td class='text-center'>".$row["stud_faculty"]."</td>";
+	echo "<td class='text-center'>".$row["stud_company_attached"]."</td>";  
+	 echo"</tr>";	
+echo"</table>"; ?>
+    <form action=" " method= "post" >
+	<div class='d-flex justify-content-center'><input class='btn btn-secondary btn-sm'  type='submit' name='Delete' value='Delete'></div></form>
+ <?php
+} }
+  else {
+ echo "0 results";
+  }
+  if(isset($_POST['Delete']))
+  {		
+	$sql = "DELETE  FROM student where stud_id = '".$_SESSION['getstdid']."'";
+    	if ($db->query($sql) === TRUE) {
+		echo '<script type="text/javascript">';
+		echo ' alert("Record deleted successfully!")'; 
+		echo '</script>';		
+        echo "<script>window.open('http://localhost/StudFYP_Project/html/module_1/deleteuser/1deletestudent.php','_self')</script>";
+ } else {
+   echo "Error deleting record: " . $db->error;
+ }
+ $db->close();
+} 
+?> 
+</table>
+
+</tbody>
+
                     </div>
                 </div>
             </main>

@@ -1,35 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<!-- This html template is only for StudFYP admin only -->
-
 <?php
+
 include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php' ;  
 session_start(); 
-$stdid=$stdname=$stdpassword=$stdaddress=$stdemail=$stdhpnum=$stdfaculty=$stdevcomp = " "; 
-if(isset($_POST['Add']))
-{  
-  $stdid = $_POST['stdid'];  
-     $stdname = $_POST['stdname'];
-     $stdpassword = $_POST['stdpassword'];
-     $stdaddress = $_POST['stdaddress'];
-	  $stdemail = $_POST['stdemail'];
-	  $stdhpnum = $_POST['stdhpnum'];    
-    $stdfaculty = $_POST['stdfaculty'];
-     $stdevcomp = $_POST['stdevcomp'];
-     $sql = "INSERT INTO student (stud_id,stud_name,stud_password,stud_address,stud_email,stud_contact_num,stud_faculty,stud_company_attached)
-     VALUES ('$stdid','$stdname',' $stdpassword',' $stdaddress','$stdemail','$stdhpnum','$stdfaculty','$stdevcomp')";
-
-     if (mysqli_query($db, $sql)) {
-      echo '<script type="text/javascript">';
-      echo ' alert("New record has been added successfully !")'; 
-      echo '</script>';
-     } else {
-        echo "Error: " . $sql . ":-" . mysqli_error($db);
-     }
-     mysqli_close($db);
-}
-   ?>
+?>
 
 <head>
     <meta charset="UTF-8" />
@@ -53,7 +26,7 @@ if(isset($_POST['Add']))
 
     <!-- JS -->
     <script src="../../../js/module_1.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 </head>
 
@@ -61,7 +34,7 @@ if(isset($_POST['Add']))
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <img class="logo ms-3" src="../../../images/ump_logo.png" alt="UMP" />
-        <a class="navbar-brand ms-3 me-0" href="index.php">StudFYP</a>
+        <a class="navbar-brand ms-3 me-0" href="index.html">StudFYP</a>
 
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
@@ -136,12 +109,12 @@ if(isset($_POST['Add']))
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse show" id="collapseAddUser" aria-labelledby="headingOne"
+                        <div class="collapse" id="collapseAddUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/adduser/1addstudent.php" >
+                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/adduser/1addstudent.php" >
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                    
                                     </div>
                                     Student
@@ -247,19 +220,19 @@ if(isset($_POST['Add']))
                             data-bs-target="#collapseViewUser" aria-expanded="false"
                             aria-controls="collapseViewUser">
                             <div class="sb-nav-link-icon">
-                                <i class="fa fa-columns"></i>
+                                <i class="fa fa-columns "></i>
                             </div>
                             View user
                             <div class="sb-sidenav-collapse-arrow">
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseViewUser" aria-labelledby="headingOne"
+                        <div class="collapse " id="collapseViewUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/viewuser/1viewstudent.php">
+							<nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
+                                <a class="nav-link  text-light active" href="http://localhost/StudFYP_Project/html/module_1/viewuser/1viewstudent.php">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin " aria-hidden="true"></i>
                                     </div>
                                     Student
                                 </a>
@@ -284,15 +257,15 @@ if(isset($_POST['Add']))
                         <!-- Total user -->
                         <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/total&report/totaluser.php">
                             <div class="sb-nav-link-icon">
-                                <i class="fa fa-file-o" aria-hidden="true"></i>
+                                <i class="fa fa-file-o " aria-hidden="true"></i>
                             </div>
                             Total user
                         </a>
 
                         <!-- My report -->
-                        <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/total&report/report.php">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-file-o" aria-hidden="true"></i>
+                        <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/total&report/report.php">
+                            <div class="sb-nav-link-icon ">
+                                <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                             </div>
                             Report
                         </a>
@@ -306,76 +279,62 @@ if(isset($_POST['Add']))
                 </div>
             </nav>
         </div>
-
         <!-- Main Content -->
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Add User</h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item">Student</li>
-                        <li class="breadcrumb-item active">Student Registration Form</li>
-                    </ol>
-                    
-     <form class="needs-validation"  action="" method="post" novalidate> 
-   <div class="form-group mb-3">
-    <label for="stdid">Student ID</label>
-    <input type="text" class="form-control" name="stdid" aria-describedby="stdidhelp" required>
-    <small id="stdidhelp" class="form-text text-muted">ID will not be allowed to modify. Please ensure the ID is correct.</small>
-    <div class="invalid-feedback">Please enter student's ID.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdname">Name</label>
-    <input type="text" name="stdname" class="form-control" required>
-    <div class="invalid-feedback">Please provide student's name.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdpassword">Password</label>
-    <input type="text" name="stdpassword" class="form-control" required> 
-    <div class="invalid-feedback">Please provide a password.</div>
-  </div>
+                    <h1 class="mt-4">Report</h1>
+                    <?php
 
-  <div class="form-group mb-3">
-    <label for="stdaddress">Address</label>
-    <input type="text" name="stdaddress" class="form-control" required>
-    <div class="invalid-feedback"> Please provide student's address.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdemail">Email</label>
-    <input type="email" name="stdemail" class="form-control" required>
-    <div class="invalid-feedback"> Please provide a valid email.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdhpnum">Phone Number</label>
-    <input type="text" name="stdhpnum" class="form-control" required>
-    <div class="invalid-feedback">Please provide phone number.</div>
-  </div>
+   $padmin = ($_SESSION['$numa']/$_SESSION['$ttl'])*100 ; 
+   $pstud = ($_SESSION['$nums']/$_SESSION['$ttl'])*100 ; 
+   $plect = ($_SESSION['$numl']/$_SESSION['$ttl'])*100 ; 
+   $pcor = ($_SESSION['$numc']/$_SESSION['$ttl'])*100 ; 
+   $pip = ($_SESSION['$numi']/$_SESSION['$ttl'])*100 ; 
+ $dataPoints = array( 
+     array("label"=>"Administration", "y"=> $padmin),
+     array("label"=>"Student", "y"=> $pstud),
+     array("label"=>"Lecturer", "y"=> $plect),
+     array("label"=>"Coordinator", "y"=> $pcor),
+     array("label"=>"Industrial Panel", "y"=> $pip),
+ )
+  
+ ?>
 
-  <div class="form-group  mb-3">
-    <label for="stdfaculty">Faculty</label>
-    <select class="form-select form-select-sm" id="stdfaculty">
-    <option value = "FK" >FK</option>
-    <option value = "FIST" >FIST</option>
-    <option value = "FTEK" >FTEK</option>
-    <option value ="FKM" >FKM</option>
-    <option value = "FIM" >FIM</option>
-    <option value = "FTKA" >FTKA</option>
-    <option value = "FTKEE" >FTKEE</option>
-    </select>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdevcomp">Evaluate Company</label>
-    <input type="text" name="stdevcomp" class="form-control" required>
-    <div class="invalid-feedback">Please insert "-" if the student isn't enroll final year project.</div>
-  </div>
+ <script>
+ window.onload = function() {
 
-  <div class="form-group mb-3">
-  <div class="d-flex justify-content-center">
-  <button type="submit" class="btn btn-secondary btn-bg mb-2" name="Add" value="Add">Add</button>
-  </div></div>
-</form>
+ var chart = new CanvasJS.Chart("chartContainer", {
+     animationEnabled: true,
+     title: {
+         text: "UMP Stud FYP "
+     },
+     subtitles: [{
+         text: "Total Registered Student"
+     }],
+     data: [{
+         type: "pie",
+         yValueFormatString: "#,##0.00\"%\"",
+         indexLabel: "{label} ({y})",
+         dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+     }]
+ });
+ chart.render();
+  
+ }
+ </script>
+ </head>
+ <body>
+ <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
-                </div>
+            
+				</div>
+</body>
+                  
+
+                        <div class="card-body">
+        
+                        </div>
                     </div>
                 </div>
             </main>

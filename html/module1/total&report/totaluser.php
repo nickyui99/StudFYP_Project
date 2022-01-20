@@ -1,35 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<!-- This html template is only for StudFYP admin only -->
-
 <?php
+
 include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php' ;  
 session_start(); 
-$stdid=$stdname=$stdpassword=$stdaddress=$stdemail=$stdhpnum=$stdfaculty=$stdevcomp = " "; 
-if(isset($_POST['Add']))
-{  
-  $stdid = $_POST['stdid'];  
-     $stdname = $_POST['stdname'];
-     $stdpassword = $_POST['stdpassword'];
-     $stdaddress = $_POST['stdaddress'];
-	  $stdemail = $_POST['stdemail'];
-	  $stdhpnum = $_POST['stdhpnum'];    
-    $stdfaculty = $_POST['stdfaculty'];
-     $stdevcomp = $_POST['stdevcomp'];
-     $sql = "INSERT INTO student (stud_id,stud_name,stud_password,stud_address,stud_email,stud_contact_num,stud_faculty,stud_company_attached)
-     VALUES ('$stdid','$stdname',' $stdpassword',' $stdaddress','$stdemail','$stdhpnum','$stdfaculty','$stdevcomp')";
-
-     if (mysqli_query($db, $sql)) {
-      echo '<script type="text/javascript">';
-      echo ' alert("New record has been added successfully !")'; 
-      echo '</script>';
-     } else {
-        echo "Error: " . $sql . ":-" . mysqli_error($db);
-     }
-     mysqli_close($db);
-}
-   ?>
+?>
 
 <head>
     <meta charset="UTF-8" />
@@ -61,7 +34,7 @@ if(isset($_POST['Add']))
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <img class="logo ms-3" src="../../../images/ump_logo.png" alt="UMP" />
-        <a class="navbar-brand ms-3 me-0" href="index.php">StudFYP</a>
+        <a class="navbar-brand ms-3 me-0" href="index.html">StudFYP</a>
 
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
@@ -136,12 +109,12 @@ if(isset($_POST['Add']))
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse show" id="collapseAddUser" aria-labelledby="headingOne"
+                        <div class="collapse" id="collapseAddUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/adduser/1addstudent.php" >
+                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/adduser/1addstudent.php" >
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                    
                                     </div>
                                     Student
@@ -247,7 +220,7 @@ if(isset($_POST['Add']))
                             data-bs-target="#collapseViewUser" aria-expanded="false"
                             aria-controls="collapseViewUser">
                             <div class="sb-nav-link-icon">
-                                <i class="fa fa-columns"></i>
+                                <i class="fa fa-columns "></i>
                             </div>
                             View user
                             <div class="sb-sidenav-collapse-arrow">
@@ -256,10 +229,10 @@ if(isset($_POST['Add']))
                         </a>
                         <div class="collapse" id="collapseViewUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/viewuser/1viewstudent.php">
+							<nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
+                                <a class="nav-link  text-light active" href="http://localhost/StudFYP_Project/html/module_1/viewuser/1viewstudent.php">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin " aria-hidden="true"></i>
                                     </div>
                                     Student
                                 </a>
@@ -282,9 +255,9 @@ if(isset($_POST['Add']))
                         </div>
 
                         <!-- Total user -->
-                        <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/total&report/totaluser.php">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-file-o" aria-hidden="true"></i>
+                        <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/total&report/totaluser.php">
+                            <div class="sb-nav-link-icon ">
+                                <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                             </div>
                             Total user
                         </a>
@@ -306,76 +279,99 @@ if(isset($_POST['Add']))
                 </div>
             </nav>
         </div>
-
         <!-- Main Content -->
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Add User</h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item">Student</li>
-                        <li class="breadcrumb-item active">Student Registration Form</li>
-                    </ol>
-                    
-     <form class="needs-validation"  action="" method="post" novalidate> 
-   <div class="form-group mb-3">
-    <label for="stdid">Student ID</label>
-    <input type="text" class="form-control" name="stdid" aria-describedby="stdidhelp" required>
-    <small id="stdidhelp" class="form-text text-muted">ID will not be allowed to modify. Please ensure the ID is correct.</small>
-    <div class="invalid-feedback">Please enter student's ID.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdname">Name</label>
-    <input type="text" name="stdname" class="form-control" required>
-    <div class="invalid-feedback">Please provide student's name.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdpassword">Password</label>
-    <input type="text" name="stdpassword" class="form-control" required> 
-    <div class="invalid-feedback">Please provide a password.</div>
-  </div>
+                    <h1 class="mt-4">Total Registered User</h1>
+                 <?php
+$a = "SELECT * FROM administrator";
+$s = "SELECT * FROM student";
+$l = "SELECT * FROM lecturer";
+$c = "SELECT * FROM fyp_coordinator  WHERE coordinate_psm_level !='NULL'";
+$ip = "SELECT * FROM industrial_panel";
+echo"<div class=card-body>" ; 
+echo"<table class=table table-dark table-bordered>" ; 
+echo"<tr>"; 
+echo"<th class=text-center  >User</td>";
+echo "<th class=text-center >Number of User</td>";
+echo"<br>" ; 
+echo"</tr>"; 
 
-  <div class="form-group mb-3">
-    <label for="stdaddress">Address</label>
-    <input type="text" name="stdaddress" class="form-control" required>
-    <div class="invalid-feedback"> Please provide student's address.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdemail">Email</label>
-    <input type="email" name="stdemail" class="form-control" required>
-    <div class="invalid-feedback"> Please provide a valid email.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdhpnum">Phone Number</label>
-    <input type="text" name="stdhpnum" class="form-control" required>
-    <div class="invalid-feedback">Please provide phone number.</div>
-  </div>
 
-  <div class="form-group  mb-3">
-    <label for="stdfaculty">Faculty</label>
-    <select class="form-select form-select-sm" id="stdfaculty">
-    <option value = "FK" >FK</option>
-    <option value = "FIST" >FIST</option>
-    <option value = "FTEK" >FTEK</option>
-    <option value ="FKM" >FKM</option>
-    <option value = "FIM" >FIM</option>
-    <option value = "FTKA" >FTKA</option>
-    <option value = "FTKEE" >FTKEE</option>
-    </select>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdevcomp">Evaluate Company</label>
-    <input type="text" name="stdevcomp" class="form-control" required>
-    <div class="invalid-feedback">Please insert "-" if the student isn't enroll final year project.</div>
-  </div>
+if ($admin=mysqli_query($db,$a)) {
+    $numa=mysqli_num_rows($admin);
 
-  <div class="form-group mb-3">
-  <div class="d-flex justify-content-center">
-  <button type="submit" class="btn btn-secondary btn-bg mb-2" name="Add" value="Add">Add</button>
-  </div></div>
-</form>
+    echo"<tr class='text-center'>"; 
+    echo"<td>Administrator</td>";
+    echo "<td>".$numa."</td>";
+    echo"<br>" ; 
+    echo"</tr>"; 
+    $_SESSION['$numa'] = $numa;
+}
 
-                </div>
+
+if ($student=mysqli_query($db,$s)) {
+    $nums=mysqli_num_rows($student);
+    echo"<tr class='text-center'>"; 
+    echo"<td>Student</td>";
+    echo "<td>".$nums."</td>";
+
+    echo"</tr>"; 
+    $_SESSION['$nums'] = $nums;
+}
+
+if ($lecturer=mysqli_query($db,$l)) {
+    $numl=mysqli_num_rows($lecturer);
+    echo"<tr class='text-center'>"; 
+    echo"<td>Lecturer</td>";
+    echo "<td>".$numl."</td>";
+
+    echo"</tr>"; 
+    $_SESSION['$numl'] = $numl;
+}
+
+if ($coordinator=mysqli_query($db,$c)) {
+    $numc=mysqli_num_rows($coordinator);
+    echo"<tr class='text-center'>"; 
+	echo"<td >Coordinator</td>";
+    echo "<td>".$numc."</td>";
+ 
+    echo"</tr>"; 
+    $_SESSION['$numc'] = $numc;
+}
+
+if ($industrialpanel=mysqli_query($db,$ip)) {
+    $numi=mysqli_num_rows($industrialpanel);
+    echo"<tr class='text-center'>"; 
+    echo"<td>Industrial Panel</td>";
+    echo "<td>".$numi."</td>";
+
+    echo"</tr>";
+    $_SESSION['$numi'] = $numi;
+} 
+
+echo"<tr class='text-center'>";
+echo"<th>Total Registered user for the System</td>";
+$ttl = $numa+$nums+$numl+$numc+$numi ; 
+echo "<th>".$ttl."</td>";
+$_SESSION['$ttl'] = $ttl;
+echo"</tr>";
+
+
+
+
+echo"</table>" ; 
+$db->close();
+echo"</div>" ; 
+?>
+				</div>
+</body>
+                  
+
+                        <div class="card-body">
+        
+                        </div>
                     </div>
                 </div>
             </main>

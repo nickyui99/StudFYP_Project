@@ -1,5 +1,5 @@
 <?php
-require_once 'Database.php';
+require_once '../../model/Database.php';
 require_once '../ClassModel/LecturerEvaluatorModel.php';
 require_once '../ClassModel/IndustrialEvaluatorModel.php';
 require_once '../ClassModel/EvaluationResultModel.php';
@@ -131,7 +131,8 @@ class StudentDataService
             INNER JOIN lecturer ON lecturer.lect_id = assigned_lecturer_evaluator.lect_id) 
             WHERE evaluation_result.assigned_lect_id IS NOT NULL AND 
             fyp_project.proj_fyp_stage = 'PSM1' AND  
-            fyp_project.stud_id = '$student_id'";
+            fyp_project.stud_id = '$student_id'
+            ORDER BY evaluation_result.submission_level ASC";
 
         //Run SQL query
         $result = $connection->query($sql_query);
@@ -207,7 +208,8 @@ class StudentDataService
             INNER JOIN lecturer ON lecturer.lect_id = assigned_lecturer_evaluator.lect_id) 
             WHERE evaluation_result.assigned_lect_id IS NOT NULL AND 
             fyp_project.proj_fyp_stage = 'PSM2' AND  
-            fyp_project.stud_id = '$student_id'";
+            fyp_project.stud_id = '$student_id'
+            ORDER BY evaluation_result.submission_level ASC";
 
         //Run SQL query
         $result = $connection->query($sql_query);
