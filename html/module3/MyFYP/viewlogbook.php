@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- This is the main page for student-->
-
-<?php 
-    session_start();
-?>
+<!-- This html template is only for StudFYP student only -->
 
 <head>
     <meta charset="UTF-8" />
@@ -14,17 +10,17 @@
     <title>Dashboard</title>
 
     <!-- Bootstrap 5 CSS -->
-    <link rel="stylesheet" href="../bootstrap_v5.1/css/styles.css" />
+    <link rel="stylesheet" href="../../../bootstrap_v5.1/css/styles.css" />
 
     <!-- Bootstrap 5 JavaScript -->
-    <script src="../bootstrap_v5.1/js/scripts.js"></script>
+    <script src="../../../bootstrap_v5.1/js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../../css/main.css" />
 
     <!-- JS -->
 </head>
@@ -32,7 +28,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <img class="logo ms-3" src="../images/ump_logo.png" alt="UMP" />
+        <img class="logo ms-3" src="../../images/ump_logo.png" alt="UMP" />
         <a class="navbar-brand ms-3 me-0" href="index.html">StudFYP</a>
 
         <!-- Sidebar Toggle-->
@@ -81,7 +77,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="login_controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="#!">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -129,7 +125,7 @@
                         </a>
                         <div class="collapse" id="collapseFYP" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="module3\MyFYP\viewlogbook.php">
+                                <a class="nav-link" href="viewlogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
@@ -195,12 +191,12 @@
                         </a>
                         <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="module5/students/view_my_evaluator.php">
+                                <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View my evaluator
                                 </a>
-                                <a class="nav-link" href="module5/students/my_evaluation_result.php">
+                                <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>My evaluation result
@@ -219,9 +215,7 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    <?php 
-                        echo $_SESSION['username'];
-                    ?>
+                    username
                 </div>
             </nav>
         </div>
@@ -230,26 +224,43 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Dashboard</h1>
+                    <h1 class="mt-4">VIEW MY LOGBOOK</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">
-                            <a href="index.html">Dashboard</a>
+                            <a href="index.html">My FYP</a>
                         </li>
-                        <li class="breadcrumb-item active">Announcement</li>
+                        <li class="breadcrumb-item active">View My Logbook</li>
                     </ol>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            This page is an example of using the light side
-                            navigation option. By appending the
-                            <code>.sb-sidenav-light</code>
-                            class to the
-                            <code>.sb-sidenav</code>
-                            class, the side navigation will take on a light
-                            color scheme. The
-                            <code>.sb-sidenav-dark</code>
-                            is also available for a darker option.
-                        </div>
-                    </div>
+                    <?php
+
+                    include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php';
+
+                    $sql = "SELECT * FROM project_logbook";
+                    $result = $db->query($sql);
+                    echo "<div class='container'>";
+                    echo "<form>";
+                    echo "<table class = 'dl' width=max-content border=1 cellspacing=0 cellpadding=10>";
+                    if ($result->num_rows > 0) {
+                        echo "<tr>";
+                        echo "<th>Date</th>";
+                        echo "<th>Activity</th>";
+                        echo "</tr>";
+                        // output data of each row
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . $row["logbook_date"] . "</td>";
+                            echo "<td>" . $row["logbook_details"] . "</td>";
+                            echo "</tr>";
+                        }
+                        echo "</table>";
+                    } else {
+                        echo "0 results";
+                    }
+                    $db->close();
+                    echo "</form>";
+                    echo "</div>";
+
+                    ?>
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">

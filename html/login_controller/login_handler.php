@@ -34,7 +34,7 @@ if (isset($_POST['Login'])) {
                     echo '<script type="text/javascript">';
                     echo 'alert("Incorrect Username and Password.\nPlease Try again !")';
                     echo '</script>';
-                    echo "<script>window.open('../index.php','_self')</script>";
+                    echo "<script>window.open('../../index.php','_self')</script>";
                 }
 
                 $stmt->close();
@@ -57,7 +57,7 @@ if (isset($_POST['Login'])) {
                     echo '<script type="text/javascript">';
                     echo ' alert("Incorrect Username and Password.\nPlease Try again !")';
                     echo '</script>';
-                    echo "<script>window.open('../index.php','_self')</script>";
+                    echo "<script>window.open('../../index.php','_self')</script>";
                 }
                 $stmt->close();
                 mysqli_close($db);
@@ -79,7 +79,7 @@ if (isset($_POST['Login'])) {
                     echo '<script type="text/javascript">';
                     echo ' alert("Incorrect Username and Password.\n Please Try again !")';
                     echo '</script>';
-                    echo "<script>window.open('../index.php','_self')</script>";
+                    echo "<script>window.open('../../index.php','_self')</script>";
                 }
                 mysqli_close($db);
                 break;
@@ -100,7 +100,7 @@ if (isset($_POST['Login'])) {
                     echo '<script type="text/javascript">';
                     echo ' alert("Incorrect Username and Password.\n Please Try again !")';
                     echo '</script>';
-                    echo "<script>window.open('loginpage.php','_self')</script>";
+                    echo "<script>window.open('../../index.php','_self')</script>";
                 }
                 mysqli_close($db);
                 break;

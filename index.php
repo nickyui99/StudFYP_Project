@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
- require_once 'login_controller/login_handler.php';
+ require_once 'html/login_controller/login_handler.php';
  ?>
 
 <head>
@@ -12,17 +12,17 @@
     <title>StudFYP | Login Page</title>
 
     <!-- Bootstrap 5 CSS -->
-    <link rel="stylesheet" href="../bootstrap_v5.1/css/styles.css" />
+    <link rel="stylesheet" href="bootstrap_v5.1/css/styles.css" />
 
     <!-- Bootstrap 5 JavaScript -->
-    <script src="../bootstrap_v5.1/js/scripts.js"></script>
+    <script src="bootstrap_v5.1/js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="css/main.css" />
 
     <!-- JS -->
 </head>
@@ -30,7 +30,7 @@
 <body class="login_bg">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <img class="logo ms-3" src="../images/ump_logo.png" alt="UMP" />
+        <img class="logo ms-3" src="images/ump_logo.png" alt="UMP" />
         <a class="navbar-brand ms-3 me-0" href="index.html">StudFYP</a>
     </nav>
 
@@ -41,7 +41,7 @@
                 <div class="card mx-auto" style="width: 30rem;">
                     <div class="card-body">
                         <h1 class="card-title text-center mt-3 mb-3">StudFYP Login</h1>
-                        <form class="mt-3" action="login_controller/login_handler.php" method="post">
+                        <form class="mt-3" action="html/login_controller/login_handler.php" method="post">
 
                             <!-- Username -->
                             <div class="form-group mb-3">

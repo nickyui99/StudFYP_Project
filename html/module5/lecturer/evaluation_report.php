@@ -24,6 +24,9 @@ session_start();
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
 
+    <!-- Chart js  -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- CSS -->
     <link rel="stylesheet" href="../../../css/main.css" />
     <link rel="stylesheet" href="../../../css/module_5.css" />
@@ -253,19 +256,26 @@ session_start();
                         </li>
                         <li class="breadcrumb-item active">Evaluation report</li>
                     </ol>
+
                     <div class="d-flex justify-content-center mb-2">
-                        <img src="https://chartio.com/assets/25c0ab/tutorials/charts/pie-charts/8f2915ab9024902155c5d27d430831be813de071853c69d778102722a4d0efbf/pie-chart-example-1.png" alt="">
+                        <div id="message_box">
+                            <!-- This div is for showing message purpose only -->
+                        </div>
+                        <!-- Pie Chart -->
+                        <div id="chart_container">
+                            <canvas id="my_chart"></canvas>
+                        </div>
                     </div>
                     <div class="row mb-2">
                         <p class="col-sm-1">Actions: </p>
 
                         <div class="col-sm-8">
 
-                            <button type="button" name="btn_update" id="btn_update" class="btn btn-outline-success btn-sm">
+                            <button type="button" name="btn_update" id="btn_update" class="btn btn-success btn-sm">
                                 <i class="fa fa-plus me-2"></i>Update
                             </button>
 
-                            <button type="button" name="btn_delete" id="btn_delete" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal">
+                            <button type="button" name="btn_delete" id="btn_delete" class="btn btn-danger btn-sm" data-bs-toggle="modal">
                                 <i class="fa fa-trash me-2" aria-hidden="true"></i>Delete
                             </button>
 
@@ -283,7 +293,28 @@ session_start();
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" id="btn_confirm_delete" onclick="load_er_array(checkList());">Delete</button>
+                                            <button type="button" class="btn btn-danger" id="btn_confirm_delete">Delete</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Update modal -->
+                            <div class="modal fade " id="confirm_update_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="update_modal_label">Confirm Update </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div id="checked_list">
+
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" id="btn_confirm_update">Update</button>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                         </div>
                                     </div>
@@ -327,7 +358,7 @@ session_start();
                             <table id="myTable" class="table table-bordered table-striped">
                                 <thead>
                                     <tr class="header-bg">
-                                    <th class="small" style="width: 4%;">List</th>
+                                        <th class="small" style="width: 4%;">List</th>
                                         <th class="small" style="width: 8%;">Result ID</th>
                                         <th class="small" style="width: 8%;">Project ID</th>
                                         <th class="small" style="width: 8%;">Student ID</th>
@@ -340,6 +371,7 @@ session_start();
                                 </thead>
                                 <tbody id="result">
                                     <!-- Show datatable here -->
+
                                 </tbody>
                                 <tfoot>
                                     <tr class="header-bg">
@@ -358,6 +390,8 @@ session_start();
                         </div>
                     </div>
                 </div>
+
+
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
@@ -387,44 +421,110 @@ session_start();
         $('#btn_confirm_delete').click(function() {
             delete_er_array(checkedList());
         });
+
+        $('#btn_confirm_update').click(function() {
+            update_er_array(checkedList());
+        });
+
+        $('#btn_delete').click(function() {
+
+            checkedArrays = checkedList();
+
+            if (checkedArrays.length == 0) {
+                var output = "No row selected";
+                document.getElementById("alert_message").innerHTML = output;
+                $('#alert_modal').modal('show');
+            } else {
+                var output = "Are you sure to DELETE this evaluation report? <ul>";
+                for (var i = 0; i < checkedArrays.length; i++) {
+                    output = output + "<li>" + checkedArrays[i] + "</li>";
+                }
+                output = output + "</ul>"
+                document.getElementById("checked_report").innerHTML = output;
+                $('#confirm_delete_modal').modal('show');
+            }
+        });
+
+        $('#btn_update').click(function() {
+            checkedArrays = checkedList();
+
+            if (checkedArrays.length == 0) {
+                var output = "No row selected";
+                document.getElementById("alert_message").innerHTML = output;
+                $('#alert_modal').modal('show');
+            } else {
+                var output = "Are you sure to UPDATE this evaluation report? <ul>";
+                for (var i = 0; i < checkedArrays.length; i++) {
+                    output = output + "<li>" + checkedArrays[i] + "</li>";
+                }
+                output = output + "</ul>"
+                document.getElementById("checked_list").innerHTML = output;
+                $('#confirm_update_modal').modal('show');
+            }
+        });
+
+        //Retrieve data
+        var fyp1_stud_num = <?php echo getEvaluatedFyp1StudentNum($_SESSION['lect_id']); ?>;
+        var fyp2_stud_num = <?php echo getEvaluatedFyp2StudentNum($_SESSION['lect_id']); ?>;
+
+        if (fyp1_stud_num + fyp2_stud_num <= 0) {
+            $('#message_box').html('<div class="alert alert-warning" role="alert">No data</div>');
+        } else {
+            //Chart Js Configuration
+            const data = {
+                labels: [
+                    'Evaluated PSM 1 Student',
+                    'Evaluated PSM 2 Student'
+                ],
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [
+                        fyp1_stud_num,
+                        fyp2_stud_num
+                    ],
+                    backgroundColor: [
+                        'rgb(155, 89, 182)',
+                        'rgb(22, 160, 133)',
+                    ],
+                    hoverOffset: 4
+                }]
+            };
+
+            const config = {
+                type: 'pie',
+                data: data,
+            };
+
+            const myChart = new Chart(
+                document.getElementById('my_chart'),
+                config
+            );
+        }
+
     });
 
     function checkedList() {
-        checkList = [];
-        <?php
-        $ev_report_array = getEvaluationReport($_SESSION['lect_id']);
-        foreach ($ev_report_array as $ev_report) {
-            echo
-            'if(document.getElementById("cb_' . $ev_report->getResultID() . '").checked == true){
-                checkList.push("' . $ev_report->getResultID() . '");
-            }';
-        }
-        ?>
-        return checkList;
-    }
-
-    $('#btn_delete').click(function() {
-
-        checkedArrays = checkedList();
-
-        if (checkedArrays.length == 0) {
-            var output = "No row selected";
-            document.getElementById("alert_message").innerHTML = output;
-            $('#alert_modal').modal('show');
-        } else {
-            var output = "Are you sure to DELETE this evaluation report? <ul>";
-            for (var i = 0; i < checkedArrays.length; i++) {
-                output = output + "<li>" + checkedArrays[i] + "</li>";
+        var check_list = [];
+        const result_id_array =
+            <?php
+            $ev_report_array = getEvaluationReport($_SESSION['lect_id']);
+            $result_id_array = array();
+            foreach ($ev_report_array as $ev_report) {
+                //Push result id array
+                array_push($result_id_array, $ev_report->getResultId());
             }
-            output = output + "</ul>"
-            document.getElementById("checked_report").innerHTML = output;
-            $('#confirm_delete_modal').modal('show');
-        }
-    });
+            //Print result id array
+            echo json_encode($result_id_array);
+            ?>;
 
-    $('#btn_update').click(function() {
-        $('#confirm_update_modal').modal('show');
-    });
+        for (let i = 0; i < result_id_array.length; i++) {
+            if (document.getElementById("cb_" + result_id_array[i]).checked == true) {
+                check_list.push(result_id_array[i]);
+            };
+        }
+
+        return check_list;
+    }
 </script>
 
 </html>

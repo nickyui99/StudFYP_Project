@@ -28,11 +28,11 @@ class LecturerDataService
         //Run SQL Query
         $result = $connection->query($sql_query);
 
+        $assigned_ev_array = array();
         if ($result->num_rows == 0) {
-            return null;
+            //Do nothing
         } else {
-            $i = 0;
-            $assigned_ev_array = array();
+            $i = 0; 
             while ($row = $result->fetch_assoc()) {
                 //Retrieve data
                 $assigned_ev = new AssignedEvaluation();
@@ -65,15 +65,15 @@ class LecturerDataService
                         $evaluation_status[$i] = false;
                     }
                 }
-                
+
                 $assigned_ev->setEvaluationStatus($evaluation_status);
             }
-
-            //Close connection
-            $connection->close();
-
-            return $assigned_ev_array;
         }
+
+        //Close connection
+        $connection->close();
+
+        return $assigned_ev_array;
     }
 
     function getEvaluationDetails($proj_id, $stud_id, $submission)
@@ -276,7 +276,7 @@ class LecturerDataService
             (evaluation_result.fyp_proj_id LIKE '%$query%' OR 
             fyp_project.proj_title LIKE '%$query%' OR 
             assigned_lecturer_evaluator.stud_id LIKE '%$query%')
-            ORDER BY evaluation_result.fyp_proj_id ASC";
+            ORDER BY evaluation_result.result_id ASC";
 
         //Run SQL Query
         $result = $connection->query($sql_query);
@@ -329,6 +329,83 @@ class LecturerDataService
         return $evaluation_report_array;
     }
 
+    function getEvaluationReportFromERID($er_id_array)
+    {
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        //Initiate array
+        $evaluation_report_array = array();
+        $i = 0;
+
+        foreach ($er_id_array as $er_id) {
+            $sql_query = "SELECT evaluation_result.result_id, evaluation_result.fyp_proj_id, evaluation_result.assigned_lect_id, fyp_project.proj_title, evaluation_result.submission_level, 
+            evaluation_result.evaluation_feedback, assigned_lecturer_evaluator.lect_id, fyp_project.proj_fyp_stage, fyp_project.stud_id, evaluation_result.evaluation_date
+            FROM evaluation_result INNER JOIN assigned_lecturer_evaluator 
+            ON assigned_lecturer_evaluator.assigned_lect_id = evaluation_result.assigned_lect_id 
+            INNER JOIN fyp_project 
+            ON evaluation_result.fyp_proj_id = fyp_project.fyp_proj_id
+            WHERE evaluation_result.result_id = '$er_id'";
+
+            //Run SQL Query
+            $result = $connection->query($sql_query);
+
+            if ($result->num_rows == 0) {
+                //Do nothing
+            } else {
+
+                $row = $result->fetch_assoc();
+
+                $ev_report = new EvaluationReport();
+                $ev_report->setResultId($row['result_id']);
+                $ev_report->setProjID($row['fyp_proj_id']);
+                $ev_report->setFypStage($row['proj_fyp_stage']);
+                $ev_report->setSubmission($row['submission_level']);
+                $ev_report->setProjTitle($row['proj_title']);
+                $ev_report->setEvaluationDate($row['evaluation_date']);
+                $ev_report->setStudID($row['stud_id']);
+                $ev_report->setEvaluationFeedback($row['evaluation_feedback']);
+
+                //get total marks
+                $sql_query = "SELECT * FROM ev_mark_details WHERE result_id = '" . $ev_report->getResultId() . "'";
+
+                //Run SQL Query
+                $result = $connection->query($sql_query);
+
+                if ($result->num_rows == 0) {
+                    //Do nothing
+                } else {
+
+                    $ev_mark_array = array();
+                    while ($row = $result->fetch_assoc()) {
+                        $ev_mark_det = new EvaluationMarkDetails();
+                        $ev_mark_det->setEvMarkId($row['ev_mark_id']);
+                        $ev_mark_det->setResultId($row['result_id']);
+                        $ev_mark_det->setEvaluationRubricId($row['evaluation_rubric_id']);
+                        $ev_mark_det->setActualMark($row['actual_mark']);
+
+                        //Push evaluation mark details into ev_mark_array
+                        array_push($ev_mark_array, $ev_mark_det);
+                    }
+
+                    //Set evaluation mark array into evaluation report
+                    $ev_report->setMark($ev_mark_array);
+                }
+
+
+                //Add to array
+                $evaluation_report_array[$i] = $ev_report;
+                $i++;
+            }
+        }
+        //Close connection
+        $connection->close();
+
+        return $evaluation_report_array;
+    }
+
     function getAssignedLectId($lect_id)
     {
 
@@ -364,6 +441,7 @@ class LecturerDataService
         $result = $connection->query($sql_query);
 
         $new_result_id = null;
+        $insert_status = true;
 
         if ($result->num_rows == 0) {
             //If no result in the database set ID from ER001
@@ -385,24 +463,33 @@ class LecturerDataService
         'NULL', '" . $ev_result->getSubmission() . "', '" . $ev_result->getProjectFeedback() . "', 
         '" . $ev_result->getEvaluationDate() . "')";
 
-        if ($connection->query($sql_query) === TRUE) {
+        if ($connection->query($sql_query) == TRUE) {
             $ev_mark_arrray = $ev_result->getEvMarkDetails();
             echo "Data inserted <br>";
 
             foreach ($ev_mark_arrray as $ev_mark) {
                 $sql_query = "INSERT INTO ev_mark_details
                 VALUES ('0', '$new_result_id','" . $ev_mark->getEvaluationRubricId() . "', '" . $ev_mark->getActualMark() . "')";
-                if ($connection->query($sql_query) === TRUE) {
+                if ($connection->query($sql_query) == TRUE) {
                     echo $ev_mark->getEvaluationRubricId() . " mark inserted<br>";
+                    $insert_status = true;
                 } else {
                     echo $ev_mark->getEvaluationRubricId() . " insert failed";
+                    //Set insert status as false and break for loop
+                    $insert_status = false;
+                    break;
                 }
             }
         } else {
             echo "Error: " . $sql_query . "<br>" . $connection->error;
+            $insert_status = false;
         }
 
+        //Close connection
         $connection->close();
+
+        //Return SQL insert status
+        return $insert_status;
     }
 
     function deleteEvaluationReport($er_id)
@@ -412,7 +499,6 @@ class LecturerDataService
         //Create connection
         $connection = $db->getConnection();
 
-        //Delete Data from
         $sql_query = "DELETE FROM ev_mark_details WHERE result_id = '$er_id'";
 
         if ($connection->query($sql_query) == TRUE) {
@@ -422,14 +508,110 @@ class LecturerDataService
             $sql_query = "DELETE FROM evaluation_result WHERE result_id = '$er_id'";
             if ($connection->query($sql_query) == TRUE) {
                 echo "Evaluation mark data deleted successfully";
-            }
-            else{
+            } else {
                 echo "Error deleting evaluation report data: " . $connection->error;
             }
         } else {
             echo "Error deleting evaluation mark data: " . $connection->error;
         }
 
+        //Close connection
         $connection->close();
+    }
+
+    function getEvaluationMarkDetails($er_id)
+    {
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "SELECT * FROM ev_mark_details WHERE result_id = '$er_id'";
+
+        //Run SQL Query
+        $result = $connection->query($sql_query);
+
+        $ev_mark_array = array();
+        if ($result->num_rows == 0) {
+            //Do nothing
+        } else {
+            $i = 0;
+
+            while ($row = $result->fetch_assoc()) {
+                $ev_mark_det = new EvaluationMarkDetails();
+                $ev_mark_det->setEvMarkId($row['ev_mark_id']);
+                $ev_mark_det->setResultId($row['result_id']);
+                $ev_mark_det->setEvaluationRubricId($row['evaluation_rubric_id']);
+                $ev_mark_det->setActualMark($row['actual_mark']);
+
+                //Add to array
+                $ev_mark_array[$i] = $ev_mark_det;
+                $i++;
+            }
+        }
+        //Close connection
+        $connection->close();
+
+        return $ev_mark_array;
+    }
+
+
+    function updateEvaluationResult($ev_report)
+    {
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "UPDATE evaluation_result
+            SET evaluation_feedback = '" . $ev_report->getEvaluationFeedback() . "',
+            evaluation_date = '" . date("Y-m-d") . "'
+            WHERE result_id = '" . $ev_report->getResultId() . "'";
+
+        $is_update_success = "";
+        if ($connection->query($sql_query) == TRUE) {
+            echo "</br>Record " . $ev_report->getResultId() . " updated successfully";
+            $is_update_success = true;
+        } else {
+            echo "</br>Error updating record: " . $connection->error;
+            $is_update_success = false;
+        }
+
+        //Close conection
+        $connection->close();
+
+        //Return update status
+        return $is_update_success;
+    }
+
+    function updateEvaluationMark($ev_mark_array)
+    {
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        foreach ($ev_mark_array as $ev_mark) {
+            $sql_query = "UPDATE ev_mark_details
+                SET actual_mark = '" . $ev_mark->getActualMark() . "'
+                WHERE result_id = '" . $ev_mark->getResultId() . "'
+                AND ev_mark_id = '" . $ev_mark->getEvMarkId() . "'";
+
+            $is_update_success = true;
+            if ($connection->query($sql_query) == true) {
+                echo "</br>Record " .$ev_mark->getEvMarkId(). " updated successfully";
+                $is_update_success = true;
+            } else {
+                echo "</br>Error updating record: " . $connection->error;
+                $is_update_success = false;
+                break;
+            }
+        }
+
+        //Close conection
+        $connection->close();
+
+        // return $is_update_success;
+        return $is_update_success;
     }
 }

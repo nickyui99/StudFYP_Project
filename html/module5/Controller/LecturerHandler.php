@@ -20,26 +20,32 @@ function viewAssignedFyp($query, $lect_id)
 {
     $lds = new LecturerDataService();
     $assigned_ev_array = $lds->getAssignedEvaluation($query, $lect_id);
+
     //Set output
     $output = "";
-    foreach ($assigned_ev_array as $assigned_ev) {
-        $output = $output . '<tr>' .
-            '<td>' . $assigned_ev->getProjectID() . '</td>' .
-            '<td>' . $assigned_ev->getStudentID() . '</td>' .
-            '<td>' . $assigned_ev->getStudentName() . '</td>' .
-            '<td>' . $assigned_ev->getFypLevel() . '</td>' .
-            '<td>' . $assigned_ev->getFypProgress() . '</td>' .
-            '<td>';
 
-        $evaluation_status = $assigned_ev->getEvaluationStatus();
-        for ($i = 1; $i <= 3; $i++) {
-            if ($evaluation_status[$i] == true) {
-                $output = $output . ' <a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=' . $i . '" class="btn btn-success btn-sm disabled" role="button" aria-disabled="true">' . $i . '</a>';
-            } else {
-                $output = $output . ' <a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=' . $i . '" class="btn btn-light btn-outline-dark btn-sm" role="button" aria-disabled="true">' . $i . '</a>';
+    if (count($assigned_ev_array) == 0) {
+        //Do nothing
+    } else {
+        foreach ($assigned_ev_array as $assigned_ev) {
+            $output = $output . '<tr>' .
+                '<td>' . $assigned_ev->getProjectID() . '</td>' .
+                '<td>' . $assigned_ev->getStudentID() . '</td>' .
+                '<td>' . $assigned_ev->getStudentName() . '</td>' .
+                '<td>' . $assigned_ev->getFypLevel() . '</td>' .
+                '<td>' . $assigned_ev->getFypProgress() . '</td>' .
+                '<td>';
+
+            $evaluation_status = $assigned_ev->getEvaluationStatus();
+            for ($i = 1; $i <= 3; $i++) {
+                if ($evaluation_status[$i] == true) {
+                    $output = $output . ' <a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=' . $i . '" class="btn btn-success btn-sm disabled" role="button" aria-disabled="true">' . $i . '</a>';
+                } else {
+                    $output = $output . ' <a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=' . $i . '" class="btn btn-light btn-outline-dark btn-sm" role="button" aria-disabled="true">' . $i . '</a>';
+                }
             }
+            $output = $output . '</td></tr>';
         }
-        $output = $output . '</td></tr>';
     }
 
     echo $output;
@@ -113,19 +119,23 @@ function printEvaluationReport($query, $lect_id)
     $ev_report_array = $lds->getEvaluationReport($query, $lect_id);
 
     $output = "";
-    foreach ($ev_report_array as $ev_report) {
-        $output = $output .
-            '<tr>' .
-            '<td><input type="checkbox" class="form-check-input" value="' . $ev_report->getResultID() . '" id="cb_' . $ev_report->getResultID() . '"></td>' .
-            '<td>' . $ev_report->getResultID() . '</td>' .
-            '<td>' . $ev_report->getProjID() . '</td>' .
-            '<td>' . $ev_report->getStudID() . '</td>' .
-            '<td>' . $ev_report->getProjTitle() . '</td>' .
-            '<td>' . $ev_report->getFypStage() . '</td>' .
-            '<td>' . $ev_report->getSubmission() . '</td>' .
-            '<td>' . number_format($ev_report->getMark(), 2) . '</td>' .
-            '<td>' . $ev_report->getEvaluationDate() . '</td>' .
-            '</tr>';
+    if (count($ev_report_array) == 0) {
+        //Do nothing
+    } else {
+        foreach ($ev_report_array as $ev_report) {
+            $output = $output .
+                '<tr>' .
+                '<td><input type="checkbox" class="form-check-input" value="' . $ev_report->getResultID() . '" id="cb_' . $ev_report->getResultID() . '"></td>' .
+                '<td>' . $ev_report->getResultID() . '</td>' .
+                '<td>' . $ev_report->getProjID() . '</td>' .
+                '<td>' . $ev_report->getStudID() . '</td>' .
+                '<td>' . $ev_report->getProjTitle() . '</td>' .
+                '<td>' . $ev_report->getFypStage() . '</td>' .
+                '<td>' . $ev_report->getSubmission() . '</td>' .
+                '<td>' . number_format($ev_report->getMark(), 2) . '</td>' .
+                '<td>' . $ev_report->getEvaluationDate() . '</td>' .
+                '</tr>';
+        }
     }
 
     echo $output;
@@ -138,10 +148,85 @@ function getEvaluationReport($lect_id)
     return $ev_report_array;
 }
 
+function getEvaluationMarkArray($er_id_array)
+{
+    $lds = new LecturerDataService();
+    $ev_mark_array = array();
+    $i = 0;
+    foreach ($er_id_array as $er_id) {
+        $ev_mark_array[$i] = $lds->getEvaluationMarkDetails($er_id);
+        $i++;
+    }
+    return $ev_mark_array;
+}
+
+function getUpdateEvaluationReportList($er_id_array)
+{
+    $lds = new LecturerDataService();
+    $ev_report_array = $lds->getEvaluationReportFromERID($er_id_array);
+    return $ev_report_array;
+}
+
 function deleteEvaluationReport($er_id_array)
 {
     $lds = new LecturerDataService();
     foreach ($er_id_array as $er_id) {
         $lds->deleteEvaluationReport($er_id);
     }
+}
+
+function submitEvaluationForm($ev_result, $assigned_id, $stud_id)
+{
+    $lds = new LecturerDataService();
+    //Insert evaluation result data
+    $status = $lds->insertEvaluationResult($ev_result, $assigned_id, $stud_id);
+    return $status;
+}
+
+function updateEvaluationResult($ev_report_array)
+{
+    $lds = new LecturerDataService();
+
+    $status = true;
+    echo count($ev_report_array);
+    foreach ($ev_report_array as $ev_report) {
+        $status = $lds->updateEvaluationResult($ev_report);
+
+        if ($status == true) {
+            $status = $lds->updateEvaluationMark($ev_report->getMark());
+        }
+    }
+
+    return $status;
+}
+
+function getEvaluatedFyp1StudentNum($lect_id)
+{
+    $lds = new LecturerDataService();
+    $ev_report_array = $lds->getEvaluationReport("", $lect_id);
+
+    $stud_num = 0;
+    foreach ($ev_report_array as $ev_report) {
+        if ($ev_report->getFypStage() == "PSM1") {
+            $stud_num++;
+        }
+    }
+
+    return $stud_num;
+}
+
+
+function getEvaluatedFyp2StudentNum($lect_id)
+{
+    $lds = new LecturerDataService();
+    $ev_report_array = $lds->getEvaluationReport("", $lect_id);
+
+    $stud_num = 0;
+    foreach ($ev_report_array as $ev_report) {
+        if ($ev_report->getFypStage() == "PSM2") {
+            $stud_num++;
+        }
+    }
+
+    return $stud_num;
 }
