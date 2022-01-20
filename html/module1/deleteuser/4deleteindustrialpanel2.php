@@ -285,83 +285,72 @@ session_start();
             <main>
                 <div class="container-fluid px-4">
               
-                         <!-- Button trigger modal -->
-<button type="button" class="btn btn-secondary btn-sm pull-right" data-bs-toggle="modal" data-bs-target="#exampleModal"  >Delete All Data</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete All Industrial Panel's Data</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Are you sure to delete all data ? 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <form action="" method="post"> 
-        <input type="submit" class="btn btn-primary" name="Confirm" value="Confirm">
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<?php
-
-  if(isset($_POST['Confirm']))
-  {		
-	$deleteall = "DELETE FROM industrial_panel ";	if ($db->query($deleteall) === TRUE) {
-		echo '<script type="text/javascript">';
-		echo ' alert(" All record deleted successfully!")'; 
-		echo '</script>';		
- } else {
-   echo "Error deleting record: " . $db->error;
- }
- $db->close();
-} 
-?>
-                    <h1 class="mt-4">Delete User</h1>
+                        
+                 <h1 class="mt-4">Delete User</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">Industrial Panel</li>
                         <li class="breadcrumb-item active">Delete Industrial Panel's Data </li>
                     </ol>
                   
-   <form action="" method="post"> 
-   <div class="form-group">
-	   
-                            <table class="table table-borderless">
-                            <tbody>
-                                    <tr class="">
-<th>Enter Industrial Panel's ID: </th>
-<td><input type="text" name="getipid" class="form-control"></td>
-<th><input type="submit" class="btn btn-secondary btn-sm" name="Search" value="Search"></th>
-</tr> 
-<?php 
-if(isset($_POST['Search']))
-{    if(empty($_POST['getipid']))
-  {
-     echo '<script type="text/javascript">';
-     echo ' alert("Required on Student ID ! ")'; 
-     echo '</script>';
-  }else{
+                    <div class="input-group mb-3">
+                    <span class="input-group-text">Industrial Panel's ID</span>
+            
+  <input type="text" class="form-control" disabled="disabled" value="<?php echo $_SESSION['getipid'] ?>"/>
+  <div class="input-group-append">
+    <button class="btn btn-secondary btn-bg" disabled="disabled" type="submit" name="Search" value="Search">Search</button>
 
-  $getipid = $_POST['getipid']; 
-  $delete = "SELECT * FROM industrial_panel where ip_id = '$getipid' ";
+  </div>
+</div>
+                </div>
+</form>
+<?php 
+
+  $delete = "SELECT * FROM industrial_panel where ip_id = '".$_SESSION['getipid']."'";
   $result = $db->query($delete);
-echo"<table class= table table-hover table-bordered >";
+  echo"<table class= table table-hover table-bordered >";	
 	if ($result->num_rows > 0) {
-	$_SESSION['getipid'] = $getipid;	
-    echo "<script>window.open('http://localhost/StudFYP_Project/html/module_1/deleteuser/4deleteindustrialpanel2.php','_self')</script>";
-} 
-  else {
+    echo" <thead class = thead-dark>"; 
+	echo"<th  class='text-center'>Industrial Panel ID</th>";
+	echo"<th  class='text-center'>Name</th>";
+	echo"<th  class='text-center'>Password</th>";
+	echo"<th  class='text-center'>Email</th>";
+	echo"<th  class='text-center'>Phone Number</th>";
+	echo"<th  class='text-center'>Company</th>";
+	echo"</tr>";
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+	echo"<tr>";
+	echo "<td  class='text-center'>".$row["ip_id"]."</td>";
+	echo "<td  class='text-center'>".$row["ip_name"]."</td>";
+	echo "<td  class='text-center'>".$row["ip_password"]."</td>";
+	echo "<td  class='text-center'>".$row["ip_email"]."</td>";
+	echo "<td  class='text-center'>".$row["ip_contact_num"]."</td>";  
+	echo "<td  class='text-center'>".$row["ip_company"]."</td>";  
+	 echo"</tr>";	
+	 echo"</table>";
+     ?>
+     <form action=" " method= "post" >
+     <div class='d-flex justify-content-center'><input class='btn btn-secondary btn-sm'  type='submit' name='Delete' value='Delete'></div>
+  <?php
+ } }
+   else {
   echo "0 results";
-  }}
-  
- $db->close();
+}
+if(isset($_POST['Delete']))
+{		
+  $sql = "DELETE FROM industrial_panel where ip_id  = '".$_SESSION['getipid']."'";
+if ($db->query($sql) === TRUE) {
+      echo '<script type="text/javascript">';
+      echo ' alert("Record deleted successfully!")'; 
+      echo '</script>';		
+      echo "<script>window.open('http://localhost/StudFYP_Project/html/module_1/deleteuser/4deleteindustrialpanel.php','_self')</script>";
+} else {
+ echo "Error deleting record: " . $db->error;
+}
+$db->close();
 } 
 ?> 
+</table>
 </table>
 
 </form>

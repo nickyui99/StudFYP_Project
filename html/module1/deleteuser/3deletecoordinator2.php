@@ -1,7 +1,6 @@
 <?php
 include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php';
 session_start(); 
-
 ?>
 
 <head>
@@ -112,7 +111,7 @@ session_start();
                         <div class="collapse" id="collapseAddUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/adduser/1addstudent.php" >
+                                <a class="nav-link " href="http://localhost/StudFYP_Project/html/module_1/adduser/1addstudent.php" >
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                    
@@ -144,6 +143,7 @@ session_start();
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
+
                             Delete user
                             <div class="sb-sidenav-collapse-arrow">
                                 <i class="fa fa-angle-down"></i>
@@ -151,8 +151,8 @@ session_start();
                         </a>
                         <div class="collapse show" id="collapseDeleteUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/deleteuser/1deletestudent.php">
+                            <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
+                                <a class="nav-link" href="../../module_1/deleteuser/1deletestudent.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
@@ -163,14 +163,14 @@ session_start();
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Lecturer
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/deleteuser/3deletecoordinator.php">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/deleteuser/3deletecoordinator.php">
+                                    <div class="sb-nav-link-icon ">
+                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                                     </div>Coordinator
                                 </a>
-                                <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/deleteuser/4deleteindustrialpanel.php">
+                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/deleteuser/4deleteindustrialpanel.php">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Industrial panel
                                 </a>
                             </nav>
@@ -280,91 +280,81 @@ session_start();
             </nav>
         </div>
 
-         <!-- Main Content -->
-		 <div id="layoutSidenav_content">
+                <!-- Main Content -->
+                <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-              
-                         <!-- Button trigger modal -->
-<button type="button" class="btn btn-secondary btn-sm pull-right" data-bs-toggle="modal" data-bs-target="#exampleModal"  >Delete All Data</button>
+                
+                       
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete All Industrial Panel's Data</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Are you sure to delete all data ? 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <form action="" method="post"> 
-        <input type="submit" class="btn btn-primary" name="Confirm" value="Confirm">
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<?php
-
-  if(isset($_POST['Confirm']))
-  {		
-	$deleteall = "DELETE FROM industrial_panel ";	if ($db->query($deleteall) === TRUE) {
-		echo '<script type="text/javascript">';
-		echo ' alert(" All record deleted successfully!")'; 
-		echo '</script>';		
- } else {
-   echo "Error deleting record: " . $db->error;
- }
- $db->close();
-} 
-?>
                     <h1 class="mt-4">Delete User</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item">Industrial Panel</li>
-                        <li class="breadcrumb-item active">Delete Industrial Panel's Data </li>
+                        <li class="breadcrumb-item">Coordinator</li>
+                        <li class="breadcrumb-item active">Delete Coordinator's Data </li>
                     </ol>
                   
-   <form action="" method="post"> 
-   <div class="form-group">
-	   
-                            <table class="table table-borderless">
-                            <tbody>
-                                    <tr class="">
-<th>Enter Industrial Panel's ID: </th>
-<td><input type="text" name="getipid" class="form-control"></td>
-<th><input type="submit" class="btn btn-secondary btn-sm" name="Search" value="Search"></th>
-</tr> 
-<?php 
-if(isset($_POST['Search']))
-{    if(empty($_POST['getipid']))
-  {
-     echo '<script type="text/javascript">';
-     echo ' alert("Required on Student ID ! ")'; 
-     echo '</script>';
-  }else{
+                    <div class="input-group mb-3">
+                    <span class="input-group-text">Coordi's ID</span>
+            
+  <input type="text" class="form-control" disabled="disabled" value="<?php echo $_SESSION['getlectid'] ?>"/>
+  <div class="input-group-append">
+    <button class="btn btn-secondary btn-bg" disabled="disabled" type="submit" name="Search" value="Search">Search</button>
 
-  $getipid = $_POST['getipid']; 
-  $delete = "SELECT * FROM industrial_panel where ip_id = '$getipid' ";
-  $result = $db->query($delete);
-echo"<table class= table table-hover table-bordered >";
-	if ($result->num_rows > 0) {
-	$_SESSION['getipid'] = $getipid;	
-    echo "<script>window.open('http://localhost/StudFYP_Project/html/module_1/deleteuser/4deleteindustrialpanel2.php','_self')</script>";
-} 
-  else {
+  </div>
+</div>
+                </div>
+</form>
+<?php 
+
+
+  $delete = "SELECT * FROM fyp_coordinator where lect_id = '".$_SESSION['getcorid']."'";
+$result = $db->query($delete);
+echo"<table class= table table-hover table-bordered >";	
+if ($result->num_rows > 0) {
+
+    echo" <thead class = thead-dark>"; 
+	echo"<th class='text-center'>Lect ID</th>";
+	echo"<th class='text-center'>Name</th>";
+  echo"<th class='text-center'>Faculty</th>";
+  echo"<th class='text-center'>Assist PSM level </th>";
+  echo"<th class='text-center'>Expertise</th>";
+	echo"</tr>";
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+	echo"<tr>";
+    echo"<tr>";
+	echo "<td class='text-center'>".$row["lect_id"]."</td>";
+	echo "<td class='text-center'>".$row["coordinator_name"]."</td>";
+	echo "<td class='text-center'>".$row["coordinate_faculty"]."</td>";
+	echo "<td class='text-center'>".$row["coordinate_psm_level"]."</td>";
+	echo "<td class='text-center'>".$row["coordinator_expertise"]."</td>";  
+	echo"</tr>";	
+  echo"</table>";
+  ?>
+  <form action=" " method= "post" >
+  <div class='d-flex justify-content-center'><input class='btn btn-secondary btn-sm'  type='submit' name='Delete' value='Delete'></div>
+<?php
+} }
+else {
   echo "0 results";
-  }}
-  
+  }
+  if(isset($_POST['Delete']))
+  {		
+    $sql = "DELETE  FROM fyp_coordinator where lect_id = '".$_SESSION['getcorid']."'";
+        if ($db->query($sql) === TRUE) {
+        echo '<script type="text/javascript">';
+        echo ' alert("Record deleted successfully!")'; 
+        echo '</script>';		
+        echo "<script>window.open('http://localhost/StudFYP_Project/html/module_1/deleteuser/3deletecoordinator.php','_self')</script>";
+ } else {
+   echo "Unable to delete as user is coordinator. Please unassign his/her position for coordinator before delete lecturer's position " ;
+ }
  $db->close();
-} 
-?> 
+ } 
+ ?> 
 </table>
 
-</form>
+
 
 </tbody>
 
