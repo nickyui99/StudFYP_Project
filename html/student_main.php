@@ -4,7 +4,7 @@
 <!-- This is the main page for student-->
 
 <?php
-include 'controller/AnnouncementHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/AnnouncementHandler.php';
 
 session_start();
 
@@ -246,7 +246,7 @@ session_start();
 
                             <ol class="list-group list-group-numbered">
                                 <?php
-                                    printAnnouncementBoardList();
+                                printAnnouncementBoardList();
                                 ?>
                             </ol>
                         </div>

@@ -351,7 +351,9 @@ if ($result->num_rows > 0) {
      echo "<script>window.open('http://localhost/StudFYP_Project/html/module_1/deleteuser/1deletestudent2.php','_self')</script>";
 } 
   else {
-  echo "0 results";
+	echo '<script type="text/javascript">';
+    echo ' alert("Record not found !")'; 
+    echo '</script>';	
   }}
   
 ?> 

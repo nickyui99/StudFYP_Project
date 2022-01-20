@@ -312,7 +312,9 @@ if(isset($_POST['Search']))
 
   } 
   else {
-  echo "0 results";
+    echo '<script type="text/javascript">';
+    echo ' alert("Record not found !")'; 
+    echo '</script>';	
   }}}
 
 ?> 

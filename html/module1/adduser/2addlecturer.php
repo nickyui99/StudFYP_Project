@@ -334,7 +334,7 @@
   </div>
     <div class="form-group  mb-3">
     <label for="lectposition">Position</label>
-    <select class="form-select form-select-bg" id="lectposition">
+    <select class="form-select form-select-bg" name="lectposition">
     <option value = "Professor" >Professor</option>
 <option value = "Associate Professor" >Associate Professor</option>
 <option value ="Senior Lecturer" >Senior Lecturer</option>
@@ -358,7 +358,7 @@
   </div>
   <div class="form-group  mb-3">
     <label for="lectfaculty">Faculty</label>
-    <select class="form-select form-select-sm" id="lectfaculty">
+    <select class="form-select form-select-sm" name="lectfaculty">
     <option value = "FK" >FK</option>
     <option value = "FIST" >FIST</option>
     <option value = "FTEK" >FTEK</option>

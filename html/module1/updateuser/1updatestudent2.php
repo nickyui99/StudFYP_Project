@@ -356,7 +356,9 @@ if ($result->num_rows > 0) {
 <?php
   } }
   else {
-  echo "0 results";
+    echo '<script type="text/javascript">';
+    echo ' alert("Record not found !")'; 
+    echo '</script>';	
   }
 if(isset($_POST['Update']))
 {  
