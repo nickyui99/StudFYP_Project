@@ -289,46 +289,86 @@ session_start();
                         <li class="breadcrumb-item">Industrial Panel</li>
                         <li class="breadcrumb-item active">Update Industrial Panel Data</li>
                     </ol>
-                    <form action="" method="post"> 
-   <div class="form-group">
-	   
-                            <table class="table table-borderless">
-                            <tbody>
-                                    <tr class="">
-<th>Enter Industrial Panel's ID: </th>
-<td><input type="text" name="getipid" class="form-control"></td>
-<th><input type="submit" class="btn btn-secondary btn-sm" name="Search" value="Search"></th>
-</tr> </form></table> 
+                    
  <?php 
-if(isset($_POST['Search']))
-{    if(empty($_POST['getipid']))
-  {
-     echo '<script type="text/javascript">';
-     echo ' alert("Required to fill up everything!")'; 
-     echo '</script>';
-  }else{
-  $getipid = $_POST['getipid']; 
-$view = "SELECT * FROM industrial_panel where ip_id = '$getipid' ";
+
+$view = "SELECT * FROM industrial_panel where ip_id =  '$_SESSION[getipid]' ";
 $result = $db->query($view);
 if ($result->num_rows > 0) {	
-	 $_SESSION['getipid'] = $getipid;
   // output data of each row
   while($row = $result->fetch_assoc()) {?> 
-    echo "<script>window.open('http://localhost/StudFYP_Project/html/module_1/updateuser/4updateindustrialpanel2.php','_self')</script>";
+
+<form class="needs-validation" action="" method="post" novalidate> 
+   <div class="form-group">
+   <div class="form-group mb-3">
+    <label for="ipid">Industrial Panel ID</label>
+    <input type="text" class="form-control" name="ipid" required  disabled="disabled" value="<?php echo $row['ip_id'] ?>"/>
+   
+  </div>
+  <div class="form-group mb-3">
+    <label for="ipcompname">Company Name</label>
+    <input type="text" name="ipcomp" class="form-control" required  value="<?php echo $row['ip_company'] ?>" />
+  </div>
+  <div class="form-group mb-3">
+    <label for="ipname">Person In Charge</label>
+    <input type="text" name="ipname" class="form-control" required  value="<?php echo $row['ip_name'] ?>" />
+ 
+  </div>
+  <div class="form-group mb-3">
+    <label for="ippass">Password</label>
+    <input type="text" name="ippass" class="form-control" required value="<?php echo $row['ip_password'] ?>" />
+
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="iphpnum">Phone Number</label>
+    <input type="text" name="iphpnum" class="form-control" required  value="<?php echo $row['ip_contact_num'] ?>" />
+ 
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="ipemail">Email</label>
+    <input type="email" name="ipemail" class="form-control" required value="<?php echo $row['ip_email'] ?>" />
+ 
+  </div>
+  <div class="form-group mb-3">
+  <div class="d-flex justify-content-center">
+  <button type="submit" class="btn btn-secondary btn-bg mb-2" name="Update" value="Update">Update</button>
+  </div></div></div>
+</form>
+
 <?php
   } }
   else {
   echo "0 results";
-  }}
+  }
+if(isset($_POST['Update']))
+{  
 
-mysqli_close($db);
+    
+  $ipcomp = $_POST['ipcomp'];
+  $ipname = $_POST['ipname'];
+  $ippass = $_POST['ippass'];
+  $iphpnum = $_POST['iphpnum'];
+  $ipemail = $_POST['ipemail'];
+   $update = "UPDATE industrial_panel set ip_name='$ipname',ip_password=' $ippass', ip_email='$ipemail', ip_contact_num='$iphpnum',ip_company='$ipcomp'
+   WHERE ip_id = '".$_SESSION['getipid']."'";
+
+   if (mysqli_query($db, $update)) {
+    echo '<script type="text/javascript">';
+    echo ' alert("Record has been updated successfully !")'; 
+    echo '</script>';
+    echo "<script>window.open('http://localhost/StudFYP_Project/html/module_1/updateuser/4updateindustrialpanel.php','_self')</script>";
+   } else {
+      echo "Error: " . $update . ":-" . mysqli_error($db);
+   }
+   mysqli_close($db);
+
 }
-
-   
-
-
 ?> 
- </div> </div>
+      </div>
+   </div>
+                </div>
 </body>
 
  
@@ -350,5 +390,3 @@ mysqli_close($db);
 </body>
 </html>
 
-
- 

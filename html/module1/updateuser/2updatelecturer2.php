@@ -1,7 +1,6 @@
 <?php
 include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php';
 session_start(); 
-
 ?>
   
   <head>
@@ -191,15 +190,15 @@ session_start();
                         <div class="collapse  show" id="collapseEditUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link " href="http://localhost/StudFYP_Project/html/module_1/updateuser/1updatestudent.php">
+                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/updateuser/1updatestudent.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
                                     Student
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/updateuser/2updatelecturer.php">
+                                <a class="nav-link text-light active" href=".http://localhost/StudFYP_Project/html/module_1/updateuser/2updatelecturer.php">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                                     </div>Lecturer
                                 </a>
                                 <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/updateuser/3updatecoordinator.php">
@@ -207,9 +206,9 @@ session_start();
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Coordinator
                                 </a>
-                                <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/updateuser/4updateindustrialpanel.php">
+                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/updateuser/4updateindustrialpanel.php">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Industrial panel
                                 </a>
                             </nav>
@@ -229,7 +228,7 @@ session_start();
                         </a>
                         <div class="collapse" id="collapseViewUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
+                            <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
                                 <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/viewuser/1viewstudent.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
@@ -248,7 +247,7 @@ session_start();
                                 </a>
                                 <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/viewuser/4viewindustrialpanel.php">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin " aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Industrial panel
                                 </a>
                             </nav>
@@ -279,56 +278,120 @@ session_start();
                 </div>
             </nav>
         </div>
-
          <!-- Main Content -->
          <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Update User</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item">Industrial Panel</li>
-                        <li class="breadcrumb-item active">Update Industrial Panel Data</li>
+                        <li class="breadcrumb-item">Lecturer</li>
+                        <li class="breadcrumb-item active">Update Lecturer Data</li>
                     </ol>
-                    <form action="" method="post"> 
-   <div class="form-group">
-	   
-                            <table class="table table-borderless">
-                            <tbody>
-                                    <tr class="">
-<th>Enter Industrial Panel's ID: </th>
-<td><input type="text" name="getipid" class="form-control"></td>
-<th><input type="submit" class="btn btn-secondary btn-sm" name="Search" value="Search"></th>
-</tr> </form></table> 
- <?php 
-if(isset($_POST['Search']))
-{    if(empty($_POST['getipid']))
-  {
-     echo '<script type="text/javascript">';
-     echo ' alert("Required to fill up everything!")'; 
-     echo '</script>';
-  }else{
-  $getipid = $_POST['getipid']; 
-$view = "SELECT * FROM industrial_panel where ip_id = '$getipid' ";
-$result = $db->query($view);
-if ($result->num_rows > 0) {	
-	 $_SESSION['getipid'] = $getipid;
+<?php
+  
+    $view = "SELECT * FROM lecturer where lect_id = '$_SESSION[getlectid]' ";
+    $result = $db->query($view);
+    if ($result->num_rows > 0) {	
+     
   // output data of each row
   while($row = $result->fetch_assoc()) {?> 
-    echo "<script>window.open('http://localhost/StudFYP_Project/html/module_1/updateuser/4updateindustrialpanel2.php','_self')</script>";
+
+
+<form class="needs-validation" action="" method="post" novalidate> 
+   <div class="form-group mb-3">
+    <label for="lectid">Lecturer ID</label>
+    <input type="text" class="form-control" name="lectid"  required disabled="disabled" value="<?php echo $row['lect_id'] ?>"/>
+    <div class="invalid-feedback">Please enter lecturer's ID.</div>
+  </div>
+  <div class="form-group mb-3">
+    <label for="lectname">Name</label>
+    <input type="text" name="lectname" class="form-control" required value="<?php echo $row['lect_name'] ?>" />
+    <div class="invalid-feedback">Please provide lecturer's name.</div>
+  </div>
+  <div class="form-group mb-3">
+    <label for="lectpassword">Password</label>
+    <input type="text" name="lectpassword" class="form-control" value="<?php echo $row['lect_password'] ?>" />
+    <div class="invalid-feedback">Please provide a password.</div>
+  </div>
+    <div class="form-group  mb-3">
+    <label for="lectposition">Position</label>
+    <select name="lectposition" id="lectposition" class="form-select form-select-sm mb-3"  >
+<option value = "Professor" <?php if ($row['lect_position'] == 'Professor') { echo 'selected="selected"';}?>>Professor</option>
+<option value = "Associate Professor"<?php if ($row['lect_position'] == ' Assoiciate Professor') { echo 'selected="selected"';}?> >Associate Professor</option>
+<option value ="Senior Lecturer" <?php if ($row['lect_position'] == 'Senior Lecturer') { echo 'selected="selected"';}?>>Senior Lecturer</option>
+<option value = "Lecturer" <?php if ($row['lect_position'] == 'Lecturer') { echo 'selected="selected"';}?>>Lecturer</option></select>
+  </div>
+  <div class="form-group mb-3">
+    <label for="lectaddress">Address</label>
+    <input type="text" name="lectaddress" class="form-control" required  value="<?php echo $row['lect_address'] ?>" />
+    <div class="invalid-feedback"> Please provide lecturer's address.</div>
+  </div>
+  <div class="form-group mb-3">
+    <label for="lectemail">Email</label>
+    <input type="email" name="lectemail" class="form-control" required value="<?php echo $row['lect_email'] ?>" />
+    <div class="invalid-feedback"> Please provide a valid email.</div>
+  </div>
+  <div class="form-group mb-3">
+    <label for="lecthpnum">Phone Number</label>
+    <input type="text" name="lecthpnum" class="form-control" required value="<?php echo $row['lect_contact_num'] ?>" />
+    <div class="invalid-feedback">Please provide phone number.</div>
+  </div>
+  <div class="form-group  mb-3">
+    <label for="lectfaculty">Faculty</label>
+    <select name="lectfaculty" id="lectfaculty" class="form-select form-select-sm mb-3" >
+<option value="FK" <?php if ($row['lect_faculty'] == 'FK') { echo 'selected="selected"';}?>>FK</option>
+<option value="FTEK" <?php if ($row['lect_faculty'] == 'FTEK') { echo 'selected="selected"';}?>>FTEK</option>
+<option value="FTKKP" <?php if ($row['lect_faculty'] == 'FTKKP') { echo 'selected="selected"';}?>>FTKKP</option>
+<option value="FIM" <?php if ($row['lect_faculty'] == 'FIM') { echo 'selected="selected"';}?>>FIM</option>
+<option value="FTKA" <?php if ($row['lect_faculty'] == 'FTKA') { echo 'selected="selected"';}?>>FTKA</option>
+<option value="FTKEE" <?php if ($row['lect_faculty'] == 'FTKEE') { echo 'selected="selected"';}?>>FTKEE</option>
+</select>
+  </div>
+  <div class="form-group mb-3">
+    <label for="lectexp">Expertise</label>
+    <input type="text" name="lectexp" class="form-control" required value="<?php echo $row['lect_expertise'] ?>" />
+    <div class="invalid-feedback">Please elaborate expertise of the lecturer.</div>
+  </div>
+  <div class="form-group mb-3">
+  <div class="d-flex justify-content-center">
+  <button type="submit" class="btn btn-secondary btn-bg mb-2" name="Update" value="Update">Update</button>
+  </div></div>
+</form>                         
+
+   
 <?php
   } }
   else {
   echo "0 results";
-  }}
+  }
+if(isset($_POST['Update']))
+{  
 
-mysqli_close($db);
+  $lectname = $_POST['lectname'];
+  $lectpassword = $_POST['lectpassword'];
+   $lecthpnum = $_POST['lecthpnum'];
+  $lectemail = $_POST['lectemail'];
+  $lectaddress = $_POST['lectaddress'];
+  $lectposition = $_POST['lectposition'];
+  $lectexp = $_POST['lectexp'];
+  $lectfaculty=$_POST['lectfaculty']; 
+  $update = "UPDATE lecturer SET lect_name='$lectname' , lect_password=' $lectpassword' ,lect_contact_num= '$lecthpnum',lect_email= '$lectemail',lect_address= '$lectaddress',
+     lect_position= '$lectposition',lect_expertise='$lectexp' ,lect_faculty= '$lectfaculty'  WHERE  lect_id  = '".$_SESSION['getlectid']."'";
+     if (mysqli_query($db, $update)) {
+      echo '<script type="text/javascript">';
+      echo ' alert("Record has been updated successfully !")'; 
+      echo '</script>';
+      echo "<script>window.open('http://localhost/StudFYP_Project/html/module_1/updateuser/2updatelecturer.php','_self')</script>";
+
+     } else {
+        echo "Error: " . $update . ":-" . mysqli_error($db);
+     }
+     mysqli_close($db);
 }
-
-   
-
-
 ?> 
- </div> </div>
+ </div>
+   </div>
+                </div>
 </body>
 
  
@@ -350,5 +413,3 @@ mysqli_close($db);
 </body>
 </html>
 
-
- 

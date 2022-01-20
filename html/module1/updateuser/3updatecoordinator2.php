@@ -1,7 +1,6 @@
 <?php
 include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php';
 session_start(); 
-
 ?>
   
   <head>
@@ -191,7 +190,7 @@ session_start();
                         <div class="collapse  show" id="collapseEditUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link " href="http://localhost/StudFYP_Project/html/module_1/updateuser/1updatestudent.php">
+                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/updateuser/1updatestudent.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
@@ -202,14 +201,14 @@ session_start();
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Lecturer
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/updateuser/3updatecoordinator.php">
+                                <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/updateuser/3updatecoordinator.php">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin  text-light" aria-hidden="true"></i>
                                     </div>Coordinator
                                 </a>
-                                <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/updateuser/4updateindustrialpanel.php">
+                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/updateuser/4updateindustrialpanel.php">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Industrial panel
                                 </a>
                             </nav>
@@ -229,7 +228,7 @@ session_start();
                         </a>
                         <div class="collapse" id="collapseViewUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
+                            <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
                                 <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/viewuser/1viewstudent.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
@@ -248,7 +247,7 @@ session_start();
                                 </a>
                                 <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/viewuser/4viewindustrialpanel.php">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin " aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Industrial panel
                                 </a>
                             </nav>
@@ -280,55 +279,87 @@ session_start();
             </nav>
         </div>
 
-         <!-- Main Content -->
-         <div id="layoutSidenav_content">
+       <!-- Main Content -->
+       <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Update User</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item">Industrial Panel</li>
-                        <li class="breadcrumb-item active">Update Industrial Panel Data</li>
+                        <li class="breadcrumb-item">Coordinator</li>
+                        <li class="breadcrumb-item active">Update Coordinator Data</li>
                     </ol>
-                    <form action="" method="post"> 
-   <div class="form-group">
-	   
-                            <table class="table table-borderless">
-                            <tbody>
-                                    <tr class="">
-<th>Enter Industrial Panel's ID: </th>
-<td><input type="text" name="getipid" class="form-control"></td>
-<th><input type="submit" class="btn btn-secondary btn-sm" name="Search" value="Search"></th>
-</tr> </form></table> 
+                   
  <?php 
-if(isset($_POST['Search']))
-{    if(empty($_POST['getipid']))
-  {
-     echo '<script type="text/javascript">';
-     echo ' alert("Required to fill up everything!")'; 
-     echo '</script>';
-  }else{
-  $getipid = $_POST['getipid']; 
-$view = "SELECT * FROM industrial_panel where ip_id = '$getipid' ";
-$result = $db->query($view);
-if ($result->num_rows > 0) {	
-	 $_SESSION['getipid'] = $getipid;
+    $view = "SELECT * FROM fyp_coordinator where lect_id =  '$_SESSION[getcoorid]' ";
+    $result = $db->query($view);
+    if ($result->num_rows > 0) {	
   // output data of each row
   while($row = $result->fetch_assoc()) {?> 
-    echo "<script>window.open('http://localhost/StudFYP_Project/html/module_1/updateuser/4updateindustrialpanel2.php','_self')</script>";
+
+<form class="needs-validation" action="" method="post" novalidate> 
+<div class="form-group">
+   <div class="form-group mb-3">
+    <label for="lectid">Lecturer ID</label>
+    <input type="text" class="form-control" name="lectid" required disabled="disabled" value="<?php echo $row['lect_id'] ?>"/>
+  </div>
+  <div class="form-group mb-3">
+    <label for="lectname">Name</label>
+    <input type="text" nname="coorname" class="form-control" required disabled="disabled" class="form-control"value="<?php echo $row['coordinator_name'] ?>"/>
+  </div>
+  <div class="form-group mb-3">
+    <label for="lectfac">Faculty</label>
+    <input type="text" name="lectpassword" class="form-control" required disabled="disabled" class="form-control"value="<?php echo $row['coordinate_faculty'] ?>" />
+  </div>
+  <div class="form-group mb-3">
+    <label for="lectexp">Expertise</label>
+    <input type="text" name="lectexp" class="form-control" required disabled="disabled" class="form-control"value="<?php echo $row['coordinator_expertise'] ?>" />
+  </div>
+  <div class="card text-center">
+  <div class="card-body">
+  <div class="form-group mb-3">
+          <form action="" method="post">     
+    <label class="fw-bold mb-3" >Assign PSM level </label>
+  <div class="form-check d-flex justify-content-center">
+  <?php $psm=explode(",", $row['coordinate_psm_level'])?>
+  <input type="checkbox" class="form-check-input"  id="psmlevel[]"  name="psmlevel[]" value="PSM 1" <?php if(in_array("PSM 1",$psm)) echo "checked"; ?>><label for="PSM 1">PSM 1</label></div>
+<div class="form-check d-flex justify-content-center">
+<input type="checkbox" class="form-check-input" id="psmlevel[]" name="psmlevel[]" value="PSM 2" <?php if(in_array("PSM 2",$psm)) echo "checked"; ?>><label for="PSM 2">PSM 2</label></div>
+        </div>
+        <div class="form-group mb-3">
+  <div class="d-flex justify-content-center">
+  <button type="submit" class="btn btn-secondary btn-bg mb-2" name="Update" value="Update">Update</button>
+  </div></div></div>
+</form>               
 <?php
   } }
   else {
   echo "0 results";
-  }}
-
-mysqli_close($db);
 }
+if(isset($_POST['Update']))
+    {	if( empty($_POST['psmlevel']))
+        {
+           echo '<script type="text/javascript">';
+           echo ' alert("Cannot be empty! Proceed to delete coordinator if did not incharge any PSM")'; 
+           echo '</script>';
 
-   
-
-
+        }else{
+             $gopsm=implode(",", $_POST['psmlevel']);
+  $update =  "UPDATE fyp_coordinator SET coordinate_psm_level ='$gopsm' WHERE lect_id  = '".$_SESSION['getcorid']."'"; 
+     if (mysqli_query($db, $update)) {
+      echo '<script type="text/javascript">';
+      echo ' alert("Record has been updated successfully !")'; 
+      echo '</script>';
+      echo "<script>window.open('http://localhost/StudFYP_Project/html/module_1/updateuser/3updatecoordinator.php','_self')</script>";
+        }
+     else {
+        echo "Error: " . $update . ":-" . mysqli_error($db);
+     }
+     mysqli_close($db);
+}}
 ?> 
- </div> </div>
+    </div>
+                </div>
+    </div>
 </body>
 
  
@@ -350,5 +381,3 @@ mysqli_close($db);
 </body>
 </html>
 
-
- 
