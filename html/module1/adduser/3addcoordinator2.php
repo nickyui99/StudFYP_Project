@@ -287,34 +287,90 @@ session_start();
                         <li class="breadcrumb-item">Coordinator</li>
                         <li class="breadcrumb-item active">Coordinator Registration Form</li>
                     </ol>
-                    <form class="needs-validation" action="" method="post" novalidate> 
+                   
                     <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Lecturer's ID" name="getcorid" aria-label="Lecturer's ID" aria-describedby="basic-addon2" required>
-  <div class="invalid-feedback"> Please enter lecturer's ID.</div>
+                    <span class="input-group-text">Coordinator's ID</span>
+            
+  <input type="text" class="form-control" disabled="disabled" value="<?php echo $_SESSION['getcorid'] ?>"/>
   <div class="input-group-append">
-    <button class="btn btn-secondary btn-bg" type="submit" name="Search" value="Search">Search</button>
+    <button class="btn btn-secondary btn-bg" disabled="disabled" type="submit" name="Search" value="Search">Search</button>
 
   </div>
 </div>
-                    </form>
+                  
+
    <?php 
-      
-        if(isset($_POST['Search']))
-        {   
-          $getcorid = $_POST['getcorid']; 
-        $view = "SELECT * FROM lecturer where lect_id = '$getcorid' ";
+     
+        $view = "SELECT * FROM lecturer where lect_id = '".$_SESSION['getcorid']."'";
         $result = $db->query($view);
         echo"<table class= table table-hover table-bordered >";  
         if ($result->num_rows > 0) {  
-           $_SESSION['getcorid'] = $getcorid;
-           echo "<script>window.open('http://localhost/StudFYP_Project/html/module_1/adduser/3addcoordinator2.php','_self')</script>";
-            }
+           echo" <thead class = thead-dark>"; 
+            echo"<tr class=text-center>";
+            echo"<th scope=col>Name</th>";
+            echo"<th scope=col>Password</th>";
+             echo"<th scope=col>Phone Number</th>";
+             echo"<th scope=col>Email</th>";
+            echo"<th scope=col>Address</th>";
+            echo"<th scope=col>Position</th>";
+             echo"<th scope=col>Expertise</th>";
+             echo"<th scope=col>Faculty</th>";
+            echo"</tr>";
+          echo"</thead>";
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+            echo"<tbody>";
+           echo"<tr>";
+          echo "<td>".$row["lect_name"]."</td>";
+          echo "<td>".$row["lect_password"]."</td>";
+          echo "<td>".$row["lect_contact_num"]."</td>";
+          echo "<td>".$row["lect_email"]."</td>";
+          echo "<td >".$row["lect_address"]."</td>";  
+          echo "<td>".$row["lect_position"]."</td>";
+          echo "<td >".$row["lect_expertise"]."</td>";  
+          echo "<td >".$row["lect_faculty"]."</td>"; 
+           echo"</tr>"; 
+           echo"</tbody>";
+           echo"</table>";
+      
+           echo"\n";
+            }?>
+         <div class="card text-center">
+  <div class="card-body">
+  <div class="form-group mb-3">
+          <form action="" method="post">     
+    <label class="fw-bold mb-3" >Assign PSM level </label>
+  <div class="form-check d-flex justify-content-center">
+  <input type="checkbox" class="form-check-input"  id="psmlevel[]"  name="psmlevel[]" value="PSM 1"><label for="PSM 1">PSM 1</label></div>
+<div class="form-check d-flex justify-content-center">
+<input type="checkbox" class="form-check-input" id="psmlevel[]" name="psmlevel[]" value="PSM 2"><label for="PSM 2">PSM 2</label></div>
+        </div>
+
+<div class="form-group mb-3">
+  <div class="d-flex justify-content-center">
+  <button type="submit" class="btn btn-secondary btn-bg mb-2" name="Assign" value="Assign">Assign</button>
+  </div></div></div> </div>
+        <?php  
+         }
           else {
           echo "0 results";
-          }}
-        ?> 
-        
+          }
 
+          if(isset($_POST['Assign']))
+          { 
+        $gopsm=implode(",", $_POST['psmlevel']);
+        $psm = "INSERT INTO fyp_coordinator(lect_id,coordinator_name,coordinate_faculty,coordinator_expertise) SELECT lect_id,lect_name,lect_faculty,lect_expertise FROM lecturer WHERE lect_id  = '".$_SESSION['getcorid']."';";
+        $psm.= "UPDATE fyp_coordinator SET coordinate_psm_level ='$gopsm' WHERE lect_id  = '".$_SESSION['getcorid']."'"; 
+           if ($db->multi_query($psm) === TRUE){
+            echo '<script type="text/javascript">';
+           echo 'alert("Coordinator assigned successfully")' ;
+           echo '</script>'; 
+        } else {
+        echo "Error adding record: " . $db->error;
+        }
+         $db->close();
+        } 
+        ?> 
 </form>
 
 </tbody>
