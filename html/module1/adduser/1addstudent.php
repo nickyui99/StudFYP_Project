@@ -353,7 +353,7 @@ if(isset($_POST['Add']))
 
   <div class="form-group  mb-3">
     <label for="stdfaculty">Faculty</label>
-    <select class="form-select form-select-sm" id="stdfaculty">
+    <select class="form-select form-select-sm" name="stdfaculty">
     <option value = "FK" >FK</option>
     <option value = "FIST" >FIST</option>
     <option value = "FTEK" >FTEK</option>
