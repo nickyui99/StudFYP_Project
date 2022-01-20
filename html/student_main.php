@@ -129,7 +129,7 @@
                         </a>
                         <div class="collapse" id="collapseFYP" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="module3\MyFYP\viewlogbook.php">
+                                <a class="nav-link" href="module3\viewlogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
