@@ -26,7 +26,7 @@ session_start();
 
     <!-- JS -->
     <script src="../../../js/module_1.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 </head>
 
@@ -84,7 +84,7 @@ session_start();
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="login_controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="http://localhost/StudFYP_Project/html/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -227,12 +227,12 @@ session_start();
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse  show" id="collapseViewUser" aria-labelledby="headingOne"
+                        <div class="collapse " id="collapseViewUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
                                 <a class="nav-link  text-light active" href="http://localhost/StudFYP_Project/html/module_1/viewuser/1viewstudent.php">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin  text-light" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin " aria-hidden="true"></i>
                                     </div>
                                     Student
                                 </a>
@@ -257,15 +257,15 @@ session_start();
                         <!-- Total user -->
                         <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/total&report/totaluser.php">
                             <div class="sb-nav-link-icon">
-                                <i class="fa fa-file-o" aria-hidden="true"></i>
+                                <i class="fa fa-file-o " aria-hidden="true"></i>
                             </div>
                             Total user
                         </a>
 
                         <!-- My report -->
-                        <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/total&report/report.php">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-file-o" aria-hidden="true"></i>
+                        <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/total&report/report.php">
+                            <div class="sb-nav-link-icon ">
+                                <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                             </div>
                             Report
                         </a>
@@ -283,51 +283,58 @@ session_start();
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">View User</h1> 
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item">Student</li>
-                        <li class="breadcrumb-item active">Student List</li>
-                    </ol>  
+                    <h1 class="mt-4">Report</h1>
+                    <?php
 
-					<?php
-$sql = "SELECT * FROM student";
-$result = $db->query($sql);
-    echo"<table class= table table-dark table-striped >";	
+   $padmin = ($_SESSION['$numa']/$_SESSION['$ttl'])*100 ; 
+   $pstud = ($_SESSION['$nums']/$_SESSION['$ttl'])*100 ; 
+   $plect = ($_SESSION['$numl']/$_SESSION['$ttl'])*100 ; 
+   $pcor = ($_SESSION['$numc']/$_SESSION['$ttl'])*100 ; 
+   $pip = ($_SESSION['$numi']/$_SESSION['$ttl'])*100 ; 
+ $dataPoints = array( 
+     array("label"=>"Administration", "y"=> $padmin),
+     array("label"=>"Student", "y"=> $pstud),
+     array("label"=>"Lecturer", "y"=> $plect),
+     array("label"=>"Coordinator", "y"=> $pcor),
+     array("label"=>"Industrial Panel", "y"=> $pip),
+ )
+  
+ ?>
 
-if ($result->num_rows > 0) {	
+ <script>
+ window.onload = function() {
 
-    echo"<tr>";
-	echo"<th class='text-center'>Student ID</th>";
-	echo"<th class='text-center'>Name</th>";
-	echo"<th class='text-center'>Password</th>";
-	echo"<th class='text-center'>Address</th>";
-	echo"<th class='text-center'>Email</th>";
-	echo"<th class='text-center'>Phone Number</th>";
-    echo"<th class='text-center'>Faculty</th>";
-	echo"<th class='text-center'>Evaluate Company</th>";
-	echo"</tr>";
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-	echo"<tr>";
-	echo "<td class='text-center'>".$row["stud_id"]."</td>";
-	echo "<td class='text-center'>".$row["stud_name"]."</td>";
-	echo "<td class='text-center'>".$row["stud_password"]."</td>";
-	echo "<td class='text-center'>".$row["stud_address"]."</td>";
-	echo "<td class='text-center'>".$row["stud_email"]."</td>";
-	echo "<td class='text-center'>".$row["stud_contact_num"]."</td>";  
-    echo "<td class='text-center'>".$row["stud_faculty"]."</td>";
-	echo "<td class='text-center'>".$row["stud_company_attached"]."</td>";  
-	 echo"</tr>";	
-  }  
-	  echo"</table>";
-} else {
-  echo "0 results";
-}
-$db->close();
-?>
+ var chart = new CanvasJS.Chart("chartContainer", {
+     animationEnabled: true,
+     title: {
+         text: "UMP Stud FYP "
+     },
+     subtitles: [{
+         text: "Total Registered Student"
+     }],
+     data: [{
+         type: "pie",
+         yValueFormatString: "#,##0.00\"%\"",
+         indexLabel: "{label} ({y})",
+         dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+     }]
+ });
+ chart.render();
+  
+ }
+ </script>
+ </head>
+ <body>
+ <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+            
 				</div>
 </body>
-                        
+                  
+
+                        <div class="card-body">
+        
+                        </div>
                     </div>
                 </div>
             </main>

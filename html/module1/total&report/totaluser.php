@@ -84,7 +84,7 @@ session_start();
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="login_controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="http://localhost/StudFYP_Project/html/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -227,12 +227,12 @@ session_start();
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse  show" id="collapseViewUser" aria-labelledby="headingOne"
+                        <div class="collapse" id="collapseViewUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
                                 <a class="nav-link  text-light active" href="http://localhost/StudFYP_Project/html/module_1/viewuser/1viewstudent.php">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin  text-light" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin " aria-hidden="true"></i>
                                     </div>
                                     Student
                                 </a>
@@ -255,9 +255,9 @@ session_start();
                         </div>
 
                         <!-- Total user -->
-                        <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/total&report/totaluser.php">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-file-o" aria-hidden="true"></i>
+                        <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/total&report/totaluser.php">
+                            <div class="sb-nav-link-icon ">
+                                <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                             </div>
                             Total user
                         </a>
@@ -283,51 +283,95 @@ session_start();
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">View User</h1> 
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item">Student</li>
-                        <li class="breadcrumb-item active">Student List</li>
-                    </ol>  
+                    <h1 class="mt-4">Total Registered User</h1>
+                 <?php
+$a = "SELECT * FROM administrator";
+$s = "SELECT * FROM student";
+$l = "SELECT * FROM lecturer";
+$c = "SELECT * FROM fyp_coordinator  WHERE coordinate_psm_level !='NULL'";
+$ip = "SELECT * FROM industrial_panel";
+echo"<div class=card-body>" ; 
+echo"<table class=table table-dark table-bordered>" ; 
+echo"<tr>"; 
+echo"<th class=text-center  >User</td>";
+echo "<th class=text-center >Number of User</td>";
+echo"<br>" ; 
+echo"</tr>"; 
 
-					<?php
-$sql = "SELECT * FROM student";
-$result = $db->query($sql);
-    echo"<table class= table table-dark table-striped >";	
 
-if ($result->num_rows > 0) {	
+if ($admin=mysqli_query($db,$a)) {
+    $numa=mysqli_num_rows($admin);
 
-    echo"<tr>";
-	echo"<th class='text-center'>Student ID</th>";
-	echo"<th class='text-center'>Name</th>";
-	echo"<th class='text-center'>Password</th>";
-	echo"<th class='text-center'>Address</th>";
-	echo"<th class='text-center'>Email</th>";
-	echo"<th class='text-center'>Phone Number</th>";
-    echo"<th class='text-center'>Faculty</th>";
-	echo"<th class='text-center'>Evaluate Company</th>";
-	echo"</tr>";
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-	echo"<tr>";
-	echo "<td class='text-center'>".$row["stud_id"]."</td>";
-	echo "<td class='text-center'>".$row["stud_name"]."</td>";
-	echo "<td class='text-center'>".$row["stud_password"]."</td>";
-	echo "<td class='text-center'>".$row["stud_address"]."</td>";
-	echo "<td class='text-center'>".$row["stud_email"]."</td>";
-	echo "<td class='text-center'>".$row["stud_contact_num"]."</td>";  
-    echo "<td class='text-center'>".$row["stud_faculty"]."</td>";
-	echo "<td class='text-center'>".$row["stud_company_attached"]."</td>";  
-	 echo"</tr>";	
-  }  
-	  echo"</table>";
-} else {
-  echo "0 results";
+    echo"<tr class='text-center'>"; 
+    echo"<td>Administrator</td>";
+    echo "<td>".$numa."</td>";
+    echo"<br>" ; 
+    echo"</tr>"; 
+    $_SESSION['$numa'] = $numa;
 }
+
+
+if ($student=mysqli_query($db,$s)) {
+    $nums=mysqli_num_rows($student);
+    echo"<tr class='text-center'>"; 
+    echo"<td>Student</td>";
+    echo "<td>".$nums."</td>";
+
+    echo"</tr>"; 
+    $_SESSION['$nums'] = $nums;
+}
+
+if ($lecturer=mysqli_query($db,$l)) {
+    $numl=mysqli_num_rows($lecturer);
+    echo"<tr class='text-center'>"; 
+    echo"<td>Lecturer</td>";
+    echo "<td>".$numl."</td>";
+
+    echo"</tr>"; 
+    $_SESSION['$numl'] = $numl;
+}
+
+if ($coordinator=mysqli_query($db,$c)) {
+    $numc=mysqli_num_rows($coordinator);
+    echo"<tr class='text-center'>"; 
+	echo"<td >Coordinator</td>";
+    echo "<td>".$numc."</td>";
+ 
+    echo"</tr>"; 
+    $_SESSION['$numc'] = $numc;
+}
+
+if ($industrialpanel=mysqli_query($db,$ip)) {
+    $numi=mysqli_num_rows($industrialpanel);
+    echo"<tr class='text-center'>"; 
+    echo"<td>Industrial Panel</td>";
+    echo "<td>".$numi."</td>";
+
+    echo"</tr>";
+    $_SESSION['$numi'] = $numi;
+} 
+
+echo"<tr class='text-center'>";
+echo"<th>Total Registered user for the System</td>";
+$ttl = $numa+$nums+$numl+$numc+$numi ; 
+echo "<th>".$ttl."</td>";
+$_SESSION['$ttl'] = $ttl;
+echo"</tr>";
+
+
+
+
+echo"</table>" ; 
 $db->close();
+echo"</div>" ; 
 ?>
 				</div>
 </body>
-                        
+                  
+
+                        <div class="card-body">
+        
+                        </div>
                     </div>
                 </div>
             </main>
