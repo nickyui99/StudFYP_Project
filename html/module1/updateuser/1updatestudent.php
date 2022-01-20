@@ -288,16 +288,15 @@ session_start();
                         <li class="breadcrumb-item">Student</li>
                         <li class="breadcrumb-item active">Update Student Data</li>
                     </ol>
-                    <form action="" method="post"> 
-   <div class="form-group">
-	   
-                            <table class="table table-borderless">
-                            <tbody>
-                                    <tr class="">
-<th>Enter Student's ID: </th>
-<td><input type="text" name="getstdid" class="form-control"></td>
-<th><input type="submit" class="btn btn-secondary btn-sm" name="Search" value="Search"></th>
-</tr> </form></table> 
+                    <form class="needs-validation" action="" method="post" novalidate> 
+                
+                <div class="input-group mb-3">
+<input type="text" class="form-control" placeholder="Student's ID" name="getstdid" aria-label="Student's ID" aria-describedby="basic-addon2" required>
+<div class="invalid-feedback"> Please enter student's ID.</div>
+<div class="input-group-append">
+<button class="btn btn-secondary btn-bg" id="btnhide" type="submit" name="Search" value="Search">Search</button>
+</div>
+</form>
  <?php 
 if(isset($_POST['Search']))
 {    if(empty($_POST['getstdid']))
