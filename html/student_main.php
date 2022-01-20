@@ -81,7 +81,7 @@ session_start();
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="login_controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -94,7 +94,7 @@ session_start();
                 <div class="sb-sidenav-menu">
                     <div class="nav mt-3">
                         <!-- Dashboard -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="student_mai.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-tachometer" aria-hidden="true"></i>
                             </div>
@@ -237,11 +237,14 @@ session_start();
                         </li>
                         <li class="breadcrumb-item active">Announcement</li>
                     </ol>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h2>Announcement Board</h2>
+                    <div class="card p-2 mb-4">
+                        <div class="card-body ">
+                            <h3 class="card-title">Announcement Board</h3>
 
                             <ol class="list-group list-group-numbered">
+                                <?php 
+
+                                ?>
                                 <li class="list-group-item d-flex justify-content-between align-items-start">
                                     <div class="ms-2 me-auto">
                                         <div class="fw-bold">Subheading</div>
