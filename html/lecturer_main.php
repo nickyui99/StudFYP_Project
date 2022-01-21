@@ -115,7 +115,7 @@ session_start();
                                     </div>
                                     Assign student to supervisor
                                 </a>
-                                <a class="nav-link" href="module2/Assign_Student_to_industralPanel/Assign_IP_to_student">
+                                <a class="nav-link" href="module2/Assign_Student_to_industralPanel/Assign_IP_to_student.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Assign student to evaluator
