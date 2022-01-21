@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/model/AnouncementDataService.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/model/AnouncementDataService.php';
 
 function printAnnouncementBoardList()
 {
