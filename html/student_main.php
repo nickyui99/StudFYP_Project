@@ -54,7 +54,7 @@ session_start();
                         Notfication
                     </li>
                     <?php
-                    printNotificationList();
+                        printNotificationList();
                     ?>
                     <li>
                         <a class="dropdown-item see-more-notification" href="localhost/StudFYP_Project/html/lecturer_main.php"> See more ...</a>
@@ -72,7 +72,7 @@ session_start();
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="../controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>

@@ -39,8 +39,34 @@ class ActivityDataService
             }
         }
 
+        //Close connection
         $connection->close();
 
         return $activity_array;
+    }
+
+    function updateActivityDate($activity)
+    {
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "UPDATE activity 
+            SET activity_start_date = '" . $activity->getActivityStartDate() . "',
+            activity_close_date = '" . $activity->getActivityEndDate() . "'
+            WHERE activity_sub_type = '" . $activity->getActivitySubmission() ."' AND 
+            activity_fyp_level = '" . $activity->getActivityFyp() ."'";
+        
+        echo $sql_query;
+
+        if ($connection->query($sql_query) == true) {
+            echo "</br>Submission date updated successfully";
+        } else {
+            echo "</br>Error updating submission date: " . $connection->error;
+        }
+
+        //Close connection
+        $connection->close();
     }
 }

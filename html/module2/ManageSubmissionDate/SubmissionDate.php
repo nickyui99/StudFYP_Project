@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- This is the main page for lecturer -->
+<!-- Contributor: Nicholas, Aiman -->
+
 <?php
 include $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/AnnouncementHandler.php';
 include $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/FypActivityHandler.php';
@@ -36,6 +37,7 @@ session_start();
     <link rel="stylesheet" href="../../../css/main.css" />
 
     <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -249,12 +251,51 @@ session_start();
                     <div class="card mb-4">
                         <div class="card-header">Form</div>
                         <div class="card-body">
-                            <form action="">
+
+                            <form id="submission_date_form">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <input>
+                                    <div class="col-sm-5">
+                                        <div class="form-group row mb-2">
+                                            <label for="fyp_level" class="col-sm-4 col-form-label">FYP Level:</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-select form-control" name="fyp_level" id="fyp_level">
+                                                    <option value="PSM1" selected>PSM 1</option>
+                                                    <option value="PSM2">PSM 2</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="submission" class="col-sm-4 col-form-label">Submission:</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-select form-control" name="submission" id="submission">
+                                                    <option value="1" selected>1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="start_date" class="col-sm-4 col-form-label">Select Start Date:</label>
+                                            <div class="col-sm-8">
+                                                <input type="date" class="form-control" name="start_date" id="start_date" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-2">
+                                            <label for="end_date" class="col-sm-4 col-form-label">Select End Date:</label>
+                                            <div class="col-sm-8">
+                                                <input type="date" class="form-control" name="end_date" id="end_date" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-center">
+                                            <input type="submit" class="btn btn-outline-dark m-3" name="submit" id="submit" value="Submit">
+                                            <input type="reset" class="btn btn-outline-dark m-3" name="reset" id="reset" value="Reset">
+                                        </div>
                                     </div>
-                                    <div class="col-sm-6 border p-1">
+                                    <div class="col-sm-7 border p-1">
                                         <div id='calendar'></div>
                                     </div>
                                 </div>
@@ -275,7 +316,22 @@ session_start();
 </body>
 
 <script>
-    //Contributor: Nicholas, Aiman
+    $(document).ready(function() {
+        $('#submission_date_form').submit(function() {
+            var form = $(this);
+            $.ajax({
+                type: "POST",
+                url: "../../controller/FypActivityHandler.php",
+                data: form.serialize(), // serializes the form's elements.
+                success: function(data) {
+                    alert("Submission date updated");
+                    window.location.reload();
+                }
+            });
+        });
+    });
+
+
     document.addEventListener('DOMContentLoaded', function() {
         var todayDate = moment().startOf("day");
         var YM = todayDate.format("YYYY-MM");
