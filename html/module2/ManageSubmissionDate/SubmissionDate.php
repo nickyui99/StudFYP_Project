@@ -249,19 +249,16 @@ session_start();
                     <div class="card mb-4">
                         <div class="card-header">Form</div>
                         <div class="card-body">
-
                             <form action="">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <input>
                                     </div>
-                                    <div class="col-sm-6 p-1">
+                                    <div class="col-sm-6 border p-1">
                                         <div id='calendar'></div>
                                     </div>
                                 </div>
                             </form>
-
-
                         </div>
                     </div>
                 </div>
@@ -278,6 +275,7 @@ session_start();
 </body>
 
 <script>
+    //Contributor: Nicholas, Aiman
     document.addEventListener('DOMContentLoaded', function() {
         var todayDate = moment().startOf("day");
         var YM = todayDate.format("YYYY-MM");
