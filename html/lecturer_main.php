@@ -141,7 +141,7 @@ session_start();
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Manage FYP submission date
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module2/Report/FinalReport">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Coordinator final report
