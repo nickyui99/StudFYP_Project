@@ -4,7 +4,7 @@
 <!-- This is the main page for student-->
 
 <?php
-include $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/AnnouncementHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/AnnouncementHandler.php';
 
 session_start();
 
