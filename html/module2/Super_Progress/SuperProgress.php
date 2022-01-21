@@ -24,7 +24,7 @@
                             <div class="row">
                                 <div class="col-md-5">
 
-                                    <input type="text" placeholder="Enter Student ID" name="stud_id" value="<?php if(isset($_GET['stud_id'])){echo $_GET['stud_id'];} ?>" class="form-control">
+                                    <input type="text" placeholder="Enter Lecturer ID" name="lect_id " value="<?php if(isset($_GET['lect_id '])){echo $_GET['lect_id '];} ?>" class="form-control">
                                 </div>
                                 <div class="col-md-4">
                                     <button type="submit" class="btn btn-primary">Search</button>
@@ -38,11 +38,11 @@
                                 <?php
                                     $con = mysqli_connect("localhost","root","","studfyp_db");
 
-                                    if(isset($_GET['stud_id']))
+                                    if(isset($_GET['lect_id ']))
                                     {
-                                        $stud_id = $_GET['stud_id'];
+                                        $stud_id = $_GET['lect_id '];
 
-                                        $query = "SELECT * FROM fyp_project WHERE stud_id='$stud_id' ";
+                                        $query = "SELECT * FROM fyp_project WHERE lect_id ='$lect_id ' ";
                                         $query_run = mysqli_query($con, $query);
 
                                         if(mysqli_num_rows($query_run) > 0)
@@ -54,10 +54,10 @@
                                                 <table class="table">
                                       <thead class="thead-dark">
                                       <tr>
-                                      <th scope="col">Name</th>
-                                      <th scope="col">Class</th>
-                                       <th scope="col">Phone Number</th>
-                                       <th scope="col">Project Name</th>
+                                      <th scope="col">Lecturer Id</th>
+                                      <th scope="col">Project Title</th>
+                                       <th scope="col">FYP stage</th>
+                                       <th scope="col">FYP progect project</th>
 
 
 
@@ -66,10 +66,10 @@
 
                                       <tbody>
                                        <tr>
-                                       <th scope="row"><input type="text" value="<?= $row['fyp_proj_id']; ?>" class="form-control"></th>
-                                      <th scope="col"><input type="text" value="<?= $row['proj_title']; ?>" class="form-control"></th>
-                                       <th scope="col"><input type="text" value="<?= $row['proj_fyp_stage']; ?>" class="form-control"></th>
-                                       <th scope="col"><input type="text" value="<?= $row['fyp_proj_progress']; ?>" class="form-control"></th>
+                                       <th scope="row"><input type="text" value="<?= $row['lect_id']; ?>" class="form-control"></th>
+                                      <th scope="col"><input type="text" value="<?= $row['lect_name']; ?>" class="form-control"></th>
+                                       <th scope="col"><input type="text" value="<?= $row['lect_position']; ?>" class="form-control"></th>
+                                       <th scope="col"><input type="text" value="<?= $row['lect_expertise']; ?>" class="form-control"></th>
 
                                           </form>
                                           </tr>

@@ -73,7 +73,7 @@
     }
 
     //create announcement table
-    $sql = "CREATE TABLE announcement (announcement_id VARCHAR(10), announcement_title VARCHAR(100), announcement_description VARCHAR(300), PRIMARY KEY(announcement_id))";
+    $sql = "CREATE TABLE announcement (announcement_id INT NOT NULL AUTO_INCREMENT , announcement_title VARCHAR(100), announcement_description VARCHAR(300), PRIMARY KEY(announcement_id))";
 
     if (mysqli_query($link, $sql)) {
         echo "Table announcement created successfully <br>";

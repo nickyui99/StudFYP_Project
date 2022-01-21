@@ -27,11 +27,8 @@ if (isset($_SESSION['update_er_array'])) {
     $ev_rubric_array = getEvaluationRubric($current->getSubmission(),  $evaluateDetails->getFypLevel());
 
     //Get previous mark given
-
-
     $current_mark = $current->getMark();
 
-    // $current_mark = $ev_mark_details[$_GET['view']];
 } else {
     //if there is no update er id return back to evaluation report page
     header("evaluation_report.php");

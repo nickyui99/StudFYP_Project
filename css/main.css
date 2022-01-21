@@ -4,38 +4,50 @@ body {
     font-family: sans-serif;
 }
 
-.icon{
+.icon {
     margin: 0 10px 0 10px;
 }
 
-.logo{
+.logo {
     height: 40px;
     width: 30px;
 }
 
-.dropdown-item{
-   padding: 10px;
+.dropdown-item {
+    padding: 10px;
 }
 
-.dropdown-header{
+.dropdown-header {
     background-color: steelblue;
 }
 
-.dropdown-divider{
+.dropdown-divider {
     margin: 0;
     padding: 0;
 }
 
-.see-more-notification{
+.see-more-notification {
     background-color: lightgrey;
     text-align: center;
     padding: 5px;
 }
 
-.sb-sidenav-menu-nested .nav-link{
+.sb-sidenav-menu-nested .nav-link {
     font-size: 14px;
 }
 
-.login_bg{
+.login_bg {
     background-color: lightgray;
+}
+
+.fc .fc-daygrid-day-number {
+    text-decoration: none;
+    color: black;
+}
+
+.fc .fc-col-header-cell-cushion {
+    /* needs to be same precedence */
+    display: inline-block;
+    text-decoration: none;
+    color: black;
 }

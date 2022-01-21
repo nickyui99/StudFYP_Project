@@ -105,7 +105,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="http://localhost/StudFYP_Project/html/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
