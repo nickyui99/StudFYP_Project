@@ -120,7 +120,7 @@ session_start();
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Assign student to evaluator
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module2/Announcment/Announcement.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Announcement platform
