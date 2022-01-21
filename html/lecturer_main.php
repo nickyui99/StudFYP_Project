@@ -109,28 +109,29 @@ session_start();
                         </a>
                         <div class="collapse" id="collapseCoordinator" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module2/Assign_Student_to_Evaloutor/Assign_supervisor_to_student.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
                                     Assign student to supervisor
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module2/Assign_Student_to_industralPanel/Assign_IP_to_student.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Assign student to evaluator
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module2/Announcment/Announcement.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Announcement platform
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module2/StudentProgress/StudentProgress.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>FYP progress
                                 </a>
-                                <a class="nav-link" href="#">
+                                
+                                <a class="nav-link" href="module2\StudentMarks//student_marks.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Student mark
@@ -140,7 +141,7 @@ session_start();
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Manage FYP submission date
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module2/Report/FinalReport">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Coordinator final report

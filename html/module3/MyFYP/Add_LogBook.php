@@ -3,11 +3,8 @@
 
 <!-- This is the main page for student-->
 
-<?php
-include $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/AnnouncementHandler.php';
-
-session_start();
-
+<?php 
+    session_start();
 ?>
 
 <head>
@@ -53,11 +50,23 @@ session_start();
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
                     </li>
-                    <?php
-                        printNotificationList();
-                    ?>
                     <li>
-                        <a class="dropdown-item see-more-notification" href="localhost/StudFYP_Project/html/lecturer_main.php"> See more ...</a>
+                        <a class="dropdown-item" href="#!">FYP Announcement 1</a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#!">FYP Announcement 2</a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#!">FYP Announcement 2</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item see-more-notification" href="#">See more ...</a>
                     </li>
                 </ul>
             </li>
@@ -72,7 +81,7 @@ session_start();
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="login_controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -85,7 +94,7 @@ session_start();
                 <div class="sb-sidenav-menu">
                     <div class="nav mt-3">
                         <!-- Dashboard -->
-                        <a class="nav-link" href="student_mai.php">
+                        <a class="nav-link" href="index.html">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-tachometer" aria-hidden="true"></i>
                             </div>
@@ -101,7 +110,7 @@ session_start();
                         </a>
 
                         <!-- FYP Enrollment -->
-                        <a class="nav-link" href="http://localhost:81/StudFYP_Project/html/module3/enrollement/1FYP_enrollement.php">
+                        <a class="nav-link" href="index.html">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
                             </div>
@@ -120,23 +129,23 @@ session_start();
                         </a>
                         <div class="collapse" id="collapseFYP" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="module3\MyFYP\4viewlogbook.php">
+                                <a class="nav-link" href="module3\MyFYP\viewlogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
                                     View logbook
                                 </a>
-                                <a class="nav-link" href="module3\MyFYP\2updatelogbook.php">
+                                <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Update logbook
                                 </a>
-                                <a class="nav-link" href="module3\MyFYP\5addlogbook.php">
+                                <a class="nav-link" href="modulee\MyFYP\Add_LogBook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Add logbook
                                 </a>
-                                <a class="nav-link" href="module3\MyFYP\1deletelogbook.php">
+                                <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Delete logbook
@@ -200,7 +209,7 @@ session_start();
                         </div>
 
                         <!-- My report -->
-                        <a class="nav-link" href="http://localhost:81/StudFYP_Project/html/module3/Report/My_report.php">
+                        <a class="nav-link" href="index.html">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-file-o" aria-hidden="true"></i>
                             </div>
@@ -210,8 +219,8 @@ session_start();
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    <?php
-                    echo $_SESSION['username'];
+                    <?php 
+                        echo $_SESSION['username'];
                     ?>
                 </div>
             </nav>
@@ -221,27 +230,72 @@ session_start();
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-
-                    <h1 class="mt-4">Dashboard</h1>
+                    <h1 class="mt-4">ADD LOGBOOK</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">
-                            <a href="index.html">Dashboard</a>
+                            <a href="index.html">My FYP</a>
                         </li>
-                        <li class="breadcrumb-item active">Announcement</li>
+                        <li class="breadcrumb-item active">Add Logbook</li>
                     </ol>
+                    <?php
+include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php' ;  
+$logbookid=$logbookdate=$logbookdetails = " "; 
+if(isset($_POST['Add']))
+{  
+    if(empty($_POST['logbookid'])|| empty( $_POST['logbookdate']) || empty($_POST['logbookdetails']))
+   {
+      echo '<script type="text/javascript">';
+      echo ' alert("Required to fill up everything!")'; 
+      echo '</script>';
+   }
+  
+  else{
+  $logbookid = $_POST['logbookid'];  
+     $logbookdate = $_POST['logbookdate'];
+     $logbookdetails = $_POST['logbookdetails'];
+     $sql = "INSERT INTO project_logbook (logbook_id,logbook_date,logbook_details)
+     VALUES ('$logbookid','$logbookdate',' $logbookdetails')";
 
-                    <!-- Announcement Board -->
-                    <div class="card mb-4">
-                        <div class="card-header">Announcement Board</div>
-                        <div class="card-body">
+     if (mysqli_query($db, $sql)) {
+      echo '<script type="text/javascript">';
+      echo ' alert("New record has been added successfully !")'; 
+      echo '</script>';
+     } else {
+        echo "Error: " . $sql . ":-" . mysqli_error($db);
+     }
+     mysqli_close($db);
+   }
+}
+   ?>
+<!DOCTYPE html>  
+<html>
+       <link rel="stylesheet" href="../../../css/module_3.css" />  
+<body>
+<div class="container">
+   <form action="" method="post"> 
+      <h1>Add LogBook </h1>
+    <table class="au">
+   <tr>
+<th>LogBook ID</th>
+ <td><input type="text" name="logbookid" class="form-control"></td></tr>
+ 
+<tr>
+ <th >Date</th>
+ <td> <input type="text" name="logbookdate" class="form-control"></td></tr>
+ 
+<tr>
+ <th  >Activity</th>
+ <td> <input type="text" name="logbookdetails" class="form-control"></td></tr>
+  
+  </table>
+ <input class="button"type="submit"  name="Add" value="Add">
+ </form>
+</div>
+</body>
 
-                            <ol class="list-group list-group-numbered">
-                                <?php
-                                printAnnouncementBoardList();
-                                ?>
-                            </ol>
-                        </div>
-                    </div>
+
+</html>
+
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
