@@ -131,7 +131,7 @@ session_start();
                                     </div>FYP progress
                                 </a>
                                 
-                                <a class="nav-link" href="module2\StudentMarks/student_marks.php">
+                                <a class="nav-link" href="module2\StudentMarks//student_marks.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Student mark
