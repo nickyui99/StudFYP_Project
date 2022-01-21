@@ -1,6 +1,6 @@
 
 <?php
-include_once $_SERVER["DOCUMENT_ROOT"] . "/StudFYP_Project/html/model/config.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/html/model/config.php";
 session_start();
 
 //Updated to use SQL prepared statement to prevent SQL injection

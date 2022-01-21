@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
-include_once $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/login_handler.php';
+include_once $_SERVER["DOCUMENT_ROOT"] . '/html/controller/login_handler.php';
 ?>
 
 <head>
