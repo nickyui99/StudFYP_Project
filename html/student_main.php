@@ -113,7 +113,7 @@ session_start();
                         </a>
 
                         <!-- FYP Enrollment -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="http://localhost:81/StudFYP_Project/html/module3/enrollement/1FYP_enrollement.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
                             </div>
@@ -132,23 +132,23 @@ session_start();
                         </a>
                         <div class="collapse" id="collapseFYP" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="module3\viewlogbook.php">
+                                <a class="nav-link" href="module3\MyFYP\4viewlogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
                                     View logbook
                                 </a>
-                                <a class="nav-link" href="module3\2updatelogbook.php">
+                                <a class="nav-link" href="module3\MyFYP\2updatelogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Update logbook
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module3\MyFYP\5addlogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Add logbook
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module3\MyFYP\1deletelogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Delete logbook
@@ -212,7 +212,7 @@ session_start();
                         </div>
 
                         <!-- My report -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="http://localhost:81/StudFYP_Project/html/module3/Report/My_report.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-file-o" aria-hidden="true"></i>
                             </div>
