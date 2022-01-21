@@ -10,29 +10,29 @@
 </head>
 <body>
   <div class="container">
-    
+
       <div class="row justify-content-center">
           <div class="col-md-10">
 
               <div class="card mt-5">
                   <div class="card-header text-center">
-                      <h4>Assigned Student </h4>
+                      <h4>Assign Supervisor to Student </h4>
                   </div>
                   <div class="card-body">
 
-<form method="post" action="connect.php">
+<form method="post" action="SpuerConnect.php">
 
-
+<lebel  class="form-lebel">Select Student Id :</lebel>
 
   <?php
 
 
   $mysqli = NEW MySQLi('localhost','root','','studfyp_db');
 
-  $resultSet = $mysqli->query("SELECT stud_id FROM fyp_stud");
+  $resultSet = $mysqli->query("SELECT stud_id FROM student");
   ?>
 
-  <select name="stud_id">
+  <select class="form-control" name="stud_id">
     <?php
     while($rows = $resultSet->fetch_assoc())
     {
@@ -45,7 +45,8 @@
     ?>
   </select>
 
-<br>
+  <lebel for="stud_id"  class="form-lebel">Select Supervisor Id : </lebel>
+
 
 
     <?php
@@ -53,23 +54,23 @@
 
     $mysqli = NEW MySQLi('localhost','root','','studfyp_db');
 
-    $resultSet = $mysqli->query("SELECT ip_id FROM industrial_panel");
+    $resultSet = $mysqli->query("SELECT lect_id FROM lecturer");
     ?>
 
-    <select name="ip_id">
+    <select class="form-control" name="lect_id">
       <?php
       while($rows = $resultSet->fetch_assoc())
       {
 
-          $ip_id = $rows['ip_id'];
-          echo "<option value='$ip_id'>$ip_id</option>";
+          $lect_id = $rows['lect_id'];
+          echo "<option value='$lect_id'>$lect_id</option>";
 
 
       }
       ?>
-      </select>
+    </select><br>
 
-      <input type="submit" name="save_select" >
+      <input class="btn btn-primary" type="submit" name="save_select" >
 
 
 
@@ -78,24 +79,5 @@
 </form>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
+</html>
