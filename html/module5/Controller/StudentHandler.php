@@ -23,12 +23,13 @@ function displayFyp2Result($student_id)
     printResultTable($evaluationResultArray);
 }
 
-function printResultTable($evaluationResultArray){
+function printResultTable($evaluationResultArray)
+{
     $output = "";
     if ($evaluationResultArray == null) {
         //Print three empty rows
         for ($i = 1; $i <= 3; $i++) {
-            $output = $output . 
+            $output = $output .
                 '<tr> 
                     <td>' . $i . '</td>  
                     <td> - </td> 
@@ -45,7 +46,7 @@ function printResultTable($evaluationResultArray){
         $total_mark = 0;
         $submission_counter = 1;
 
-        for($i=0; $i<count($evaluationResultArray); $i++){
+        for ($i = 0; $i < count($evaluationResultArray); $i++) {
             //Evaluation mark array
             $ev_mark_array = $evaluationResultArray[$i]->getEvMarkDetails();
             $sub_total_mark = 0;
@@ -57,9 +58,9 @@ function printResultTable($evaluationResultArray){
 
             //If the current array evaluation result larger than submission counter,
             //Print one empty row before the current array row
-            while($evaluationResultArray[$i]->getSubmission()>$submission_counter){
-                $output = $output . 
-                '<tr> 
+            while ($evaluationResultArray[$i]->getSubmission() > $submission_counter) {
+                $output = $output .
+                    '<tr> 
                     <td>' . $submission_counter . '</td>  
                     <td> - </td> 
                     <td> - </td> 
@@ -67,23 +68,35 @@ function printResultTable($evaluationResultArray){
                     <td  style="text-align: right;"> - </td> 
                 </tr>';
                 //Submission counter increment by 1
-                $submission_counter+=1;
+                $submission_counter += 1;
             }
 
             $output = $output .
-                    "<tr>" .
-                    "<td>" . $evaluationResultArray[$i]->getSubmission() . "</td>" .
-                    "<td>" . $evaluationResultArray[$i]->getEvaluatorID() . "</td>" .
-                    "<td>" . $evaluationResultArray[$i]->getEvaluatorName() . "</td>" .
-                    "<td>" . $evaluationResultArray[$i]->getProjectFeedback() . "</td>" .
-                    '<td style="text-align: right;">' . $sub_total_mark . "</td>" .
-                    "</tr>";
+                "<tr>" .
+                "<td>" . $evaluationResultArray[$i]->getSubmission() . "</td>" .
+                "<td>" . $evaluationResultArray[$i]->getEvaluatorID() . "</td>" .
+                "<td>" . $evaluationResultArray[$i]->getEvaluatorName() . "</td>" .
+                "<td>" . $evaluationResultArray[$i]->getProjectFeedback() . "</td>" .
+                '<td style="text-align: right;">' . $sub_total_mark . "</td>" .
+                "</tr>";
 
             $submission_counter++;
             $total_mark += $sub_total_mark;
         }
 
-        $output = $output . '<tr><td style="text-align: right; font-weight: bold; padding: 10px;" colspan="4">Total: </td> <td style="text-align: right;"> '. $total_mark.' </td></tr>';     
+        //Print empty row after empty submission array
+        for ($i = $submission_counter; $i <= 3; $i++) {
+            $output = $output .
+                '<tr> 
+                    <td>' . $i . '</td>  
+                    <td> - </td> 
+                    <td> - </td> 
+                    <td> - </td> 
+                    <td  style="text-align: right;"> - </td> 
+                </tr>';
+        }
+
+        $output = $output . '<tr><td style="text-align: right; font-weight: bold; padding: 10px;" colspan="4">Total: </td> <td style="text-align: right;"> ' . $total_mark . ' </td></tr>';
     }
     echo $output;
 }
