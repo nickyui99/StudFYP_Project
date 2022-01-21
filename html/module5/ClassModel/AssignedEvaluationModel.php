@@ -2,7 +2,6 @@
 
 class AssignedEvaluation
 {
-
     private $project_id;
     private $student_id;
     private $student_name;
