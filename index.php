@@ -2,8 +2,8 @@
 <html lang="en">
 
 <?php
- require_once 'html/controller/login_handler.php';
- ?>
+include_once $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/login_handler.php';
+?>
 
 <head>
     <meta charset="UTF-8">
