@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--Name:Aiman Basheer Mohammed-->
+<!--Section:01A-->
+<!--Matric Number:CA19124-->
+<!---Group 1A-2------>
 
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>FYP </title>
+  
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
-</head>
-<body>
+    <head>
 
+    
 
-      <div class="container">
-          <div class="jumbotron">
+      <div   class="container">
+          <div margin-left:10px; class="jumbotron">
 
 
 
@@ -34,14 +36,14 @@
                         $query_run = mysqli_query($connection,$query);
                     ?>
 
-                    <table class="table table-borderless table-dark">
+                    <table class="table table-borderless table">
                     <thead>
                     <tr>
                       <th scope="col">Result ID</th>
-                      <th scope="col">project Title</th>
+                      <th scope="col">fyp project Id </th>
+                      <th scope="col">assigned lecturer id</th>
                       <th scope="col">submission level</th>
-                      <th scope="col">evaluation feedback</th>
-                      <th scope="col">evaluation mark</th>
+                      <th scope="col">Feedback</th>
 
 
 
@@ -60,10 +62,10 @@
                     <tr>
                     >
                       <td><?php echo $row['result_id']; ?></td>
-                      <td><?php echo $row['project_title']; ?></td>
+                      <td><?php echo $row['fyp_proj_id']; ?></td>
+                      <td ><?php echo $row['assigned_lect_id']; ?></td>
                       <td ><?php echo $row['submission_level']; ?></td>
                       <td ><?php echo $row['evaluation_feedback']; ?></td>
-                      <td ><?php echo $row['evaluation_mark']; ?></td>
 
 
 
@@ -75,7 +77,7 @@
               }
               else
                  {
-                  echo "No announcement found";
+                  echo "No Marks found";
                  }
               ?>
 

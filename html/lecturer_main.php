@@ -125,7 +125,7 @@ session_start();
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Announcement platform
                                 </a>
-                                <a class="nav-link" href="module2/StudentProgress/StudentProgress.php">
+                                <a class="nav-link" href="module2/fypProgress/fypProgress.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>FYP progress

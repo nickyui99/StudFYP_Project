@@ -3,48 +3,55 @@
 <!--Matric Number:CA19124-->
 <!---Group 1A-2------>
 
+
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Contributor: Nicholas, Aiman -->
-
-<?php
-include $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/AnnouncementHandler.php';
-include $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/FypActivityHandler.php';
-
-session_start();
-?>
-
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FYP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <?php
+  include $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/AnnouncementHandler.php';
+  include $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/FypActivityHandler.php';
 
-    <!-- Bootstrap 5 CSS -->
-    <link rel="stylesheet" href="../../../bootstrap_v5.1/css/styles.css" />
+  session_start();
+  ?>
 
-    <!-- Bootstrap 5 JavaScript -->
-    <script src="../../../bootstrap_v5.1/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
-    <!-- Fontawesome CSS -->
-    <script src="https://use.fontawesome.com/8134766fa6.js"></script>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Dashboard</title>
 
-    <!-- Full Calendar API -->
-    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet' /> -->
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
+      <!-- Bootstrap 5 CSS -->
+      <link rel="stylesheet" href="../../../bootstrap_v5.1/css/styles.css" />
 
-    <!-- Moment Js API -->
-    <script src='https://momentjs.com/downloads/moment.js'></script>
+      <!-- Bootstrap 5 JavaScript -->
+      <script src="../../../bootstrap_v5.1/js/scripts.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../../../css/main.css" />
+      <!-- Fontawesome CSS -->
+      <script src="https://use.fontawesome.com/8134766fa6.js"></script>
 
-    <!-- JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+      <!-- Full Calendar API -->
+      <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet' /> -->
+      <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
+
+      <!-- Moment Js API -->
+      <script src='https://momentjs.com/downloads/moment.js'></script>
+
+      <!-- CSS -->
+      <link rel="stylesheet" href="../../../css/main.css" />
+
+      <!-- JS -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+
+
 </head>
-
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
@@ -242,127 +249,93 @@ session_start();
             </nav>
         </div>
 
-        <!-- Main Content -->
-        <div id="layoutSidenav_content">
-            <main>
-                <div class="container-fluid px-4">
-                    <h1 class="mt-4">Manage FYP Submission Date</h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item">
-                            FYP Coordinator
-                        </li>
-                        <li class="breadcrumb-item active">Manage FYP Submission Date</li>
-                    </ol>
-                    <div class="card mb-4">
-                        <div class="card-header">Form</div>
-                        <div class="card-body">
+<!-----------------------Main---------------------------------------->
 
-                            <form id="submission_date_form">
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <div class="form-group row mb-2">
-                                            <label for="fyp_level" class="col-sm-4 col-form-label">FYP Level:</label>
-                                            <div class="col-sm-8">
-                                                <select class="form-select form-control" name="fyp_level" id="fyp_level">
-                                                    <option value="PSM1" selected>PSM 1</option>
-                                                    <option value="PSM2">PSM 2</option>
-                                                </select>
-                                            </div>
-                                        </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
 
-                                        <div class="form-group row mb-2">
-                                            <label for="submission" class="col-sm-4 col-form-label">Submission:</label>
-                                            <div class="col-sm-8">
-                                                <select class="form-select form-control" name="submission" id="submission">
-                                                    <option value="1" selected>1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                <div class="card mt-5">
+                    <div class="card-header text-center">
+                        <h4>View FYP Progress</h4>
+                    </div>
+                    <div class="card-body">
 
-                                        <div class="form-group row mb-2">
-                                            <label for="start_date" class="col-sm-4 col-form-label">Select Start Date:</label>
-                                            <div class="col-sm-8">
-                                                <input type="date" class="form-control" name="start_date" id="start_date" required>
-                                            </div>
-                                        </div>
+                        <form action="" method="GET">
+                            <div class="row">
+                                <div class="col-md-5">
 
-                                        <div class="form-group row mb-2">
-                                            <label for="end_date" class="col-sm-4 col-form-label">Select End Date:</label>
-                                            <div class="col-sm-8">
-                                                <input type="date" class="form-control" name="end_date" id="end_date" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="d-flex justify-content-center">
-                                            <input type="submit" class="btn btn-outline-dark m-3" name="submit" id="submit" value="Submit">
-                                            <input type="reset" class="btn btn-outline-dark m-3" name="reset" id="reset" value="Reset">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-7 border p-1">
-                                        <div id='calendar'></div>
-                                    </div>
+                                    <input type="text" placeholder="Enter Student ID" name="stud_id" value="<?php if(isset($_GET['stud_id'])){echo $_GET['stud_id'];} ?>" class="form-control">
                                 </div>
-                            </form>
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="row">
+                            <div class="col-md-"17">
+                                <hr>
+                                <?php
+                                    $con = mysqli_connect("localhost","root","","studfyp_db");
+
+                                    if(isset($_GET['stud_id']))
+                                    {
+                                        $stud_id = $_GET['stud_id'];
+
+                                        $query = "SELECT * FROM fyp_project WHERE stud_id='$stud_id' ";
+                                        $query_run = mysqli_query($con, $query);
+
+                                        if(mysqli_num_rows($query_run) > 0)
+                                        {
+                                            foreach($query_run as $row)
+                                            {
+                                                ?>
+                                                 <form>
+                                                <table class="table">
+                                      <thead class="thead-dark">
+                                      <tr>
+                                      <th scope="col">Student Id</th>
+                                      <th scope="col">Project Title</th>
+                                       <th scope="col">FYP stage</th>
+                                       <th scope="col">FYP project Progress</th>
+
+
+
+                                       </tr>
+                                     </thead>
+
+                                      <tbody>
+                                       <tr>
+                                       <th scope="row"><input type="text" value="<?= $row['fyp_proj_id']; ?>" class="form-control"></th>
+                                      <th scope="col"><input type="text" value="<?= $row['proj_title']; ?>" class="form-control"></th>
+                                       <th scope="col"><input type="text" value="<?= $row['proj_fyp_stage']; ?>" class="form-control"></th>
+                                       <th scope="col"><input type="text" value="<?= $row['fyp_proj_progress']; ?>" class="form-control"></th>
+
+                                          </form>
+                                          </tr>
+                                                <?php
+                                            }
+                                        }
+                                        else
+                                        {
+                                            echo "No Record Found";
+                                        }
+                                    }
+
+                                ?>
+
+                            </div>
                         </div>
+
                     </div>
                 </div>
-            </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="text-muted text-center">
-                        Copyright &copy; University Malaysia Pahang 2021
-                    </div>
-                </div>
-            </footer>
+
+            </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-<script>
-    $(document).ready(function() {
-        $('#submission_date_form').submit(function() {
-            var form = $(this);
-            $.ajax({
-                type: "POST",
-                url: "../../controller/FypActivityHandler.php",
-                data: form.serialize(), // serializes the form's elements.
-                success: function(data) {
-                    alert("Submission date updated");
-                    window.location.reload();
-                }
-            });
-        });
-    });
-
-
-    document.addEventListener('DOMContentLoaded', function() {
-        var todayDate = moment().startOf("day");
-        var YM = todayDate.format("YYYY-MM");
-        var YESTERDAY = todayDate.clone().subtract(1, "day").format("YYYY-MM-DD");
-        var TODAY = todayDate.format("YYYY-MM-DD");
-        var TOMORROW = todayDate.clone().add(1, "day").format("YYYY-MM-DD");
-
-        var calendarEl = document.getElementById('calendar');
-
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            initialDate: TODAY,
-            nowIndicator: true,
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay'
-            },
-            events: [
-                <?php echo getAllActivity(); ?>
-            ],
-            eventColor: '#00b3a4'
-        });
-
-        calendar.render();
-    });
-</script>
-
 </html>
