@@ -1,6 +1,6 @@
 <?php
 
-include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php';
+include_once '/mySQLi/config.php';
 
 $sql = "SELECT * FROM project_logbook";
 $result = $db->query($sql);
