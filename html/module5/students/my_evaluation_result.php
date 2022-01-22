@@ -4,7 +4,7 @@
 <!-- This page is for students to view their evaluation result-->
 
 <?php
-    include '../Controller/StudentHandler.php';
+    require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/StudentHandler.php';
 
     session_start();
 
