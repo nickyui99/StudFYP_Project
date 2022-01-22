@@ -111,7 +111,7 @@ if(isset($_POST['Add']))
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="/StudFYP_Project/html/controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="html/controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
