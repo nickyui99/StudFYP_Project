@@ -111,7 +111,7 @@ session_start();
                         <div class="collapse " id="collapseAddUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link " href="../../html/module_1/adduser/1addstudent.php" >
+                                <a class="nav-link " href="../adduser/1addstudent.php" >
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin " aria-hidden="true"></i>
                                    
