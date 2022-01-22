@@ -1,6 +1,6 @@
 <?php
 
-include_once '/mySQLi/config.php';
+include_once $_SERVER["DOCUMENT_ROOT"] .  'mySQLi/config.php';
 
 $sql = "SELECT * FROM project_logbook";
 $result = $db->query($sql);
