@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add User Details</title>
+    <title>Total User</title>
 
     <!-- Bootstrap 5 CSS -->
     <link rel="stylesheet" href="../../../bootstrap_v5.1/css/styles.css" />
