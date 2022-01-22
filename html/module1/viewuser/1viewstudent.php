@@ -1,6 +1,6 @@
 <?php
 
-include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php' ;  
+include_once '\mySQLi\config.php' ;  
 session_start(); 
 ?>
 
@@ -236,7 +236,7 @@ session_start();
                                     </div>
                                     Student
                                 </a>
-                                <a class="nav-link" href="/2viewlecturer.php">
+                                <a class="nav-link" href="2viewlecturer.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Lecturer
