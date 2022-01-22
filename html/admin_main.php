@@ -111,7 +111,7 @@ session_start();
                         <div class="collapse " id="collapseAddUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link " href="module_1/adduser/1addstudent.php" >
+                                <a class="nav-link " href="../html/module1/adduser/1addstudent.php" >
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin " aria-hidden="true"></i>
                                    
@@ -128,7 +128,7 @@ session_start();
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Coordinator
                                 </a>
-                                <a class="nav-link" href="module_1/adduser/4addindustrialpanel.php">
+                                <a class="nav-link" href="../html/module_1/adduser/4addindustrialpanel.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Industrial panel
