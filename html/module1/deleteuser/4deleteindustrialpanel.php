@@ -84,7 +84,7 @@ session_start();
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="/html/controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -112,24 +112,24 @@ session_start();
                         <div class="collapse" id="collapseAddUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/adduser/1addstudent.php" >
+                                <a class="nav-link" href="../adduser/1addstudent.php" >
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                    
                                     </div>
                                     Student
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/adduser/2addlecturer.php">
+                                <a class="nav-link" href="../adduser/2addlecturer.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Lecturer
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/adduser/3addcoordinator.php">
+                                <a class="nav-link" href="../adduser/3addcoordinator.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Coordinator
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/adduser/4addindustrialpanel.php">
+                                <a class="nav-link" href="../adduser/4addindustrialpanel.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Industrial panel
@@ -152,23 +152,23 @@ session_start();
                         <div class="collapse show" id="collapseDeleteUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/deleteuser/1deletestudent.php">
+                                <a class="nav-link" href="1deletestudent.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
                                     Student
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/deleteuser/2deletelecturer.php">
+                                <a class="nav-link" href="2deletelecturer.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Lecturer
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/deleteuser/3deletecoordinator.php">
+                                <a class="nav-link" href="3deletecoordinator.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Coordinator
                                 </a>
-                                <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/deleteuser/4deleteindustrialpanel.php">
+                                <a class="nav-link text-light active" href="4deleteindustrialpanel.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                                     </div>Industrial panel
@@ -191,23 +191,23 @@ session_start();
                         <div class="collapse" id="collapseEditUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/updateuser/1updatestudent.php">
+                                <a class="nav-link" href="../updateuser/1updatestudent.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
                                     Student
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/updateuser/2updatelecturer.php">
+                                <a class="nav-link" href="../updateuser/2updatelecturer.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Lecturer
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/updateuser/3updatecoordinator.php">
+                                <a class="nav-link" href="../updateuser/3updatecoordinator.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Coordinator
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/updateuser/4updateindustrialpanel.php">
+                                <a class="nav-link" href="../updateuser/4updateindustrialpanel.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Industrial panel
@@ -230,23 +230,23 @@ session_start();
                         <div class="collapse" id="collapseViewUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/viewuser/1viewstudent.php">
+                                <a class="nav-link" href="../viewuser/1viewstudent.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
                                     Student
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/viewuser/2viewlecturer.php">
+                                <a class="nav-link" href="../viewuser/2viewlecturer.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Lecturer
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/viewuser/3viewcoordinator.php">
+                                <a class="nav-link" href="../viewuser/3viewcoordinator.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Coordinator
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/viewuser/4viewindustrialpanel.php">
+                                <a class="nav-link" href="../viewuser/4viewindustrialpanel.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Industrial panel
@@ -255,7 +255,7 @@ session_start();
                         </div>
 
                         <!-- Total user -->
-                        <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/total&report/totaluser.php">
+                        <a class="nav-link" href="../total&report/totaluser.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-file-o" aria-hidden="true"></i>
                             </div>
@@ -263,7 +263,7 @@ session_start();
                         </a>
 
                         <!-- My report -->
-                        <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/total&report/report.php">
+                        <a class="nav-link" href="../total&report/report.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-file-o" aria-hidden="true"></i>
                             </div>
@@ -351,7 +351,7 @@ if(isset($_POST['Search']))
 echo"<table class= table table-hover table-bordered >";
 	if ($result->num_rows > 0) {
 	$_SESSION['getipid'] = $getipid;	
-    echo "<script>window.open('http://localhost/StudFYP_Project/html/module_1/deleteuser/4deleteindustrialpanel2.php','_self')</script>";
+    echo "<script>window.open('4deleteindustrialpanel2.php','_self')</script>";
 } 
   else {
 	echo '<script type="text/javascript">';
