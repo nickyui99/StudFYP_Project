@@ -1,11 +1,8 @@
 <?php
 
 require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/DAO/LecturerDataService.php';
-echo $_SERVER["DOCUMENT_ROOT"] . "/html/module5/DAO/LecturerDataService.php OK";
 require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/ClassModel/EvaluateFypModel.php';
-echo $_SERVER["DOCUMENT_ROOT"] . "/html/module5/ClassModel/EvaluateFypModel.php OK";
 require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/ClassModel/ProjectlogbookModel.php';
-echo $_SERVER["DOCUMENT_ROOT"] . "/html/module5/ClassModel/ProjectlogbookModel.php OK";
 
 if (isset($_POST['search_assigned_evaluation']) && isset($_POST['lecturer_id'])) {
     viewAssignedFyp($_POST['search_assigned_evaluation'], $_POST['lecturer_id']);
