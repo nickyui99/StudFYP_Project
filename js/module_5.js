@@ -5,7 +5,7 @@ function load_evaluator(query, id) {
             search_evaluator: query,
             stud_id: id,
         },
-        url: "../html/module5/Controller/LecturerHandler.php",
+        url: "../Controller/LecturerHandler.php",
         success: function (data) {
             var row_count = $("#result").html(data).find("tr").length;
             $("#evaluator_counter").html(
