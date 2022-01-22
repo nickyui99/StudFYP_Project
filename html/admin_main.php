@@ -32,7 +32,7 @@ session_start();
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <img class="logo ms-3" src="../images/ump_logo.png" alt="UMP" />
-        <a class="navbar-brand ms-3 me-0" href="index.html">StudFYP</a>
+        <a class="navbar-brand ms-3 me-0" href="../html/admin_main.php">StudFYP</a>
 
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
@@ -286,7 +286,7 @@ session_start();
                     <h1 class="mt-4">Dashboard</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">
-                            <a href="../html//admin_main.php">Dashboard</a>
+                            <a href="../html/admin_main.php">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item active">Announcement</li>
                     </ol>
