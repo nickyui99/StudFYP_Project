@@ -1,6 +1,6 @@
 <?php
 
-include_once 'mySQLi\config.php' ;  
+include_once '/mySQLi/config.php' ;  
 session_start(); 
 ?>
 
