@@ -4,6 +4,7 @@
 <!-- This html template is only for StudFYP lecturer only -->
 
 <?php
+echo include $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/LecturerHandler.php';
 include $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/LecturerHandler.php';
 session_start();
 ?>
