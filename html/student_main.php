@@ -101,7 +101,7 @@ session_start();
                         </a>
 
                         <!-- FYP Enrollment -->
-                        <a class="nav-link" href="http://localhost:81/StudFYP_Project/html/module3/enrollement/1FYP_enrollement.php">
+                        <a class="nav-link" href="/html/module3/enrollement/1FYP_enrollement.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
                             </div>
@@ -200,7 +200,7 @@ session_start();
                         </div>
 
                         <!-- My report -->
-                        <a class="nav-link" href="http://localhost:81/StudFYP_Project/html/module3/Report/My_report.php">
+                        <a class="nav-link" href="/html/module3/Report/My_report.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-file-o" aria-hidden="true"></i>
                             </div>
