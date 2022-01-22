@@ -4,7 +4,7 @@
 <!-- This html template is only for StudFYP admin only -->
 
 <?php
-include_once '\mySQLi\config.php' ;  
+include_once '../../../mySQLi/config.php' ;  
 session_start(); 
 $stdid=$stdname=$stdpassword=$stdaddress=$stdemail=$stdhpnum=$stdfaculty=$stdevcomp = " "; 
 if(isset($_POST['Add']))

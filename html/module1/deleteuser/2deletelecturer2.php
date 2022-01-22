@@ -1,5 +1,5 @@
 <?php
-include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php';
+include_once '../../../mySQLi/config.php';
 session_start(); 
 ?>
 <head>

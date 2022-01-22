@@ -1,6 +1,6 @@
 
 <?php
- include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php' ;  
+ include_once '../../../mySQLi/config.php' ;  
  session_start(); 
  $lectid=$lectname= $lectpassword=$lecthpnum=$lectemail=$lectaddress=$lectposition=$lectexp=$lectfaculty= "" ; 
  if(isset($_POST['Add']))
