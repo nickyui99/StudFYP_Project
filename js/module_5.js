@@ -25,7 +25,7 @@ function load_assigned_evaluator(query, id) {
             search_assigned_evaluation: query,
             lecturer_id: id,
         },
-        url: "http://localhost/StudFYP_Project/html/module5/Controller/LecturerHandler.php",
+        url: "https://studfyp.herokuapp.com/html/module5/Controller/LecturerHandler.php",
         success: function (data) {
             var row_count = $("#result").html(data).find("tr").length;
 
@@ -50,7 +50,7 @@ function load_evaluation_report(query, id) {
             search_evaluation_report: query,
             lecturer_id: id,
         },
-        url: "http://localhost/StudFYP_Project/html/module5/Controller/LecturerHandler.php",
+        url: "https://studfyp.herokuapp.com/html/module5/Controller/LecturerHandler.php",
         success: function (data) {
             var row_count = $("#result").html(data).find("tr").length;
             if (row_count == 0) {
@@ -72,10 +72,10 @@ function update_er_array(er_id_array) {
         data: {
             update_er: er_id_array,
         },
-        url: "http://localhost/StudFYP_Project/html/module5/Controller/SessionHandler.php",
+        url: "https://studfyp.herokuapp.com/html/module5/Controller/LecturerHandler.php",
         success: function (data) {
             window.location.replace(
-                "http://localhost/StudFYP_Project/html/module5/lecturer/update_evaluation_report.php?view=0"
+                "https://studfyp.herokuapp.com/html/module5/lecturer/update_evaluation_report.php?view=0"
             );
         },
     });
@@ -90,7 +90,7 @@ function save_temp_ev(result_id, rubric_id_array, rubric_mark_array, feedback) {
             m_rubric_mark_array: rubric_mark_array,
             m_feedback: feedback,
         },
-        url: "http://localhost/StudFYP_Project/html/module5/Controller/SessionHandler.php",
+        url: "https://studfyp.herokuapp.com/html/module5/Controller/SessionHandler.php",
         success: function (data) { },
         error: function (request, status, error) {
             alert(request.responseText);
@@ -104,7 +104,7 @@ function delete_er_array(er_id_array) {
         data: {
             delete_er: er_id_array,
         },
-        url: "http://localhost/StudFYP_Project/html/module5/Controller/LecturerHandler.php",
+        url: "https://studfyp.herokuapp.com/html/module5/Controller/LecturerHandler.php",
         success: function (data) {
             window.location.reload();
         },
