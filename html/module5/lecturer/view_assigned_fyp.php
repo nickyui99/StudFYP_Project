@@ -4,7 +4,7 @@
 <!-- This html template is only for StudFYP lecturer only -->
 
 <?php
-include $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/LecturerHandler.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/LecturerHandler.php';
 session_start();
 ?>
 
