@@ -33,7 +33,7 @@ session_start();
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <img class="logo ms-3" src="../../../images/ump_logo.png" alt="UMP" />
-        <a class="navbar-brand ms-3 me-0" href="html/admin_main.php">StudFYP</a>
+        <a class="navbar-brand ms-3 me-0" href="/html/admin_main.php">StudFYP</a>
 
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
