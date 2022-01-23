@@ -79,6 +79,8 @@ else if (isset($_SESSION['ip_id'])) {
             $i++;
         }
 
+        echo "OK";
+
         // $ev_result = new EvaluationResult();
         // $ev_result->setProjID($_POST['inputProjId']);
         // $ev_result->setSubmission($_POST['submission']);
