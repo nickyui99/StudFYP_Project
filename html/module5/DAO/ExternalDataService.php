@@ -189,4 +189,94 @@ class ExternalDataService
 
         return $project_log_array;
     }
+
+    function getAssignedIPId($ip_id)
+    {
+
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "SELECT * FROM assigned_lecturer_evaluator WHERE ip_id = '$ip_id'";
+
+        //Run SQL Query
+        $result = $connection->query($sql_query);
+
+        if ($result->num_rows == 0) {
+            return null;
+        } else {
+            $row = $result->fetch_assoc();
+            return $row['assigned_ip_id'];
+        }
+    }
+
+    function insertEvaluationResult($ev_result, $ev_id, $stud_id)
+    {
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "SELECT * FROM evaluation_result " .
+            "ORDER BY `result_id` DESC";
+
+        //Run SQL Query
+        $result = $connection->query($sql_query);
+
+        $new_result_id = null;
+        $insert_status = true;
+
+        if ($result->num_rows == 0) {
+            //If no result in the database set ID from ER001
+            $new_result_id = "ER001";
+        } else {
+            //If there is id in it check the last id in the record and increment it by one
+            $row = $result->fetch_assoc();
+            $last_id = $row['result_id'];
+
+            //check last id number
+            $result_num = preg_replace('/[^0-9]/', '', $last_id);
+
+            $new_result_num = (int)($result_num) + 1;
+            $new_result_id = "ER" . sprintf("%03d", $new_result_num);
+        }
+
+        $sql_query = "INSERT INTO evaluation_result VALUES 
+        ('" . $new_result_id . "', 
+        '" . $ev_result->getProjID() . "', 
+        'NULL', 
+        '" . $ev_id . "', 
+        '" . $ev_result->getSubmission() . "', 
+        '" . $ev_result->getProjectFeedback() . "', 
+        '" . $ev_result->getEvaluationDate() . "')";
+
+        if ($connection->query($sql_query) == TRUE) {
+            $ev_mark_arrray = $ev_result->getEvMarkDetails();
+            echo "Data inserted <br>";
+
+            foreach ($ev_mark_arrray as $ev_mark) {
+                $sql_query = "INSERT INTO ev_mark_details
+                VALUES ('0', '$new_result_id','" . $ev_mark->getEvaluationRubricId() . "', '" . $ev_mark->getActualMark() . "')";
+                if ($connection->query($sql_query) == TRUE) {
+                    echo $ev_mark->getEvaluationRubricId() . " mark inserted<br>";
+                    $insert_status = true;
+                } else {
+                    echo $ev_mark->getEvaluationRubricId() . " insert failed";
+                    //Set insert status as false and break for loop
+                    $insert_status = false;
+                    break;
+                }
+            }
+        } else {
+            echo "Error: " . $sql_query . "<br>" . $connection->error;
+            $insert_status = false;
+        }
+
+        //Close connection
+        $connection->close();
+
+        //Return SQL insert status
+        return $insert_status;
+    }
 }
