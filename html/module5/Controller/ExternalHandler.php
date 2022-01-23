@@ -47,7 +47,7 @@ function getEvaluationDetail($proj_id, $stud_id, $submission)
 function getEvaluationRubric($submission, $fyp_level)
 {
     $eds = new ExternalDataService();
-    $evaluation_rubric_array = $eds->getEvaluationRubric($submission, $fyp_level);
+    $evaluation_rubric_array = $eds->getIpEvaluationRubric($submission, $fyp_level);
     return $evaluation_rubric_array;
 }
 
@@ -74,7 +74,7 @@ function printProjLogbook($proj_id, $submission)
 function printEvaluationRubric($submission, $fyp_level)
 {
     $eds = new ExternalDataService();
-    $evaluation_rubric_array = $eds->getEvaluationRubric($submission, $fyp_level);
+    $evaluation_rubric_array = $eds->getIpEvaluationRubric($submission, $fyp_level);
 
     $output = "";
     foreach ($evaluation_rubric_array as $ev_rubric_model) {

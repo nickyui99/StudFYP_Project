@@ -65,7 +65,7 @@ else if (isset($_SESSION['ip_id'])) {
         $assigned_id = $eds->getAssignedIpId($_SESSION['ip_id']);
 
         //Get rubric array
-        $ev_rubric_array = $eds->getEvaluationRubric($_POST['submission'], $_POST['inputFypStage']);
+        $ev_rubric_array = $eds->getIpEvaluationRubric($_POST['submission'], $_POST['inputFypStage']);
 
         //Set marks into object
         $i = 0;

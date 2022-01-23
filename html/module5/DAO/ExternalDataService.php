@@ -113,7 +113,7 @@ class ExternalDataService
     }
 
 
-    function getEvaluationRubric($submission, $fyp_level)
+    function getIpEvaluationRubric($submission, $fyp_level)
     {
         $db = new Database();
 
