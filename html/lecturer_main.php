@@ -4,6 +4,8 @@
 <!-- This is the main page for lecturer -->
 <?php
 include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/AnnouncementHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/AnnouncementHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/FypActivityHandler.php';
 session_start();
 ?>
 
@@ -130,7 +132,7 @@ session_start();
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>FYP progress
                                 </a>
-                                
+
                                 <a class="nav-link" href="module2\StudentMarks//student_marks.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
@@ -233,17 +235,34 @@ session_start();
                         </li>
                         <li class="breadcrumb-item active">Announcement</li>
                     </ol>
-                    <div class="card mb-4">
-                        <div class="card-header">Announcement Board</div>
-                        <div class="card-body">
 
-                            <ol class="list-group list-group-numbered">
-                                <?php
-                                printAnnouncementBoardList();
-                                ?>
-                            </ol>
+                    <div class="row">
+                        <!-- Announcement Board -->
+                        <div class="col-sm-6">
+                            <div class="card mb-4">
+                                <div class="card-header">Announcement Board</div>
+                                <div class="card-body">
+
+                                    <ol class="list-group list-group-numbered">
+                                        <?php
+                                        printAnnouncementBoardList();
+                                        ?>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Calendar Event -->
+                        <div class="col-sm-6">
+                            <div class="card mb-4">
+                                <div class="card-header">Announcement Board</div>
+                                <div class="card-body">
+                                    <div id='calendar'></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
@@ -256,5 +275,34 @@ session_start();
         </div>
     </div>
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var todayDate = moment().startOf("day");
+        var YM = todayDate.format("YYYY-MM");
+        var YESTERDAY = todayDate.clone().subtract(1, "day").format("YYYY-MM-DD");
+        var TODAY = todayDate.format("YYYY-MM-DD");
+        var TOMORROW = todayDate.clone().add(1, "day").format("YYYY-MM-DD");
+
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            initialDate: TODAY,
+            nowIndicator: true,
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            events: [
+                <?php echo getAllActivity(); ?>
+            ],
+            eventColor: '#00b3a4'
+        });
+
+        calendar.render();
+    });
+</script>
 
 </html>
