@@ -86,7 +86,7 @@ else if (isset($_SESSION['ip_id'])) {
         $ev_result->setEvaluationDate(date("Y-m-d"));
         $ev_result->setEvMarkDetails($ev_mark_array);
 
-        echo "OK";
+        echo $ev_result . $assigned_id . $_POST['inputStudId'];
         $status = submitIpEvaluationForm($ev_result, $assigned_id, $_POST['inputStudId']);
         echo $status;
         if ($status == true) {

@@ -253,6 +253,8 @@ class ExternalDataService
         '" . $ev_result->getSubmission() . "', '" . $ev_result->getProjectFeedback() . "', 
         '" . $ev_result->getEvaluationDate() . "')";
 
+        echo $sql_query;
+
         if ($connection->query($sql_query) == TRUE) {
             $ev_mark_arrray = $ev_result->getEvMarkDetails();
             echo "Data inserted <br>";
