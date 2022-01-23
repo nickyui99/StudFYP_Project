@@ -57,20 +57,13 @@ if (isset($_SESSION['lect_id'])) {
 
 else if (isset($_SESSION['ip_id'])) {
     echo "ok";
-    echo isset($_POST['inputProjId']);
-    echo isset($_POST['inputStudId']);
-    echo isset($_POST['inputFypStage']);
-    echo isset($_POST['inputProjTitle']);
-    echo isset($_POST['total_mark']);
-    echo isset($_POST['submission']);
-    echo isset($_POST['inputProjFeedback']);
 
     if (isset($_POST['inputProjId']) && isset($_POST['inputStudId']) && isset($_POST['inputFypStage']) && isset($_POST['inputProjTitle']) && isset($_POST['total_mark']) && isset($_POST['submission']) && isset($_POST['inputProjFeedback'])) {
         echo "ok";
         $eds = new ExternalDataService();
 
-        // //Get assigned lecturer id
-        // $assigned_id = $eds->getAssignedIpId($_SESSION['ip_id']);
+        //Get assigned lecturer id
+        $assigned_id = $eds->getAssignedIpId($_SESSION['ip_id']);
         // echo $assigned_id;
 
         // $ev_rubric_array = $lds->getEvaluationRubric($_POST['submission'], $_POST['inputFypStage']);
