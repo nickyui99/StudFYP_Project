@@ -286,11 +286,11 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
 
 <script>
     $('#btnDownloadProjQR').click(function() {
-        window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projQr=<?php echo $projID ?>");
+        window.open("https://studfyp.herokuapp.com//html/module5/Controller/DownloadService.php?projQr=<?php echo $projID ?>");
     });
 
     $('#btnDownloadProjDoc').click(function() {
-        window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projDoc=<?php echo $projID ?>&submission=<?php echo $submission ?>");
+        window.open("https://studfyp.herokuapp.com//html/module5/Controller/DownloadService.php?projDoc=<?php echo $projID ?>&submission=<?php echo $submission ?>");
     });
 
     $('textarea').keyup(function() {
