@@ -496,7 +496,7 @@ session_start();
             };
 
             const config = {
-                type: 'donut',
+                type: 'doughnut',
                 data: data,
             };
 
