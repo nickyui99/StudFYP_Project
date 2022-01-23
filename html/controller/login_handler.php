@@ -91,7 +91,6 @@ if (isset($_POST['Login'])) {
                 $stmt->execute();
                 $stmt->bind_result($ip_id, $ip_name);
                 $stmt->store_result();
-                echo $stmt->num_rows();
                 if ($stmt->num_rows() == 1) {
                     $stmt->fetch();
                     $_SESSION['ip_id'] = $ip_id;
@@ -105,6 +104,9 @@ if (isset($_POST['Login'])) {
                 }
                 mysqli_close($db);
                 break;
+
+            default:
+                echo "<script>window.open('../../index.php','_self')</script>";
         }
     }
 }
