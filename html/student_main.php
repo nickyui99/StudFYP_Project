@@ -26,6 +26,13 @@ session_start();
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
 
+    <!-- Full Calendar API -->
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
+
+    <!-- Moment Js API -->
+    <script src='https://momentjs.com/downloads/moment.js'></script>
+
     <!-- CSS -->
     <link rel="stylesheet" href="../css/main.css" />
 
@@ -54,7 +61,7 @@ session_start();
                         Notfication
                     </li>
                     <?php
-                        printNotificationList();
+                    printNotificationList();
                     ?>
                     <li>
                         <a class="dropdown-item see-more-notification" href="/html/student_main.php"> See more ...</a>
@@ -230,29 +237,74 @@ session_start();
                         <li class="breadcrumb-item active">Announcement</li>
                     </ol>
 
-                    <!-- Announcement Board -->
-                    <div class="card mb-4">
-                        <div class="card-header">Announcement Board</div>
-                        <div class="card-body">
+                    <div class="row" style="height: 60%;">
+                        <!-- Announcement Board -->
+                        <div class="col-sm-5">
+                            <div class="card mb-4">
+                                <div class="card-header">Announcement Board</div>
+                                <div class="card-body">
 
-                            <ol class="list-group list-group-numbered">
-                                <?php
-                                printAnnouncementBoardList();
-                                ?>
-                            </ol>
+                                    <ol class="list-group list-group-numbered">
+                                        <?php
+                                        printAnnouncementBoardList();
+                                        ?>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Calendar Event -->
+                        <div class="col-sm-7">
+                            <div class="card mb-4">
+                                <div class="card-header">Announcement Board</div>
+                                <div class="card-body">
+                                    <div id='calendar'></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
-            </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="text-muted text-center">
-                        Copyright &copy; University Malaysia Pahang 2021
-                    </div>
-                </div>
-            </footer>
         </div>
+        </main>
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid px-4">
+                <div class="text-muted text-center">
+                    Copyright &copy; University Malaysia Pahang 2021
+                </div>
+            </div>
+        </footer>
+    </div>
     </div>
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var todayDate = moment().startOf("day");
+        var YM = todayDate.format("YYYY-MM");
+        var YESTERDAY = todayDate.clone().subtract(1, "day").format("YYYY-MM-DD");
+        var TODAY = todayDate.format("YYYY-MM-DD");
+        var TOMORROW = todayDate.clone().add(1, "day").format("YYYY-MM-DD");
+
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            initialDate: TODAY,
+            nowIndicator: true,
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            events: [
+                <?php echo getAllActivity(); ?>
+            ],
+            eventColor: '#00b3a4'
+        });
+
+        calendar.render();
+    });
+</script>
 
 </html>
