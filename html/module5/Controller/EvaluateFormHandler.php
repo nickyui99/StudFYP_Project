@@ -64,7 +64,7 @@ else if (isset($_SESSION['ip_id'])) {
         //Get assigned lecturer id
         $assigned_id = $eds->getAssignedIpId($_SESSION['ip_id']);
 
-        $ev_rubric_array = $lds->getEvaluationRubric($_POST['submission'], $_POST['inputFypStage']);
+        $ev_rubric_array = $eds->getEvaluationRubric($_POST['submission'], $_POST['inputFypStage']);
         echo $ev_rubric_array;
 
         // $i = 0;
