@@ -256,7 +256,7 @@ session_start();
                         <!-- Calendar Event -->
                         <div class="col-sm-7">
                             <div class="card mb-4">
-                                <div class="card-header">Announcement Board</div>
+                                <div class="card-header">FYP Calendar</div>
                                 <div class="card-body">
                                     <div id='calendar'></div>
                                 </div>
