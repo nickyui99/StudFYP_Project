@@ -15,7 +15,7 @@ class ExternalDataService{
 
         $sql_query = "SELECT * FROM assigned_industrial_evaluator 
             INNER JOIN industrial_panel ON industrial_panel.ip_id = assigned_industrial_evaluator.ip_id 
-            INNER JOIN student ON assigned_lecturer_evaluator.stud_id = student.stud_id 
+            INNER JOIN student ON assigned_industrial_evaluator.stud_id = student.stud_id 
             INNER JOIN fyp_project ON student.stud_id = fyp_project.stud_id 
             WHERE assigned_industrial_evaluator.ip_id = '$id' AND (
             fyp_project.stud_id LIKE '%$query%' OR 
