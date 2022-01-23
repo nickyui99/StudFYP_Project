@@ -1,6 +1,8 @@
 <?php
 
 require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/DAO/ExternalDataService.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/ClassModel/EvaluateFypModel.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/ClassModel/ProjectLogbookModel.php';
 
 if (isset($_POST['search_assigned_evaluation']) && isset($_POST['ip_id'])) {
     viewAssignedFyp($_POST['search_assigned_evaluation'], $_POST['ip_id']);
