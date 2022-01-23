@@ -64,8 +64,10 @@ else if (isset($_SESSION['ip_id'])) {
         //Get assigned lecturer id
         $assigned_id = $eds->getAssignedIpId($_SESSION['ip_id']);
 
+        //Get rubric array
         $ev_rubric_array = $eds->getEvaluationRubric($_POST['submission'], $_POST['inputFypStage']);
 
+        //Set marks into object
         $i = 0;
         $ev_mark_array = array();
         foreach ($ev_rubric_array as $ev_rubric) {
