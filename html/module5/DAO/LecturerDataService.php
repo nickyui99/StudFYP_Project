@@ -22,10 +22,10 @@ class LecturerDataService
             INNER JOIN fyp_project ON assigned_lecturer_evaluator.stud_id = fyp_project.stud_id 
             INNER JOIN lecturer ON lecturer.lect_id = assigned_lecturer_evaluator.lect_id 
             INNER JOIN student ON assigned_lecturer_evaluator.stud_id = student.stud_id 
-            WHERE assigned_lecturer_evaluator.lect_id = '$id' AND 
+            WHERE assigned_lecturer_evaluator.lect_id = '$id' AND (
             fyp_project.stud_id LIKE '%$query%' OR 
-            assigned_lecturer_evaluator.lect_id LIKE '%$query%' OR
-            student.stud_name LIKE '%$query%'";
+            fyp_project.fyp_proj_id LIKE '%$query%' OR 
+            student.stud_name LIKE '%$query%')";
 
         //Run SQL Query
         $result = $connection->query($sql_query);
