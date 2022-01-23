@@ -263,18 +263,16 @@ session_start();
                             </div>
                         </div>
                     </div>
-
                 </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="text-muted text-center">
+                        Copyright &copy; University Malaysia Pahang 2021
+                    </div>
+                </div>
+            </footer>
         </div>
-        </main>
-        <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid px-4">
-                <div class="text-muted text-center">
-                    Copyright &copy; University Malaysia Pahang 2021
-                </div>
-            </div>
-        </footer>
-    </div>
     </div>
 </body>
 
