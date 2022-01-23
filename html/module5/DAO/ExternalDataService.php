@@ -17,7 +17,7 @@ class ExternalDataService{
             INNER JOIN industrial_panel ON industrial_panel.ip_id = assigned_industrial_evaluator.ip_id 
             INNER JOIN student ON assigned_lecturer_evaluator.stud_id = student.stud_id 
             INNER JOIN fyp_project ON student.stud_id = fyp_project.stud_id 
-            WHERE assigned_lecturer_evaluator.lect_id = '$id' AND (
+            WHERE assigned_industrial_evaluator.ip_id = '$id' AND (
             fyp_project.stud_id LIKE '%$query%' OR 
             fyp_project.fyp_proj_id LIKE '%$query%' OR 
             student.stud_name LIKE '%$query%')";
