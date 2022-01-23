@@ -121,7 +121,8 @@ class ExternalDataService
 
         $sql_query = "SELECT * FROM evaluation_rubric " .
             "WHERE rubric_submission ='" . $submission . "' AND " .
-            "rubric_fyp = '" . $fyp_level . "' " .
+            "rubric_fyp = '" . $fyp_level . "' AND" .
+            "rubric_num = 'PSM/PTA' AND" .
             "ORDER BY `evaluation_rubric`.`rubric_num` ASC";
 
         //Run SQL Query
