@@ -1,10 +1,10 @@
 <?php
-require_once '../DAO/LecturerDataService.php';
-require_once '../DAO/ExternalDataService.php';
-require_once '../ClassModel/EvaluationResultModel.php';
-require_once '../ClassModel/EvaluationMarkDetailsModel.php';
-require_once 'LecturerHandler.php';
-require_once 'ExternalHandler.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/DAO/LecturerDataService.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5//DAO/ExternalDataService.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/./ClassModel/EvaluationResultModel.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5//ClassModel/EvaluationMarkDetailsModel.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/LecturerHandler.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/ExternalHandler.php';
 
 session_start();
 //If user is industrial panel
