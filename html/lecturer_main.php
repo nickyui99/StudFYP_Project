@@ -242,7 +242,7 @@ session_start();
                         <li class="breadcrumb-item active">Announcement</li>
                     </ol>
 
-                    <div class="row">
+                    <div class="row" style="height: 60%;">
                         <!-- Announcement Board -->
                         <div class="col-sm-6">
                             <div class="card mb-4">
