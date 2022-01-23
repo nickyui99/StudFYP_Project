@@ -101,6 +101,7 @@ function printEvaluationRubric($submission, $fyp_level)
 function submitIpEvaluationForm($ev_result, $assigned_id, $stud_id)
 {
     $eds = new ExternalDataService();
-    $status = $eds->insertIPEvaluationResult($ev_result, $assigned_id, $stud_id);
+    echo "OK";
+    // $status = $eds->insertIPEvaluationResult($ev_result, $assigned_id, $stud_id);
     return true;
 }
