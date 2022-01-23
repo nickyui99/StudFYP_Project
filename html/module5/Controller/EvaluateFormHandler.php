@@ -65,18 +65,17 @@ else if (isset($_SESSION['ip_id'])) {
         $assigned_id = $eds->getAssignedIpId($_SESSION['ip_id']);
 
         $ev_rubric_array = $eds->getEvaluationRubric($_POST['submission'], $_POST['inputFypStage']);
-        echo $ev_rubric_array;
 
-        // $i = 0;
-        // $ev_mark_array = array();
-        // foreach ($ev_rubric_array as $ev_rubric) {
-        //     $ev_mark = new EvaluationMarkDetails();
-        //     $ev_mark->setEvaluationRubricId($ev_rubric->getRubricId());
-        //     $ev_mark->setActualMark($_POST['am_' . $ev_rubric->getRubricId()]);
+        $i = 0;
+        $ev_mark_array = array();
+        foreach ($ev_rubric_array as $ev_rubric) {
+            $ev_mark = new EvaluationMarkDetails();
+            $ev_mark->setEvaluationRubricId($ev_rubric->getRubricId());
+            $ev_mark->setActualMark($_POST['am_' . $ev_rubric->getRubricId()]);
 
-        //     $ev_mark_array[$i] = $ev_mark;
-        //     $i++;
-        // }
+            $ev_mark_array[$i] = $ev_mark;
+            $i++;
+        }
 
         // $ev_result = new EvaluationResult();
         // $ev_result->setProjID($_POST['inputProjId']);
