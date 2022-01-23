@@ -4,8 +4,8 @@
 <!-- Contributor: Nicholas, Aiman -->
 
 <?php
-include $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/AnnouncementHandler.php';
-include $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/FypActivityHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/AnnouncementHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/FypActivityHandler.php';
 
 session_start();
 ?>
