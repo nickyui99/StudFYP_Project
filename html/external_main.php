@@ -98,7 +98,7 @@ session_start();
                         </a>
 
                         <!-- My Profile -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="module5/external/my_profile.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-user"></i>
                             </div>
@@ -117,26 +117,18 @@ session_start();
                         </a>
                         <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="module5\lecturer\view_assigned_fyp.php">
+                                <a class="nav-link" href="module5/external/view_assigned_fyp.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View assigned FYP
                                 </a>
-                                <a class="nav-link" href="module5\lecturer\evaluation_report.php">
+                                <a class="nav-link" href="module5/external/evaluation_report.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Evaluation report
                                 </a>
                             </nav>
                         </div>
-
-                        <!-- My report -->
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-file-o" aria-hidden="true"></i>
-                            </div>
-                            My report
-                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">

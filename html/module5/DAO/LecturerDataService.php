@@ -34,7 +34,7 @@ class LecturerDataService
         if ($result->num_rows == 0) {
             //Do nothing
         } else {
-            $i = 0; 
+            $i = 0;
             while ($row = $result->fetch_assoc()) {
                 //Retrieve data
                 $assigned_ev = new AssignedEvaluation();
@@ -601,7 +601,7 @@ class LecturerDataService
 
             $is_update_success = true;
             if ($connection->query($sql_query) == true) {
-                echo "</br>Record " .$ev_mark->getEvMarkId(). " updated successfully";
+                echo "</br>Record " . $ev_mark->getEvMarkId() . " updated successfully";
                 $is_update_success = true;
             } else {
                 echo "</br>Error updating record: " . $connection->error;

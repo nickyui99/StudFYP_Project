@@ -18,7 +18,7 @@ function load_evaluator(query, id) {
     });
 }
 
-function load_assigned_evaluator(query, id) {
+function load_lect_assigned_evaluator(query, id) {
     $.ajax({
         method: "POST",
         data: {
@@ -26,6 +26,30 @@ function load_assigned_evaluator(query, id) {
             lecturer_id: id,
         },
         url: "https://studfyp.herokuapp.com/html/module5/Controller/LecturerHandler.php",
+        success: function (data) {
+            var row_count = $("#result").html(data).find("tr").length;
+
+            if (row_count == 0) {
+                $("#message_box").html(
+                    '<div class="alert alert-warning" role="alert"> There are currently no assigned FYP. For more information, can contact the coordinator.</div>'
+                );
+            } else {
+                $("#row_counter").html("Total " + row_count + " Assigned Evaluation");
+                $(".alert").alert('close');
+            }
+
+        },
+    });
+}
+
+function load_ip_assigned_evaluator(query, id) {
+    $.ajax({
+        method: "POST",
+        data: {
+            search_assigned_evaluation: query,
+            ip_id: id,
+        },
+        url: "https://studfyp.herokuapp.com/html/module5/Controller/ExternalHandler.php",
         success: function (data) {
             var row_count = $("#result").html(data).find("tr").length;
 

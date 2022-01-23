@@ -306,14 +306,14 @@ session_start();
 <script>
     $(document).ready(function() {
         var lect_id = "<?php echo $_SESSION['lect_id']; ?>";
-        load_assigned_evaluator("", lect_id);
+        load_lect_assigned_evaluator("", lect_id);
 
         $('#search').keyup(function() {
             var search = $(this).val();
             if (search != '') {
-                load_assigned_evaluator(search, lect_id);
+                load_lect_assigned_evaluator(search, lect_id);
             } else {
-                load_assigned_evaluator("", lect_id);
+                load_lect_assigned_evaluator("", lect_id);
             }
         });
     });

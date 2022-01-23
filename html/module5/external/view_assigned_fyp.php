@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- This html template is only for StudFYP lecturer only -->
-
+<!-- This is the main page for lecturer -->
 <?php
-include $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/LecturerHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/ExternalHandler.php';
 session_start();
 ?>
 
@@ -12,7 +11,7 @@ session_start();
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>View Assigned FYP</title>
+    <title>Dashboard</title>
 
     <!-- Bootstrap 5 CSS -->
     <link rel="stylesheet" href="../../../bootstrap_v5.1/css/styles.css" />
@@ -31,13 +30,12 @@ session_start();
     <!-- JS -->
     <script src="../../../js/module_5.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 </head>
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <img class="logo ms-3" src="../../../images/ump_logo.png" alt="UMP" />
+        <img class="logo ms-3" src="../images/ump_logo.png" alt="UMP" />
         <a class="navbar-brand ms-3" href="index.html">StudFYP</a>
 
         <!-- Sidebar Toggle-->
@@ -55,23 +53,11 @@ session_start();
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
                     </li>
+                    <?php
+                    printNotificationList();
+                    ?>
                     <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 1</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 2</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 2</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item see-more-notification" href="#">See more ...</a>
+                        <a class="dropdown-item see-more-notification" href="lecturer_main.php">See more ...</a>
                     </li>
                 </ul>
             </li>
@@ -86,7 +72,7 @@ session_start();
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="../../controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -99,7 +85,7 @@ session_start();
                 <div class="sb-sidenav-menu">
                     <div class="nav mt-3">
                         <!-- Dashboard -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="lecturer_main.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-tachometer" aria-hidden="true"></i>
                             </div>
@@ -107,131 +93,37 @@ session_start();
                         </a>
 
                         <!-- My Profile -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="module5/external/my_profile.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-user"></i>
                             </div>
                             My profile
                         </a>
 
-                        <!-- FYP Coordinator -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCoordinator" aria-expanded="false" aria-controls="collapseCoordinator">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-columns"></i>
-                            </div>
-                            FYP coordinator
-                            <div class="sb-sidenav-collapse-arrow">
-                                <i class="fa fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapseCoordinator" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>
-                                    Assign student to supervisor
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Assign student to evaluator
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Announcement platform
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>FYP progress
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Student mark
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Manage FYP submission date
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Manage FYP rubrics
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Coordinator final report
-                                </a>
-                            </nav>
-                        </div>
-
-                        <!-- FYP Supervisor -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSupervisor" aria-expanded="false" aria-controls="collapseSupervisor">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-columns"></i>
-                            </div>
-                            FYP supervisor
-                            <div class="sb-sidenav-collapse-arrow">
-                                <i class="fa fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>View assigned student
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>View student's FYP
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Supervisor report
-                                </a>
-                            </nav>
-                        </div>
-
                         <!-- FYP Evaluation -->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEvaluation" aria-expanded="false" aria-controls="collapseEvaluation">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
-                            FYP evaluation
+                            FYP Evaluation
                             <div class="sb-sidenav-collapse-arrow">
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link text-light active" href="view_assigned_fyp.php">
+                        <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="module5/external/view_assigned_fyp.php">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View assigned FYP
                                 </a>
-                                <a class="nav-link" href="evaluation_report.php">
+                                <a class="nav-link" href="module5/external/evaluation_report.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Evaluation report
                                 </a>
                             </nav>
                         </div>
-
-                        <!-- My report -->
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-file-o" aria-hidden="true"></i>
-                            </div>
-                            My report
-                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -289,7 +181,7 @@ session_start();
                     <div id="message_box">
                         <!-- This div is for showing message purpose only -->
                     </div>
-                    
+
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
@@ -305,15 +197,15 @@ session_start();
 
 <script>
     $(document).ready(function() {
-        var lect_id = "<?php echo $_SESSION['lect_id']; ?>";
-        load_assigned_evaluator("", lect_id);
+        var ip_id = "<?php echo $_SESSION['ip_id']; ?>";
+        load_ip_assigned_evaluator("", ip_id);
 
         $('#search').keyup(function() {
             var search = $(this).val();
             if (search != '') {
-                load_assigned_evaluator(search, lect_id);
+                load_ip_assigned_evaluator(search, ip_id);
             } else {
-                load_assigned_evaluator("", lect_id);
+                load_ip_assigned_evaluator("", ip_id);
             }
         });
     });
