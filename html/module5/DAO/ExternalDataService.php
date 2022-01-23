@@ -205,13 +205,16 @@ class ExternalDataService
         $result = $connection->query($sql_query);
 
         if ($result->num_rows == 0) {
-            return null;
+            $assigned_ip_id = null;
         } else {
             $row = $result->fetch_assoc();
             $assigned_ip_id = $row['assigned_ip_id'];
-
-            return $assigned_ip_id;
         }
+
+        //Close connection
+        $connection->close();
+
+        return $assigned_ip_id;
     }
 
     function insertEvaluationResult($ev_result, $ev_id, $stud_id)
