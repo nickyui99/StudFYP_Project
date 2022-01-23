@@ -7,6 +7,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/LecturerHandl
 require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/ExternalHandler.php';
 
 session_start();
+
 //If user is industrial panel
 if (isset($_SESSION['ip_id'])) {
 
@@ -42,6 +43,7 @@ if (isset($_SESSION['ip_id'])) {
             header("Location: ../external/view_assigned_fyp.php");
         } else {
             echo "ERROR INSERTING EVALUATION";
+            header("Location: ../external/view_assigned_fyp.php");
         }
     }
 }
