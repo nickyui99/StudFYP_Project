@@ -91,6 +91,7 @@ if (isset($_POST['Login'])) {
                 $stmt->execute();
                 $stmt->bind_result($ip_id, $ip_name);
                 $stmt->store_result();
+                echo $stmt->num_rows();
                 if ($stmt->num_rows() == 1) {
                     $stmt->fetch();
                     $_SESSION['ip_id'] = $ip_id;
@@ -98,7 +99,7 @@ if (isset($_POST['Login'])) {
                     echo "<script>window.open('../external_main.php','_self')</script>";
                 } else {
                     echo '<script type="text/javascript">';
-                    echo ' alert("Incorrect Username and Password.\n Please Try again !")';
+                    echo 'alert("Incorrect Username and Password.\n Please Try again !")';
                     echo '</script>';
                     echo "<script>window.open('../../index.php','_self')</script>";
                 }
