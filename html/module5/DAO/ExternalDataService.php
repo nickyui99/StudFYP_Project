@@ -239,6 +239,7 @@ class ExternalDataService
             //If there is id in it check the last id in the record and increment it by one
             $row = $result->fetch_assoc();
             $last_id = $row['result_id'];
+            echo $last_id;
 
             //check last id number
             $result_num = preg_replace('/[^0-9]/', '', $last_id);
