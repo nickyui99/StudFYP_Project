@@ -56,7 +56,6 @@ if (isset($_SESSION['lect_id'])) {
 } 
 
 else if (isset($_SESSION['ip_id'])) {
-    echo "ok";
 
     if (isset($_POST['inputProjId']) && isset($_POST['inputStudId']) && isset($_POST['inputFypStage']) && isset($_POST['inputProjTitle']) && isset($_POST['total_mark']) && isset($_POST['submission']) && isset($_POST['inputProjFeedback'])) {
         $eds = new ExternalDataService();
@@ -86,7 +85,7 @@ else if (isset($_SESSION['ip_id'])) {
         $ev_result->setEvaluationDate(date("Y-m-d"));
         $ev_result->setEvMarkDetails($ev_mark_array);
 
-        echo $ev_result . $assigned_id . $_POST['inputStudId'];
+        echo $ev_result->getProjID() . $assigned_id . $_POST['inputStudId'];
         $status = submitIpEvaluationForm($ev_result, $assigned_id, $_POST['inputStudId']);
         echo $status;
         if ($status == true) {
