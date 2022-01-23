@@ -257,23 +257,33 @@ session_start();
                         <li class="breadcrumb-item active">Evaluation report</li>
                     </ol>
 
-                    <div class="d-flex justify-content-center mb-2">
-                        <div id="message_box">
-                            <!-- This div is for showing message purpose only -->
-                        </div>
 
-                        <!-- Chart js -->
-                        <div class="card">
+                    <div id="message_box">
+                        <!-- This div is for showing message purpose only -->
+                    </div>
+
+                    <!-- Chart js -->
+                    <div class="row">
+                        <div class="card col">
                             <div class="card-header">
                                 Evaluated student
                             </div>
-                            <div id="card-body">
+                            <div id="card-body p-2">
                                 <canvas id="my_chart"></canvas>
                             </div>
                         </div>
 
-
+                        <div class="card col">
+                            <div class="card-header">
+                                Evaluated student
+                            </div>
+                            <div id="card-body p-2">
+                                <canvas id="my_chart"></canvas>
+                            </div>
+                        </div>
                     </div>
+
+
                     <div class="row mb-2">
                         <p class="col-sm-1">Actions: </p>
 
