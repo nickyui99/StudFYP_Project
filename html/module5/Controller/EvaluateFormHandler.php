@@ -34,7 +34,7 @@ if (isset($_SESSION['lect_id'])) {
         $ev_result->setEvaluationDate(date("Y-m-d"));
         $ev_result->setEvMarkDetails($ev_mark_array);
 
-        $status = submitEvaluationForm($ev_result, $assigned_id, $_POST['inputStudId']);
+        $status = submitLectEvaluationForm($ev_result, $assigned_id, $_POST['inputStudId']);
         if ($status == true) {
             header("Location: ../lecturer/view_assigned_fyp.php");
         } else {
@@ -88,7 +88,7 @@ else if (isset($_SESSION['ip_id'])) {
         $ev_result->setEvaluationDate(date("Y-m-d"));
         $ev_result->setEvMarkDetails($ev_mark_array);
 
-        $status = submitEvaluationForm($ev_result, $assigned_id, $_POST['inputStudId']);
+        $status = submitIpEvaluationForm($ev_result, $assigned_id, $_POST['inputStudId']);
         echo $status;
         // if ($status == true) {
         //     header("Location: ../external/view_assigned_fyp.php");

@@ -175,7 +175,7 @@ function deleteEvaluationReport($er_id_array)
     }
 }
 
-function submitEvaluationForm($ev_result, $assigned_id, $stud_id)
+function submitLectEvaluationForm($ev_result, $assigned_id, $stud_id)
 {
     $lds = new LecturerDataService();
     //Insert evaluation result data

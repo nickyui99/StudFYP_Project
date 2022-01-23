@@ -98,7 +98,7 @@ function printEvaluationRubric($submission, $fyp_level)
 }
 
 
-function submitEvaluationForm($ev_result, $assigned_id, $stud_id)
+function submitIpEvaluationForm($ev_result, $assigned_id, $stud_id)
 {
     $eds = new ExternalDataService();
     //Insert evaluation result data
