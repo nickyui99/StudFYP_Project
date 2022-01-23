@@ -267,7 +267,7 @@ session_start();
                         <div class="card-header">
                             Evaluated student
                         </div>
-                        <div id="card-body p-2">
+                        <div id="card-body py-3">
                             <canvas id="my_chart"></canvas>
                         </div>
                     </div>
