@@ -483,9 +483,14 @@ session_start();
                         fyp2_stud_num
                     ],
                     backgroundColor: [
-                        'rgb(155, 89, 182)',
-                        'rgb(22, 160, 133)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
                     ],
+                    borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                    ],
+                    borderWidth: 1,
                     hoverOffset: 4
                 }]
             };
