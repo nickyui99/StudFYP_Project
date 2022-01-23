@@ -24,6 +24,9 @@ session_start();
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
 
+    <!-- Moment Js API -->
+    <script src='https://momentjs.com/downloads/moment.js'></script>
+
     <!-- CSS -->
     <link rel="stylesheet" href="../css/main.css" />
 
