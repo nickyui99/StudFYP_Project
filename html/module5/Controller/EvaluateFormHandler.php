@@ -87,11 +87,11 @@ else if (isset($_SESSION['ip_id'])) {
         $ev_result->setProjectFeedback($_POST['inputProjFeedback']);
         $ev_result->setEvaluationDate(date("Y-m-d"));
         $ev_result->setEvMarkDetails($ev_mark_array);
-        echo "OK";
 
-        // $status = submitEvaluationForm($ev_result, $assigned_id, $_POST['inputStudId']);
+        $status = submitEvaluationForm($ev_result, $assigned_id, $_POST['inputStudId']);
+        echo "OK";
         // if ($status == true) {
-        //     header("Location: ../lecturer/view_assigned_fyp.php");
+        //     header("Location: ../external/view_assigned_fyp.php");
         // } else {
         //     echo "ERROR INSERTING EVALUATION";
         // }
