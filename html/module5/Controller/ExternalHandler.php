@@ -24,17 +24,9 @@ function viewAssignedFyp($query, $ip_id)
                 '<td>' . $assigned_ev->getStudentName() . '</td>' .
                 '<td>' . $assigned_ev->getFypLevel() . '</td>' .
                 '<td>' . $assigned_ev->getFypProgress() . '</td>' .
-                '<td>';
-
-            $evaluation_status = $assigned_ev->getEvaluationStatus();
-            for ($i = 1; $i <= 3; $i++) {
-                if ($evaluation_status[$i] == true) {
-                    $output = $output . ' <a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=' . $i . '" class="btn btn-success btn-sm disabled" role="button" aria-disabled="true">' . $i . '</a>';
-                } else {
-                    $output = $output . ' <a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=' . $i . '" class="btn btn-light btn-outline-dark btn-sm" role="button" aria-disabled="true">' . $i . '</a>';
-                }
-            }
-            $output = $output . '</td></tr>';
+                '<td> 
+                    <a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=3" class="btn btn-light btn-outline-dark btn-sm" role="button" aria-disabled="true">Evaluate</a>
+                </td></tr>';
         }
     }
 
