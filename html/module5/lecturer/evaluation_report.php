@@ -263,26 +263,14 @@ session_start();
                     </div>
 
                     <!-- Chart js -->
-                    <div class="row">
-                        <div class="card col">
-                            <div class="card-header">
-                                Evaluated student
-                            </div>
-                            <div id="card-body p-2">
-                                <canvas id="my_chart"></canvas>
-                            </div>
+                    <div class="card">
+                        <div class="card-header">
+                            Evaluated student
                         </div>
-
-                        <div class="card col">
-                            <div class="card-header">
-                                Evaluated student
-                            </div>
-                            <div id="card-body p-2">
-                                <canvas id="my_chart"></canvas>
-                            </div>
+                        <div id="card-body p-2">
+                            <canvas id="my_chart"></canvas>
                         </div>
                     </div>
-
 
                     <div class="row mb-2">
                         <p class="col-sm-1">Actions: </p>
