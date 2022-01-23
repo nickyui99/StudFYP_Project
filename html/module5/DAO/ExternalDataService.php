@@ -224,13 +224,12 @@ class ExternalDataService
         //Create connection
         $connection = $db->getConnection();
 
-        $sql_query = "SELECT * FROM evaluation_result 
-            ORDER BY `result_id` DESC";
+        $sql_query = "SELECT * FROM evaluation_result ORDER BY `result_id` DESC";
 
         //Run SQL Query
         $result = $connection->query($sql_query);
 
-        $new_result_id = null;
+        $new_result_id = "";
         $insert_status = true;
 
         if ($result->num_rows == 0) {
