@@ -86,7 +86,7 @@ if (isset($_POST['Login'])) {
 
             case "external":
                 echo "external";
-                $stmt = $db->prepare("SELECT * FROM industrial_panel WHERE ip_id =? AND ip_password=?");
+                $stmt = $db->prepare("SELECT ip_id, ip_name FROM industrial_panel WHERE ip_id =? AND ip_password=?");
                 $stmt->bind_param('ss', $id, $pass);
                 $stmt->execute();
                 $stmt->bind_result($ip_id, $ip_name);
