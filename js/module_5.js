@@ -31,12 +31,11 @@ function load_assigned_evaluator(query, id) {
 
             if (row_count == 0) {
                 $("#message_box").html(
-                    '<div class="alert alert-primary" role="alert">There are currently no assigned FYP. For more information, can contact the coordinator.</div>'
+                    '<div class="alert alert-warning" role="alert"> There are currently no assigned FYP. For more information, can contact the coordinator.</div>'
                 );
             } else {
-                $("#row_counter").html(
-                    "Total " + row_count + " Assigned Evaluation"
-                );
+                $("#row_counter").html("Total " + row_count + " Assigned Evaluation");
+                $(".alert").alert('close');
             }
 
         },
@@ -55,12 +54,14 @@ function load_evaluation_report(query, id) {
             var row_count = $("#result").html(data).find("tr").length;
             if (row_count == 0) {
                 $("#result").html(
-                    '<tr><td colspan = "9"><div class="alert alert-primary" role="alert">There are currently no evaluated FYP</div></td></tr>'
+                    '<tr><td colspan = "9"><div class="alert alert-warning" role="alert">There are currently no evaluated FYP</div></td></tr>'
                 );
             } else {
                 $("#row_counter").html(
                     "Total " + row_count + " Evaluation Report"
                 );
+
+                $(".alert").alert('close');
             }
         },
     });
