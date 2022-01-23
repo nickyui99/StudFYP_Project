@@ -90,10 +90,10 @@ else if (isset($_SESSION['ip_id'])) {
 
         $status = submitIpEvaluationForm($ev_result, $assigned_id, $_POST['inputStudId']);
         echo $status;
-        // if ($status == true) {
-        //     header("Location: ../external/view_assigned_fyp.php");
-        // } else {
-        //     echo "ERROR INSERTING EVALUATION";
-        // }
+        if ($status == true) {
+            header("Location: ../external/view_assigned_fyp.php");
+        } else {
+            echo "ERROR INSERTING EVALUATION";
+        }
     }
 }
