@@ -176,7 +176,7 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
                         <li class="breadcrumb-item active">Evaluate FYP</li>
                     </ol>
 
-                    <form id="evaluation_form" action="../Controller/EvaluateFormHandler.php?user=IP" method="POST">
+                    <form id="evaluation_form" action="../Controller/EvaluateFormHandler.php" method="POST">
                         <input type="hidden" id="submission" name="submission" value="<?php echo $submission ?>">
                         <div class="form-group">
                             <table class="table table-borderless">
