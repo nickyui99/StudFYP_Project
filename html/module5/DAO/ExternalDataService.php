@@ -199,7 +199,7 @@ class ExternalDataService
         //Create connection
         $connection = $db->getConnection();
 
-        $sql_query = "SELECT * FROM assigned_lecturer_evaluator WHERE ip_id = '$ip_id'";
+        $sql_query = "SELECT * FROM assigned_industrial_evaluator WHERE ip_id = '$ip_id'";
 
         //Run SQL Query
         $result = $connection->query($sql_query);
@@ -208,7 +208,9 @@ class ExternalDataService
             return null;
         } else {
             $row = $result->fetch_assoc();
-            return $row['assigned_ip_id'];
+            $ip_id = $row['assigned_ip_id'];
+
+            return $ip_id;
         }
     }
 
