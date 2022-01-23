@@ -4,11 +4,11 @@
 <!-- This page is for students to view their evaluation result-->
 
 <?php
-    require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/StudentHandler.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/StudentHandler.php';
 
-    session_start();
+session_start();
 
-    $projectDetails = getProjectDetails($_SESSION['stud_id']);
+$projectDetails = getProjectDetails($_SESSION['stud_id']);
 ?>
 
 <head>
@@ -166,9 +166,7 @@
                         </div>
 
                         <!-- FYP Supervisor -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseSupervisor" aria-expanded="false"
-                            aria-controls="collapseSupervisor">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSupervisor" aria-expanded="false" aria-controls="collapseSupervisor">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -177,8 +175,7 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
@@ -235,7 +232,7 @@
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
                     <?php
-                        echo $_SESSION['username']
+                    echo $_SESSION['username']
                     ?>
                 </div>
             </nav>
@@ -245,7 +242,7 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    
+
                     <!-- Page Header -->
                     <h1 class="ms-0 mt-4">Evaluation Result</h1>
 
@@ -273,54 +270,59 @@
                         </div>
                     </div>
 
-                    <div class="row justify-content-md-left">
-                        <h3><u>FYP 1</u></h3>
+                    <div class="card row mx-auto">
+                        <div class="card-header">
+                            FYP 1 Result
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="ev_fyp_1_table" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr class="header-bg">
+                                            <th scope="col">Submission</th>
+                                            <th scope="col">Evaluator ID</th>
+                                            <th scope="col">Evaluator Name</th>
+                                            <th scope="col">Project Feedback</th>
+                                            <th scope="col">Evaluation Mark</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="result_fyp_1">
+                                        <!-- Show datatable here -->
+                                        <?php
+                                        displayFyp1Result($_SESSION['stud_id']);
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="table-responsive">
-                        <table id="ev_fyp_1_table" class="table table-bordered table-striped">
-                        <thead>
-                            <tr class="header-bg">
-                                <th scope="col">Submission</th>
-                                <th scope="col">Evaluator ID</th>
-                                <th scope="col">Evaluator Name</th>
-                                <th scope="col">Project Feedback</th>
-                                <th scope="col">Evaluation Mark</th>
-                            </tr>
-                        </thead>
-                        <tbody id="result_fyp_1">
-                            <!-- Show datatable here -->
-                            <?php 
-                            displayFyp1Result($_SESSION['stud_id']);
-                            ?>
-                        </tbody>
-                    </table>
+                    <div class="card row mx-auto">
+                        <div class="card-header">
+                            FYP 2 Result
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="ev_fyp_2_table" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr class="header-bg">
+                                            <th scope="col">Submission</th>
+                                            <th scope="col">Evaluator ID</th>
+                                            <th scope="col">Evaluator Name</th>
+                                            <th scope="col">Project Feedback</th>
+                                            <th scope="col">Evaluation Mark</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="result_fyp_2">
+                                        <!-- Show datatable here -->
+                                        <?php
+                                        displayFyp2Result($_SESSION['stud_id']);
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="row justify-content-md-left">
-                        <h3><u>FYP 2</u></h3>
-                    </div>
-
-                    <div class="table-responsive">
-                        <table id="ev_fyp_2_table" class="table table-bordered table-striped">
-                        <thead>
-                            <tr class="header-bg">
-                                <th scope="col">Submission</th>
-                                <th scope="col">Evaluator ID</th>
-                                <th scope="col">Evaluator Name</th>
-                                <th scope="col">Project Feedback</th>
-                                <th scope="col">Evaluation Mark</th>
-                            </tr>
-                        </thead>
-                        <tbody id="result_fyp_2">
-                            <!-- Show datatable here -->
-                            <?php 
-                            displayFyp2Result($_SESSION['stud_id']);
-                            ?>
-                        </tbody>
-                    </table>
-                    </div>
-                    
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
