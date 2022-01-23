@@ -89,7 +89,7 @@ else if (isset($_SESSION['ip_id'])) {
         $ev_result->setEvMarkDetails($ev_mark_array);
 
         $status = submitEvaluationForm($ev_result, $assigned_id, $_POST['inputStudId']);
-        echo "OK";
+        echo $status;
         // if ($status == true) {
         //     header("Location: ../external/view_assigned_fyp.php");
         // } else {
