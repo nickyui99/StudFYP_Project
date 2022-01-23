@@ -2,8 +2,12 @@
 
 require_once $_SERVER["DOCUMENT_ROOT"] . '/html/model/Database.php';
 require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/ClassModel/AssignedEvaluationModel.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/ClassModel/EvaluateFypModel.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/ClassModel/EvaluationRubricModel.php';
 
-class ExternalDataService{
+
+class ExternalDataService
+{
 
     function getAssignedEvaluation($query, $id)
     {
@@ -29,7 +33,7 @@ class ExternalDataService{
         if ($result->num_rows == 0) {
             //Do nothing
         } else {
-            $i = 0; 
+            $i = 0;
             while ($row = $result->fetch_assoc()) {
                 //Retrieve data
                 $assigned_ev = new AssignedEvaluation();
@@ -67,9 +71,85 @@ class ExternalDataService{
             }
         }
 
-         //Close connection
-         $connection->close();
+        //Close connection
+        $connection->close();
 
-         return $assigned_ev_array;
+        return $assigned_ev_array;
+    }
+
+    function getEvaluationDetails($proj_id, $stud_id, $submission)
+    {
+
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "SELECT * FROM fyp_project " .
+            "WHERE fyp_proj_id = '" . $proj_id . "' AND " .
+            "stud_id = '" . $stud_id . "'";
+
+        //Run SQL Query
+        $result = $connection->query($sql_query);
+
+        $evaluateFypModel = new EvaluateFyp();
+        if ($result->num_rows == 0) {
+            //Do nothing
+        } else {
+            $row = $result->fetch_assoc();
+
+            $evaluateFypModel->setFypLevel($row['proj_fyp_stage']);
+            $evaluateFypModel->setProjTitle($row['proj_title']);
+            $evaluateFypModel->setProjMark('');
+            $evaluateFypModel->setProjFeedback('');
+            $evaluateFypModel->setProjQR(base64_encode($row['fyp_qrcode']));
+        }
+
+        //Close connection
+        $connection->close();
+
+        return $evaluateFypModel;
+    }
+
+
+    function getEvaluationRubric($submission, $fyp_level)
+    {
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "SELECT * FROM evaluation_rubric " .
+            "WHERE rubric_submission ='" . $submission . "' AND " .
+            "rubric_fyp = '" . $fyp_level . "' " .
+            "ORDER BY `evaluation_rubric`.`rubric_num` ASC";
+
+        //Run SQL Query
+        $result = $connection->query($sql_query);
+
+        $evaluation_rubric_array = array();
+
+        if ($result->num_rows == 0) {
+            //Do nothing
+        } else {
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $ev_rubric_model = new EvaluationRubric();
+                $ev_rubric_model->setRubricId($row['evaluation_rubric_id']);
+                $ev_rubric_model->setRubricNum($row['rubric_num']);
+                $ev_rubric_model->setRubricTitle($row['rubric_title']);
+                $ev_rubric_model->setRubricDetails($row['rubric_details']);
+                $ev_rubric_model->setRubricMark($row['rubric_mark']);
+                $ev_rubric_model->setRubricWeightage($row['rubric_weightage']);
+
+                //Add to array
+                $evaluation_rubric_array[$i] = $ev_rubric_model;
+                $i++;
+            }
+        }
+        //Close connection
+        $connection->close();
+
+        return $evaluation_rubric_array;
     }
 }

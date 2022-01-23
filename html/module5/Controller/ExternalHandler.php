@@ -32,3 +32,19 @@ function viewAssignedFyp($query, $ip_id)
 
     echo $output;
 }
+
+function getEvaluationDetail($proj_id, $stud_id, $submission)
+{
+
+    $lds = new ExternalDataService();
+    $evaluateFypModel = new EvaluateFyp();
+    $evaluateFypModel = $lds->getEvaluationDetails($proj_id, $stud_id, $submission);
+    return $evaluateFypModel;
+}
+
+function getEvaluationRubric($submission, $fyp_level)
+{
+    $lds = new ExternalDataService();
+    $evaluation_rubric_array = $lds->getEvaluationRubric($submission, $fyp_level);
+    return $evaluation_rubric_array;
+}
