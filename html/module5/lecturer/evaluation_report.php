@@ -261,10 +261,18 @@ session_start();
                         <div id="message_box">
                             <!-- This div is for showing message purpose only -->
                         </div>
-                        <!-- Pie Chart -->
-                        <div id="chart_container">
-                            <canvas id="my_chart"></canvas>
+
+                        <!-- Chart js -->
+                        <div class="card">
+                            <div class="card-header">
+                                Evaluated student
+                            </div>
+                            <div id="card-body">
+                                <canvas id="my_chart"></canvas>
+                            </div>
                         </div>
+
+
                     </div>
                     <div class="row mb-2">
                         <p class="col-sm-1">Actions: </p>
