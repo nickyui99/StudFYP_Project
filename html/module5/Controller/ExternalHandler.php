@@ -48,3 +48,23 @@ function getEvaluationRubric($submission, $fyp_level)
     $evaluation_rubric_array = $lds->getEvaluationRubric($submission, $fyp_level);
     return $evaluation_rubric_array;
 }
+
+function printProjLogbook($proj_id, $submission)
+{
+    $lds = new ExternalDataService();
+    $project_log_array = $lds->getProjectLog($proj_id, $submission);
+    $output = "";
+    if (count($project_log_array) == 0) {
+        $output = "<tr><td>No records</td><td>No records</td></tr>";
+    } else {
+        foreach ($project_log_array as $project_log) {
+            $output = $output .
+                "<tr>" .
+                "<td>" . $project_log->getDate() . "</td>" .
+                "<td>" . $project_log->getActivity() . "</td>" .
+                "</tr>";
+        }
+    }
+
+    echo $output;
+}

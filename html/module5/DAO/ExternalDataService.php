@@ -152,4 +152,41 @@ class ExternalDataService
 
         return $evaluation_rubric_array;
     }
+
+    function getProjectLog($proj_id, $submission)
+    {
+        $db = new Database();
+
+        //Create connection
+        $connection = $db->getConnection();
+
+        $sql_query = "SELECT * FROM project_logbook 
+        WHERE fyp_proj_id ='$proj_id' AND 
+        submission = '$submission'";
+
+        //Run SQL Query
+        $result = $connection->query($sql_query);
+
+        $project_log_array = array();
+
+        if ($result->num_rows == 0) {
+            //Do nothing
+        } else {
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $project_log_model = new ProjectLogbook();
+                $project_log_model->setDate($row['logbook_date']);
+                $project_log_model->setActivity($row['logbook_details']);
+
+                //Add to array
+                $project_log_array[$i] = $project_log_model;
+                $i++;
+            }
+        }
+
+        //Close connection
+        $connection->close();
+
+        return $project_log_array;
+    }
 }
