@@ -95,7 +95,7 @@ if (isset($_POST['Login'])) {
                     $_SESSION['ip_id'] = $ip_id;
                     $_SESSION['username'] = $ip_name;
                     //TODO #1
-                    echo "<script>window.open('industrialpanel_template.php','_self')</script>";
+                    echo "<script>window.open('../external_main.php','_self')</script>";
                 } else {
                     echo '<script type="text/javascript">';
                     echo ' alert("Incorrect Username and Password.\n Please Try again !")';
