@@ -261,7 +261,7 @@ $projectDetails = getProjectDetails($_SESSION['stud_id']);
                         </div>
                     </div>
 
-                    <div class="row justify-content-md-left">
+                    <div class="row justify-content-md-left mb-3">
                         <div class="col-2">
                             <p>Project Title: </p>
                         </div>
@@ -270,7 +270,7 @@ $projectDetails = getProjectDetails($_SESSION['stud_id']);
                         </div>
                     </div>
 
-                    <div class="card row mx-auto">
+                    <div class="card row mx-auto mb-3">
                         <div class="card-header">
                             FYP 1 Result
                         </div>
@@ -297,7 +297,7 @@ $projectDetails = getProjectDetails($_SESSION['stud_id']);
                         </div>
                     </div>
 
-                    <div class="card row mx-auto">
+                    <div class="card row mx-auto mb-3">
                         <div class="card-header">
                             FYP 2 Result
                         </div>
