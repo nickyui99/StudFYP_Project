@@ -491,7 +491,7 @@ session_start();
             };
 
             const config = {
-                type: 'pie',
+                type: 'donut',
                 data: data,
             };
 
