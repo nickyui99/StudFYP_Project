@@ -3,7 +3,9 @@
 
 <!-- This is the main page for lecturer -->
 <?php
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/AnnouncementHandler.php';
 include $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/ExternalHandler.php';
+
 session_start();
 ?>
 
