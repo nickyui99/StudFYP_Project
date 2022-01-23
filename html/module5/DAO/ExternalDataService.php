@@ -208,9 +208,9 @@ class ExternalDataService
             return null;
         } else {
             $row = $result->fetch_assoc();
-            $ip_id = $row['assigned_ip_id'];
+            $assigned_ip_id = $row['assigned_ip_id'];
 
-            return $ip_id;
+            return $assigned_ip_id;
         }
     }
 
