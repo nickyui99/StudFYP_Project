@@ -276,7 +276,7 @@ $projectDetails = getProjectDetails($_SESSION['stud_id']);
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="ev_fyp_1_table" class="table table-bordered table-striped">
+                                <table id="ev_fyp_1_table" class="table table-bordered">
                                     <thead>
                                         <tr class="header-bg">
                                             <th scope="col">Submission</th>
@@ -303,7 +303,7 @@ $projectDetails = getProjectDetails($_SESSION['stud_id']);
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="ev_fyp_2_table" class="table table-bordered table-striped">
+                                <table id="ev_fyp_2_table" class="table table-bordered">
                                     <thead>
                                         <tr class="header-bg">
                                             <th scope="col">Submission</th>
