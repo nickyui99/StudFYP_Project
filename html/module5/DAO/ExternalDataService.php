@@ -217,14 +217,14 @@ class ExternalDataService
         return $assigned_ip_id;
     }
 
-    function insertEvaluationResult($ev_result, $ev_id, $stud_id)
+    function insertIPEvaluationResult($ev_result, $ev_id, $stud_id)
     {
         $db = new Database();
 
         //Create connection
         $connection = $db->getConnection();
 
-        $sql_query = "SELECT * FROM evaluation_result ORDER BY `result_id` DESC";
+        $sql_query = "SELECT * FROM evaluation_result ORDER BY result_id DESC";
 
         //Run SQL Query
         $result = $connection->query($sql_query);

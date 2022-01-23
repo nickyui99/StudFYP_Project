@@ -102,6 +102,6 @@ function submitIpEvaluationForm($ev_result, $assigned_id, $stud_id)
 {
     $eds = new ExternalDataService();
     //Insert evaluation result data
-    $status = $eds->insertEvaluationResult($ev_result, $assigned_id, $stud_id);
+    $status = $eds->insertIPEvaluationResult($ev_result, $assigned_id, $stud_id);
     return $status;
 }

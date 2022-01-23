@@ -73,7 +73,8 @@ else if (isset($_SESSION['ip_id'])) {
             $ev_mark = new EvaluationMarkDetails();
             $ev_mark->setEvaluationRubricId($ev_rubric->getRubricId());
             $ev_mark->setActualMark($_POST['am_' . $ev_rubric->getRubricId()]);
-
+            echo $ev_mark->getEvaluationRubricId();
+            echo $ev_mark->getActualMark();
             $ev_mark_array[$i] = $ev_mark;
             $i++;
         }
