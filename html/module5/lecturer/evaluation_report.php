@@ -263,7 +263,7 @@ session_start();
                     </div>
 
                     <!-- Chart js -->
-                    <div class="card w-25">
+                    <div class="card w-25 mb-3 mx-auto">
                         <div class="card-header">
                             Evaluated student
                         </div>
