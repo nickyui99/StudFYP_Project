@@ -248,6 +248,8 @@ class ExternalDataService
             $new_result_id = "ER" . sprintf("%03d", $new_result_num);
         }
 
+        echo $new_result_id;
+
         $sql_query = "INSERT INTO evaluation_result 
         VALUES ('" . $new_result_id . "', '" . $ev_result->getProjID() . "', 'NULL', '" . $ev_id . "', 
         '" . $ev_result->getSubmission() . "', '" . $ev_result->getProjectFeedback() . "', 
