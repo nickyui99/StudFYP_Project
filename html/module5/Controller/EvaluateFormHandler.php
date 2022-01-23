@@ -81,12 +81,13 @@ else if (isset($_SESSION['ip_id'])) {
 
         echo "OK";
 
-        // $ev_result = new EvaluationResult();
-        // $ev_result->setProjID($_POST['inputProjId']);
-        // $ev_result->setSubmission($_POST['submission']);
-        // $ev_result->setProjectFeedback($_POST['inputProjFeedback']);
-        // $ev_result->setEvaluationDate(date("Y-m-d"));
-        // $ev_result->setEvMarkDetails($ev_mark_array);
+        $ev_result = new EvaluationResult();
+        $ev_result->setProjID($_POST['inputProjId']);
+        $ev_result->setSubmission($_POST['submission']);
+        $ev_result->setProjectFeedback($_POST['inputProjFeedback']);
+        $ev_result->setEvaluationDate(date("Y-m-d"));
+        $ev_result->setEvMarkDetails($ev_mark_array);
+        echo "OK";
 
         // $status = submitEvaluationForm($ev_result, $assigned_id, $_POST['inputStudId']);
         // if ($status == true) {
