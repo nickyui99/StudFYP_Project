@@ -242,7 +242,7 @@ session_start();
                         <li class="breadcrumb-item active">View my evaluator</li>
                     </ol>
 
-                    <div class="card">
+                    <div class="card shadow">
                         <div class="card-body">
                             <div class="row mb-2">
                                 <!-- Evaluation panel counter -->

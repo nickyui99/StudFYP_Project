@@ -297,7 +297,7 @@ $projectDetails = getProjectDetails($_SESSION['stud_id']);
                         </div>
                     </div>
 
-                    <div class="card row mx-auto mb-3">
+                    <div class="card row mx-auto mb-3 shadow">
                         <div class="card-header">
                             FYP 2 Result
                         </div>
