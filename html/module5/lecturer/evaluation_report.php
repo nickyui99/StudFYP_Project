@@ -445,7 +445,7 @@ session_start();
                 for (var i = 0; i < checkedArrays.length; i++) {
                     output = output + "<li>" + checkedArrays[i] + "</li>";
                 }
-                output = output + "</ul>"
+                output = output + "</ul>";
                 document.getElementById("checked_report").innerHTML = output;
                 $('#confirm_delete_modal').modal('show');
             }
@@ -463,15 +463,15 @@ session_start();
                 for (var i = 0; i < checkedArrays.length; i++) {
                     output = output + "<li>" + checkedArrays[i] + "</li>";
                 }
-                output = output + "</ul>"
+                output = output + "</ul>";
                 document.getElementById("checked_list").innerHTML = output;
                 $('#confirm_update_modal').modal('show');
             }
         });
 
         //Retrieve data
-        var fyp1_stud_num = <?php echo 0 ;//echo getEvaluatedFyp1StudentNum($_SESSION['lect_id']); ?>;
-        var fyp2_stud_num = <?php echo 0; //getEvaluatedFyp2StudentNum($_SESSION['lect_id']); ?>;
+        var fyp1_stud_num = <?php echo getEvaluatedFyp1StudentNum($_SESSION['lect_id']); ?>;
+        var fyp2_stud_num = <?php getEvaluatedFyp2StudentNum($_SESSION['lect_id']); ?>;
 
         if (fyp1_stud_num + fyp2_stud_num <= 0) {
             $('#message_box').html('<div class="alert alert-warning" role="alert">No data</div>');
