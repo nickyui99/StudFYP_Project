@@ -286,7 +286,7 @@ session_start();
                             </button>
 
                             <!-- Delete Modal -->
-                            <div class="modal fade " id="confirm_delete_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade " id="confirm_delete_modal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -307,7 +307,7 @@ session_start();
                             </div>
 
                             <!-- Update modal -->
-                            <div class="modal fade " id="confirm_update_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade " id="confirm_update_modal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -327,7 +327,7 @@ session_start();
                                 </div>
                             </div>
 
-                            <div class="modal fade " id="alert_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade " id="alert_modal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -335,7 +335,7 @@ session_start();
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <div id="alert_message" class="alert alert-danger" role="alert">No row selected</div>
+                                            No row selected
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" id="btn_ok_alert" data-bs-dismiss="modal">OK</button>
