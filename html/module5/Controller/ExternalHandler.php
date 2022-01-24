@@ -149,37 +149,6 @@ function printEvaluationReport($query, $lect_id)
     echo $output;
 }
 
-function getEvaluatedFyp1StudentNum($lect_id)
-{
-    $eds = new ExternalDataService();
-    $ev_report_array = $eds->getEvaluationReport("", $lect_id);
-
-    $stud_num = 0;
-    foreach ($ev_report_array as $ev_report) {
-        if ($ev_report->getFypStage() == "PSM1") {
-            $stud_num++;
-        }
-    }
-
-    return $stud_num;
-}
-
-
-function getEvaluatedFyp2StudentNum($lect_id)
-{
-    $eds = new ExternalDataService();
-    $ev_report_array = $eds->getEvaluationReport("", $lect_id);
-
-    $stud_num = 0;
-    foreach ($ev_report_array as $ev_report) {
-        if ($ev_report->getFypStage() == "PSM2") {
-            $stud_num++;
-        }
-    }
-
-    return $stud_num;
-}
-
 function getEvaluationReport($ip_id)
 {
     $eds = new ExternalDataService();
