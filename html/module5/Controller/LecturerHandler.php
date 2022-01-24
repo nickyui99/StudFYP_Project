@@ -200,3 +200,34 @@ function updateEvaluationResult($ev_report_array)
     return $status;
 }
 
+function getEvaluatedFyp1StudentNum($lect_id)
+{
+    $lds = new LecturerDataService();
+    $ev_report_array = $lds->getEvaluationReport("", $lect_id);
+
+    $stud_num = 0;
+    foreach ($ev_report_array as $ev_report) {
+        if ($ev_report->getFypStage() == "PSM1") {
+            $stud_num++;
+        }
+    }
+
+    return $stud_num;
+}
+
+
+function getEvaluatedFyp2StudentNum($lect_id)
+{
+    $lds = new ExternalDataService();
+    $ev_report_array = $lds->getEvaluationReport("", $lect_id);
+
+    $stud_num = 0;
+    foreach ($ev_report_array as $ev_report) {
+        if ($ev_report->getFypStage() == "PSM2") {
+            $stud_num++;
+        }
+    }
+
+    return $stud_num;
+}
+
