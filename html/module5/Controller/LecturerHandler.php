@@ -218,7 +218,7 @@ function getEvaluatedFyp1StudentNum($lect_id)
 
 function getEvaluatedFyp2StudentNum($lect_id)
 {
-    $lds = new ExternalDataService();
+    $lds = new LecturerDataService();
     $ev_report_array = $lds->getEvaluationReport("", $lect_id);
 
     $stud_num = 0;
