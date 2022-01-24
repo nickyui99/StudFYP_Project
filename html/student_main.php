@@ -3,8 +3,11 @@
 
 <!-- This is the main page for student-->
 
-<?php 
-    session_start();
+<?php
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/AnnouncementHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/FypActivityHandler.php';
+session_start();
+
 ?>
 
 <head>
@@ -22,6 +25,13 @@
 
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
+
+    <!-- Full Calendar API -->
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
+
+    <!-- Moment Js API -->
+    <script src='https://momentjs.com/downloads/moment.js'></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/main.css" />
@@ -50,23 +60,11 @@
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
                     </li>
+                    <?php
+                    printNotificationList();
+                    ?>
                     <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 1</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 2</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 2</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item see-more-notification" href="#">See more ...</a>
+                        <a class="dropdown-item see-more-notification" href="/html/student_main.php"> See more ...</a>
                     </li>
                 </ul>
             </li>
@@ -81,7 +79,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="login_controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -94,7 +92,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav mt-3">
                         <!-- Dashboard -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="student_main.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-tachometer" aria-hidden="true"></i>
                             </div>
@@ -102,7 +100,7 @@
                         </a>
 
                         <!-- My Profile -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="#">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-user"></i>
                             </div>
@@ -110,7 +108,7 @@
                         </a>
 
                         <!-- FYP Enrollment -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="/html/module3/enrollement/1FYP_enrollement.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
                             </div>
@@ -129,23 +127,23 @@
                         </a>
                         <div class="collapse" id="collapseFYP" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module3\MyFYP\4viewlogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
                                     View logbook
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module3\MyFYP\2updatelogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Update logbook
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module3\MyFYP\5addlogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Add logbook
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module3\MyFYP\1deletelogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Delete logbook
@@ -209,7 +207,7 @@
                         </div>
 
                         <!-- My report -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="/html/module3/Report/My_report.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-file-o" aria-hidden="true"></i>
                             </div>
@@ -219,8 +217,8 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    <?php 
-                        echo $_SESSION['username'];
+                    <?php
+                    echo $_SESSION['username'];
                     ?>
                 </div>
             </nav>
@@ -230,6 +228,7 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
+
                     <h1 class="mt-4">Dashboard</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">
@@ -237,17 +236,31 @@
                         </li>
                         <li class="breadcrumb-item active">Announcement</li>
                     </ol>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            This page is an example of using the light side
-                            navigation option. By appending the
-                            <code>.sb-sidenav-light</code>
-                            class to the
-                            <code>.sb-sidenav</code>
-                            class, the side navigation will take on a light
-                            color scheme. The
-                            <code>.sb-sidenav-dark</code>
-                            is also available for a darker option.
+
+                    <div class="row" style="height: 60%;">
+                        <!-- Announcement Board -->
+                        <div class="col-sm-5">
+                            <div class="card mb-4">
+                                <div class="card-header">Announcement Board</div>
+                                <div class="card-body">
+
+                                    <ol class="list-group list-group-numbered">
+                                        <?php
+                                        printAnnouncementBoardList();
+                                        ?>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Calendar Event -->
+                        <div class="col-sm-7">
+                            <div class="card mb-4">
+                                <div class="card-header">FYP Calendar</div>
+                                <div class="card-body">
+                                    <div id='calendar'></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -262,5 +275,34 @@
         </div>
     </div>
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var todayDate = moment().startOf("day");
+        var YM = todayDate.format("YYYY-MM");
+        var YESTERDAY = todayDate.clone().subtract(1, "day").format("YYYY-MM-DD");
+        var TODAY = todayDate.format("YYYY-MM-DD");
+        var TOMORROW = todayDate.clone().add(1, "day").format("YYYY-MM-DD");
+
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            initialDate: TODAY,
+            nowIndicator: true,
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            events: [
+                <?php echo getAllActivity(); ?>
+            ],
+            eventColor: '#00b3a4'
+        });
+
+        calendar.render();
+    });
+</script>
 
 </html>

@@ -1,4 +1,5 @@
 <?php
+    /**UPDATED 11/1/2022 */
     //First, connect to the MySQL server.
 
     $link = mysqli_connect("localhost", "root", "");
@@ -72,7 +73,7 @@
     }
 
     //create announcement table
-    $sql = "CREATE TABLE announcement (announcement_id VARCHAR(10), announcement_title VARCHAR(20), announcement_description VARCHAR(50), PRIMARY KEY(announcement_id))";
+    $sql = "CREATE TABLE announcement (announcement_id INT NOT NULL AUTO_INCREMENT , announcement_title VARCHAR(100), announcement_description VARCHAR(300), PRIMARY KEY(announcement_id))";
 
     if (mysqli_query($link, $sql)) {
         echo "Table announcement created successfully <br>";
@@ -108,7 +109,7 @@
     }
 
     //create assigned_lecturer_evaluator table
-    $sql = "CREATE TABLE assigned_lecturer_evaluator ( assigned_lect_id VARCHAR(10), lect_id VARCHAR(10), stud_id VARCHAR(10), evaluator_name VARCHAR(50), PRIMARY KEY(assigned_lect_id), FOREIGN KEY(lect_id) REFERENCES lecturer(lect_id), FOREIGN KEY(stud_id) REFERENCES student(stud_id))";
+    $sql = "CREATE TABLE assigned_lecturer_evaluator ( assigned_lect_id VARCHAR(10), lect_id VARCHAR(10), stud_id VARCHAR(10), PRIMARY KEY(assigned_lect_id), FOREIGN KEY(lect_id) REFERENCES lecturer(lect_id), FOREIGN KEY(stud_id) REFERENCES student(stud_id))";
 
     if (mysqli_query($link, $sql)) {
         echo "Table assigned_industrial_evaluator created successfully <br>";
@@ -117,7 +118,7 @@
     }
 
     //create assigned_industrial_evaluator table
-    $sql = "CREATE TABLE assigned_industrial_evaluator (assigned_ip_id VARCHAR(10), ip_id VARCHAR(10), stud_id VARCHAR(10), evaluator_name VARCHAR(50), PRIMARY KEY(assigned_ip_id), FOREIGN KEY(ip_id) REFERENCES industrial_panel(ip_id), FOREIGN KEY(stud_id) REFERENCES student(stud_id))";
+    $sql = "CREATE TABLE assigned_industrial_evaluator (assigned_ip_id VARCHAR(10), ip_id VARCHAR(10), stud_id VARCHAR(10), PRIMARY KEY(assigned_ip_id), FOREIGN KEY(ip_id) REFERENCES industrial_panel(ip_id), FOREIGN KEY(stud_id) REFERENCES student(stud_id))";
 
     if (mysqli_query($link, $sql)) {
         echo "Table assigned_industrial_evaluator created successfully <br>";
@@ -126,7 +127,7 @@
     }
 
     //create evaluation_result table
-    $sql = "CREATE TABLE evaluation_result (result_id VARCHAR(10), fyp_proj_id VARCHAR(10), assigned_lect_id VARCHAR(10), assigned_ip_id VARCHAR(10), project_title VARCHAR(50), submission_level INT(3), evaluation_feedback VARCHAR(300), evaluation_mark FLOAT, PRIMARY KEY (result_id), FOREIGN KEY (fyp_proj_id) REFERENCES fyp_project(fyp_proj_id))";
+    $sql = "CREATE TABLE evaluation_result (result_id VARCHAR(10), fyp_proj_id VARCHAR(10), assigned_lect_id VARCHAR(10), assigned_ip_id VARCHAR(10), submission_level INT(3), evaluation_feedback VARCHAR(300), evaluation_date DATE, PRIMARY KEY (result_id), FOREIGN KEY (fyp_proj_id) REFERENCES fyp_project(fyp_proj_id))";
 
     if (mysqli_query($link, $sql)) {
         echo "Table evaluation_result created successfully <br>";
@@ -139,6 +140,15 @@
 
     if (mysqli_query($link, $sql)) {
         echo "Table project_logbook created successfully <br>";
+    } else {
+        echo 'Error creating table: ' . mysqli_error($link) . "<br>";
+    }
+
+    //create ev_mark_details table
+    $sql = "CREATE TABLE ev_mark_details (ev_mark_id INT NOT NULL AUTO_INCREMENT, result_id VARCHAR(10), evaluation_rubric_id VARCHAR(10), actual_mark FLOAT, PRIMARY KEY(ev_mark_id), FOREIGN KEY(result_id) REFERENCES evaluation_result(result_id), FOREIGN KEY(evaluation_rubric_id) REFERENCES evaluation_rubric(evaluation_rubric_id))";
+
+    if (mysqli_query($link, $sql)) {
+        echo "Table ev_mark_details created successfully <br>";
     } else {
         echo 'Error creating table: ' . mysqli_error($link) . "<br>";
     }

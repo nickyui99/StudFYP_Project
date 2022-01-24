@@ -29,7 +29,7 @@ session_start();
 
     <!-- JS -->
     <script src="../../../js/module_5.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -84,7 +84,7 @@ session_start();
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="../../login_controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="../../controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>

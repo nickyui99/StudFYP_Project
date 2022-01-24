@@ -4,7 +4,7 @@
 <!-- This html template is only for StudFYP lecturer only -->
 
 <?php
-include '../Controller/LecturerHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/LecturerHandler.php';
 session_start();
 ?>
 
@@ -30,7 +30,7 @@ session_start();
 
     <!-- JS -->
     <script src="../../../js/module_5.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 
@@ -86,7 +86,7 @@ session_start();
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="../../login_controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="../../controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -212,12 +212,12 @@ session_start();
                         </a>
                         <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link text-light active" href="#">
+                                <a class="nav-link text-light active" href="view_assigned_fyp.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                                     </div>View assigned FYP
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="evaluation_report.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Evaluation report
@@ -236,8 +236,8 @@ session_start();
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    <?php 
-                        echo $_SESSION['username'];
+                    <?php
+                    echo $_SESSION['username'];
                     ?>
                 </div>
             </nav>
@@ -254,6 +254,7 @@ session_start();
                         </li>
                         <li class="breadcrumb-item active">Assigned FYP for Evaluation</li>
                     </ol>
+
                     <div class="row mb-2">
                         <!-- Evaluation panel counter -->
                         <p id="row_counter" class="col-sm-9 my-auto text-secondary">Total 0 Assigned Evaluation</p>
@@ -284,6 +285,11 @@ session_start();
                             </tbody>
                         </table>
                     </div>
+
+                    <div id="message_box">
+                        <!-- This div is for showing message purpose only -->
+                    </div>
+                    
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
@@ -300,16 +306,17 @@ session_start();
 <script>
     $(document).ready(function() {
         var lect_id = "<?php echo $_SESSION['lect_id']; ?>";
-        load_assigned_evaluator("", lect_id);
+        load_lect_assigned_evaluator("", lect_id);
 
         $('#search').keyup(function() {
             var search = $(this).val();
             if (search != '') {
-                load_assigned_evaluator(search, lect_id);
+                load_lect_assigned_evaluator(search, lect_id);
             } else {
-                load_assigned_evaluator("", lect_id);
+                load_lect_assigned_evaluator("", lect_id);
             }
         });
     });
 </script>
+
 </html>

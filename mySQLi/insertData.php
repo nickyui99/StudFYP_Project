@@ -1,4 +1,6 @@
 <?php
+
+/**UPDATED 11/1/2022 */
 // to make a connection with database
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
 
@@ -8,7 +10,7 @@ mysqli_select_db($link, "studfyp_db") or die(mysqli_error($link));
 // Insert data into administrator table
 $query = "INSERT INTO administrator values('A001', 'Ali', '1234'),
                 ('A002', 'Fatimah', '5678')"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -125,7 +127,7 @@ $query = "INSERT INTO student VALUES
                 ('CD18036','Wong Zelin','cd18036','Jalan Biru, Taman Klang, Kelantan','wongzelin.tiger@gmail.com','0187831314','FK','-',''),
                 ('CD18042','Nur Anis Binti Che Aziz','cd18042','Jalan Pangkal, Taman Port, Selangor','nuranischeaziz99@gmail.com','0146058998','FK','-',''),
                 ('CD18043','Dg Nur Sakinah Binti Armain','cd18043','Jalan Kundasang, Taman Genting, KL','dnsakinah00@gmail.com','0172050105','FK','-','')"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -139,7 +141,7 @@ $query = "insert into fyp_stud values
                 ('FS001', 'CA18016', 'Tan Chia Hui', 'PSM1', '2', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CA18016_Proposal.docx')),
                 ('FS002', 'CB19124', 'Aiman Basheer Abdulwareth Mohammed', 'PSM2', '1', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CB19124_Proposal.docx')),
                 ('FS003', 'CB19080', 'Nicholas Ooi Zhee Chen', 'PSM1', '1', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CB19124_Proposal.docx'))"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -153,7 +155,7 @@ if ($result) {
 $query = "insert into fyp_project values('FP001', 'CA18016', 'Advanced Mobile Store', 'PSM1', '2', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CA18016_Submission1.pdf'), LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CA18016_Submission2.pdf'), NULL, LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_FP001.png')),
                 ('FP002', 'CB19124', 'Attendance system', 'PSM1', '1', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CB19124_Submission1.pdf'), NULL, NULL, LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_FP002.png')),
                 ('FP003', 'CB19080', 'Food Ordering system', 'PSM1', '1', LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/CB19124_Submission1.pdf'), NULL, NULL, LOAD_FILE('/xampp/htdocs/StudFYP_Project/mySQLi/Resources/QR_FP002.png'))"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -221,7 +223,7 @@ $query = "insert into fyp_coordinator values('S001', 'Dr. Azlina Binti Zainuddin
                 ('S002', 'Dr Mohammad Amirulkhairi Bin Zubir', 'FK', 'PSM 2', 'Civil Engineering'),
                 ('S012', 'Dr. Ali Abdulrahman Nasser', 'FTEK', 'PSM 1', 'Mechanical Engineering'),
                 ('S191', 'Dr. Mohammed ben Salem Mustafa', 'FKM', 'PSM 1,2', 'Design integrated systems')"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -235,7 +237,7 @@ if ($result) {
 $query = "insert into fyp_supervisor values('SU001', 'S002', 'FS001', 'Dr. Mohammad Amirulkhairi Bin Zubir', 'amirulkhairi@ump.edu.my', '0145555777', 'A 6 Jln Sagu 1 Taman Daya, 81100 Johor'),
                 ('SU002', 'S003', 'FS002', 'Dr. Fatihah Ayu Bin Amin', 'fatihah@ump.edu.my', '0454556772', 'Jalan Geliga Sakti,Taman Permai,Terengganu'),
                 ('SU003', 'S003', 'FS003', 'Dr. Fatihah Ayu Bin Amin', 'fatihah@ump.edu.my', '0454556772', 'Jalan Geliga Sakti,Taman Permai,Terengganu')"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -287,7 +289,7 @@ $query = "INSERT into industrial_panel values
 				('IP038','Mr. Goh Chin Teong','048637341','Chin_Teong_Goh@DELL.com','DELL Global Business Center Sdn Bhd','ip038')
 
 				"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -298,10 +300,10 @@ if ($result) {
 }
 
 // Insert data into assigned_lecturer_evaluator table
-$query = "insert into assigned_lecturer_evaluator values('EL001', 'S001', 'CB19124', 'Dr. Azlina Binti Zainuddin'),
-                ('EL002', 'S003', 'CA18016', 'Dr Mohammad Amirulkhairi Bin Zubir'),
-                ('EL003', 'S003', 'CB19080', 'Dr. Fatihah Ayu Bin Amin')"
-or die(mysqli_connect_error());
+$query = "insert into assigned_lecturer_evaluator values('EL001', 'S001', 'CB19124'),
+                ('EL002', 'S003', 'CA18016'),
+                ('EL003', 'S003', 'CB19080')"
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -312,9 +314,9 @@ if ($result) {
 }
 
 // Insert data into assigned_industrial_evaluator table
-$query = "insert into assigned_industrial_evaluator values('EI001', 'IP001', 'CB19124', 'Mr Ooi Kai Cheng'),
-                ('EI002', 'IP002', 'CA18016', 'Mr. Ali bin Washeed')"
-or die(mysqli_connect_error());
+$query = "insert into assigned_industrial_evaluator values('EI001', 'IP001', 'CB19124'),
+                ('EI002', 'IP002', 'CA18016')"
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -325,9 +327,9 @@ if ($result) {
 }
 
 // Insert data into evaluation_result table
-$query = "insert into evaluation_result values('ER001', 'FP001', 'EL001', NULL, 'Advanced Mobile System', '1', 'Good', '24'),
-                ('ER002', 'FP002', NULL,'EI002', 'Mr. Ali bin Washeed', '1', 'Please check your project plan','23')"
-or die(mysqli_connect_error());
+$query = "insert into evaluation_result values('ER001', 'FP002', 'EL001', NULL, '1', 'Good', '2021-12-2'),
+                ('ER002', 'FP002', NULL,'EI002', '1', 'Please check your project plan', '2022-1-3')"
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -339,97 +341,74 @@ if ($result) {
 
 // Insert data into evaluation_rubric table
 $query = "INSERT INTO evaluation_rubric VALUES
-                ('RU001', 'CLO1', 'INTRODUCTION', 'explanation should consist of domain background, importance of the subject and current issues according to proposed topic', '5.00', '3.00', '1', 'PSM1'),
-                ('RU002', 'CLO1', 'PROBLEM STATEMENT', 'explanation of problem should be related to the domain/ knowledge or solution gap', '5.00', '3.00', '1', 'PSM1'),
-                ('RU003', 'CLO1', 'OBJECTIVE', 'MUST be 3 Objectives (reflecting SMART concept)', '5.00', '3.00', '1', 'PSM1'),
-                ('RU004', 'CLO1', 'SCOPE', 'Must be related to the project', '5.00', '2.00', '1', 'PSM1'),
-                ('RU005', 'CLO1', 'LITERATURE REVIEW (WORK RELEVANCY)', 'Minimum 3 related work relevant to the project must be compared. Comparison on existing systems / proposed techniques must be relevant.', '5.00', '3.00', '1', 'PSM1'),
-                ('RU006', 'CLO1', 'LITERATURE REVIEW (WORK DESCRIPTION)', 'Description should be clear for THREE system/method/ techniques/ algorithm.', '5.00', '3.00', '1', 'PSM1'),
-                ('RU007', 'CLO1', 'LITERATURE REVIEW (WORK ANALYSIS)', 'Analysis of comparison on previous system/method. Should highlight on features/strength/ weakness/ advantage/ disadvantage', '5.00', '4.00', '1', 'PSM1'),
-                ('RU008', 'CLO1', 'PROJECT MANAGEMENT FRAMEWORK', 'Should describe on applied / used project management framework in the project. Project Based: SDLC (Agile,RAD etc). Research Based: Research Framework/Model', '5.00', '3.00', '1', 'PSM1'),
-                ('RU009', 'CLO1', 'PROJECT REQUIREMENT', 'Should describe the requirement related to the project. Project Based: Functional and Non-Functional Requirement, Constraints and limitations. Research Based: Input, Output, Process description, Constraints and limitations, Case Study', '5.00', '4.00', '1', 'PSM1'),
-                ('RU010', 'CLO1', 'REFERENCE', 'Minimum 5 references related to the project must be stated. Facts are properly cited with correct reference in the proposal content. Must follow the proposal format', '5.00', '2.00', '1', 'PSM1'),
+                ('RU001', 'CLO1', 'INTRODUCTION', 'explanation should consist of domain background, importance of the subject and current issues according to proposed topic', '5.00', '0.4', '1', 'PSM1'),
+                ('RU002', 'CLO1', 'PROBLEM STATEMENT', 'explanation of problem should be related to the domain/ knowledge or solution gap', '5.00', '0.6', '1', 'PSM1'),
+                ('RU003', 'CLO1', 'OBJECTIVE', 'MUST be 3 Objectives (reflecting SMART concept)', '5.00', '0.8', '1', 'PSM1'),
+                ('RU004', 'CLO1', 'SCOPE', 'Must be related to the project', '5.00', '0.4', '1', 'PSM1'),
+                ('RU005', 'CLO1', 'Description and comparison of systems', 'Minimum 3 related work relevant to the project must be compared. Comparison on existing systems / proposed techniques must be relevant.', '5.00', '0.8', '1', 'PSM1'),
+                ('RU006', 'CLO1', 'Relevance of comparison on existing system', 'Description should be clear for THREE system/method/ techniques/ algorithm.', '5.00', '1.00', '1', 'PSM1'),
 
-                ('RU011', 'CLO1', 'INTRODUCTION', 'Explanation should consist of domain background, importance of the subject and current issues according to proposed topic', '5.00', '1.00', '2', 'PSM1'),
-                ('RU012', 'CLO1', 'PROBLEM STATEMENT', 'Explanation of problem should be related to the domain / knowledge or solution gap ', '5.00', '1.00', '2', 'PSM1'),
-                ('RU013', 'CLO1', 'OBJECTIVE', 'MUST be 3 Objectives (reflecting SMART concept)', '5.00', '1.00', '2', 'PSM1'),
-                ('RU014', 'CLO1', 'SCOPE', 'Must be related to the project', '5.00', '1.00', '2', 'PSM1'),
-                ('RU015', 'CLO1', 'LITERATURE REVIEW (WORK RELEVANCY)', 'Minimum 3 related work relevant to the project must be compared. Comparison on existing systems / proposed techniques must be relevant.', '5.00', '1.00', '2', 'PSM1'),
-                ('RU016', 'CLO1', 'LITERATURE REVIEW (WORK ANALYSIS) ', 'Analysis of comparison on previous system/method. Should highlight on features/strength/ weakness/ advantage/ disadvantage', '5.00', '1.00', '2', 'PSM1'),
-                ('RU017', 'CLO1', 'PROJECT MANAGEMENT FRAMEWORK', 'Should describe on applied / used project management framework in the project. Project Based: SDLC (Agile,RAD etc). Research Based: Research Framework', '5.00', '1.00', '2', 'PSM1'),
-                ('RU018', 'CLO1', 'PROJECT REQUIREMENT', 'Should describe the requirement related to the project. Project Based: Functional and Non-Functional Requirement, Constraints and limitations. Research Based: Input, Output, Process description, Constraints and limitations, Case Study', '5.00', '1.00', '2', 'PSM1'),
-                ('RU019', 'CLO2', 'PROPOSED DESIGN', 'Should describe the proposed design related to project requirement. Project Based: Context Diagram, Use Case Diagram & description, Activity diagram. Research Based: Pseudocode/Algorithm/Flowchart/Model', '5.00', '3.00', '2', 'PSM1'),
-                ('RU020', 'CLO2', 'DATA DESIGN', 'Should describe the data related to the project. Project Based: ERD, Database Dictionary (PK, FK). Research Based: Dataset description', '5.00', '2.00', '2', 'PSM1'),
-                ('RU021', 'CLO2', 'PROOF OF INITIAL CONCEPT', 'Demonstrate evidence of early work. Project Based: Design Prototype. Research Based: Evidence of Early Work', '5.00', '2.00', '2', 'PSM1'),
-                ('RU022', 'CLO2', 'PROOF OF INITIAL CONCEPT/PROTOTYPE', 'Functionality: the set of features/criteria/parameter/ must deliver clear value to the user', '5.00', '2.00', '2', 'PSM1'),
-                ('RU023', 'CLO2', 'PROOF OF INITIAL CONCEPT/PROTOTYPE: Design', 'PROJECT- the design of the prototype should be up to the standard. RESEARCH: Comparative analysis', '5.00', '2.00', '2', 'PSM1'),
-                ('RU024', 'CLO2', 'PROOF OF INITIAL CONCEPT/PROTOTYPE: Usability', 'PROJECT: Should be easy to use and understand natural interaction style. RESEARCH: Workable function/algorithm/model/setup/configuration', '5.00', '2.00', '2', 'PSM1'),
-                ('RU025', 'CLO2', 'TESTING PLAN/VALIDATION PLAN', 'Should describe the testing strategy/approach. Cover the simple set of input, processess and output and comparison of result', '5.00', '2.00', '2', 'PSM1'),
-                ('RU026', 'CLO1', 'POTENTIAL USE OF PROPOSED SOLUTION', 'Explanation of potential use of proposed solution in real time situation', '5.00', '1.00', '2', 'PSM1'),
-                ('RU027', 'CLO1', 'REFERENCE', 'Minimum 10 references related to the project must be stated. Facts are properly cited with correct reference in the proposal content. Must follow the proposal format', '5.00', '1.00', '2', 'PSM1'),
-                ('RU028', 'CLO4', 'ACADEMIC INTERGRITY', 'Ability to sustain academic integrity (no plagiarism) below 25%', '5.00', '1.00', '2', 'PSM1'),
-                ('RU029', 'CLO4', 'QUALITY OF SUPERVISOR and STUDENT PROGRESS', 'Consistently record all meeting in Logbook. Punctual for all commitments. Prepares by reading and completing project task as necessary. Minimal 7 times update the progress/meeting between supervisor and student. Meeting can be done through F2F or any technological platform (Whatsapp, facebook, Zoom etc.)', '5.00', '2.00', '2', 'PSM1'),
-                ('RU030', 'CLO4', 'ATTITUDE', 'Treats supervisors with respect, courtesy, and tact. Shows enthusiasm and optimism.', '5.00', '2.00', '2', 'PSM1'),
+                ('RU007', 'CLO1', 'INTRODUCTION', 'Explanation should consist of domain background, importance of the subject and current issues according to proposed topic', '5.00', '0.4', '2', 'PSM1'),
+                ('RU008', 'CLO1', 'PROBLEM STATEMENT', 'Explanation of problem should be related to the domain / knowledge or solution gap ', '5.00', '0.6', '2', 'PSM1'),
+                ('RU009', 'CLO1', 'OBJECTIVE', 'MUST be 3 Objectives (reflecting SMART concept)', '5.00', '0.8', '2', 'PSM1'),
+                ('RU010', 'CLO1', 'SCOPE', 'Must be related to the project', '5.00', '0.4', '2', 'PSM1'),
+                ('RU011', 'CLO1', 'Description and comparison of systems', 'Minimum 3 related work relevant to the project must be compared. Comparison on existing systems / proposed techniques must be relevant.', '5.00', '0.8', '2', 'PSM1'),
+                ('RU012', 'CLO1', 'Relevance of comparison on existing systems', 'Analysis of comparison on previous system/method. Should highlight on features/strength/ weakness/ advantage/ disadvantage', '5.00', '1.00', '2', 'PSM1'),
+                ('RU013', 'CLO1', 'User Requirement and design principle (context diagram, use case diagram)', 'Should describe on applied / used project management framework in the project. Project Based: SDLC (Agile,RAD etc). Research Based: Research Framework', '5.00', '1.00', '2', 'PSM1'),
+                ('RU014', 'CLO1', 'Methodology', 'Should describe the requirement related to the project. Project Based: Functional and Non-Functional Requirement, Constraints and limitations. Research Based: Input, Output, Process description, Constraints and limitations, Case Study', '5.00', '0.8', '2', 'PSM1'),
+                ('RU015', 'CLO2', 'Gantt Chart', 'Should describe the proposed design related to project requirement. Project Based: Context Diagram, Use Case Diagram & description, Activity diagram. Research Based: Pseudocode/Algorithm/Flowchart/Model', '5.00', '0.4', '2', 'PSM1'),
+                ('RU016', 'CLO2', 'Proposed Design (System design/ERD/Class diagram/DFD/Storyboard/UI', 'Should describe the data related to the project. Project Based: ERD, Database Dictionary (PK, FK). Research Based: Dataset description', '5.00', '0.8', '2', 'PSM1'),
+                ('RU017', 'CLO3', 'Presentation (Response to questions, confidence, knowledge)', 'Demonstrate evidence of early work. Project Based: Design Prototype. Research Based: Evidence of Early Work', '5.00', '1.00', '2', 'PSM1'),
 
-                ('RU031', 'CLO1', 'INTRODUCTION', 'Explanation should consist of domain background, importance of the subject and current issues according to proposed topic', '5.00', '2.00', '3', 'PSM1'),
-                ('RU032', 'CLO1', 'PROBLEM STATEMENT', 'Explanation of problem should be related to the domain / knowledge or solution gap', '5.00', '2.00', '3', 'PSM1'),
-                ('RU033', 'CLO1', 'OBJECTIVE', 'MUST be 3 Objectives (reflecting SMART concept)', '5.00', '2.00', '3', 'PSM1'),
-                ('RU034', 'CLO1', 'SCOPE', 'Must be related to the project', '5.00', '2.00', '3', 'PSM1'),
-                ('RU035', 'CLO1', 'LITERATURE REVIEW (WORK RELEVANCY)', 'Minimum 3 related work relevant to the project must be compared. Comparison on existing systems / proposed techniques must be relevant.', '5.00', '2.00', '3', 'PSM1'),
-                ('RU036', 'CLO1', 'LITERATURE REVIEW (WORK ANALYSIS)', 'Analysis of comparison on previous system/method. Should highlight on features/strength/ weakness/ advantage/ disadvantage', '5.00', '3.00', '3', 'PSM1'),
-                ('RU037', 'CLO1', 'PROJECT MANAGEMENT FRAMEWORK/MODEL', 'Should describe on applied / used project management framework in the project. Project Based: SDLC (Agile,RAD etc). Research Based: Research Framework/Model', '5.00', '2.00', '3', 'PSM1'),
-                ('RU038', 'CLO1', 'PROJECT REQUIREMENT', 'Should describe the requirement related to the project. Project Based: Functional and Non-Functional Requirement, Constraints and limitations. Research Based: Input, Output, Process description, Constraints and limitations, Case Study', '5.00', '3.00', '3', 'PSM1'),
-                ('RU039', 'CLO2', 'PROPOSED DESIGN', 'Should describe the proposed design related to project requirement. Project Based: Context Diagram, Use Case Diagram & description, Activity diagram. Research Based: Pseudocode/Algorithm/Flowchart/Model', '5.00', '3.00', '3', 'PSM1'),
-                ('RU040', 'CLO2', 'DATA DESIGN', 'Should describe the data related to the project. Project Based: ERD, Database Design (PK, FK) / Data Model. Research Based: Dataset description', '5.00', '2.00', '3', 'PSM1'),
-                ('RU041', 'CLO2', 'PROOF OF CONCEPT/PROTOTYPE', 'Demonstrate evidence of early work. Project Based: Design Prototype. Research Based: Evidence of Early Work', '5.00', '2.00', '3', 'PSM1'),
-                ('RU042', 'CLO2', 'PROOF OF INITIAL CONCEPT/PROTOTYPE', 'Functionality: the set of features/criteria/parameter/ must deliver clear value to the user.', '5.00', '2.00', '3', 'PSM1'),
-                ('RU043', 'CLO2', 'PROOF OF INITIAL CONCEPT/PROTOTYPE: Design', 'PROJECT- the design of the prototype should be up to the standard. RESEARCH- Comparative analysis', '5.00', '2.00', '3', 'PSM1'),
-                ('RU044', 'CLO2', 'PROOF OF INITIAL CONCEPT/PROTOTYPE: Usability', 'PROJECT: Should be easy to use and understand natural interaction style. RESEARCH: Workable function/algorithm/model/setup/configuration', '5.00', '2.00', '3', 'PSM1'),
-                ('RU045', 'CLO2', 'TESTING PLAN/VALIDATION PLAN', 'Should describe the testing strategy/approach cover the simple set of input, processess and output and comparison of result', '5.00', '2.00', '3', 'PSM1'),
-                ('RU046', 'CLO1', 'POTENTIAL USE OF PROPOSED SOLUTION', 'Explanation of potential use of proposed solution in real time situation', '5.00', '1.00', '3', 'PSM1'),
-                ('RU047', 'CLO1', 'REFERENCE ', 'Minimum 10 references related to the project must be stated. Must follow the proposal format', '5.00', '1.00', '3', 'PSM1'),
-                ('RU048', 'CLO3', 'POTENTIAL USE OF PROPOSED SOLUTION', 'Explanation of potential use of proposed solution in real time situation', '5.00', '1.00', '3', 'PSM1'),
-                ('RU049', 'CLO3', 'ORAL COMMUNICATION', 'The ability to deliver ideas clearly and effectively through verbal.', '5.00', '1.00', '3', 'PSM1'),
-                ('RU050', 'CLO3', 'WRITTEN COMMUNICATION', 'The ability to write an academic discourse (project proposal) which has a coherent flow that is clear and easy to comprehend', '5.00', '1.00', '3', 'PSM1'),
-                ('RU051', 'CLO3', 'RESPONDING TO QUESTION', 'The ability to respond to questions using appropriate language.', '5.00', '2.00', '3', 'PSM1'),
-                ('RU052', 'CLO3', 'EXPRESSION', 'The ability to express nonverbal cues such as facial expressions, eye contact or tone of voice.', '5.00', '1.00', '3', 'PSM1'),
+                ('RU018', 'CLO1', 'Introduction/ Overview', '-', '5.00', '0.4', '3', 'PSM1'),
+                ('RU019', 'CLO1', 'Problem Statement', '-', '5.00', '0.6', '3', 'PSM1'),
+                ('RU020', 'CLO1', 'Objectives', '-', '5.00', '0.8', '3', 'PSM1'),
+                ('RU021', 'CLO1', 'Scope', '-', '5.00', '0.4', '3', 'PSM1'),
+                ('RU022', 'CLO2', 'Description and comparison of systems', '-', '5.00', '0.8', '3', 'PSM1'),
+                ('RU023', 'CLO2', 'Relevance of comparison on existing system', '-', '5.00', '1.00', '3', 'PSM1'),
+                ('RU024', 'CLO2', 'Development Methodology', '-', '5.00', '0.8', '3', 'PSM1'),
+                ('RU025', 'CLO2', 'Gantt Chart', '-', '5.00', '0.4', '3', 'PSM1'),
+                ('RU026', 'CLO2', 'User Requirement and design principle (context diagram, use case diagram)', '-', '5.00', '1.00', '3', 'PSM1'),
+                ('RU027', 'CLO2', 'Proposed Design (System design/ERD/Class diagram/DFD/Storyboard/UI)', '-', '5.00', '0.8', '3', 'PSM1'),
+                ('RU028', 'CLO4', 'Formatting Document', '-', '5.00', '0.4', '3', 'PSM1'),
+                ('RU029', 'CLO4', 'Presentation (Response to questions, confidence, knowledge)', '-', '5.00', '0.6', '3', 'PSM1'),
 
-                ('RU053', 'CO1', 'Ability to maintain project from previous proposal / Follow comment from evaluators', '-', '5.00', '0.4', '1', 'PSM2'),
-                ('RU054', 'CO1', 'Ability to implement the proposed solution to achieve the related objectives (development)', '-', '5.00', '1.2', '1', 'PSM2'),
-                ('RU055', 'CO1', 'Ability to identify the strength/weakness / challenges during the development process', '-', '5.00', '0.4', '1', 'PSM2'),
-                ('RU056', 'CO1', 'Ability to implement the propose solution to achieve the related objectives (development) follow the standard practices (e.g: conformance to specification', '-', '5.00', '1', '1', 'PSM2'),
-                ('RU057', 'CO1', 'Ability to explain inner working of the system (e.g:architecture/database design/implementation', '-', '5.00', '1 ', '1', 'PSM2'),
+                ('RU030', 'CO1', 'Ability to maintain project from previous proposal / Follow comment from evaluators', '-', '5.00', '0.4', '1', 'PSM2'),
+                ('RU031', 'CO1', 'Ability to implement the proposed solution to achieve the related objectives (development)', '-', '5.00', '1.2', '1', 'PSM2'),
+                ('RU032', 'CO1', 'Ability to identify the strength/weakness / challenges during the development process', '-', '5.00', '0.4', '1', 'PSM2'),
+                ('RU033', 'CO1', 'Ability to implement the propose solution to achieve the related objectives (development) follow the standard practices (e.g: conformance to specification', '-', '5.00', '1', '1', 'PSM2'),
+                ('RU034', 'CO1', 'Ability to explain inner working of the system (e.g:architecture/database design/implementation', '-', '5.00', '1 ', '1', 'PSM2'),
 
-                ('RU058', 'CO1', 'The solution works without any logic error', '-', '5.00', '0.8', '2', 'PSM2'),
-                ('RU059', 'CO1', 'System works without any physical/coding error (e.g: crash, device error)', '-', '5.00', '0.8', '2', 'PSM2'),
-                ('RU060', 'CO2', 'System Interface (consistency, suitability, usability, efficiency)', '-', '5.00', '0.6', '2', 'PSM2'),
-                ('RU061', 'CO3', 'System Functionality (based on user requirement)', '-', '5.00', '0.8', '2', 'PSM2'),
-                ('RU062', 'CO3', 'System Accuracy', '-', '5.00', '0.6', '2', 'PSM2'),
-                ('RU063', 'CO3', 'Error handling (input validation)', '-', '5.00', '0.6', '2', 'PSM2'),
-                ('RU064', 'CO4', 'Ability to identify the strength, weakness and challenges during the development of the product/prototype (through oral explanation)', '-', '5.00', '0.4', '2', 'PSM2'),
-                ('RU065', 'CO4', 'Ability to explain the implemented propose solution to achieve the related objectives (through oral explanation)', '', '5.00', '0.4', '2', 'PSM2'),
-                ('RU066', 'CO1', 'User manual', '(Student need to bring user manual)', '5.00', '1.0', '2', 'PSM2'),
-                ('RU067', 'CO2', 'User Acceptance Test (Student need to bring UAT document)', '-', '5.00', '1.0', '2', 'PSM2'),
-                ('RU068', 'CO3', 'Presentation (Response to questions, confidence, knowledge)', '-', '5.00', '0.4', '2', 'PSM2'),
-                ('RU069', 'CO3', 'Poster', '-', '5.00', '0.6', '2', 'PSM2'),
+                ('RU035', 'CO1', 'The solution works without any logic error', '-', '5.00', '0.8', '2', 'PSM2'),
+                ('RU036', 'CO1', 'System works without any physical/coding error (e.g: crash, device error)', '-', '5.00', '0.8', '2', 'PSM2'),
+                ('RU037', 'CO2', 'System Interface (consistency, suitability, usability, efficiency)', '-', '5.00', '0.6', '2', 'PSM2'),
+                ('RU038', 'CO3', 'System Functionality (based on user requirement)', '-', '5.00', '0.8', '2', 'PSM2'),
+                ('RU039', 'CO3', 'System Accuracy', '-', '5.00', '0.6', '2', 'PSM2'),
+                ('RU040', 'CO3', 'Error handling (input validation)', '-', '5.00', '0.6', '2', 'PSM2'),
+                ('RU041', 'CO4', 'Ability to identify the strength, weakness and challenges during the development of the product/prototype (through oral explanation)', '-', '5.00', '0.4', '2', 'PSM2'),
+                ('RU042', 'CO4', 'Ability to explain the implemented propose solution to achieve the related objectives (through oral explanation)', '', '5.00', '0.4', '2', 'PSM2'),
+                ('RU043', 'CO1', 'User manual', '(Student need to bring user manual)', '5.00', '1.0', '2', 'PSM2'),
+                ('RU044', 'CO2', 'User Acceptance Test (Student need to bring UAT document)', '-', '5.00', '1.0', '2', 'PSM2'),
+                ('RU045', 'CO3', 'Presentation (Response to questions, confidence, knowledge)', '-', '5.00', '0.4', '2', 'PSM2'),
+                ('RU046', 'CO3', 'Poster', '-', '5.00', '0.6', '2', 'PSM2'),
 
-                ('RU070', 'CO1', 'User Requirement and design principle (context diagram, use case diagram)', '-', '5.00', '0.5', '3', 'PSM2'),
-                ('RU071', 'CO1', 'Design (System design/ERD/Class diagram/DFD/Storyboard/UI) ', '-', '5.00', '0.5', '3', 'PSM2'),
-                ('RU072', 'CO1', 'System Implementation (tools, configuration, coding/script) - Chapter 4', '-', '5.00', '1.0', '3', 'PSM2'),
-                ('RU073', 'CO1', 'User manual - Chapter 4', '-', '5.00', '0.4', '3', 'PSM2'),
-                ('RU074', 'CO2', 'User Acceptance Test - Chapter 4', '-', '5.00', '2', '3', 'PSM2'),
-                ('RU075', 'CO1', 'Introduction/Scope/Objective', '-', '5.00', '0.4', '3', 'PSM2'),
-                ('RU076', 'CO1', 'Description and comparison of systems (Literature Review)', '-', '5.00', '0.4', '3', 'PSM2'),
-                ('RU077', 'CO1', 'Relevance of comparison on existing systems', '-', '5.00', '0.8', '3', 'PSM2'),
-                ('RU078', 'CO1', 'Figures and Tables', '-', '5.00', '0.2', '3', 'PSM2'),
-                ('RU079', 'CO4', 'Reference & Bibliography', '-', '5.00', '0.2', '3', 'PSM2'),
-                ('RU080', 'CO4', 'Written Document', '-', '5.00', '0.4', '3', 'PSM2'),
-                ('RU081', 'CO1', 'The solution works without any logic error', '-', '5.00', '0.4', '3', 'PSM2'),
-                ('RU082', 'CO1', 'System works without any physical/coding error (e.g: crash, device error)', '-', '5.00', '0.4', '3', 'PSM2'),
-                ('RU083', 'CO4', 'Meeting', '-', '5.00', '0.2', '3', 'PSM2'),
-                ('RU084', 'CO4', 'Submission on time ', '-', '5.00', '0.2', '3', 'PSM2')"
+                ('RU047', 'CO1', 'User Requirement and design principle (context diagram, use case diagram)', '-', '5.00', '0.5', '3', 'PSM2'),
+                ('RU048', 'CO1', 'Design (System design/ERD/Class diagram/DFD/Storyboard/UI) ', '-', '5.00', '0.5', '3', 'PSM2'),
+                ('RU049', 'CO1', 'System Implementation (tools, configuration, coding/script) - Chapter 4', '-', '5.00', '1.0', '3', 'PSM2'),
+                ('RU050', 'CO1', 'User manual - Chapter 4', '-', '5.00', '0.4', '3', 'PSM2'),
+                ('RU051', 'CO2', 'User Acceptance Test - Chapter 4', '-', '5.00', '2', '3', 'PSM2'),
+                ('RU052', 'CO1', 'Introduction/Scope/Objective', '-', '5.00', '0.4', '3', 'PSM2'),
+                ('RU053', 'CO1', 'Description and comparison of systems (Literature Review)', '-', '5.00', '0.4', '3', 'PSM2'),
+                ('RU054', 'CO1', 'Relevance of comparison on existing systems', '-', '5.00', '0.8', '3', 'PSM2'),
+                ('RU055', 'CO1', 'Figures and Tables', '-', '5.00', '0.2', '3', 'PSM2'),
+                ('RU056', 'CO4', 'Reference & Bibliography', '-', '5.00', '0.2', '3', 'PSM2'),
+                ('RU057', 'CO4', 'Written Document', '-', '5.00', '0.4', '3', 'PSM2'),
+                ('RU058', 'CO1', 'The solution works without any logic error', '-', '5.00', '0.4', '3', 'PSM2'),
+                ('RU059', 'CO1', 'System works without any physical/coding error (e.g: crash, device error)', '-', '5.00', '0.4', '3', 'PSM2'),
+                ('RU060', 'CO4', 'Meeting', '-', '5.00', '0.2', '3', 'PSM2'),
+                ('RU061', 'CO4', 'Submission on time ', '-', '5.00', '0.2', '3', 'PSM2')"
 
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -442,7 +421,7 @@ if ($result) {
 // Insert data into announcement table
 $query = "insert into announcement values('AN001', 'Attention to FYP 1 student', 'Please note that FYP 1 Submission 1 is open'),
                 ('AN002', 'Attention to FYP 2 student', 'Please note that FYP 2 Submission 1 is open')"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -459,7 +438,7 @@ $query = "insert into activity values('AC001', 'Submission 1 FYP 1', '1', 'PSM1'
                 ('AC004', 'Submission 1 FYP 2', '1', 'PSM2', '2021-9-1', '2021-9-11'),
                 ('AC005', 'Submission 2 FYP 2', '2', 'PSM2', '2021-9-12', '2021-9-30'),
                 ('AC006', 'Submission 3 FYP 2', '3', 'PSM2', '2021-10-1', '2021-10-15')"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -472,7 +451,7 @@ if ($result) {
 // Insert data into project_logbook table
 $query = "insert into project_logbook values('LG001', 'FP001', '1', '2021-9-2', 'I start to research about my FYP project idea'),
                 ('LG002', 'FP001', '1', '2021-9-6', 'I start to plan my project')"
-or die(mysqli_connect_error());
+    or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
 
@@ -480,6 +459,20 @@ if ($result) {
     echo ("project_logbook inserted <br>");
 } else {
     die("project_logbook data insert failed <br>");
+}
+
+
+// Insert data into ev_mark_details table
+$query = "insert into ev_mark_details values('1', 'ER001', 'RU001', '2'),
+                ('2', 'ER001', 'RU002', '3')"
+    or die(mysqli_connect_error());
+
+$result = mysqli_query($link, $query);
+
+if ($result) {
+    echo ("ev_mark_details inserted <br>");
+} else {
+    die("ev_mark_details data insert failed <br>");
 }
 
 //And finally we close the connection to the MySQL server

@@ -4,11 +4,11 @@
 <!-- This page is for students to view their evaluation result-->
 
 <?php
-    include '../Controller/StudentHandler.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/StudentHandler.php';
 
-    session_start();
+session_start();
 
-    $projectDetails = getProjectDetails($_SESSION['stud_id']);
+$projectDetails = getProjectDetails($_SESSION['stud_id']);
 ?>
 
 <head>
@@ -33,7 +33,7 @@
 
     <!-- JS -->
     <script src="../../../js/module_5.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -88,7 +88,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="../../login_controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="../../controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -165,27 +165,32 @@
                             </nav>
                         </div>
 
-                        <!-- My FYP Supervisor -->
+                        <!-- FYP Supervisor -->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSupervisor" aria-expanded="false" aria-controls="collapseSupervisor">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
-                            My FYP supervisor
+                            FYP supervisor
                             <div class="sb-sidenav-collapse-arrow">
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
                         <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
+                            <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>View my evaluator
+                                    </div>View assigned student
                                 </a>
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>My evaluation result
+                                    </div>View student's FYP
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                    </div>Supervisor report
                                 </a>
                             </nav>
                         </div>
@@ -202,12 +207,12 @@
                         </a>
                         <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="view_my_evaluator.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View my evaluator
                                 </a>
-                                <a class="nav-link text-light active" href="#">
+                                <a class="nav-link text-light active" href="my_evaluation_result.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                                     </div>My evaluation result
@@ -227,7 +232,7 @@
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
                     <?php
-                        echo $_SESSION['username']
+                    echo $_SESSION['username']
                     ?>
                 </div>
             </nav>
@@ -237,7 +242,7 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    
+
                     <!-- Page Header -->
                     <h1 class="ms-0 mt-4">Evaluation Result</h1>
 
@@ -256,7 +261,7 @@
                         </div>
                     </div>
 
-                    <div class="row justify-content-md-left">
+                    <div class="row justify-content-md-left mb-3">
                         <div class="col-2">
                             <p>Project Title: </p>
                         </div>
@@ -265,54 +270,59 @@
                         </div>
                     </div>
 
-                    <div class="row justify-content-md-left">
-                        <h3><u>FYP 1</u></h3>
+                    <div class="card row mx-auto mb-3">
+                        <div class="card-header">
+                            FYP 1 Result
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="ev_fyp_1_table" class="table table-bordered">
+                                    <thead>
+                                        <tr class="header-bg">
+                                            <th scope="col">Submission</th>
+                                            <th scope="col">Evaluator ID</th>
+                                            <th scope="col">Evaluator Name</th>
+                                            <th scope="col">Project Feedback</th>
+                                            <th scope="col">Evaluation Mark</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="result_fyp_1">
+                                        <!-- Show datatable here -->
+                                        <?php
+                                        displayFyp1Result($_SESSION['stud_id']);
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="table-responsive">
-                        <table id="ev_fyp_1_table" class="table table-bordered table-striped">
-                        <thead>
-                            <tr class="header-bg">
-                                <th scope="col">Submission</th>
-                                <th scope="col">Evaluator ID</th>
-                                <th scope="col">Evaluator Name</th>
-                                <th scope="col">Project Feedback</th>
-                                <th scope="col">Evaluation Mark</th>
-                            </tr>
-                        </thead>
-                        <tbody id="result_fyp_1">
-                            <!-- Show datatable here -->
-                            <?php 
-                            displayFyp1Result($_SESSION['stud_id']);
-                            ?>
-                        </tbody>
-                    </table>
+                    <div class="card row mx-auto mb-3">
+                        <div class="card-header">
+                            FYP 2 Result
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="ev_fyp_2_table" class="table table-bordered">
+                                    <thead>
+                                        <tr class="header-bg">
+                                            <th scope="col">Submission</th>
+                                            <th scope="col">Evaluator ID</th>
+                                            <th scope="col">Evaluator Name</th>
+                                            <th scope="col">Project Feedback</th>
+                                            <th scope="col">Evaluation Mark</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="result_fyp_2">
+                                        <!-- Show datatable here -->
+                                        <?php
+                                        displayFyp2Result($_SESSION['stud_id']);
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="row justify-content-md-left">
-                        <h3><u>FYP 2</u></h3>
-                    </div>
-
-                    <div class="table-responsive">
-                        <table id="ev_fyp_2_table" class="table table-bordered table-striped">
-                        <thead>
-                            <tr class="header-bg">
-                                <th scope="col">Submission</th>
-                                <th scope="col">Evaluator ID</th>
-                                <th scope="col">Evaluator Name</th>
-                                <th scope="col">Project Feedback</th>
-                                <th scope="col">Evaluation Mark</th>
-                            </tr>
-                        </thead>
-                        <tbody id="result_fyp_2">
-                            <!-- Show datatable here -->
-                            <?php 
-                            displayFyp2Result($_SESSION['stud_id']);
-                            ?>
-                        </tbody>
-                    </table>
-                    </div>
-                    
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
