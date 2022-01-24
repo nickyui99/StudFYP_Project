@@ -41,7 +41,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . '/html/controller/login_handler.php';
                 <div class="card rounded mx-auto" style="width: 35%;">
                     <div class="card-body">
                         <h1 class="card-title text-center mt-3 mb-3">StudFYP Login</h1>
-                        <form class="mt-3" action="html/controller/login_handler.php" method="post">
+                        <form class="mt-3 shadow" action="html/controller/login_handler.php" method="post">
 
                             <!-- Username -->
                             <div class="form-group mb-3">
