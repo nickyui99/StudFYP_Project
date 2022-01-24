@@ -4,7 +4,7 @@
 <!-- This html template is only for StudFYP lecturer only -->
 
 <?php
-include '../Controller/LecturerHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/LecturerHandler.php';
 
 session_start();
 
@@ -469,7 +469,7 @@ if (isset($_SESSION['update_er_array'])) {
 
             $.ajax({
                 type: "POST",
-                url: "../Controller/EvaluateFormHandler.php",
+                url: "../Controller/EvaluateLectFormHandler.php",
                 data: form.serialize(), // serializes the form's elements.
                 success: function(data) {
                     alert("Evaluation result updated");
@@ -498,7 +498,7 @@ if (isset($_SESSION['update_er_array'])) {
 
         const feedback = $('#inputProjFeedback').val();
 
-        save_temp_ev(result_id, rubric_id_array, rubric_mark_array, feedback);
+        saveLectTempEv(result_id, rubric_id_array, rubric_mark_array, feedback);
     }
 
 

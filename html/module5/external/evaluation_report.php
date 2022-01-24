@@ -4,7 +4,7 @@
 <!-- This html template is only for StudFYP lecturer only -->
 
 <?php
-include '../Controller/LecturerHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/ExternalHandler.php';
 session_start();
 ?>
 
@@ -116,92 +116,6 @@ session_start();
                             My profile
                         </a>
 
-                        <!-- FYP Coordinator -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCoordinator" aria-expanded="false" aria-controls="collapseCoordinator">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-columns"></i>
-                            </div>
-                            FYP coordinator
-                            <div class="sb-sidenav-collapse-arrow">
-                                <i class="fa fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapseCoordinator" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>
-                                    Assign student to supervisor
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Assign student to evaluator
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Announcement platform
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>FYP progress
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Student mark
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Manage FYP submission date
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Manage FYP rubrics
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Coordinator final report
-                                </a>
-                            </nav>
-                        </div>
-
-                        <!-- FYP Supervisor -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSupervisor" aria-expanded="false" aria-controls="collapseSupervisor">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-columns"></i>
-                            </div>
-                            FYP supervisor
-                            <div class="sb-sidenav-collapse-arrow">
-                                <i class="fa fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>View assigned student
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>View student's FYP
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Supervisor report
-                                </a>
-                            </nav>
-                        </div>
-
                         <!-- FYP Evaluation -->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEvaluation" aria-expanded="false" aria-controls="collapseEvaluation">
                             <div class="sb-nav-link-icon">
@@ -227,13 +141,6 @@ session_start();
                             </nav>
                         </div>
 
-                        <!-- My report -->
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-file-o" aria-hidden="true"></i>
-                            </div>
-                            My report
-                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -260,16 +167,6 @@ session_start();
 
                     <div id="message_box">
                         <!-- This div is for showing message purpose only -->
-                    </div>
-
-                    <!-- Chart js -->
-                    <div class="card w-25 mb-3 mx-auto">
-                        <div class="card-header">
-                            Evaluated student
-                        </div>
-                        <div id="card-body py-3">
-                            <canvas id="my_chart"></canvas>
-                        </div>
                     </div>
 
                     <div class="row mb-2">
@@ -412,24 +309,24 @@ session_start();
 
 <script>
     $(document).ready(function() {
-        var lect_id = "<?php echo $_SESSION['lect_id']; ?>";
-        load_evaluation_report("", lect_id);
+        var ip_id = "<?php echo $_SESSION['ip_id']; ?>";
+        loadIpEvaluationReport("", ip_id);
 
         $('#search').keyup(function() {
             var search = $(this).val();
             if (search != '') {
-                load_evaluation_report(search, lect_id);
+                loadIpEvaluationReport(search, ip_id);
             } else {
-                load_evaluation_report("", lect_id);
+                loadIpEvaluationReport("", ip_id);
             }
         });
 
         $('#btn_confirm_delete').click(function() {
-            delete_er_array(checkedList());
+            deleteIpErArray(checkedList());
         });
 
         $('#btn_confirm_update').click(function() {
-            update_er_array(checkedList());
+            updateIpErArray(checkedList());
         });
 
         $('#btn_delete').click(function() {
@@ -469,56 +366,13 @@ session_start();
             }
         });
 
-        //Retrieve data
-        var fyp1_stud_num = <?php echo getEvaluatedFyp1StudentNum($_SESSION['lect_id']); ?>;
-        var fyp2_stud_num = <?php echo getEvaluatedFyp2StudentNum($_SESSION['lect_id']); ?>;
-
-        if (fyp1_stud_num + fyp2_stud_num <= 0) {
-            $('#message_box').html('<div class="alert alert-warning" role="alert">No data</div>');
-        } else {
-            //Chart Js Configuration
-            const data = {
-                labels: [
-                    'Evaluated PSM 1 Student',
-                    'Evaluated PSM 2 Student'
-                ],
-                datasets: [{
-                    label: 'My First Dataset',
-                    data: [
-                        fyp1_stud_num,
-                        fyp2_stud_num
-                    ],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(255, 159, 64)',
-                    ],
-                    borderWidth: 1,
-                    hoverOffset: 4
-                }]
-            };
-
-            const config = {
-                type: 'doughnut',
-                data: data,
-            };
-
-            const myChart = new Chart(
-                document.getElementById('my_chart'),
-                config
-            );
-        }
-
     });
 
     function checkedList() {
         var check_list = [];
         const result_id_array =
             <?php
-            $ev_report_array = getEvaluationReport($_SESSION['lect_id']);
+            $ev_report_array = getEvaluationReport($_SESSION['ip_id']);
             $result_id_array = array();
             foreach ($ev_report_array as $ev_report) {
                 //Push result id array

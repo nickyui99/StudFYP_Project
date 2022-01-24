@@ -39,7 +39,7 @@ function viewAssignedFyp($query, $lect_id)
             $evaluation_status = $assigned_ev->getEvaluationStatus();
             for ($i = 1; $i <= 3; $i++) {
                 if ($evaluation_status[$i] == true) {
-                    $output = $output . ' <a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=' . $i . '" class="btn btn-success btn-sm disabled" role="button" aria-disabled="true">' . $i . '</a>';
+                    $output = $output . ' <a href="#" class="btn btn-success btn-sm disabled" role="button" aria-disabled="true">' . $i . '</a>';
                 } else {
                     $output = $output . ' <a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=' . $i . '" class="btn btn-light btn-outline-dark btn-sm" role="button" aria-disabled="true">' . $i . '</a>';
                 }
@@ -200,33 +200,3 @@ function updateEvaluationResult($ev_report_array)
     return $status;
 }
 
-function getEvaluatedFyp1StudentNum($lect_id)
-{
-    $lds = new LecturerDataService();
-    $ev_report_array = $lds->getEvaluationReport("", $lect_id);
-
-    $stud_num = 0;
-    foreach ($ev_report_array as $ev_report) {
-        if ($ev_report->getFypStage() == "PSM1") {
-            $stud_num++;
-        }
-    }
-
-    return $stud_num;
-}
-
-
-function getEvaluatedFyp2StudentNum($lect_id)
-{
-    $lds = new LecturerDataService();
-    $ev_report_array = $lds->getEvaluationReport("", $lect_id);
-
-    $stud_num = 0;
-    foreach ($ev_report_array as $ev_report) {
-        if ($ev_report->getFypStage() == "PSM2") {
-            $stud_num++;
-        }
-    }
-
-    return $stud_num;
-}

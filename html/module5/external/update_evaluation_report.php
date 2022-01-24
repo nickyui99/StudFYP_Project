@@ -4,7 +4,7 @@
 <!-- This html template is only for StudFYP lecturer only -->
 
 <?php
-include '../Controller/LecturerHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/ExternalHandler.php';
 
 session_start();
 
@@ -31,7 +31,7 @@ if (isset($_SESSION['update_er_array'])) {
 
 } else {
     //if there is no update er id return back to evaluation report page
-    header("evaluation_report.php");
+    header("Location: evaluation_report.php");
 }
 ?>
 
@@ -297,7 +297,7 @@ if (isset($_SESSION['update_er_array'])) {
                             } else {
                                 echo '<li class="page-item">
                                         <a class="page-link" href="update_evaluation_report.php?view=' . $_GET['view'] - 1 . '" tabindex="-1" id="btn_previous" onClick="saveSession();" aria-disabled="true">Previous</a>
-                                        </li>';
+                                    </li>';
                             }
 
                             //Print All Available Page
@@ -469,7 +469,7 @@ if (isset($_SESSION['update_er_array'])) {
 
             $.ajax({
                 type: "POST",
-                url: "../Controller/EvaluateFormHandler.php",
+                url: "../Controller/EvaluateIpFormHandler.php",
                 data: form.serialize(), // serializes the form's elements.
                 success: function(data) {
                     alert("Evaluation result updated");
@@ -498,7 +498,7 @@ if (isset($_SESSION['update_er_array'])) {
 
         const feedback = $('#inputProjFeedback').val();
 
-        save_temp_ev(result_id, rubric_id_array, rubric_mark_array, feedback);
+        saveIpTempEv(result_id, rubric_id_array, rubric_mark_array, feedback);
     }
 
 

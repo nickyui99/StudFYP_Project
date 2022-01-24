@@ -114,12 +114,12 @@ session_start();
                         </a>
                         <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="module5/external/view_assigned_fyp.php">
+                                <a class="nav-link" href="view_assigned_fyp.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View assigned FYP
                                 </a>
-                                <a class="nav-link" href="module5/external/evaluation_report.php">
+                                <a class="nav-link" href="evaluation_report.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Evaluation report

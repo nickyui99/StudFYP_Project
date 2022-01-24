@@ -4,7 +4,7 @@
 <!-- This html template is only for StudFYP lecturer only -->
 
 <?php
-include '../Controller/LecturerHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/ExternalHandler.php';
 session_start();
 ?>
 
@@ -413,23 +413,23 @@ session_start();
 <script>
     $(document).ready(function() {
         var lect_id = "<?php echo $_SESSION['lect_id']; ?>";
-        load_evaluation_report("", lect_id);
+        loadLectEvaluationReport("", lect_id);
 
         $('#search').keyup(function() {
             var search = $(this).val();
             if (search != '') {
-                load_evaluation_report(search, lect_id);
+                loadLectEvaluationReport(search, lect_id);
             } else {
-                load_evaluation_report("", lect_id);
+                loadLectEvaluationReport("", lect_id);
             }
         });
 
         $('#btn_confirm_delete').click(function() {
-            delete_er_array(checkedList());
+            deleteLectErArray(checkedList());
         });
 
         $('#btn_confirm_update').click(function() {
-            update_er_array(checkedList());
+            updateLectErArray(checkedList());
         });
 
         $('#btn_delete').click(function() {

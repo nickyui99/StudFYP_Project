@@ -8,6 +8,14 @@ if (isset($_POST['search_assigned_evaluation']) && isset($_POST['ip_id'])) {
     viewAssignedFyp($_POST['search_assigned_evaluation'], $_POST['ip_id']);
 }
 
+if (isset($_POST['search_evaluation_report']) && isset($_POST['ip_id'])) {
+    printEvaluationReport($_POST['search_evaluation_report'], $_POST['ip_id']);
+}
+
+if (isset($_POST['delete_er'])) {
+    deleteEvaluationReport($_POST['delete_er']);
+}
+
 function viewAssignedFyp($query, $ip_id)
 {
     $eds = new ExternalDataService();
@@ -26,9 +34,17 @@ function viewAssignedFyp($query, $ip_id)
                 '<td>' . $assigned_ev->getStudentName() . '</td>' .
                 '<td>' . $assigned_ev->getFypLevel() . '</td>' .
                 '<td>' . $assigned_ev->getFypProgress() . '</td>' .
-                '<td> 
-                    <a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=3" class="btn btn-light btn-outline-dark btn-sm" role="button" aria-disabled="true">Evaluate</a>
-                </td></tr>';
+                '<td>';
+
+            //Set disabled button if the evaluation is done, else set a clickable button
+            $evaluation_status = $assigned_ev->getEvaluationStatus();
+            if ($evaluation_status == true) {
+                $output = $output . '<a href="#" class="btn btn-success btn-sm disabled" role="button" aria-disabled="true">Evaluated</a>';
+            } else {
+                $output = $output . '<a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=3" class="btn btn-light btn-outline-dark btn-sm" role="button" aria-disabled="true">Evaluate</a>';
+            }
+
+            $output = $output . '</td></tr>';
         }
     }
 
@@ -103,4 +119,102 @@ function submitIpEvaluationForm($ev_result, $assigned_id, $stud_id)
     $eds = new ExternalDataService();
     $status = $eds->insertIPEvaluationResult($ev_result, $assigned_id, $stud_id);
     return true;
+}
+
+function printEvaluationReport($query, $lect_id)
+{
+    $eds = new ExternalDataService();
+    $ev_report_array = $eds->getEvaluationReport($query, $lect_id);
+
+    $output = "";
+    if (count($ev_report_array) == 0) {
+        //Do nothing
+    } else {
+        foreach ($ev_report_array as $ev_report) {
+            $output = $output .
+                '<tr>' .
+                '<td><input type="checkbox" class="form-check-input" value="' . $ev_report->getResultID() . '" id="cb_' . $ev_report->getResultID() . '"></td>' .
+                '<td>' . $ev_report->getResultID() . '</td>' .
+                '<td>' . $ev_report->getProjID() . '</td>' .
+                '<td>' . $ev_report->getStudID() . '</td>' .
+                '<td>' . $ev_report->getProjTitle() . '</td>' .
+                '<td>' . $ev_report->getFypStage() . '</td>' .
+                '<td>' . $ev_report->getSubmission() . '</td>' .
+                '<td>' . number_format($ev_report->getMark(), 2) . '</td>' .
+                '<td>' . $ev_report->getEvaluationDate() . '</td>' .
+                '</tr>';
+        }
+    }
+
+    echo $output;
+}
+
+function getEvaluatedFyp1StudentNum($lect_id)
+{
+    $eds = new ExternalDataService();
+    $ev_report_array = $eds->getEvaluationReport("", $lect_id);
+
+    $stud_num = 0;
+    foreach ($ev_report_array as $ev_report) {
+        if ($ev_report->getFypStage() == "PSM1") {
+            $stud_num++;
+        }
+    }
+
+    return $stud_num;
+}
+
+
+function getEvaluatedFyp2StudentNum($lect_id)
+{
+    $eds = new ExternalDataService();
+    $ev_report_array = $eds->getEvaluationReport("", $lect_id);
+
+    $stud_num = 0;
+    foreach ($ev_report_array as $ev_report) {
+        if ($ev_report->getFypStage() == "PSM2") {
+            $stud_num++;
+        }
+    }
+
+    return $stud_num;
+}
+
+function getEvaluationReport($ip_id)
+{
+    $eds = new ExternalDataService();
+    $ev_report_array = $eds->getEvaluationReport("", $ip_id);
+    return $ev_report_array;
+}
+
+function deleteEvaluationReport($er_id_array)
+{
+    $eds = new ExternalDataService();
+    foreach ($er_id_array as $er_id) {
+        $eds->deleteEvaluationReport($er_id);
+    }
+}
+
+function getUpdateEvaluationReportList($er_id_array)
+{
+    $eds = new ExternalDataService();
+    $ev_report_array = $eds->getEvaluationReportFromERID($er_id_array);
+    return $ev_report_array;
+}
+
+function updateEvaluationResult($ev_report_array)
+{
+    $eds = new ExternalDataService();
+
+    $status = true;
+    echo count($ev_report_array);
+    foreach ($ev_report_array as $ev_report) {
+        $status = $eds->updateEvaluationResult($ev_report);
+
+        if ($status == true) {
+            $status = $eds->updateEvaluationMark($ev_report->getMark());
+        }
+    }
+
+    return $status;
 }

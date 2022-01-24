@@ -4,7 +4,7 @@
 <!-- This html template is only for StudFYP lecturer only -->
 
 <?php
-include '../Controller/LecturerHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/ExternalHandler.php';
 
 session_start();
 
@@ -270,7 +270,7 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
                         <li class="breadcrumb-item active">Evaluate FYP</li>
                     </ol>
 
-                    <form id="evaluation_form" action="../Controller/EvaluateFormHandler.php" method="POST">
+                    <form id="evaluation_form" action="../Controller/EvaluateLectFormHandler.php" method="POST">
                         <input type="hidden" id="submission" name="submission" value="<?php echo $submission ?>">
                         <div class="form-group">
                             <table class="table table-borderless">
