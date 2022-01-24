@@ -37,7 +37,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . '/html/controller/login_handler.php';
     <!-- Main Content -->
     <div id="layoutSidenav_content">
         <main>
-            <div class="container pt-5 pb-5">
+            <div class="container py-5 pb-5">
                 <div class="card rounded mx-auto shadow" style="width: 35%;">
                     <div class="card-body">
                         <h1 class="card-title text-center mt-3 mb-3">StudFYP Login</h1>
