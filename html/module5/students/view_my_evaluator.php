@@ -233,7 +233,7 @@ session_start();
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <div class="card shadow">
+                    <div class="card shadow my-3">
                         <div class="card-body">
                             <!-- Page Header -->
                             <h1 class="ms-0 mt-4">Evaluator Information</h1>

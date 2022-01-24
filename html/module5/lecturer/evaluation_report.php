@@ -263,12 +263,12 @@ session_start();
                     </div>
 
                     <!-- Chart js -->
-                    <div class="card w-25 mb-3 mx-auto">
+                    <div class="card w-25 shadow mb-3 mx-auto">
                         <div class="card-header">
                             Evaluated student
                         </div>
-                        <div id="card-body py-3">
-                            <canvas id="my_chart"></canvas>
+                        <div id="card-body">
+                            <canvas class="p-3" id="my_chart"></canvas>
                         </div>
                     </div>
 
