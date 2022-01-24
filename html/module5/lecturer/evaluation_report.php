@@ -33,7 +33,7 @@ session_start();
 
     <!-- JS -->
     <script src="../../../js/module_5.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -335,10 +335,7 @@ session_start();
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                         </div>
                                         <div class="modal-body">
-
-                                            <div id="alert_message" class="alert alert-danger" role="alert">
-
-                                            </div>
+                                            <div id="alert_message" class="alert alert-danger" role="alert"> </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" id="btn_ok_alert" data-bs-dismiss="modal">OK</button>
