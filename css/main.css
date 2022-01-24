@@ -36,8 +36,8 @@ body {
     font-size: 14px;
 }
 
-.login_bg {
-    background-color: lightgray;
+.login_bg{
+    background: linear-gradient(to right, #27b9b2, #2985ee)
 }
 
 .fc .fc-daygrid-day-number {
@@ -50,4 +50,15 @@ body {
     display: inline-block;
     text-decoration: none;
     color: black;
+}
+
+.carousel .item {
+    height: 300px;
+}
+
+.item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 300px;
 }

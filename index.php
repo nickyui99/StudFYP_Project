@@ -27,20 +27,21 @@ include_once $_SERVER["DOCUMENT_ROOT"] . '/html/controller/login_handler.php';
     <!-- JS -->
 </head>
 
-<body class="login_bg">
+<body class="">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <img class="logo ms-3" src="images/ump_logo.png" alt="UMP" />
-        <a class="navbar-brand ms-3 me-0" href="index.html">StudFYP</a>
+        <a class="navbar-brand ms-3 me-0" href="index.php">StudFYP</a>
     </nav>
 
     <!-- Main Content -->
     <div id="layoutSidenav_content">
         <main>
-            <div class="container py-5 pb-5">
-                <div class="card rounded mx-auto shadow" style="width: 35%;">
+            <div class="container-fluid py-5 pb-5 login_bg">
+                <!-- Login form -->
+                <div class="card rounded shadow mx-auto" style="width: 25rem;">
                     <div class="card-body">
-                        <h1 class="card-title text-center mt-3 mb-3">StudFYP Login</h1>
+                        <h1 class="card-title text-center mt-3 mb-3">Login</h1>
                         <form class="mt-3 " action="html/controller/login_handler.php" method="post">
 
                             <!-- Username -->
