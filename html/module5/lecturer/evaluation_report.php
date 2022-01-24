@@ -470,8 +470,8 @@ session_start();
         });
 
         //Retrieve data
-        var fyp1_stud_num = <?php echo getEvaluatedFyp1StudentNum($_SESSION['lect_id']); ?>;
-        var fyp2_stud_num = <?php echo getEvaluatedFyp2StudentNum($_SESSION['lect_id']); ?>;
+        var fyp1_stud_num = <?php echo 0 ;//echo getEvaluatedFyp1StudentNum($_SESSION['lect_id']); ?>;
+        var fyp2_stud_num = <?php echo 0; //getEvaluatedFyp2StudentNum($_SESSION['lect_id']); ?>;
 
         if (fyp1_stud_num + fyp2_stud_num <= 0) {
             $('#message_box').html('<div class="alert alert-warning" role="alert">No data</div>');
