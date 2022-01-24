@@ -27,7 +27,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . '/html/controller/login_handler.php';
     <!-- JS -->
 </head>
 
-<body class="">
+<body class="login_bg">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <img class="logo ms-3" src="images/ump_logo.png" alt="UMP" />
@@ -37,7 +37,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . '/html/controller/login_handler.php';
     <!-- Main Content -->
     <div id="layoutSidenav_content">
         <main>
-            <div class="container-fluid py-5 pb-5 login_bg">
+            <div class="container-fluid py-5 pb-5">
                 <!-- Login form -->
                 <div class="card rounded shadow mx-auto" style="width: 25rem;">
                     <div class="card-body">
