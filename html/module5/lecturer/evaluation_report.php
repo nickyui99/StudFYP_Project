@@ -438,7 +438,7 @@ session_start();
 
             if (checkedArrays.length == 0) {
                 var output = "No row selected";
-                document.getElementById("alert_message").innerHTML = output;
+                $("#alert_message").html(output);
                 $('#alert_modal').modal('show');
             } else {
                 var output = "Are you sure to DELETE this evaluation report? <ul>";
@@ -456,7 +456,7 @@ session_start();
 
             if (checkedArrays.length == 0) {
                 var output = "No row selected";
-                document.getElementById("alert_message").innerHTML = output;
+                $("#alert_message").html(output);
                 $('#alert_modal').modal('show');
             } else {
                 var output = "Are you sure to UPDATE this evaluation report? <ul>";
