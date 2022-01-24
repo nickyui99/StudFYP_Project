@@ -240,7 +240,7 @@ session_start();
                     <div class="row" style="height: 60%;">
                         <!-- Announcement Board -->
                         <div class="col-sm-5">
-                            <div class="card mb-4">
+                            <div class="card mb-4 shadow">
                                 <div class="card-header">Announcement Board</div>
                                 <div class="card-body">
 
@@ -255,7 +255,7 @@ session_start();
 
                         <!-- Calendar Event -->
                         <div class="col-sm-7">
-                            <div class="card mb-4">
+                            <div class="card mb-4 shadow">
                                 <div class="card-header">FYP Calendar</div>
                                 <div class="card-body">
                                     <div id='calendar'></div>
