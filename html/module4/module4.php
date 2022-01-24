@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- This is the main page for lecturer -->
-<?php 
-    session_start();
-?>
+<!-- This html template is only for StudFYP lecturer only -->
 
 <head>
     <meta charset="UTF-8" />
@@ -13,10 +10,10 @@
     <title>Dashboard</title>
 
     <!-- Bootstrap 5 CSS -->
-    <link rel="stylesheet" href="../bootstrap_v5.1/css/styles.css" />
+    <link rel="stylesheet" href="../../bootstrap_v5.1/css/styles.css" />
 
     <!-- Bootstrap 5 JavaScript -->
-    <script src="../bootstrap_v5.1/js/scripts.js"></script>
+    <script src="../../bootstrap_v5.1/js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 
@@ -24,7 +21,7 @@
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../../css/main.css" />
 
     <!-- JS -->
 </head>
@@ -32,7 +29,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <img class="logo ms-3" src="../images/ump_logo.png" alt="UMP" />
+        <img class="logo ms-3" src="../../images/ump_logo.png" alt="UMP" />
         <a class="navbar-brand ms-3" href="index.html">StudFYP</a>
 
         <!-- Sidebar Toggle-->
@@ -83,7 +80,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="login_controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="#!">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -104,7 +101,7 @@
                         </a>
 
                         <!-- My Profile -->
-                        <a class="nav-link" href="module4\module4.php">
+                        <a class="nav-link" href="index.html">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-user"></i>
                             </div>
@@ -185,17 +182,17 @@
                         <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="module4\view_assigned_student.php">
+                                <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View assigned student
                                 </a>
-                                <a class="nav-link" href="module4\view_student_fyp.php">
+                                <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View student's FYP
                                 </a>
-                                <a class="nav-link" href="module4\supervisor_report.php">
+                                <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Supervisor report
@@ -210,7 +207,7 @@
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
-                            FYP Evaluation
+                            FYP evaluation
                             <div class="sb-sidenav-collapse-arrow">
                                 <i class="fa fa-angle-down"></i>
                             </div>
@@ -218,7 +215,7 @@
                         <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="module5\lecturer\view_assigned_fyp.php">
+                                <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View assigned FYP
@@ -242,9 +239,7 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    <?php 
-                        echo $_SESSION['username'];
-                    ?>
+                    username
                 </div>
             </nav>
         </div>
@@ -258,20 +253,89 @@
                         <li class="breadcrumb-item">
                             <a href="index.html">Dashboard</a>
                         </li>
-                        <li class="breadcrumb-item active">Announcement</li>
+                        <li class="breadcrumb-item active">My Profile</li>
                     </ol>
                     <div class="card mb-4">
-                        <div class="card-body">
-                            This page is an example of using the light side
-                            navigation option. By appending the
-                            <code>.sb-sidenav-light</code>
-                            class to the
-                            <code>.sb-sidenav</code>
-                            class, the side navigation will take on a light
-                            color scheme. The
-                            <code>.sb-sidenav-dark</code>
-                            is also available for a darker option.
+                    <?php require_once 'process.php'; ?> 
+
+                    <?php
+                        if (isset($_SESSION['message'])):?>
+                        <div class="alert alert-<?=$_SESSION['msg_type']?>">
+                        <?php
+                            echo  $_SESSION['message'];
+                            unset ($_SESSION['message']);
+                        ?>
+                        <?php endif ?>
                         </div>
+                        <div class="container>
+                        <?php 
+                        $mysqli= new mysqli('localhost', 'root','','supervisor') or die(mysqli_error($mysqli));
+                        $result= $mysqli->query("SELECT * FROM Supervisor") or die($mysqli->error);
+                        ?>
+                         <div class="row justify-content-center" >
+                            <table class="table">
+                             <thead>
+                                 <tr>
+                                     <th>Name</th>
+                                     <th>Phone Number</th>
+                                     <th>Email</th>
+                                     <th>Address</th>
+                                     <th colspan="2">Action</th>
+                            </thead>
+                            <?php while($row=$result->fetch_assoc()): ?>
+                                <tr>
+                                    <td><?php echo $row['name'];?></td>
+                                    <td><?php echo $row['phonenum'];?></td>
+                                    <td><?php echo $row['email'];?></td>
+                                    <td><?php echo $row['address'];?></td>
+                                    <td>
+                                     <a href="module4.php?edit=<?php echo $row['id'];?>"
+                                      class="btn btn-info">Edit</a>
+                                      <a href="process.php?delete=<?php echo $row['id'];?>"
+                                      class="btn btn-danger">Delete</a>
+                                    </td> 
+
+                               </tr>
+                          <?php endwhile;?>
+                           </table>
+                        </div>
+
+                        <?php
+                        function pre_r($array)
+                        {
+                            echo '<pre>';
+                            print_r($array);
+                            echo '</pre>';
+                        }
+                        ?>
+
+                        <div class="row justify-content-center" >
+                       <form action="process.php" method="POST">
+                           <input type="hidden" name="id" value="<?php echo $id; ?>">
+                        <div class="form-group">
+                           <label>Name:</label>
+                           <input type="text" name="name" class="form-control" value="<?php echo $name;?>">
+                        </div>
+                        <div class="form-group">
+                           <label>Phone Number:</label>
+                           <input type="text" name="phonenum" class="form-control" value="<?php echo $phonenum;?>"><br>
+                           </div>
+                           <div class="form-group">
+                           <label>Email:</label>
+                           <input type ="email" name="email" class="form-control" value="<?php echo $email;?>"><br>
+                           </div>
+                           <div class="form-group">
+                           <label>Address:</label>
+                           <input type="textarea" name="address" class="form-control" value="<?php echo $address;?>"><br>
+                           </div>
+                           <div class="form-group">
+                           
+                        <button type="submit" class="btn btn-info" name="update">Update</button>   
+                           <button type="submit" class="btn btn-primary" name="save">Save</button>
+                           </div>
+                       </form>
+                       </div>
+                    </div>
                     </div>
                 </div>
             </main>
