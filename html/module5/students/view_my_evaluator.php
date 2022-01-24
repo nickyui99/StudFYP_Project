@@ -223,7 +223,7 @@ session_start();
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
                     <?php
-                        echo $_SESSION['username']
+                    echo $_SESSION['username']
                     ?>
                 </div>
             </nav>
@@ -242,38 +242,40 @@ session_start();
                         <li class="breadcrumb-item active">View my evaluator</li>
                     </ol>
 
-                    <div class="row mb-2">
-                        <!-- Evaluation panel counter -->
-                        <p id="evaluator_counter" class="col-sm-9 my-auto text-secondary">Total 0 Evaluation Panel</p>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row mb-2">
+                                <!-- Evaluation panel counter -->
+                                <p id="evaluator_counter" class="col-sm-9 my-auto text-secondary">Total 0 Evaluation Panel</p>
 
-                        <!-- Search bar -->
-                        <div class="form-outline col-sm-3">
-                            <div class="form-group has-search">
-                                <span class="fa fa-search form-control-feedback"></span>
-                                <input type="text" name="search" id="search" class="form-control" placeholder="Search ID or Name">
+                                <!-- Search bar -->
+                                <div class="form-outline col-sm-3">
+                                    <div class="form-group has-search">
+                                        <span class="fa fa-search form-control-feedback"></span>
+                                        <input type="text" name="search" id="search" class="form-control" placeholder="Search ID or Name">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table id="myTable" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr class="header-bg">
+                                            <th scope="col ">Evaluator ID</th>
+                                            <th scope="col">Evaluator Category</th>
+                                            <th scope="col">Evaluator Name</th>
+                                            <th scope="col">Contact Number</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Company</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="result">
+                                        <!-- Show datatable here -->
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-
-                    <div class="table-responsive">
-                        <table id="myTable" class="table table-bordered table-striped">
-                            <thead>
-                                <tr class="header-bg">
-                                    <th scope="col ">Evaluator ID</th>
-                                    <th scope="col">Evaluator Category</th>
-                                    <th scope="col">Evaluator Name</th>
-                                    <th scope="col">Contact Number</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Company</th>
-                                </tr>
-                            </thead>
-                            <tbody id="result">
-                                <!-- Show datatable here -->
-                            </tbody>
-                        </table>
-                    </div>
-
-
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
