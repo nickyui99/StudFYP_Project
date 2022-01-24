@@ -335,7 +335,7 @@ session_start();
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <div id="alert_message" class="alert alert-danger" role="alert"> </div>
+                                            <div id="alert_message" class="alert alert-danger" role="alert">No row selected</div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" id="btn_ok_alert" data-bs-dismiss="modal">OK</button>
