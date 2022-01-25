@@ -248,15 +248,16 @@ session_start();
             <main>
                 <div class="container-fluid px-4">
 
+                    <h1 class="mt-4">Assigned FYP for Evaluation</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item">
+                            FYP evaluation
+                        </li>
+                        <li class="breadcrumb-item active">Assigned FYP for Evaluation</li>
+                    </ol>
+
                     <div class="card shadow my-3">
                         <div class="card-body p-3">
-                            <h1 class="mt-4">Assigned FYP for Evaluation</h1>
-                            <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item">
-                                    FYP evaluation
-                                </li>
-                                <li class="breadcrumb-item active">Assigned FYP for Evaluation</li>
-                            </ol>
 
                             <div class="row mb-2">
                                 <!-- Evaluation panel counter -->

@@ -273,19 +273,17 @@ if (isset($_SESSION['update_er_array'])) {
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
+                    <h1 class="mt-4">Update FYP Evaluation</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item">
+                            FYP evaluation
+                        </li>
+                        <li class="breadcrumb-item active">Evaluation Report</li>
+                        <li class="breadcrumb-item active">Update FYP</li>
+                    </ol>
 
                     <div class="card shadow my-3">
                         <div class="card-body p-3">
-                            <h1 class="mt-4">Update FYP Evaluation</h1>
-                            <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item">
-                                    FYP evaluation
-                                </li>
-                                <li class="breadcrumb-item active">Evaluation Report</li>
-                                <li class="breadcrumb-item active">Update FYP</li>
-                            </ol>
-
-
                             <nav aria-label="...">
                                 <ul class="pagination">
 

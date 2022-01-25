@@ -262,16 +262,16 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
             <main>
                 <div class="container-fluid px-4">
 
+                    <h1 class="mt-4">Evaluate FYP - Submission <?php echo $submission ?></h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item">
+                            FYP evaluation
+                        </li>
+                        <li class="breadcrumb-item active">Assigned FYP for Evaluation</li>
+                        <li class="breadcrumb-item active">Evaluate FYP</li>
+                    </ol>
                     <div class="card shadow my-3">
                         <div class="card-body p-3">
-                            <h1 class="mt-4">Evaluate FYP - Submission <?php echo $submission ?></h1>
-                            <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item">
-                                    FYP evaluation
-                                </li>
-                                <li class="breadcrumb-item active">Assigned FYP for Evaluation</li>
-                                <li class="breadcrumb-item active">Evaluate FYP</li>
-                            </ol>
 
                             <form id="evaluation_form" action="../Controller/EvaluateLectFormHandler.php" method="POST">
                                 <input type="hidden" id="submission" name="submission" value="<?php echo $submission ?>">

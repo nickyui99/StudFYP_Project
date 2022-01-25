@@ -249,18 +249,16 @@ session_start();
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
+                    <h1 class="mt-4">Evaluation Report</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item">
+                            FYP evaluation
+                        </li>
+                        <li class="breadcrumb-item active">Evaluation report</li>
+                    </ol>
 
                     <div class="card shadow my-3">
                         <div class="card-body p-3">
-                            <h1 class="mt-4">Evaluation Report</h1>
-                            <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item">
-                                    FYP evaluation
-                                </li>
-                                <li class="breadcrumb-item active">Evaluation report</li>
-                            </ol>
-
-
                             <div id="message_box">
                                 <!-- This div is for showing message purpose only -->
                             </div>
