@@ -87,7 +87,7 @@ session_start();
                 <div class="sb-sidenav-menu">
                     <div class="nav mt-3">
                         <!-- Dashboard -->
-                        <a class="nav-link" href="../external_main.php">
+                        <a class="nav-link" href="../../external_main.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-tachometer" aria-hidden="true"></i>
                             </div>
