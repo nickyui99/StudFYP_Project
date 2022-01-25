@@ -456,11 +456,11 @@ if (isset($_SESSION['update_er_array'])) {
         calcTotalMark();
 
         $('#btnDownloadProjQR').click(function() {
-            window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projQr=<?php echo $current->getProjID(); ?>");
+            window.open("/html/module5/Controller/DownloadService.php?projQr=<?php echo $current->getProjID(); ?>");
         });
 
         $('#btnDownloadProjDoc').click(function() {
-            window.open("http://localhost/StudFYP_Project/html/module5/Controller/DownloadService.php?projDoc=<?php echo $current->getProjID(); ?>&submission=<?php echo $current->getSubmission(); ?>");
+            window.open("/html/module5/Controller/DownloadService.php?projDoc=<?php echo $current->getProjID(); ?>&submission=<?php echo $current->getSubmission(); ?>");
         });
 
         $('#evaluation_form').submit(function() {
