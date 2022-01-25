@@ -243,86 +243,92 @@ $projectDetails = getProjectDetails($_SESSION['stud_id']);
             <main>
                 <div class="container-fluid px-4">
 
-                    <!-- Page Header -->
-                    <h1 class="ms-0 mt-4">Evaluation Result</h1>
+                    <div class="card shadow">
+                        <div class="card body">
+                            <!-- Page Header -->
+                            <h1 class="ms-0 mt-4">Evaluation Result</h1>
 
-                    <!-- Breadcrumb -->
-                    <ol class="breadcrumb mb-3">
-                        <li class="breadcrumb-item">My FYP evaluation</li>
-                        <li class="breadcrumb-item active">My evaluation result</li>
-                    </ol>
+                            <!-- Breadcrumb -->
+                            <ol class="breadcrumb mb-3">
+                                <li class="breadcrumb-item">My FYP evaluation</li>
+                                <li class="breadcrumb-item active">My evaluation result</li>
+                            </ol>
 
-                    <div class="row justify-content-md-left">
-                        <div class="col-2">
-                            <p>Project ID: </p>
-                        </div>
-                        <div class="col-3">
-                            <p><?php echo $projectDetails->getProjID(); ?></p>
-                        </div>
-                    </div>
+                            <div class="row justify-content-md-left">
+                                <div class="col-2">
+                                    <p>Project ID: </p>
+                                </div>
+                                <div class="col-3">
+                                    <p><?php echo $projectDetails->getProjID(); ?></p>
+                                </div>
+                            </div>
 
-                    <div class="row justify-content-md-left mb-3">
-                        <div class="col-2">
-                            <p>Project Title: </p>
-                        </div>
-                        <div class="col-3">
-                            <p><?php echo $projectDetails->getProjTitle(); ?></p>
-                        </div>
-                    </div>
+                            <div class="row justify-content-md-left mb-3">
+                                <div class="col-2">
+                                    <p>Project Title: </p>
+                                </div>
+                                <div class="col-3">
+                                    <p><?php echo $projectDetails->getProjTitle(); ?></p>
+                                </div>
+                            </div>
 
-                    <div class="card row mx-auto mb-3 shadow">
-                        <div class="card-header">
-                            FYP 1 Result
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="ev_fyp_1_table" class="table table-bordered">
-                                    <thead>
-                                        <tr class="header-bg">
-                                            <th scope="col">Submission</th>
-                                            <th scope="col">Evaluator ID</th>
-                                            <th scope="col">Evaluator Name</th>
-                                            <th scope="col">Project Feedback</th>
-                                            <th scope="col">Evaluation Mark</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="result_fyp_1">
-                                        <!-- Show datatable here -->
-                                        <?php
-                                        displayFyp1Result($_SESSION['stud_id']);
-                                        ?>
-                                    </tbody>
-                                </table>
+                            <div class="card row mx-auto mb-3 shadow">
+                                <div class="card-header">
+                                    FYP 1 Result
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="ev_fyp_1_table" class="table table-bordered">
+                                            <thead>
+                                                <tr class="header-bg">
+                                                    <th scope="col">Submission</th>
+                                                    <th scope="col">Evaluator ID</th>
+                                                    <th scope="col">Evaluator Name</th>
+                                                    <th scope="col">Project Feedback</th>
+                                                    <th scope="col">Evaluation Mark</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="result_fyp_1">
+                                                <!-- Show datatable here -->
+                                                <?php
+                                                displayFyp1Result($_SESSION['stud_id']);
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card row mx-auto mb-3 shadow">
+                                <div class="card-header">
+                                    FYP 2 Result
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="ev_fyp_2_table" class="table table-bordered">
+                                            <thead>
+                                                <tr class="header-bg">
+                                                    <th scope="col">Submission</th>
+                                                    <th scope="col">Evaluator ID</th>
+                                                    <th scope="col">Evaluator Name</th>
+                                                    <th scope="col">Project Feedback</th>
+                                                    <th scope="col">Evaluation Mark</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="result_fyp_2">
+                                                <!-- Show datatable here -->
+                                                <?php
+                                                displayFyp2Result($_SESSION['stud_id']);
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card row mx-auto mb-3 shadow">
-                        <div class="card-header">
-                            FYP 2 Result
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="ev_fyp_2_table" class="table table-bordered">
-                                    <thead>
-                                        <tr class="header-bg">
-                                            <th scope="col">Submission</th>
-                                            <th scope="col">Evaluator ID</th>
-                                            <th scope="col">Evaluator Name</th>
-                                            <th scope="col">Project Feedback</th>
-                                            <th scope="col">Evaluation Mark</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="result_fyp_2">
-                                        <!-- Show datatable here -->
-                                        <?php
-                                        displayFyp2Result($_SESSION['stud_id']);
-                                        ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
