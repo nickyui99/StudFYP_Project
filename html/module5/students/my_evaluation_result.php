@@ -243,7 +243,7 @@ $projectDetails = getProjectDetails($_SESSION['stud_id']);
             <main>
                 <div class="container-fluid px-4">
 
-                    <div class="card shadow">
+                    <div class="card shadow p-3 my-3">
                         <div class="card body">
                             <!-- Page Header -->
                             <h1 class="ms-0 mt-4">Evaluation Result</h1>
