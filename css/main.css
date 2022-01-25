@@ -2,6 +2,7 @@
 /* Do not change anything in main css section, u are free to add and modify ur own css module */
 body {
     font-family: sans-serif;
+    background-color: lightgrey;
 }
 
 .icon {
