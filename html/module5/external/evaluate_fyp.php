@@ -120,14 +120,6 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
                             Dashboard
                         </a>
 
-                        <!-- My Profile -->
-                        <a class="nav-link" href="module5/external/my_profile.php">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            My profile
-                        </a>
-
                         <!-- FYP Evaluation -->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEvaluation" aria-expanded="false" aria-controls="collapseEvaluation">
                             <div class="sb-nav-link-icon">

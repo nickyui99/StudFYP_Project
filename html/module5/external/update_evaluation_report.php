@@ -125,106 +125,12 @@ if (isset($_SESSION['update_er_array'])) {
                 <div class="sb-sidenav-menu">
                     <div class="nav mt-3">
                         <!-- Dashboard -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="../external_main.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-tachometer" aria-hidden="true"></i>
                             </div>
                             Dashboard
                         </a>
-
-                        <!-- My Profile -->
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            My profile
-                        </a>
-
-                        <!-- FYP Coordinator -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCoordinator" aria-expanded="false" aria-controls="collapseCoordinator">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-columns"></i>
-                            </div>
-                            FYP coordinator
-                            <div class="sb-sidenav-collapse-arrow">
-                                <i class="fa fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapseCoordinator" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>
-                                    Assign student to supervisor
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Assign student to evaluator
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Announcement platform
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>FYP progress
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Student mark
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Manage FYP submission date
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Manage FYP rubrics
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Coordinator final report
-                                </a>
-                            </nav>
-                        </div>
-
-                        <!-- FYP Supervisor -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSupervisor" aria-expanded="false" aria-controls="collapseSupervisor">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-columns"></i>
-                            </div>
-                            FYP supervisor
-                            <div class="sb-sidenav-collapse-arrow">
-                                <i class="fa fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>View assigned student
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>View student's FYP
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Supervisor report
-                                </a>
-                            </nav>
-                        </div>
 
                         <!-- FYP Evaluation -->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEvaluation" aria-expanded="false" aria-controls="collapseEvaluation">
@@ -238,7 +144,7 @@ if (isset($_SESSION['update_er_array'])) {
                         </a>
                         <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="view_assigned_fyp.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View assigned FYP

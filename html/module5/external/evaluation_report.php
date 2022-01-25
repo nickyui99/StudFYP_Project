@@ -101,19 +101,11 @@ session_start();
                 <div class="sb-sidenav-menu">
                     <div class="nav mt-3">
                         <!-- Dashboard -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="../external_main.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-tachometer" aria-hidden="true"></i>
                             </div>
                             Dashboard
-                        </a>
-
-                        <!-- My Profile -->
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            My profile
                         </a>
 
                         <!-- FYP Evaluation -->
@@ -133,7 +125,7 @@ session_start();
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View assigned FYP
                                 </a>
-                                <a class="nav-link text-light active" href="#">
+                                <a class="nav-link text-light active" href="evaluation_report.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                                     </div>Evaluation report
