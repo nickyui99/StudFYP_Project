@@ -76,13 +76,7 @@ session_start();
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li>
-                        <a class="dropdown-item" href="#!">My profile</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li><a class="dropdown-item" href="../html/controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="../html/controller/logout_handler.php"> <i class="fa fa-sign-out"></i> Logout</a></li>
                   
                 </ul>
             </li>
