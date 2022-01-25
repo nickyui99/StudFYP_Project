@@ -5,7 +5,7 @@
 
 <?php
 include $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/ExternalHandler.php';
-
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/AnnouncementHandler.php';
 session_start();
 
 if (isset($_SESSION['update_er_array'])) {
@@ -81,23 +81,11 @@ if (isset($_SESSION['update_er_array'])) {
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
                     </li>
+                    <?php
+                    printNotificationList();
+                    ?>
                     <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 1</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 2</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 2</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item see-more-notification" href="#">See more ...</a>
+                        <a class="dropdown-item see-more-notification" href="../../lecturer_main.php">See more ...</a>
                     </li>
                 </ul>
             </li>
@@ -106,7 +94,7 @@ if (isset($_SESSION['update_er_array'])) {
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="../../controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="../../controller/logout_handler.php"> <i class="fa fa-sign-out"></i> Logout</a></li>
                 </ul>
             </li>
         </ul>
