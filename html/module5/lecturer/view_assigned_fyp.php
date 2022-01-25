@@ -56,9 +56,6 @@ session_start();
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
                     </li>
-                    <li class="dropdown-header text-white text-center p-2">
-                        Notfication
-                    </li>
                     <?php
                     printNotificationList();
                     ?>

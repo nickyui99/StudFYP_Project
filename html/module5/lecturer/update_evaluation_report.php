@@ -84,9 +84,6 @@ if (isset($_SESSION['update_er_array'])) {
                     <li>
                         <a class="dropdown-item" href="#!">FYP Announcement 1</a>
                     </li>
-                    <li class="dropdown-header text-white text-center p-2">
-                        Notfication
-                    </li>
                     <?php
                     printNotificationList();
                     ?>

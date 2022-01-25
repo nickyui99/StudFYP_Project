@@ -69,9 +69,6 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
                     </li>
-                    <li class="dropdown-header text-white text-center p-2">
-                        Notfication
-                    </li>
                     <?php
                     printNotificationList();
                     ?>
