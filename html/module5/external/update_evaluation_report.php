@@ -85,7 +85,7 @@ if (isset($_SESSION['update_er_array'])) {
                     printNotificationList();
                     ?>
                     <li>
-                        <a class="dropdown-item see-more-notification" href="../../lecturer_main.php">See more ...</a>
+                        <a class="dropdown-item see-more-notification" href="/html/external_main.php">See more ...</a>
                     </li>
                 </ul>
             </li>

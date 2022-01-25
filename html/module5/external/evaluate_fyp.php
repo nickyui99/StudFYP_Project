@@ -73,7 +73,7 @@ $ev_rubric_array = getEvaluationRubric($submission,  $evaluateDetails->getFypLev
                     printNotificationList();
                     ?>
                     <li>
-                        <a class="dropdown-item see-more-notification" href="../../lecturer_main.php">See more ...</a>
+                        <a class="dropdown-item see-more-notification" href="/html/external_main.php">See more ...</a>
                     </li>
                 </ul>
             </li>
