@@ -39,7 +39,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . '/html/controller/login_handler.php';
         <main>
             <div class="container-fluid py-5 pb-5">
                 <!-- Login form -->
-                <div class="card rounded shadow mx-auto" style="width: 25rem;">
+                <div class="card rounded shadow my-auto mx-auto" style="width: 25rem;">
                     <div class="card-body">
                         <h1 class="card-title text-center mt-3 mb-3">Login</h1>
                         <form class="mt-3 " action="html/controller/login_handler.php" method="post">
