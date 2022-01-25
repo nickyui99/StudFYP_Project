@@ -60,7 +60,7 @@ session_start();
                     printNotificationList();
                     ?>
                     <li>
-                        <a class="dropdown-item see-more-notification" href="lecturer_main.php">See more ...</a>
+                        <a class="dropdown-item see-more-notification" href="../../lecturer_main.php">See more ...</a>
                     </li>
                 </ul>
             </li>

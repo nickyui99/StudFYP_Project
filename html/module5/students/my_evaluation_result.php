@@ -61,7 +61,7 @@ $projectDetails = getProjectDetails($_SESSION['stud_id']);
                     printNotificationList();
                     ?>
                     <li>
-                        <a class="dropdown-item see-more-notification" href="/html/student_main.php"> See more ...</a>
+                        <a class="dropdown-item see-more-notification" href="../../student_main.php"> See more ...</a>
                     </li>
                 </ul>
             </li>
