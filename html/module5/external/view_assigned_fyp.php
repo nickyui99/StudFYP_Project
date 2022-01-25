@@ -149,41 +149,44 @@ session_start();
                         <li class="breadcrumb-item active">Assigned FYP for Evaluation</li>
                     </ol>
 
-                    <div class="row mb-2">
-                        <!-- Evaluation panel counter -->
-                        <p id="row_counter" class="col-sm-9 my-auto text-secondary">Total 0 Assigned Evaluation</p>
+                    <div class="card shadow my-3">
+                        <div class="card-body p-3">
+                            <div class="row mb-2">
+                                <!-- Evaluation panel counter -->
+                                <p id="row_counter" class="col-sm-9 my-auto text-secondary">Total 0 Assigned Evaluation</p>
 
-                        <!-- Search bar -->
-                        <div class="form-outline col-sm-3">
-                            <div class="form-group has-search">
-                                <span class="fa fa-search form-control-feedback"></span>
-                                <input type="text" name="search" id="search" class="form-control" placeholder="Search ID or Name">
+                                <!-- Search bar -->
+                                <div class="form-outline col-sm-3">
+                                    <div class="form-group has-search">
+                                        <span class="fa fa-search form-control-feedback"></span>
+                                        <input type="text" name="search" id="search" class="form-control" placeholder="Search ID or Name">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table id="myTable" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr class="header-bg">
+                                            <th scope="col">Project ID</th>
+                                            <th scope="col">Student ID</th>
+                                            <th scope="col">Student Name</th>
+                                            <th scope="col">FYP Level</th>
+                                            <th scope="col">FYP Progress</th>
+                                            <th scope="col">Evaluation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="result">
+                                        <!-- Show datatable here -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="message_box">
+                                <!-- This div is for showing message purpose only -->
                             </div>
                         </div>
                     </div>
-
-                    <div class="table-responsive">
-                        <table id="myTable" class="table table-bordered table-striped">
-                            <thead>
-                                <tr class="header-bg">
-                                    <th scope="col">Project ID</th>
-                                    <th scope="col">Student ID</th>
-                                    <th scope="col">Student Name</th>
-                                    <th scope="col">FYP Level</th>
-                                    <th scope="col">FYP Progress</th>
-                                    <th scope="col">Evaluation</th>
-                                </tr>
-                            </thead>
-                            <tbody id="result">
-                                <!-- Show datatable here -->
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div id="message_box">
-                        <!-- This div is for showing message purpose only -->
-                    </div>
-
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">

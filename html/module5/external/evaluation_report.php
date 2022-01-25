@@ -164,137 +164,138 @@ session_start();
                         <li class="breadcrumb-item active">Evaluation report</li>
                     </ol>
 
+                    <div class="card shadow my-3">
+                        <div class="card-body p-3">
+                            <div id="message_box">
+                                <!-- This div is for showing message purpose only -->
+                            </div>
 
-                    <div id="message_box">
-                        <!-- This div is for showing message purpose only -->
-                    </div>
+                            <div class="row mb-2">
+                                <p class="col-sm-1">Actions: </p>
 
-                    <div class="row mb-2">
-                        <p class="col-sm-1">Actions: </p>
+                                <div class="col-sm-8">
 
-                        <div class="col-sm-8">
+                                    <button type="button" name="btn_update" id="btn_update" class="btn btn-success btn-sm">
+                                        <i class="fa fa-plus me-2"></i>Update
+                                    </button>
 
-                            <button type="button" name="btn_update" id="btn_update" class="btn btn-success btn-sm">
-                                <i class="fa fa-plus me-2"></i>Update
-                            </button>
+                                    <button type="button" name="btn_delete" id="btn_delete" class="btn btn-danger btn-sm" data-bs-toggle="modal">
+                                        <i class="fa fa-trash me-2" aria-hidden="true"></i>Delete
+                                    </button>
 
-                            <button type="button" name="btn_delete" id="btn_delete" class="btn btn-danger btn-sm" data-bs-toggle="modal">
-                                <i class="fa fa-trash me-2" aria-hidden="true"></i>Delete
-                            </button>
+                                    <!-- Delete Modal -->
+                                    <div class="modal fade " id="confirm_delete_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteModalLabel">Confirm Delete </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div id="checked_report">
 
-                            <!-- Delete Modal -->
-                            <div class="modal fade " id="confirm_delete_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="deleteModalLabel">Confirm Delete </h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div id="checked_report">
-
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" id="btn_confirm_delete">Delete</button>
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" id="btn_confirm_delete">Delete</button>
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    </div>
+
+                                    <!-- Update modal -->
+                                    <div class="modal fade " id="confirm_update_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="update_modal_label">Confirm Update </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div id="checked_list">
+
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary" id="btn_confirm_update">Update</button>
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                </div>
+                                            </div>
                                         </div>
+                                    </div>
+
+                                    <div class="modal fade " id="alert_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="alertModalLabel">Alert</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <div id="alert_message" class="alert alert-danger" role="alert">
+
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" id="btn_ok_alert" data-bs-dismiss="modal">OK</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Search bar -->
+                                <div class="form-outline col-sm-3">
+                                    <div class="form-group has-search">
+                                        <span class="fa fa-search form-control-feedback"></span>
+                                        <input type="text" name="search" id="search" class="form-control" placeholder="Search Student ID or Name">
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Update modal -->
-                            <div class="modal fade " id="confirm_update_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="update_modal_label">Confirm Update </h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div id="checked_list">
+                            <div class="row mb-2">
+                                <!-- Evaluation panel counter -->
+                                <p id="row_counter" class="col-sm-3 my-auto text-secondary">Total 0 Evaluation Report</p>
+                                <div class="table-responsive">
+                                    <table id="myTable" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr class="header-bg">
+                                                <th class="small" style="width: 4%;">List</th>
+                                                <th class="small" style="width: 8%;">Result ID</th>
+                                                <th class="small" style="width: 8%;">Project ID</th>
+                                                <th class="small" style="width: 8%;">Student ID</th>
+                                                <th class="small" style="width: 13%;">Project Title</th>
+                                                <th class="small" style="width: 8%;">FYP Stage</th>
+                                                <th class="small" style="width: 8%;">Submission</th>
+                                                <th class="small" style="width: 8%;">Evaluation Mark</th>
+                                                <th class="small" style="width: 10%;">Evaluation Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="result">
+                                            <!-- Show datatable here -->
 
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" id="btn_confirm_update">Update</button>
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        </div>
-                                    </div>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr class="header-bg">
+                                                <th class="small" style="width: 4%;">List</th>
+                                                <th class="small" style="width: 8%;">Result ID</th>
+                                                <th class="small" style="width: 8%;">Project ID</th>
+                                                <th class="small" style="width: 8%;">Student ID</th>
+                                                <th class="small" style="width: 13%;">Project Title</th>
+                                                <th class="small" style="width: 8%;">FYP Stage</th>
+                                                <th class="small" style="width: 8%;">Submission</th>
+                                                <th class="small" style="width: 8%;">Evaluation Mark</th>
+                                                <th class="small" style="width: 10%;">Evaluation Date</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
                                 </div>
                             </div>
-
-                            <div class="modal fade " id="alert_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="alertModalLabel">Alert</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                        </div>
-                                        <div class="modal-body">
-
-                                            <div id="alert_message" class="alert alert-danger" role="alert">
-
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" id="btn_ok_alert" data-bs-dismiss="modal">OK</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Search bar -->
-                        <div class="form-outline col-sm-3">
-                            <div class="form-group has-search">
-                                <span class="fa fa-search form-control-feedback"></span>
-                                <input type="text" name="search" id="search" class="form-control" placeholder="Search Student ID or Name">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mb-2">
-                        <!-- Evaluation panel counter -->
-                        <p id="row_counter" class="col-sm-3 my-auto text-secondary">Total 0 Evaluation Report</p>
-                        <div class="table-responsive">
-                            <table id="myTable" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr class="header-bg">
-                                        <th class="small" style="width: 4%;">List</th>
-                                        <th class="small" style="width: 8%;">Result ID</th>
-                                        <th class="small" style="width: 8%;">Project ID</th>
-                                        <th class="small" style="width: 8%;">Student ID</th>
-                                        <th class="small" style="width: 13%;">Project Title</th>
-                                        <th class="small" style="width: 8%;">FYP Stage</th>
-                                        <th class="small" style="width: 8%;">Submission</th>
-                                        <th class="small" style="width: 8%;">Evaluation Mark</th>
-                                        <th class="small" style="width: 10%;">Evaluation Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="result">
-                                    <!-- Show datatable here -->
-
-                                </tbody>
-                                <tfoot>
-                                    <tr class="header-bg">
-                                        <th class="small" style="width: 4%;">List</th>
-                                        <th class="small" style="width: 8%;">Result ID</th>
-                                        <th class="small" style="width: 8%;">Project ID</th>
-                                        <th class="small" style="width: 8%;">Student ID</th>
-                                        <th class="small" style="width: 13%;">Project Title</th>
-                                        <th class="small" style="width: 8%;">FYP Stage</th>
-                                        <th class="small" style="width: 8%;">Submission</th>
-                                        <th class="small" style="width: 8%;">Evaluation Mark</th>
-                                        <th class="small" style="width: 10%;">Evaluation Date</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
                         </div>
                     </div>
                 </div>
-
-
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">

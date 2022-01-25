@@ -28,7 +28,6 @@ if (isset($_SESSION['update_er_array'])) {
 
     //Get previous mark given
     $current_mark = $current->getMark();
-
 } else {
     //if there is no update er id return back to evaluation report page
     header("Location: evaluation_report.php");
@@ -283,151 +282,152 @@ if (isset($_SESSION['update_er_array'])) {
                         <li class="breadcrumb-item active">Update FYP</li>
                     </ol>
 
+                    <div class="card shadow my-3">
+                        <div class="card-body p-3">
+                            <nav aria-label="...">
+                                <ul class="pagination">
 
-                    <nav aria-label="...">
-                        <ul class="pagination">
+                                    <?php
 
-                            <?php
-
-                            //Previous button
-                            if ($_GET['view'] == 0) {
-                                echo '<li class="page-item disabled">
+                                    //Previous button
+                                    if ($_GET['view'] == 0) {
+                                        echo '<li class="page-item disabled">
                                         <a class="page-link" href="#" tabindex="-1" id="btn_previous" aria-disabled="true">Previous</a>
                                         </li>';
-                            } else {
-                                echo '<li class="page-item">
+                                    } else {
+                                        echo '<li class="page-item">
                                         <a class="page-link" href="update_evaluation_report.php?view=' . $_GET['view'] - 1 . '" tabindex="-1" id="btn_previous" onClick="saveSession();" aria-disabled="true">Previous</a>
                                     </li>';
-                            }
+                                    }
 
-                            //Print All Available Page
-                            for ($i = 0; $i < count($er_report_array); $i++) {
-                                $page_num = $i + 1;
-                                if ($i == $_GET['view']) {
-                                    echo '<li class="page-item active"><a class="page-link" href="update_evaluation_report.php?view=' . $i . '" onClick="saveSession();">' . $page_num . '</a></li>';
-                                } else {
-                                    echo '<li class="page-item"><a class="page-link" href="update_evaluation_report.php?view=' . $i . '" onClick="saveSession();">' . $page_num . '</a></li>';
-                                }
-                            }
+                                    //Print All Available Page
+                                    for ($i = 0; $i < count($er_report_array); $i++) {
+                                        $page_num = $i + 1;
+                                        if ($i == $_GET['view']) {
+                                            echo '<li class="page-item active"><a class="page-link" href="update_evaluation_report.php?view=' . $i . '" onClick="saveSession();">' . $page_num . '</a></li>';
+                                        } else {
+                                            echo '<li class="page-item"><a class="page-link" href="update_evaluation_report.php?view=' . $i . '" onClick="saveSession();">' . $page_num . '</a></li>';
+                                        }
+                                    }
 
-                            //Pagination Next Button
-                            if ($_GET['view'] == count($er_report_array) - 1) {
-                                echo    '<li class="page-item disabled">
+                                    //Pagination Next Button
+                                    if ($_GET['view'] == count($er_report_array) - 1) {
+                                        echo    '<li class="page-item disabled">
                                         <a class="page-link" href="#" onClick="saveSession();">Next</a>
                                         </li>';
-                            } else {
-                                echo    '<li class="page-item">
+                                    } else {
+                                        echo    '<li class="page-item">
                                         <a class="page-link" href="update_evaluation_report.php?view=' . $_GET['view'] + 1 . '">Next</a>
                                         </li>';
-                            }
-                            ?>
-                        </ul>
-                    </nav>
+                                    }
+                                    ?>
+                                </ul>
+                            </nav>
 
-                    <form id="evaluation_form" action="evaluation_report.php">
-                        <div class="card mb-3 p-3">
-                            <div class="form-group">
-                                <table class="table table-borderless">
-                                    <tbody>
-                                        <tr class="">
-                                            <td class="col-sm-2">Result ID: </td>
-                                            <td class="col-sm-7"><input type="text" class="form-control" id="inputResultId" name="inputResultId" value="<?php echo $current->getResultId(); ?>" readonly></td>
-                                            <td class="col-sm-3" rowspan="4">
-                                                <div class="card text-center">
-                                                    <div class="card-body">
-                                                        <h4 class="mb1">Project QR Code</h4>
-                                                        <img name="QR_code" src="data:image/jpeg;base64, <?php echo $evaluateDetails->getProjQR(); ?>" alt="Project QR Code" class="img-container mb-1">
-                                                        <button type="button" id="btnDownloadProjQR" class="btn btn-outline-dark"><i class="fa fa-download me-3" aria-hidden="true"></i>Download QR Code</button>
-                                                    </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Student ID: </td>
-                                            <td><input type="text" class="form-control" id="inputStudId" name="inputStudId" value="<?php echo $current->getStudId() ?>" readonly></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-sm-2">Project ID: </td>
-                                            <td class="col-sm-7"><input type="text" class="form-control" id="inputProjId" name="inputProjId" value="<?php echo $current->getProjId() ?>" readonly></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Project title:</td>
-                                            <td><input type="text" class="form-control" id="inputProjTitle" name="inputProjTitle" value="<?php echo $current->getProjTitle() ?>" readonly></td>
-                                        </tr>
+                            <form id="evaluation_form" action="evaluation_report.php">
+                                <div class="card mb-3 p-3">
+                                    <div class="form-group">
+                                        <table class="table table-borderless">
+                                            <tbody>
+                                                <tr class="">
+                                                    <td class="col-sm-2">Result ID: </td>
+                                                    <td class="col-sm-7"><input type="text" class="form-control" id="inputResultId" name="inputResultId" value="<?php echo $current->getResultId(); ?>" readonly></td>
+                                                    <td class="col-sm-3" rowspan="4">
+                                                        <div class="card text-center">
+                                                            <div class="card-body">
+                                                                <h4 class="mb1">Project QR Code</h4>
+                                                                <img name="QR_code" src="data:image/jpeg;base64, <?php echo $evaluateDetails->getProjQR(); ?>" alt="Project QR Code" class="img-container mb-1">
+                                                                <button type="button" id="btnDownloadProjQR" class="btn btn-outline-dark"><i class="fa fa-download me-3" aria-hidden="true"></i>Download QR Code</button>
+                                                            </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Student ID: </td>
+                                                    <td><input type="text" class="form-control" id="inputStudId" name="inputStudId" value="<?php echo $current->getStudId() ?>" readonly></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-sm-2">Project ID: </td>
+                                                    <td class="col-sm-7"><input type="text" class="form-control" id="inputProjId" name="inputProjId" value="<?php echo $current->getProjId() ?>" readonly></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Project title:</td>
+                                                    <td><input type="text" class="form-control" id="inputProjTitle" name="inputProjTitle" value="<?php echo $current->getProjTitle() ?>" readonly></td>
+                                                </tr>
 
-                                        <tr>
-                                            <td>FYP Stage: </td>
-                                            <td><input type="text" class="form-control" id="inputFypStage" name="inputFypStage" value="<?php echo $current->getFypStage() ?>" readonly></td>
-                                        </tr>
+                                                <tr>
+                                                    <td>FYP Stage: </td>
+                                                    <td><input type="text" class="form-control" id="inputFypStage" name="inputFypStage" value="<?php echo $current->getFypStage() ?>" readonly></td>
+                                                </tr>
 
-                                        <tr>
-                                            <td>Project Logbook: </td>
-                                            <td>
-                                                <table class="table table-bordered table-striped">
-                                                    <thead>
-                                                        <tr class="header-bg">
-                                                            <th class="col-sm-3">Date</th>
-                                                            <th class="col-sm-9">Activity</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <!-- Project logbook result -->
-                                                        <?php printProjLogbook($current->getProjID(), $current->getSubmission()) ?>
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Project Document: </td>
-                                            <td><button type="button" id="btnDownloadProjDoc" class="btn btn-outline-dark"><i class="fa fa-download me-3" aria-hidden="true"></i>Download</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Evaluation Rubric: </td>
-                                            <td>
-                                                <div class="table-responsive">
-                                                    <table id="rubrics" class="table table-bordered border-dark table-sm">
-                                                        <thead class="">
-                                                            <tr class="header-bg">
-                                                                <th class="small" style="width: 10%;">Num</th>
-                                                                <th class="small" style="width: 20%;">Rubric Title</th>
-                                                                <th class="small" style="width: 25%;">Rubric Details</th>
-                                                                <th class="small" style="width: 15%;">Weightage</th>
-                                                                <th class="small" style="width: 15%;">Mark</th>
-                                                                <th class="small" style="width: 15%;">Actual Mark</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="rubric_result">
-                                                            <!-- Evaluation Rubric Result -->
-                                                            <?php printEvaluationRubric($current->getSubmission(), $evaluateDetails->getFypLevel()); ?>
-                                                            <tr class="header-bg border-dark">
-                                                                <td class="text-end" colspan="5"><b>Total:</b></td>
-                                                                <td><input type="text" readonly class="form-control-plaintext" id="total_mark" name="total_mark" value=""></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Project Feedback: </td>
-                                            <td>
-                                                <textarea id="inputProjFeedback" name="inputProjFeedback" class="form-control" cols="30" rows="5" maxLength="300" required></textarea>
-                                                <div class="float-end" id="the-count">
-                                                    <span id="current">0</span>
-                                                    <span id="maximum">/ 300</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="d-flex justify-content-center">
-                                    <input type="submit" class="btn btn-outline-dark m-3" name="submit" id="submit" value="Submit">
-                                    <input type="reset" class="btn btn-outline-dark m-3" name="reset" id="reset" value="Reset">
+                                                <tr>
+                                                    <td>Project Logbook: </td>
+                                                    <td>
+                                                        <table class="table table-bordered table-striped">
+                                                            <thead>
+                                                                <tr class="header-bg">
+                                                                    <th class="col-sm-3">Date</th>
+                                                                    <th class="col-sm-9">Activity</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <!-- Project logbook result -->
+                                                                <?php printProjLogbook($current->getProjID(), $current->getSubmission()) ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Project Document: </td>
+                                                    <td><button type="button" id="btnDownloadProjDoc" class="btn btn-outline-dark"><i class="fa fa-download me-3" aria-hidden="true"></i>Download</button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Evaluation Rubric: </td>
+                                                    <td>
+                                                        <div class="table-responsive">
+                                                            <table id="rubrics" class="table table-bordered border-dark table-sm">
+                                                                <thead class="">
+                                                                    <tr class="header-bg">
+                                                                        <th class="small" style="width: 10%;">Num</th>
+                                                                        <th class="small" style="width: 20%;">Rubric Title</th>
+                                                                        <th class="small" style="width: 25%;">Rubric Details</th>
+                                                                        <th class="small" style="width: 15%;">Weightage</th>
+                                                                        <th class="small" style="width: 15%;">Mark</th>
+                                                                        <th class="small" style="width: 15%;">Actual Mark</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody id="rubric_result">
+                                                                    <!-- Evaluation Rubric Result -->
+                                                                    <?php printEvaluationRubric($current->getSubmission(), $evaluateDetails->getFypLevel()); ?>
+                                                                    <tr class="header-bg border-dark">
+                                                                        <td class="text-end" colspan="5"><b>Total:</b></td>
+                                                                        <td><input type="text" readonly class="form-control-plaintext" id="total_mark" name="total_mark" value=""></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Project Feedback: </td>
+                                                    <td>
+                                                        <textarea id="inputProjFeedback" name="inputProjFeedback" class="form-control" cols="30" rows="5" maxLength="300" required></textarea>
+                                                        <div class="float-end" id="the-count">
+                                                            <span id="current">0</span>
+                                                            <span id="maximum">/ 300</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="d-flex justify-content-center">
+                                            <input type="submit" class="btn btn-outline-dark m-3" name="submit" id="submit" value="Submit">
+                                            <input type="reset" class="btn btn-outline-dark m-3" name="reset" id="reset" value="Reset">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
-                    </form>
-
-
+                    </div>
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
