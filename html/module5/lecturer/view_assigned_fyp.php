@@ -248,7 +248,7 @@ session_start();
             <main>
                 <div class="container-fluid px-4">
 
-                    <div class="card shadow">
+                    <div class="card shadow my-3">
                         <div class="card-body p-3">
                             <h1 class="mt-4">Assigned FYP for Evaluation</h1>
                             <ol class="breadcrumb mb-4">
