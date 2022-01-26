@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- This html template is only for StudFYP admin only -->
+<!-- This html template is only for StudFYP lecturer only -->
 
 <head>
     <meta charset="UTF-8" />
@@ -30,7 +30,7 @@
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <img class="logo ms-3" src="../../images/ump_logo.png" alt="UMP" />
-        <a class="navbar-brand ms-3 me-0" href="index.html">StudFYP</a>
+        <a class="navbar-brand ms-3" href="index.html">StudFYP</a>
 
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
@@ -92,177 +92,148 @@
             <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav mt-3">
-
-                        <!-- Add user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseAddUser" aria-expanded="false"
-                            aria-controls="collapseAddUser">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-columns"></i>
-                            </div>
-                            Add user
-                            <div class="sb-sidenav-collapse-arrow">
-                                <i class="fa fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapseAddUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>
-                                    Student
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Coordinator
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Lecturer
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Industrial panel
-                                </a>
-                            </nav>
-                        </div>
-
-                        <!-- Delete user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseDeleteUser" aria-expanded="false"
-                            aria-controls="collapseDeleteUser">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-columns"></i>
-                            </div>
-                            Delete user
-                            <div class="sb-sidenav-collapse-arrow">
-                                <i class="fa fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapseDeleteUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>
-                                    Student
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Coordinator
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Lecturer
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Industrial panel
-                                </a>
-                            </nav>
-                        </div>
-
-                        <!-- Edit user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseEditUser" aria-expanded="false"
-                            aria-controls="collapseEditUser">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-columns"></i>
-                            </div>
-                            Edit user
-                            <div class="sb-sidenav-collapse-arrow">
-                                <i class="fa fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapseEditUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>
-                                    Student
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Coordinator
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Lecturer
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Industrial panel
-                                </a>
-                            </nav>
-                        </div>
-
-                        <!-- View user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseViewUser" aria-expanded="false"
-                            aria-controls="collapseViewUser">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-columns"></i>
-                            </div>
-                            View user
-                            <div class="sb-sidenav-collapse-arrow">
-                                <i class="fa fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapseViewUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>
-                                    Student
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Coordinator
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Lecturer
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Industrial panel
-                                </a>
-                            </nav>
-                        </div>
-
-                        <!-- Total user -->
+                        <!-- Dashboard -->
                         <a class="nav-link" href="index.html">
                             <div class="sb-nav-link-icon">
-                                <i class="fa fa-file-o" aria-hidden="true"></i>
+                                <i class="fa fa-tachometer" aria-hidden="true"></i>
                             </div>
-                            Total user
+                            Dashboard
                         </a>
+
+                        <!-- My Profile -->
+                        <a class="nav-link" href="index.html">
+                            <div class="sb-nav-link-icon">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            My profile
+                        </a>
+
+                        <!-- FYP Coordinator -->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseCoordinator" aria-expanded="false"
+                            aria-controls="collapseCoordinator">
+                            <div class="sb-nav-link-icon">
+                                <i class="fa fa-columns"></i>
+                            </div>
+                            FYP coordinator
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fa fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseCoordinator" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                    </div>
+                                    Assign student to supervisor
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                    </div>Assign student to evaluator
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                    </div>Announcement platform
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                    </div>FYP progress
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                    </div>Student mark
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                    </div>Manage FYP submission date
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                    </div>Manage FYP rubrics
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                    </div>Coordinator final report
+                                </a>
+                            </nav>
+                        </div>
+
+                        <!-- FYP Supervisor -->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseSupervisor" aria-expanded="false"
+                            aria-controls="collapseSupervisor">
+                            <div class="sb-nav-link-icon">
+                                <i class="fa fa-columns"></i>
+                            </div>
+                            FYP supervisor
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fa fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                    </div>View assigned student
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                    </div>View student's FYP
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                    </div>Supervisor report
+                                </a>
+                            </nav>
+                        </div>
+
+                        <!-- FYP Evaluation -->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseEvaluation" aria-expanded="false"
+                            aria-controls="collapseEvaluation">
+                            <div class="sb-nav-link-icon">
+                                <i class="fa fa-columns"></i>
+                            </div>
+                            FYP evaluation
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fa fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                    </div>View assigned FYP
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                    </div>Evaluation report
+                                </a>
+                            </nav>
+                        </div>
 
                         <!-- My report -->
                         <a class="nav-link" href="index.html">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-file-o" aria-hidden="true"></i>
                             </div>
-                            Report
+                            My report
                         </a>
                     </div>
                 </div>
@@ -277,27 +248,48 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Dashboard</h1>
+                    <h1 class="mt-4">Assigned FYP Student</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">
-                            <a href="index.html">Dashboard</a>
+                           FYP Supervisor
                         </li>
-                        <li class="breadcrumb-item active">Announcement</li>
+                        <li class="breadcrumb-item active">Assigned FYP Student</li>
                     </ol>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            This page is an example of using the light side
-                            navigation option. By appending the
-                            <code>.sb-sidenav-light</code>
-                            class to the
-                            <code>.sb-sidenav</code>
-                            class, the side navigation will take on a light
-                            color scheme. The
-                            <code>.sb-sidenav-dark</code>
-                            is also available for a darker option.
+                    <div class="row mb-2">
+                        <!-- Evaluation panel counter -->
+                        <p id="row_counter" class="col-sm-9 my-auto text-secondary">Total 0 Assigned Student</p>
+
+                        <!-- Search bar -->
+                        <div class="form-outline col-sm-3">
+                            <div class="form-group has-search">
+                                <span class="fa fa-search form-control-feedback"></span>
+                                <input type="text" name="search" id="search" class="form-control" placeholder="Search ID or Name">
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <?php include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php' ;  
+                     $mysqli= new mysqli('localhost', 'root','','studfyp_db') or die(mysqli_error($mysqli));
+                     $result= $mysqli->query("SELECT * FROM student") or die($mysqli->error);
+                    ?>
+                     
+                    <div class="table-responsive">
+                        <table class="table table-bordered table striped">
+                       <thead>
+                           <tr class="header-bg">
+                               <th scope="col">Student ID</th>
+                               <th scope="col">Student Name</th>
+                                    <th scope="col">Project ID</th>
+                                    <th scope="col">Project Title</th>
+                                    <th scope="col">Approval</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody id="result">
+                                <!-- Show datatable here -->
+                            </tbody>
+                        </table>
+                    </div>
+                  
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">

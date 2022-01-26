@@ -3,7 +3,8 @@
 
 <!-- This is the main page for lecturer -->
 <?php
-include $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/AnnouncementHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/AnnouncementHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/FypActivityHandler.php';
 session_start();
 ?>
 
@@ -22,6 +23,13 @@ session_start();
 
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
+
+    <!-- Full Calendar API -->
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
+
+    <!-- Moment Js API -->
+    <script src='https://momentjs.com/downloads/moment.js'></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/main.css" />
@@ -63,13 +71,7 @@ session_start();
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li>
-                        <a class="dropdown-item" href="#!">My profile</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li><a class="dropdown-item" href="controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="controller/logout_handler.php"> <i class="fa fa-sign-out"></i> Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -90,7 +92,7 @@ session_start();
                         </a>
 
                         <!-- My Profile -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="module4\module4.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-user"></i>
                             </div>
@@ -130,7 +132,7 @@ session_start();
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>FYP progress
                                 </a>
-                                
+
                                 <a class="nav-link" href="module2\StudentMarks//student_marks.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
@@ -161,17 +163,17 @@ session_start();
                         </a>
                         <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module4\view_assigned_student.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View assigned student
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module4\view_student_fyp.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View student's FYP
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module4\supervisor_report.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Supervisor report
@@ -233,17 +235,34 @@ session_start();
                         </li>
                         <li class="breadcrumb-item active">Announcement</li>
                     </ol>
-                    <div class="card mb-4">
-                        <div class="card-header">Announcement Board</div>
-                        <div class="card-body">
 
-                            <ol class="list-group list-group-numbered">
-                                <?php
-                                printAnnouncementBoardList();
-                                ?>
-                            </ol>
+                    <div class="row" style="height: 60%;">
+                        <!-- Announcement Board -->
+                        <div class="col-sm-5">
+                            <div class="card mb-4 shadow">
+                                <div class="card-header">Announcement Board</div>
+                                <div class="card-body">
+
+                                    <ol class="list-group list-group-numbered">
+                                        <?php
+                                        printAnnouncementBoardList();
+                                        ?>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Calendar Event -->
+                        <div class="col-sm-7">
+                            <div class="card mb-4 shadow">
+                                <div class="card-header">FYP Calendar</div>
+                                <div class="card-body">
+                                    <div id='calendar'></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
@@ -256,5 +275,34 @@ session_start();
         </div>
     </div>
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var todayDate = moment().startOf("day");
+        var YM = todayDate.format("YYYY-MM");
+        var YESTERDAY = todayDate.clone().subtract(1, "day").format("YYYY-MM-DD");
+        var TODAY = todayDate.format("YYYY-MM-DD");
+        var TOMORROW = todayDate.clone().add(1, "day").format("YYYY-MM-DD");
+
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            initialDate: TODAY,
+            nowIndicator: true,
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            events: [
+                <?php echo getAllActivity(); ?>
+            ],
+            eventColor: '#00b3a4'
+        });
+
+        calendar.render();
+    });
+</script>
 
 </html>

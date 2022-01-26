@@ -1,6 +1,6 @@
 
 <?php
-include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php';
+include_once $_SERVER["DOCUMENT_ROOT"] . "/mySQLi/config.php";
 session_start();
 
 //Updated to use SQL prepared statement to prevent SQL injection
@@ -18,7 +18,7 @@ if (isset($_POST['Login'])) {
         $type = $_POST['f_userClass'];
 
         switch ($type) {
-            case "student";
+            case "student":
                 $stmt = $db->prepare('SELECT stud_id, stud_name FROM student WHERE stud_id =? AND stud_password =?');
                 $stmt->bind_param('ss', $id, $pass);
                 $stmt->execute();
@@ -41,7 +41,7 @@ if (isset($_POST['Login'])) {
                 mysqli_close($db);
                 break;
 
-            case "administrator";
+            case "administrator":
                 $stmt = $db->prepare('SELECT admin_id, admin_name FROM administrator WHERE admin_id =? AND admin_password =?');
                 $stmt->bind_param('ss', $id, $pass);
                 $stmt->execute();
@@ -63,7 +63,7 @@ if (isset($_POST['Login'])) {
                 mysqli_close($db);
                 break;
 
-            case "staff";
+            case "staff":
                 $stmt = $db->prepare('SELECT lect_id, lect_name FROM lecturer WHERE lect_id =? AND lect_password=?');
                 $stmt->bind_param('ss', $id, $pass);
                 $stmt->execute();
@@ -84,8 +84,8 @@ if (isset($_POST['Login'])) {
                 mysqli_close($db);
                 break;
 
-            case "external";
-                $stmt = $db->prepare("SELECT * FROM industrial_panel WHERE ip_id =? AND ip_password=?");
+            case "external":
+                $stmt = $db->prepare("SELECT ip_id, ip_name FROM industrial_panel WHERE ip_id =? AND ip_password=?");
                 $stmt->bind_param('ss', $id, $pass);
                 $stmt->execute();
                 $stmt->bind_result($ip_id, $ip_name);
@@ -94,16 +94,18 @@ if (isset($_POST['Login'])) {
                     $stmt->fetch();
                     $_SESSION['ip_id'] = $ip_id;
                     $_SESSION['username'] = $ip_name;
-                    //TODO #1
-                    echo "<script>window.open('industrialpanel_template.php','_self')</script>";
+                    echo "<script>window.open('../external_main.php','_self')</script>";
                 } else {
                     echo '<script type="text/javascript">';
-                    echo ' alert("Incorrect Username and Password.\n Please Try again !")';
+                    echo 'alert("Incorrect Username and Password.\n Please Try again !")';
                     echo '</script>';
                     echo "<script>window.open('../../index.php','_self')</script>";
                 }
                 mysqli_close($db);
                 break;
+
+            default:
+                echo "<script>window.open('../../index.php','_self')</script>";
         }
     }
 }

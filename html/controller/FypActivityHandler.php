@@ -1,7 +1,7 @@
 <?php
 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/StudFYP_Project/html/model/ActivityDataService.php";
-require_once $_SERVER["DOCUMENT_ROOT"] . "/StudFYP_Project/html/model/ActivityModel.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/html/model/ActivityDataService.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/html/model/ActivityModel.php";
 
 if(isset($_POST['fyp_level']) && isset($_POST['submission']) && isset($_POST['start_date']) && isset($_POST['end_date'])){
 

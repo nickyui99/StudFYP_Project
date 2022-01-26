@@ -1,5 +1,5 @@
 <?php
-require_once '../DAO/StudentDataService.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/DAO/StudentDataService.php';
 
 if (isset($_POST['search_evaluator']) && isset($_POST['stud_id'])) {
     $sds = new StudentDataService();

@@ -137,17 +137,17 @@
                                     </div>
                                     View logbook
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="updatelogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Update logbook
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="http://localhost:81/StudFYP_Project/html/module3/MyFYP/addlogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Add logbook
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="deletelogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Delete logbook

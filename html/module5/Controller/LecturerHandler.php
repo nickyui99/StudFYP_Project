@@ -1,8 +1,8 @@
 <?php
 
-require_once '../DAO/LecturerDataService.php';
-require_once '../ClassModel/EvaluateFypModel.php';
-require_once '../ClassModel/ProjectlogbookModel.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/DAO/LecturerDataService.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/ClassModel/EvaluateFypModel.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/ClassModel/ProjectLogbookModel.php';
 
 if (isset($_POST['search_assigned_evaluation']) && isset($_POST['lecturer_id'])) {
     viewAssignedFyp($_POST['search_assigned_evaluation'], $_POST['lecturer_id']);
@@ -39,7 +39,7 @@ function viewAssignedFyp($query, $lect_id)
             $evaluation_status = $assigned_ev->getEvaluationStatus();
             for ($i = 1; $i <= 3; $i++) {
                 if ($evaluation_status[$i] == true) {
-                    $output = $output . ' <a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=' . $i . '" class="btn btn-success btn-sm disabled" role="button" aria-disabled="true">' . $i . '</a>';
+                    $output = $output . ' <a href="#" class="btn btn-success btn-sm disabled" role="button" aria-disabled="true">' . $i . '</a>';
                 } else {
                     $output = $output . ' <a href="evaluate_fyp.php?projID=' . $assigned_ev->getProjectID() . '&studID=' . $assigned_ev->getStudentID() . '&submission=' . $i . '" class="btn btn-light btn-outline-dark btn-sm" role="button" aria-disabled="true">' . $i . '</a>';
                 }
@@ -175,7 +175,7 @@ function deleteEvaluationReport($er_id_array)
     }
 }
 
-function submitEvaluationForm($ev_result, $assigned_id, $stud_id)
+function submitLectEvaluationForm($ev_result, $assigned_id, $stud_id)
 {
     $lds = new LecturerDataService();
     //Insert evaluation result data
@@ -230,3 +230,4 @@ function getEvaluatedFyp2StudentNum($lect_id)
 
     return $stud_num;
 }
+

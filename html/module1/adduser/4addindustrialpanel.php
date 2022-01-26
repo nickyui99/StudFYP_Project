@@ -1,7 +1,7 @@
 
 <?php
  
- include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php' ;  
+ include_once '../../../mySQLi/config.php' ;  
  session_start(); 
  $ipid= $ipname=$iphpnum=$ipcompname=$ippass=" "; 
  if(isset($_POST['Add']))
@@ -55,7 +55,7 @@
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <img class="logo ms-3" src="../../../images/ump_logo.png" alt="UMP" />
-        <a class="navbar-brand ms-3 me-0" href="index.html">StudFYP</a>
+        <a class="navbar-brand ms-3 me-0" href="/html/admin_main.php">StudFYP</a>
 
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
@@ -105,7 +105,7 @@
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="/html/controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -133,24 +133,24 @@
                         <div class="collapse show" id="collapseAddUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link " href="http://localhost/StudFYP_Project/html/module_1/adduser/1addstudent.php" >
+                                <a class="nav-link " href="1addstudent.php" >
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                    
                                     </div>
                                     Student
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/adduser/2addlecturer.php">
+                                <a class="nav-link" href="2addlecturer.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Lecturer
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/adduser/3addcoordinator.php">
+                                <a class="nav-link" href="3addcoordinator.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Coordinator
                                 </a>
-                                <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/adduser/4addindustrialpanel.php">
+                                <a class="nav-link text-light active" href="4addindustrialpanel.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
                                     </div>Industrial panel
@@ -173,23 +173,23 @@
                         <div class="collapse" id="collapseDeleteUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/deleteuser/1deletestudent.php">
+                                <a class="nav-link" href="../deleteuser/1deletestudent.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
                                     Student
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/deleteuser/2deletelecturer.php">
+                                <a class="nav-link" href="../deleteuser/2deletelecturer.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Lecturer
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/deleteuser/3deletecoordinator.php">
+                                <a class="nav-link" href="../deleteuser/3deletecoordinator.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Coordinator
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/deleteuser/4deleteindustrialpanel.php">
+                                <a class="nav-link" href="../deleteuser/4deleteindustrialpanel.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Industrial panel
@@ -212,23 +212,23 @@
                         <div class="collapse" id="collapseEditUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/updateuser/1updatestudent.php">
+                                <a class="nav-link" href="../updateuser/1updatestudent.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
                                     Student
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/updateuser/2updatelecturer.php">
+                                <a class="nav-link" href="../updateuser/2updatelecturer.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Lecturer
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/updateuser/3updatecoordinator.php">
+                                <a class="nav-link" href="../updateuser/3updatecoordinator.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Coordinator
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/updateuser/4updateindustrialpanel.php">
+                                <a class="nav-link" href="../updateuser/4updateindustrialpanel.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin " aria-hidden="true"></i>
                                     </div>Industrial panel
@@ -251,23 +251,23 @@
                         <div class="collapse" id="collapseViewUser" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/viewuser/1viewstudent.php">
+                                <a class="nav-link" href="../viewuser/1viewstudent.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
                                     Student
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/viewuser/2viewlecturer.php">
+                                <a class="nav-link" href="../viewuser/2viewlecturer.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Lecturer
                                 </a>
-                                <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/viewuser/3viewcoordinator.php">
+                                <a class="nav-link" href="../viewuser/3viewcoordinator.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Coordinator
                                 </a>
-                                <a class="nav-link text-light active" href="http://localhost/StudFYP_Project/html/module_1/viewuser/4viewindustrialpanel.php">
+                                <a class="nav-link text-light active" href="../viewuser/4viewindustrialpanel.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin " aria-hidden="true"></i>
                                     </div>Industrial panel
@@ -276,7 +276,7 @@
                         </div>
 
                         <!-- Total user -->
-                        <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/total&report/totaluser.php">
+                        <a class="nav-link" href="../total&report/totaluser.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-file-o" aria-hidden="true"></i>
                             </div>
@@ -284,7 +284,7 @@
                         </a>
 
                         <!-- My report -->
-                        <a class="nav-link" href="http://localhost/StudFYP_Project/html/module_1/total&report/report.php">
+                        <a class="nav-link" href="../total&report/report.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-file-o" aria-hidden="true"></i>
                             </div>

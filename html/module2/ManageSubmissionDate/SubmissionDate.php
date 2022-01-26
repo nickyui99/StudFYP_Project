@@ -9,8 +9,8 @@
 <!-- Contributor: Nicholas, Aiman -->
 
 <?php
-include $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/AnnouncementHandler.php';
-include $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/FypActivityHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/AnnouncementHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/FypActivityHandler.php';
 
 session_start();
 ?>
@@ -32,7 +32,7 @@ session_start();
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
 
     <!-- Full Calendar API -->
-    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet' /> -->
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet' />
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
 
     <!-- Moment Js API -->

@@ -4,7 +4,8 @@
 <!-- This html template is only for StudFYP lecturer only -->
 
 <?php
-include '../Controller/LecturerHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/LecturerHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/AnnouncementHandler.php';
 session_start();
 ?>
 
@@ -30,7 +31,7 @@ session_start();
 
     <!-- JS -->
     <script src="../../../js/module_5.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 
@@ -55,23 +56,11 @@ session_start();
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
                     </li>
+                    <?php
+                    printNotificationList();
+                    ?>
                     <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 1</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 2</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 2</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item see-more-notification" href="#">See more ...</a>
+                        <a class="dropdown-item see-more-notification" href="../../lecturer_main.php">See more ...</a>
                     </li>
                 </ul>
             </li>
@@ -80,13 +69,7 @@ session_start();
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li>
-                        <a class="dropdown-item" href="#!">My profile</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li><a class="dropdown-item" href="../../controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="../../controller/logout_handler.php"> <i class="fa fa-sign-out"></i> Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -247,6 +230,7 @@ session_start();
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
+
                     <h1 class="mt-4">Assigned FYP for Evaluation</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">
@@ -255,41 +239,46 @@ session_start();
                         <li class="breadcrumb-item active">Assigned FYP for Evaluation</li>
                     </ol>
 
-                    <div class="row mb-2">
-                        <!-- Evaluation panel counter -->
-                        <p id="row_counter" class="col-sm-9 my-auto text-secondary">Total 0 Assigned Evaluation</p>
+                    <div class="card shadow my-3">
+                        <div class="card-body p-3">
 
-                        <!-- Search bar -->
-                        <div class="form-outline col-sm-3">
-                            <div class="form-group has-search">
-                                <span class="fa fa-search form-control-feedback"></span>
-                                <input type="text" name="search" id="search" class="form-control" placeholder="Search ID or Name">
+                            <div class="row mb-2">
+                                <!-- Evaluation panel counter -->
+                                <p id="row_counter" class="col-sm-9 my-auto text-secondary">Total 0 Assigned Evaluation</p>
+
+                                <!-- Search bar -->
+                                <div class="form-outline col-sm-3">
+                                    <div class="form-group has-search">
+                                        <span class="fa fa-search form-control-feedback"></span>
+                                        <input type="text" name="search" id="search" class="form-control" placeholder="Search ID or Name">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table id="myTable" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr class="header-bg">
+                                            <th scope="col">Project ID</th>
+                                            <th scope="col">Student ID</th>
+                                            <th scope="col">Student Name</th>
+                                            <th scope="col">FYP Level</th>
+                                            <th scope="col">FYP Progress</th>
+                                            <th scope="col">Evaluation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="result">
+                                        <!-- Show datatable here -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="message_box">
+                                <!-- This div is for showing message purpose only -->
                             </div>
                         </div>
                     </div>
 
-                    <div class="table-responsive">
-                        <table id="myTable" class="table table-bordered table-striped">
-                            <thead>
-                                <tr class="header-bg">
-                                    <th scope="col">Project ID</th>
-                                    <th scope="col">Student ID</th>
-                                    <th scope="col">Student Name</th>
-                                    <th scope="col">FYP Level</th>
-                                    <th scope="col">FYP Progress</th>
-                                    <th scope="col">Evaluation</th>
-                                </tr>
-                            </thead>
-                            <tbody id="result">
-                                <!-- Show datatable here -->
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div id="message_box">
-                        <!-- This div is for showing message purpose only -->
-                    </div>
-                    
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
@@ -306,14 +295,14 @@ session_start();
 <script>
     $(document).ready(function() {
         var lect_id = "<?php echo $_SESSION['lect_id']; ?>";
-        load_assigned_evaluator("", lect_id);
+        load_lect_assigned_evaluator("", lect_id);
 
         $('#search').keyup(function() {
             var search = $(this).val();
             if (search != '') {
-                load_assigned_evaluator(search, lect_id);
+                load_lect_assigned_evaluator(search, lect_id);
             } else {
-                load_assigned_evaluator("", lect_id);
+                load_lect_assigned_evaluator("", lect_id);
             }
         });
     });

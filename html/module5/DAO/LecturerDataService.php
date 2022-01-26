@@ -1,10 +1,11 @@
 <?php
-require_once '../../model/Database.php';
-require_once '../ClassModel/AssignedEvaluationModel.php';
-require_once '../ClassModel/ProjectlogbookModel.php';
-require_once '../ClassModel/EvaluationRubricModel.php';
-require_once '../ClassModel/EvaluationReportModel.php';
-require_once '../ClassModel/EvaluationResultModel.php';
+
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/model/Database.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/ClassModel/AssignedEvaluationModel.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/ClassModel/ProjectLogbookModel.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/ClassModel/EvaluationRubricModel.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/ClassModel/EvaluationReportModel.php';
+require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/ClassModel/EvaluationResultModel.php';
 
 class LecturerDataService
 {
@@ -18,12 +19,13 @@ class LecturerDataService
         $connection = $db->getConnection();
 
         $sql_query = "SELECT * FROM assigned_lecturer_evaluator 
-            INNER JOIN fyp_project
-            ON assigned_lecturer_evaluator.stud_id = fyp_project.stud_id 
+            INNER JOIN fyp_project ON assigned_lecturer_evaluator.stud_id = fyp_project.stud_id 
             INNER JOIN lecturer ON lecturer.lect_id = assigned_lecturer_evaluator.lect_id 
             INNER JOIN student ON assigned_lecturer_evaluator.stud_id = student.stud_id 
-            WHERE assigned_lecturer_evaluator.lect_id = '$id' AND 
-            fyp_project.stud_id LIKE '%$query%'";
+            WHERE assigned_lecturer_evaluator.lect_id = '$id' AND (
+            fyp_project.stud_id LIKE '%$query%' OR 
+            fyp_project.fyp_proj_id LIKE '%$query%' OR 
+            student.stud_name LIKE '%$query%')";
 
         //Run SQL Query
         $result = $connection->query($sql_query);
@@ -32,7 +34,7 @@ class LecturerDataService
         if ($result->num_rows == 0) {
             //Do nothing
         } else {
-            $i = 0; 
+            $i = 0;
             while ($row = $result->fetch_assoc()) {
                 //Retrieve data
                 $assigned_ev = new AssignedEvaluation();
@@ -267,16 +269,16 @@ class LecturerDataService
         $connection = $db->getConnection();
 
         $sql_query = "SELECT evaluation_result.result_id, evaluation_result.fyp_proj_id, evaluation_result.assigned_lect_id, fyp_project.proj_title, evaluation_result.submission_level, 
-            evaluation_result.evaluation_feedback, assigned_lecturer_evaluator.lect_id, fyp_project.proj_fyp_stage, fyp_project.stud_id, evaluation_result.evaluation_date
-            FROM evaluation_result INNER JOIN assigned_lecturer_evaluator 
-            ON assigned_lecturer_evaluator.assigned_lect_id = evaluation_result.assigned_lect_id 
-            INNER JOIN fyp_project 
-            ON evaluation_result.fyp_proj_id = fyp_project.fyp_proj_id
-            WHERE assigned_lecturer_evaluator.lect_id = '$id' AND 
-            (evaluation_result.fyp_proj_id LIKE '%$query%' OR 
-            fyp_project.proj_title LIKE '%$query%' OR 
-            assigned_lecturer_evaluator.stud_id LIKE '%$query%')
-            ORDER BY evaluation_result.result_id ASC";
+        evaluation_result.evaluation_feedback, assigned_lecturer_evaluator.lect_id, fyp_project.proj_fyp_stage, fyp_project.stud_id, evaluation_result.evaluation_date
+        FROM evaluation_result INNER JOIN assigned_lecturer_evaluator 
+        ON assigned_lecturer_evaluator.assigned_lect_id = evaluation_result.assigned_lect_id 
+        INNER JOIN fyp_project 
+        ON evaluation_result.fyp_proj_id = fyp_project.fyp_proj_id
+        WHERE assigned_lecturer_evaluator.lect_id = '$id' AND 
+        (evaluation_result.fyp_proj_id LIKE '%$query%' OR 
+        fyp_project.proj_title LIKE '%$query%' OR 
+        assigned_lecturer_evaluator.stud_id LIKE '%$query%')
+        ORDER BY evaluation_result.result_id ASC";
 
         //Run SQL Query
         $result = $connection->query($sql_query);
@@ -599,7 +601,7 @@ class LecturerDataService
 
             $is_update_success = true;
             if ($connection->query($sql_query) == true) {
-                echo "</br>Record " .$ev_mark->getEvMarkId(). " updated successfully";
+                echo "</br>Record " . $ev_mark->getEvMarkId() . " updated successfully";
                 $is_update_success = true;
             } else {
                 echo "</br>Error updating record: " . $connection->error;
