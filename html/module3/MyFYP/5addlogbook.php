@@ -1,5 +1,6 @@
 <?php
-include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php' ;  
+include $_SERVER["DOCUMENT_ROOT"] . '/mySQLi/config.php';
+
 $logbookid=$logbookdate=$logbookdetails = " "; 
 if(isset($_POST['Add']))
 {  
@@ -51,7 +52,6 @@ if(isset($_POST['Add']))
  <input class="button"type="submit"  name="Add" value="Add">
  </form>
 </div>
-hello world
 </body>
 
 
