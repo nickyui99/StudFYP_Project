@@ -18,10 +18,10 @@ session_start();
    <title>Dashboard</title>
 
    <!-- Bootstrap 5 CSS -->
-   <link rel="stylesheet" href="../bootstrap_v5.1/css/styles.css" />
+   <link rel="stylesheet" href="../../../bootstrap_v5.1/css/styles.css" />
 
    <!-- Bootstrap 5 JavaScript -->
-   <script src="../bootstrap_v5.1/js/scripts.js"></script>
+   <script src="../../../bootstrap_v5.1/js/scripts.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
    <!-- Fontawesome CSS -->
