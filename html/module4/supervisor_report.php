@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- This html template is only for StudFYP lecturer only -->
+<!-- /**
+ * Name: Lutfil Hadi Ahnaf Bin Mokhtar
+ * Matric Id: CB20019
+ */ -->
 <?php
 
 include_once 'dbase.php';  

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Name: Nicholas Ooi Zhee Chen
+ * Matric Id: CB19080
+ */
+
 class EvaluationRubric
 {
     private $rubric_id;

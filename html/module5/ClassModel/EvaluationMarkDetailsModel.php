@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Name: Nicholas Ooi Zhee Chen
+ * Matric Id: CB19080
+ */
+
 class EvaluationMarkDetails{
     private $ev_mark_id;
     private $result_id;

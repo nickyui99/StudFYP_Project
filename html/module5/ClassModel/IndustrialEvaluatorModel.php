@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Name: Nicholas Ooi Zhee Chen
+ * Matric Id: CB19080
+ */
+
 class IndustrialEvaluator{
     private $evaluator_id;
     private $evaluator_name;

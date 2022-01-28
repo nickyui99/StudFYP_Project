@@ -1,4 +1,8 @@
 <?php
+/**
+ * Name: Lutfil Hadi Ahnaf Bin Mokhtar
+ * Matric Id: CB20019
+ */
 
 $mysqli = new mysqli ('localhost', 'root','','supervisor') or die(mysqli_error($mysqli));
 

@@ -1,8 +1,12 @@
 <?php
 
- include_once '../../../mySQLi/config.php' ;  
- session_start(); ?>
- 
+/**
+ * Name: Tan Chia Hui
+ * Matric Id: CA18016
+ */
+include_once '../../../mySQLi/config.php';
+session_start(); ?>
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,8 +18,7 @@
 
     <!-- Bootstrap 5 JavaScript -->
     <script src="../bootstrap_v5.1/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
@@ -45,8 +48,7 @@
         <ul class="navbar-nav d-md- ms-auto me-1">
             <!-- Announcement -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-bell fa-fw"></i> Notification</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell fa-fw"></i> Notification</a>
                 <ul class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="navbarDropdown">
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
@@ -74,8 +76,7 @@
 
             <!-- Profile -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li>
                         <a class="dropdown-item" href="#!">My profile</a>
@@ -97,9 +98,7 @@
                     <div class="nav mt-3">
 
                         <!-- Add user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseAddUser" aria-expanded="false"
-                            aria-controls="collapseAddUser">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAddUser" aria-expanded="false" aria-controls="collapseAddUser">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -108,13 +107,12 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseAddUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseAddUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link" href="../adduser/1addstudent.php" >
+                                <a class="nav-link" href="../adduser/1addstudent.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                   
+
                                     </div>
                                     Student
                                 </a>
@@ -137,9 +135,7 @@
                         </div>
 
                         <!-- Delete user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseDeleteUser" aria-expanded="false"
-                            aria-controls="collapseDeleteUser">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseDeleteUser" aria-expanded="false" aria-controls="collapseDeleteUser">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -148,8 +144,7 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseDeleteUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseDeleteUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="../deleteuser/1deletestudent.php">
                                     <div class="sb-nav-link-icon">
@@ -176,9 +171,7 @@
                         </div>
 
                         <!-- Edit user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseEditUser" aria-expanded="false"
-                            aria-controls="collapseEditUser">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEditUser" aria-expanded="false" aria-controls="collapseEditUser">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -187,8 +180,7 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseEditUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseEditUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="../updateuser/1updatestudent.php">
                                     <div class="sb-nav-link-icon">
@@ -215,9 +207,7 @@
                         </div>
 
                         <!-- View user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseViewUser" aria-expanded="false"
-                            aria-controls="collapseViewUser">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseViewUser" aria-expanded="false" aria-controls="collapseViewUser">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -226,9 +216,8 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse show" id="collapseViewUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
+                        <div class="collapse show" id="collapseViewUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
                                 <a class="nav-link" href="1viewstudent.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
@@ -271,9 +260,9 @@
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:  </div>
-                    <?php 
-                        echo $_SESSION['username'];
+                    <div class="small">Logged in as: </div>
+                    <?php
+                    echo $_SESSION['username'];
                     ?>
                 </div>
             </nav>
@@ -288,57 +277,55 @@
                         <li class="breadcrumb-item">Industrial Panel</li>
                         <li class="breadcrumb-item active">Industrial Panel List</li>
                     </ol>
-                  
-					<?php
-$sql = "SELECT * FROM industrial_panel";
-$result = $db->query($sql);
-echo"<table class= table table-dark table-striped >";	
-if ($result->num_rows > 0) {	
-	echo"<tr>";
-	echo"<th class='text-center'>Industrial Panel ID</th>";
-	echo"<th class='text-center'>Name</th>";
-	echo"<th class='text-center'>Password</th>";
-	echo"<th class='text-center'>Email</th>";
-	echo"<th class='text-center'>Phone Number</th>";
-	echo"<th class='text-center'>Company</th>";
-	echo"</tr>";
-	;
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-	echo"<tr>";
-	echo "<td class='text-center'>".$row["ip_id"]."</td>";
-	echo "<td class='text-center'>".$row["ip_name"]."</td>";
-	echo "<td class='text-center'>".$row["ip_password"]."</td>";
-	echo "<td class='text-center'>".$row["ip_email"]."</td>";
-	echo "<td class='text-center'>".$row["ip_contact_num"]."</td>";  
-	echo "<td class='text-center'>".$row["ip_company"]."</td>";  
-	 echo"</tr>";	
-  }  
-	  echo"</table>";
-} else {
-	echo '<script type="text/javascript">';
-    echo ' alert("Record not found !")'; 
-    echo '</script>';	
-}
-$db->close();
-?>
-				</div>
+
+                    <?php
+                    $sql = "SELECT * FROM industrial_panel";
+                    $result = $db->query($sql);
+                    echo "<table class= table table-dark table-striped >";
+                    if ($result->num_rows > 0) {
+                        echo "<tr>";
+                        echo "<th class='text-center'>Industrial Panel ID</th>";
+                        echo "<th class='text-center'>Name</th>";
+                        echo "<th class='text-center'>Password</th>";
+                        echo "<th class='text-center'>Email</th>";
+                        echo "<th class='text-center'>Phone Number</th>";
+                        echo "<th class='text-center'>Company</th>";
+                        echo "</tr>";;
+                        // output data of each row
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td class='text-center'>" . $row["ip_id"] . "</td>";
+                            echo "<td class='text-center'>" . $row["ip_name"] . "</td>";
+                            echo "<td class='text-center'>" . $row["ip_password"] . "</td>";
+                            echo "<td class='text-center'>" . $row["ip_email"] . "</td>";
+                            echo "<td class='text-center'>" . $row["ip_contact_num"] . "</td>";
+                            echo "<td class='text-center'>" . $row["ip_company"] . "</td>";
+                            echo "</tr>";
+                        }
+                        echo "</table>";
+                    } else {
+                        echo '<script type="text/javascript">';
+                        echo ' alert("Record not found !")';
+                        echo '</script>';
+                    }
+                    $db->close();
+                    ?>
+                </div>
 </body>
 
-                        <div class="card-body">
-        
-                        </div>
-                    </div>
-                </div>
-            </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="text-muted text-center">
-                        Copyright &copy; University Malaysia Pahang 2021
-                    </div>
-                </div>
-            </footer>
+<div class="card-body">
+
+</div>
+</div>
+</div>
+</main>
+<footer class="py-4 bg-light mt-auto">
+    <div class="container-fluid px-4">
+        <div class="text-muted text-center">
+            Copyright &copy; University Malaysia Pahang 2021
         </div>
     </div>
+</footer>
+</div>
+</div>
 </body>
-

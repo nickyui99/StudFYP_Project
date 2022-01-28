@@ -1,4 +1,8 @@
 <?php
+/**
+ * Name: Lutfil Hadi Ahnaf Bin Mokhtar
+ * Matric Id: CB20019
+ */
 include 'dbase.php';
 $superid=$_GET['updateid']
 if(isset($_POST['submit']))

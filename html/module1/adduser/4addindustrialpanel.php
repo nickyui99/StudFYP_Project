@@ -1,31 +1,33 @@
-
 <?php
- 
- include_once '../../../mySQLi/config.php' ;  
- session_start(); 
- $ipid= $ipname=$iphpnum=$ipcompname=$ippass=" "; 
- if(isset($_POST['Add']))
- { 
-     $ipid = $_POST['ipid'];  
-      $ipcompname = $_POST['ipcompname'];
-      $ipname = $_POST['ipname'];
-      $ippass = $_POST['ippass'];
-      $iphpnum = $_POST['iphpnum'];
-      $ipemail = $_POST['ipemail'];
-      $sql = "INSERT INTO industrial_panel (ip_id,ip_name, ip_contact_num,ip_company,ip_password,ip_email)
+
+/**
+ * Name: Tan Chia Hui
+ * Matric Id: CA18016
+ */
+include_once '../../../mySQLi/config.php';
+session_start();
+$ipid = $ipname = $iphpnum = $ipcompname = $ippass = " ";
+if (isset($_POST['Add'])) {
+    $ipid = $_POST['ipid'];
+    $ipcompname = $_POST['ipcompname'];
+    $ipname = $_POST['ipname'];
+    $ippass = $_POST['ippass'];
+    $iphpnum = $_POST['iphpnum'];
+    $ipemail = $_POST['ipemail'];
+    $sql = "INSERT INTO industrial_panel (ip_id,ip_name, ip_contact_num,ip_company,ip_password,ip_email)
       VALUES ('$ipid',' $ipname','$iphpnum','$ipcompname','$ippass','$ipemail')";
-      if (mysqli_query($db, $sql)) {
-       echo '<script type="text/javascript">';
-       echo ' alert("New record has been added successfully !")'; 
-       echo '</script>';
-      } else {
-         echo "Error: " . $sql . ":-" . mysqli_error($db);
-      }
-      mysqli_close($db);
+    if (mysqli_query($db, $sql)) {
+        echo '<script type="text/javascript">';
+        echo ' alert("New record has been added successfully !")';
+        echo '</script>';
+    } else {
+        echo "Error: " . $sql . ":-" . mysqli_error($db);
     }
-    ?>
-    
-    <head>
+    mysqli_close($db);
+}
+?>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,8 +38,7 @@
 
     <!-- Bootstrap 5 JavaScript -->
     <script src="../bootstrap_v5.1/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
@@ -67,8 +68,7 @@
         <ul class="navbar-nav d-md- ms-auto me-1">
             <!-- Announcement -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-bell fa-fw"></i> Notification</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell fa-fw"></i> Notification</a>
                 <ul class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="navbarDropdown">
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
@@ -96,8 +96,7 @@
 
             <!-- Profile -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li>
                         <a class="dropdown-item" href="#!">My profile</a>
@@ -119,9 +118,7 @@
                     <div class="nav mt-3">
 
                         <!-- Add user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseAddUser" aria-expanded="false"
-                            aria-controls="collapseAddUser">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAddUser" aria-expanded="false" aria-controls="collapseAddUser">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -130,13 +127,12 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse show" id="collapseAddUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse show" id="collapseAddUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link " href="1addstudent.php" >
+                                <a class="nav-link " href="1addstudent.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                   
+
                                     </div>
                                     Student
                                 </a>
@@ -159,9 +155,7 @@
                         </div>
 
                         <!-- Delete user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseDeleteUser" aria-expanded="false"
-                            aria-controls="collapseDeleteUser">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseDeleteUser" aria-expanded="false" aria-controls="collapseDeleteUser">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -170,8 +164,7 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseDeleteUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseDeleteUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="../deleteuser/1deletestudent.php">
                                     <div class="sb-nav-link-icon">
@@ -198,9 +191,7 @@
                         </div>
 
                         <!-- Edit user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseEditUser" aria-expanded="false"
-                            aria-controls="collapseEditUser">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEditUser" aria-expanded="false" aria-controls="collapseEditUser">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -209,8 +200,7 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseEditUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseEditUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="../updateuser/1updatestudent.php">
                                     <div class="sb-nav-link-icon">
@@ -237,9 +227,7 @@
                         </div>
 
                         <!-- View user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseViewUser" aria-expanded="false"
-                            aria-controls="collapseViewUser">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseViewUser" aria-expanded="false" aria-controls="collapseViewUser">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -248,8 +236,7 @@
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseViewUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseViewUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="../viewuser/1viewstudent.php">
                                     <div class="sb-nav-link-icon">
@@ -293,9 +280,9 @@
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:  </div>
-                    <?php 
-                        echo $_SESSION['username'];
+                    <div class="small">Logged in as: </div>
+                    <?php
+                    echo $_SESSION['username'];
                     ?>
                 </div>
             </nav>
@@ -309,59 +296,59 @@
                         <li class="breadcrumb-item">Industrial Panel</li>
                         <li class="breadcrumb-item active">Industrial Panel Registration Form</li>
                     </ol>
-                  
-   <form class="needs-validation" action="" method="post" novalidate> 
-   <div class="form-group">
-   <div class="form-group mb-3">
-    <label for="ipid">Industrial Panel ID</label>
-    <input type="text" class="form-control" name="ipid" aria-describedby="stdidhelp" required>
-    <small id="stdidhelp" class="form-text text-muted">ID will not be allowed to modify. Please ensure the ID is correct.</small>
-    <div class="invalid-feedback"> Please enter industrial panel's ID.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="ipcompname">Company Name</label>
-    <input type="text" name="ipcompname" class="form-control" required>
-  </div>
-  <div class="form-group mb-3">
-    <label for="ipname">Person In Charge</label>
-    <input type="text" name="ipname" class="form-control" required>
-    <div class="invalid-feedback">Please provide industrial panel's name.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="ippass">Password</label>
-    <input type="text" name="ippass" class="form-control" required>
-    <div class="invalid-feedback">Please provide a password.</div>
-  </div>
 
-  <div class="form-group mb-3">
-    <label for="iphpnum">Phone Number</label>
-    <input type="text" name="iphpnum" class="form-control" required> 
-    <div class="invalid-feedback">Please provide phone number.</div>
-  </div>
+                    <form class="needs-validation" action="" method="post" novalidate>
+                        <div class="form-group">
+                            <div class="form-group mb-3">
+                                <label for="ipid">Industrial Panel ID</label>
+                                <input type="text" class="form-control" name="ipid" aria-describedby="stdidhelp" required>
+                                <small id="stdidhelp" class="form-text text-muted">ID will not be allowed to modify. Please ensure the ID is correct.</small>
+                                <div class="invalid-feedback"> Please enter industrial panel's ID.</div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="ipcompname">Company Name</label>
+                                <input type="text" name="ipcompname" class="form-control" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="ipname">Person In Charge</label>
+                                <input type="text" name="ipname" class="form-control" required>
+                                <div class="invalid-feedback">Please provide industrial panel's name.</div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="ippass">Password</label>
+                                <input type="text" name="ippass" class="form-control" required>
+                                <div class="invalid-feedback">Please provide a password.</div>
+                            </div>
 
-  <div class="form-group mb-3">
-    <label for="ipemail">Email</label>
-    <input type="email" name="ipemail" class="form-control" required>
-    <div class="invalid-feedback"> Please provide a valid email.</div>
-  </div>
-  <div class="form-group mb-3">
-  <div class="d-flex justify-content-center">
-  <button type="submit" class="btn btn-secondary btn-bg mb-2" name="Add" value="Add">Add</button>
-  </div></div>
-</form>
- 
-                    
-                    </div>
+                            <div class="form-group mb-3">
+                                <label for="iphpnum">Phone Number</label>
+                                <input type="text" name="iphpnum" class="form-control" required>
+                                <div class="invalid-feedback">Please provide phone number.</div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="ipemail">Email</label>
+                                <input type="email" name="ipemail" class="form-control" required>
+                                <div class="invalid-feedback"> Please provide a valid email.</div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-secondary btn-bg mb-2" name="Add" value="Add">Add</button>
+                                </div>
+                            </div>
+                    </form>
+
+
                 </div>
-            </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="text-muted text-center">
-                        Copyright &copy; University Malaysia Pahang 2021
-                    </div>
-                </div>
-            </footer>
         </div>
+        </main>
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid px-4">
+                <div class="text-muted text-center">
+                    Copyright &copy; University Malaysia Pahang 2021
+                </div>
+            </div>
+        </footer>
+    </div>
     </div>
 </body>
-

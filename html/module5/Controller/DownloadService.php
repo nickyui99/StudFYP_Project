@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Name: Nicholas Ooi Zhee Chen
+ * Matric Id: CB19080
+ */
+
 session_start();
 if (isset($_SESSION['lect_id'])) {
     require_once '../DAO/LecturerDataService.php';

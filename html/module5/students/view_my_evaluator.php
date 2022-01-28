@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- This page is for students to view their assigned evaluator-->
+<!-- /**
+ * Name: Nicholas Ooi Zhee Chen
+ * Matric Id: CB19080
+ */-->
 
 <?php
 include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/AnnouncementHandler.php';

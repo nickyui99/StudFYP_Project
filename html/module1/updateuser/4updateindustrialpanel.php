@@ -1,4 +1,8 @@
 <?php
+/**
+ * Name: Tan Chia Hui
+ * Matric Id: CA18016
+ */
 include_once '../../../mySQLi/config.php';
 session_start(); 
 

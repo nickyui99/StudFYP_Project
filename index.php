@@ -38,41 +38,40 @@
     <div id="layoutSidenav_content" class="h-100">
         <main>
             <div class="container-fluid py-5">
-                    <!-- Login form -->
-                    <div class="card rounded shadow my-auto mx-auto" style="width: 25rem; vertical-align: baseline;">
-                        <div class="card-body">
-                            <h1 class="card-title text-center mt-3 mb-3">Login</h1>
-                            <form class="mt-3 " action="html/controller/login_handler.php" method="post">
+                <!-- Login form -->
+                <div class="card rounded shadow my-auto mx-auto" style="width: 25rem; vertical-align: baseline;">
+                    <div class="card-body">
+                        <h1 class="card-title text-center mt-3 mb-3">Login</h1>
+                        <form class="mt-3 " action="html/controller/login_handler.php" method="post">
 
-                                <!-- Username -->
-                                <div class="form-group mb-3">
-                                    <label for="f_userID">Username: </label>
-                                    <input class="form-control" type="text" name="f_loginUserID" required>
-                                </div>
+                            <!-- Username -->
+                            <div class="form-group mb-3">
+                                <label for="f_userID">Username: </label>
+                                <input class="form-control" type="text" name="f_loginUserID" required>
+                            </div>
 
-                                <!-- Password -->
-                                <div class="form-group mb-3">
-                                    <label for="f_loginUserPass">Password: </label>
-                                    <input class="form-control" type="password" name="f_loginUserPass" required>
-                                </div>
+                            <!-- Password -->
+                            <div class="form-group mb-3">
+                                <label for="f_loginUserPass">Password: </label>
+                                <input class="form-control" type="password" name="f_loginUserPass" required>
+                            </div>
 
-                                <div class="form-group">
-                                    <label for="f_userClass">Login as: </label>
-                                    <select class="form-select form-control" name="f_userClass" id="f_userClass">
-                                        <option value="student" selected>Student</option>
-                                        <option value="staff">Staff</option>
-                                        <option value="external">External</option>
-                                        <option value="administrator">System administrator</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label for="f_userClass">Login as: </label>
+                                <select class="form-select form-control" name="f_userClass" id="f_userClass">
+                                    <option value="student" selected>Student</option>
+                                    <option value="staff">Staff</option>
+                                    <option value="external">External</option>
+                                    <option value="administrator">System administrator</option>
+                                </select>
+                            </div>
 
-                                <div class="form-group mt-3 mb-3">
-                                    <input class="btn btn-primary form-control mt-3" type="submit" name="Login" value="Login">
-                                </div>
-                            </form>
-                        </div>
+                            <div class="form-group mt-3 mb-3">
+                                <input class="btn btn-primary form-control mt-3" type="submit" name="Login" value="Login">
+                            </div>
+                        </form>
                     </div>
-
+                </div>
             </div>
         </main>
         <footer class="py-4 bg-light fixed-bottom">

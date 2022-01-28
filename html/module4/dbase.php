@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * Name: Lutfil Hadi Ahnaf Bin Mokhtar
+ * Matric Id: CB20019
+ */
+
    define('DB_SERVER', 'us-cdbr-east-05.cleardb.net');
    define('DB_USERNAME', 'b211c0deb15c87');
    define('DB_PASSWORD', '93a873ef');

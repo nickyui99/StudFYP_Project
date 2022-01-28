@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- This html template is only for StudFYP admin only -->
+<!-- /**
+ * Name: Tan Chia Hui
+ * Matric Id: CA18016
+ */ -->
 
 <?php
-include_once '../../../mySQLi/config.php' ;  
-session_start(); 
-$stdid=$stdname=$stdpassword=$stdaddress=$stdemail=$stdhpnum=$stdfaculty=$stdevcomp = " "; 
-if(isset($_POST['Add']))
-{  
-  $stdid = $_POST['stdid'];  
-     $stdname = $_POST['stdname'];
-     $stdpassword = $_POST['stdpassword'];
-     $stdaddress = $_POST['stdaddress'];
-	  $stdemail = $_POST['stdemail'];
-	  $stdhpnum = $_POST['stdhpnum'];    
+include_once '../../../mySQLi/config.php';
+session_start();
+$stdid = $stdname = $stdpassword = $stdaddress = $stdemail = $stdhpnum = $stdfaculty = $stdevcomp = " ";
+if (isset($_POST['Add'])) {
+    $stdid = $_POST['stdid'];
+    $stdname = $_POST['stdname'];
+    $stdpassword = $_POST['stdpassword'];
+    $stdaddress = $_POST['stdaddress'];
+    $stdemail = $_POST['stdemail'];
+    $stdhpnum = $_POST['stdhpnum'];
     $stdfaculty = $_POST['stdfaculty'];
-     $stdevcomp = $_POST['stdevcomp'];
-     $sql = "INSERT INTO student (stud_id,stud_name,stud_password,stud_address,stud_email,stud_contact_num,stud_faculty,stud_company_attached)
+    $stdevcomp = $_POST['stdevcomp'];
+    $sql = "INSERT INTO student (stud_id,stud_name,stud_password,stud_address,stud_email,stud_contact_num,stud_faculty,stud_company_attached)
      VALUES ('$stdid','$stdname',' $stdpassword',' $stdaddress','$stdemail','$stdhpnum','$stdfaculty','$stdevcomp')";
 
-     if (mysqli_query($db, $sql)) {
-      echo '<script type="text/javascript">';
-      echo ' alert("New record has been added successfully !")'; 
-      echo '</script>';
-     } else {
+    if (mysqli_query($db, $sql)) {
+        echo '<script type="text/javascript">';
+        echo ' alert("New record has been added successfully !")';
+        echo '</script>';
+    } else {
         echo "Error: " . $sql . ":-" . mysqli_error($db);
-     }
-     mysqli_close($db);
+    }
+    mysqli_close($db);
 }
-   ?>
+?>
 
 <head>
     <meta charset="UTF-8" />
@@ -42,8 +44,7 @@ if(isset($_POST['Add']))
 
     <!-- Bootstrap 5 JavaScript -->
     <script src="../bootstrap_v5.1/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
@@ -73,8 +74,7 @@ if(isset($_POST['Add']))
         <ul class="navbar-nav d-md- ms-auto me-1">
             <!-- Announcement -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-bell fa-fw"></i> Notification</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell fa-fw"></i> Notification</a>
                 <ul class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="navbarDropdown">
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
@@ -102,8 +102,7 @@ if(isset($_POST['Add']))
 
             <!-- Profile -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li>
                         <a class="dropdown-item" href="#!">My profile</a>
@@ -125,9 +124,7 @@ if(isset($_POST['Add']))
                     <div class="nav mt-3">
 
                         <!-- Add user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseAddUser" aria-expanded="false"
-                            aria-controls="collapseAddUser">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAddUser" aria-expanded="false" aria-controls="collapseAddUser">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -136,13 +133,12 @@ if(isset($_POST['Add']))
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse show" id="collapseAddUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse show" id="collapseAddUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link text-light active" href="1addstudent.php" >
+                                <a class="nav-link text-light active" href="1addstudent.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
-                                   
+
                                     </div>
                                     Student
                                 </a>
@@ -165,9 +161,7 @@ if(isset($_POST['Add']))
                         </div>
 
                         <!-- Delete user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseDeleteUser" aria-expanded="false"
-                            aria-controls="collapseDeleteUser">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseDeleteUser" aria-expanded="false" aria-controls="collapseDeleteUser">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -176,8 +170,7 @@ if(isset($_POST['Add']))
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseDeleteUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseDeleteUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="../deleteuser/1deletestudent.php">
                                     <div class="sb-nav-link-icon">
@@ -204,9 +197,7 @@ if(isset($_POST['Add']))
                         </div>
 
                         <!-- Edit user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseEditUser" aria-expanded="false"
-                            aria-controls="collapseEditUser">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEditUser" aria-expanded="false" aria-controls="collapseEditUser">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -215,8 +206,7 @@ if(isset($_POST['Add']))
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseEditUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseEditUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="../updateuser/1updatestudent.php">
                                     <div class="sb-nav-link-icon">
@@ -243,9 +233,7 @@ if(isset($_POST['Add']))
                         </div>
 
                         <!-- View user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseViewUser" aria-expanded="false"
-                            aria-controls="collapseViewUser">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseViewUser" aria-expanded="false" aria-controls="collapseViewUser">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -254,8 +242,7 @@ if(isset($_POST['Add']))
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseViewUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseViewUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="../viewuser/1viewstudent.php">
                                     <div class="sb-nav-link-icon">
@@ -299,9 +286,9 @@ if(isset($_POST['Add']))
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:  </div>
-                    <?php 
-                        echo $_SESSION['username'];
+                    <div class="small">Logged in as: </div>
+                    <?php
+                    echo $_SESSION['username'];
                     ?>
                 </div>
             </nav>
@@ -316,77 +303,78 @@ if(isset($_POST['Add']))
                         <li class="breadcrumb-item">Student</li>
                         <li class="breadcrumb-item active">Student Registration Form</li>
                     </ol>
-                    
-     <form class="needs-validation"  action="" method="post" novalidate> 
-   <div class="form-group mb-3">
-    <label for="stdid">Student ID</label>
-    <input type="text" class="form-control" name="stdid" aria-describedby="stdidhelp" required>
-    <small id="stdidhelp" class="form-text text-muted">ID will not be allowed to modify. Please ensure the ID is correct.</small>
-    <div class="invalid-feedback">Please enter student's ID.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdname">Name</label>
-    <input type="text" name="stdname" class="form-control" required>
-    <div class="invalid-feedback">Please provide student's name.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdpassword">Password</label>
-    <input type="text" name="stdpassword" class="form-control" required> 
-    <div class="invalid-feedback">Please provide a password.</div>
-  </div>
 
-  <div class="form-group mb-3">
-    <label for="stdaddress">Address</label>
-    <input type="text" name="stdaddress" class="form-control" required>
-    <div class="invalid-feedback"> Please provide student's address.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdemail">Email</label>
-    <input type="email" name="stdemail" class="form-control" required>
-    <div class="invalid-feedback"> Please provide a valid email.</div>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdhpnum">Phone Number</label>
-    <input type="text" name="stdhpnum" class="form-control" required>
-    <div class="invalid-feedback">Please provide phone number.</div>
-  </div>
+                    <form class="needs-validation" action="" method="post" novalidate>
+                        <div class="form-group mb-3">
+                            <label for="stdid">Student ID</label>
+                            <input type="text" class="form-control" name="stdid" aria-describedby="stdidhelp" required>
+                            <small id="stdidhelp" class="form-text text-muted">ID will not be allowed to modify. Please ensure the ID is correct.</small>
+                            <div class="invalid-feedback">Please enter student's ID.</div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="stdname">Name</label>
+                            <input type="text" name="stdname" class="form-control" required>
+                            <div class="invalid-feedback">Please provide student's name.</div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="stdpassword">Password</label>
+                            <input type="text" name="stdpassword" class="form-control" required>
+                            <div class="invalid-feedback">Please provide a password.</div>
+                        </div>
 
-  <div class="form-group  mb-3">
-    <label for="stdfaculty">Faculty</label>
-    <select class="form-select form-select-sm" name="stdfaculty">
-    <option value = "FK" >FK</option>
-    <option value = "FIST" >FIST</option>
-    <option value = "FTEK" >FTEK</option>
-    <option value ="FKM" >FKM</option>
-    <option value = "FIM" >FIM</option>
-    <option value = "FTKA" >FTKA</option>
-    <option value = "FTKEE" >FTKEE</option>
-    </select>
-  </div>
-  <div class="form-group mb-3">
-    <label for="stdevcomp">Evaluate Company</label>
-    <input type="text" name="stdevcomp" class="form-control" required>
-    <div class="invalid-feedback">Please insert "-" if the student isn't enroll final year project.</div>
-  </div>
+                        <div class="form-group mb-3">
+                            <label for="stdaddress">Address</label>
+                            <input type="text" name="stdaddress" class="form-control" required>
+                            <div class="invalid-feedback"> Please provide student's address.</div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="stdemail">Email</label>
+                            <input type="email" name="stdemail" class="form-control" required>
+                            <div class="invalid-feedback"> Please provide a valid email.</div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="stdhpnum">Phone Number</label>
+                            <input type="text" name="stdhpnum" class="form-control" required>
+                            <div class="invalid-feedback">Please provide phone number.</div>
+                        </div>
 
-  <div class="form-group mb-3">
-  <div class="d-flex justify-content-center">
-  <button type="submit" class="btn btn-secondary btn-bg mb-2" name="Add" value="Add">Add</button>
-  </div></div>
-</form>
+                        <div class="form-group  mb-3">
+                            <label for="stdfaculty">Faculty</label>
+                            <select class="form-select form-select-sm" name="stdfaculty">
+                                <option value="FK">FK</option>
+                                <option value="FIST">FIST</option>
+                                <option value="FTEK">FTEK</option>
+                                <option value="FKM">FKM</option>
+                                <option value="FIM">FIM</option>
+                                <option value="FTKA">FTKA</option>
+                                <option value="FTKEE">FTKEE</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="stdevcomp">Evaluate Company</label>
+                            <input type="text" name="stdevcomp" class="form-control" required>
+                            <div class="invalid-feedback">Please insert "-" if the student isn't enroll final year project.</div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-secondary btn-bg mb-2" name="Add" value="Add">Add</button>
+                            </div>
+                        </div>
+                    </form>
 
                 </div>
-                    </div>
-                </div>
-            </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="text-muted text-center">
-                        Copyright &copy; University Malaysia Pahang 2021
-                    </div>
-                </div>
-            </footer>
         </div>
+    </div>
+    </main>
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+            <div class="text-muted text-center">
+                Copyright &copy; University Malaysia Pahang 2021
+            </div>
+        </div>
+    </footer>
+    </div>
     </div>
 </body>
 

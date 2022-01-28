@@ -1,5 +1,10 @@
 <?php 
 
+/**
+ * Name: Nicholas Ooi Zhee Chen
+ * Matric Id: CB19080
+ */
+
 class ProjectDetails{
     private $proj_id;
     private $proj_title;

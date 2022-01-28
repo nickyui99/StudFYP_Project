@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- This html template is only for StudFYP lecturer only -->
+<!-- /**
+ * Name: Nicholas Ooi Zhee Chen
+ * Matric Id: CB19080
+ */ -->
 
 <?php
 include $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/LecturerHandler.php';

@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- This is the main page for student-->
+<!--/**
+ * Name: Nomishaa Riena A/P Dominic
+ * Matric Id: CD19114
+ */-->
 
 <?php
 include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/AnnouncementHandler.php';

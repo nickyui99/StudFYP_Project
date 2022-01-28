@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * Name: Nicholas Ooi Zhee Chen
+ * Matric Id: CB19080
+ */
+
 require_once 'LecturerHandler.php';
 
 session_start();

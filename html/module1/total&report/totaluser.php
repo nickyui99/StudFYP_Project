@@ -1,7 +1,11 @@
 <?php
 
-include_once '../../../mySQLi/config.php' ;  
-session_start(); 
+/**
+ * Name: Tan Chia Hui
+ * Matric Id: CA18016
+ */
+include_once '../../../mySQLi/config.php';
+session_start();
 ?>
 
 <head>
@@ -15,8 +19,7 @@ session_start();
 
     <!-- Bootstrap 5 JavaScript -->
     <script src="../bootstrap_v5.1/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
@@ -46,8 +49,7 @@ session_start();
         <ul class="navbar-nav d-md- ms-auto me-1">
             <!-- Announcement -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-bell fa-fw"></i> Notification</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell fa-fw"></i> Notification</a>
                 <ul class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="navbarDropdown">
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
@@ -75,8 +77,7 @@ session_start();
 
             <!-- Profile -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li>
                         <a class="dropdown-item" href="#!">My profile</a>
@@ -98,9 +99,7 @@ session_start();
                     <div class="nav mt-3">
 
                         <!-- Add user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseAddUser" aria-expanded="false"
-                            aria-controls="collapseAddUser">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAddUser" aria-expanded="false" aria-controls="collapseAddUser">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -109,13 +108,12 @@ session_start();
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseAddUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseAddUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link" href="../adduser/1addstudent.php" >
+                                <a class="nav-link" href="../adduser/1addstudent.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                   
+
                                     </div>
                                     Student
                                 </a>
@@ -138,9 +136,7 @@ session_start();
                         </div>
 
                         <!-- Delete user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseDeleteUser" aria-expanded="false"
-                            aria-controls="collapseDeleteUser">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseDeleteUser" aria-expanded="false" aria-controls="collapseDeleteUser">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -149,8 +145,7 @@ session_start();
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseDeleteUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseDeleteUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="../deleteuser/1deletestudent.php">
                                     <div class="sb-nav-link-icon">
@@ -177,9 +172,7 @@ session_start();
                         </div>
 
                         <!-- Edit user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseEditUser" aria-expanded="false"
-                            aria-controls="collapseEditUser">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEditUser" aria-expanded="false" aria-controls="collapseEditUser">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -188,8 +181,7 @@ session_start();
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseEditUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseEditUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="../updateuser/1updatestudent.php">
                                     <div class="sb-nav-link-icon">
@@ -216,9 +208,7 @@ session_start();
                         </div>
 
                         <!-- View user -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseViewUser" aria-expanded="false"
-                            aria-controls="collapseViewUser">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseViewUser" aria-expanded="false" aria-controls="collapseViewUser">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns "></i>
                             </div>
@@ -227,9 +217,8 @@ session_start();
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseViewUser" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
+                        <div class="collapse" id="collapseViewUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
                                 <a class="nav-link  text-light active" href="../viewuser/1viewstudent.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin " aria-hidden="true"></i>
@@ -272,9 +261,9 @@ session_start();
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:  </div>
-                    <?php 
-                        echo $_SESSION['username'];
+                    <div class="small">Logged in as: </div>
+                    <?php
+                    echo $_SESSION['username'];
                     ?>
                 </div>
             </nav>
@@ -284,106 +273,106 @@ session_start();
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Total Registered User</h1>
-                 <?php
-$a = "SELECT * FROM administrator";
-$s = "SELECT * FROM student";
-$l = "SELECT * FROM lecturer";
-$c = "SELECT * FROM fyp_coordinator  WHERE coordinate_psm_level !='NULL'";
-$ip = "SELECT * FROM industrial_panel";
-echo"<div class=card-body>" ; 
-echo"<table class=table table-dark table-bordered>" ; 
-echo"<tr>"; 
-echo"<th class=text-center  >User</td>";
-echo "<th class=text-center >Number of User</td>";
-echo"<br>" ; 
-echo"</tr>"; 
+                    <?php
+                    $a = "SELECT * FROM administrator";
+                    $s = "SELECT * FROM student";
+                    $l = "SELECT * FROM lecturer";
+                    $c = "SELECT * FROM fyp_coordinator  WHERE coordinate_psm_level !='NULL'";
+                    $ip = "SELECT * FROM industrial_panel";
+                    echo "<div class=card-body>";
+                    echo "<table class=table table-dark table-bordered>";
+                    echo "<tr>";
+                    echo "<th class=text-center  >User</td>";
+                    echo "<th class=text-center >Number of User</td>";
+                    echo "<br>";
+                    echo "</tr>";
 
 
-if ($admin=mysqli_query($db,$a)) {
-    $numa=mysqli_num_rows($admin);
+                    if ($admin = mysqli_query($db, $a)) {
+                        $numa = mysqli_num_rows($admin);
 
-    echo"<tr class='text-center'>"; 
-    echo"<td>Administrator</td>";
-    echo "<td>".$numa."</td>";
-    echo"<br>" ; 
-    echo"</tr>"; 
-    $_SESSION['$numa'] = $numa;
-}
-
-
-if ($student=mysqli_query($db,$s)) {
-    $nums=mysqli_num_rows($student);
-    echo"<tr class='text-center'>"; 
-    echo"<td>Student</td>";
-    echo "<td>".$nums."</td>";
-
-    echo"</tr>"; 
-    $_SESSION['$nums'] = $nums;
-}
-
-if ($lecturer=mysqli_query($db,$l)) {
-    $numl=mysqli_num_rows($lecturer);
-    echo"<tr class='text-center'>"; 
-    echo"<td>Lecturer</td>";
-    echo "<td>".$numl."</td>";
-
-    echo"</tr>"; 
-    $_SESSION['$numl'] = $numl;
-}
-
-if ($coordinator=mysqli_query($db,$c)) {
-    $numc=mysqli_num_rows($coordinator);
-    echo"<tr class='text-center'>"; 
-	echo"<td >Coordinator</td>";
-    echo "<td>".$numc."</td>";
- 
-    echo"</tr>"; 
-    $_SESSION['$numc'] = $numc;
-}
-
-if ($industrialpanel=mysqli_query($db,$ip)) {
-    $numi=mysqli_num_rows($industrialpanel);
-    echo"<tr class='text-center'>"; 
-    echo"<td>Industrial Panel</td>";
-    echo "<td>".$numi."</td>";
-
-    echo"</tr>";
-    $_SESSION['$numi'] = $numi;
-} 
-
-echo"<tr class='text-center'>";
-echo"<th>Total Registered user for the System</td>";
-$ttl = $numa+$nums+$numl+$numc+$numi ; 
-echo "<th>".$ttl."</td>";
-$_SESSION['$ttl'] = $ttl;
-echo"</tr>";
+                        echo "<tr class='text-center'>";
+                        echo "<td>Administrator</td>";
+                        echo "<td>" . $numa . "</td>";
+                        echo "<br>";
+                        echo "</tr>";
+                        $_SESSION['$numa'] = $numa;
+                    }
 
 
+                    if ($student = mysqli_query($db, $s)) {
+                        $nums = mysqli_num_rows($student);
+                        echo "<tr class='text-center'>";
+                        echo "<td>Student</td>";
+                        echo "<td>" . $nums . "</td>";
+
+                        echo "</tr>";
+                        $_SESSION['$nums'] = $nums;
+                    }
+
+                    if ($lecturer = mysqli_query($db, $l)) {
+                        $numl = mysqli_num_rows($lecturer);
+                        echo "<tr class='text-center'>";
+                        echo "<td>Lecturer</td>";
+                        echo "<td>" . $numl . "</td>";
+
+                        echo "</tr>";
+                        $_SESSION['$numl'] = $numl;
+                    }
+
+                    if ($coordinator = mysqli_query($db, $c)) {
+                        $numc = mysqli_num_rows($coordinator);
+                        echo "<tr class='text-center'>";
+                        echo "<td >Coordinator</td>";
+                        echo "<td>" . $numc . "</td>";
+
+                        echo "</tr>";
+                        $_SESSION['$numc'] = $numc;
+                    }
+
+                    if ($industrialpanel = mysqli_query($db, $ip)) {
+                        $numi = mysqli_num_rows($industrialpanel);
+                        echo "<tr class='text-center'>";
+                        echo "<td>Industrial Panel</td>";
+                        echo "<td>" . $numi . "</td>";
+
+                        echo "</tr>";
+                        $_SESSION['$numi'] = $numi;
+                    }
+
+                    echo "<tr class='text-center'>";
+                    echo "<th>Total Registered user for the System</td>";
+                    $ttl = $numa + $nums + $numl + $numc + $numi;
+                    echo "<th>" . $ttl . "</td>";
+                    $_SESSION['$ttl'] = $ttl;
+                    echo "</tr>";
 
 
-echo"</table>" ; 
-$db->close();
-echo"</div>" ; 
-?>
-				</div>
+
+
+                    echo "</table>";
+                    $db->close();
+                    echo "</div>";
+                    ?>
+                </div>
 </body>
-                  
 
-                        <div class="card-body">
-        
-                        </div>
-                    </div>
-                </div>
-            </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="text-muted text-center">
-                        Copyright &copy; University Malaysia Pahang 2021
-                    </div>
-                </div>
-            </footer>
+
+<div class="card-body">
+
+</div>
+</div>
+</div>
+</main>
+<footer class="py-4 bg-light mt-auto">
+    <div class="container-fluid px-4">
+        <div class="text-muted text-center">
+            Copyright &copy; University Malaysia Pahang 2021
         </div>
     </div>
+</footer>
+</div>
+</div>
 </body>
 
 </html>

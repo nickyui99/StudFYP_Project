@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- This page is for students to view their evaluation result-->
+<!-- /**
+ * Name: Nicholas Ooi Zhee Chen
+ * Matric Id: CB19080
+ */-->
 
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . '/html/module5/Controller/StudentHandler.php';
