@@ -98,7 +98,7 @@ session_start();
                         </a>
 
                         <!-- My Profile -->
-                        <a class="nav-link" href="module4\module4.php">
+                        <a class="nav-link" href="module4\update_lecture_profile.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-user"></i>
                             </div>

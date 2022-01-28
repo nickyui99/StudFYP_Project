@@ -2,7 +2,11 @@
 <html lang="en">
 
 <!-- This html template is only for StudFYP lecturer only -->
+<?php
 
+include_once 'dbase.php';  
+session_start(); 
+?>
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -248,96 +252,64 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Dashboard</h1>
+                    <h1 class="mt-4">My Profile</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">
-                            <a href="index.html">Dashboard</a>
+                           FYP Supervisor
                         </li>
                         <li class="breadcrumb-item active">My Profile</li>
                     </ol>
-                    <div class="card mb-4">
-                    <?php require_once 'process.php'; ?> 
+     <?php
+$sql = "SELECT * FROM fyp_supervisor";
+$result = $db->query($sql);
 
-                    <?php
-                        if (isset($_SESSION['message'])):?>
-                        <div class="alert alert-<?=$_SESSION['msg_type']?>">
-                        <?php
-                            echo  $_SESSION['message'];
-                            unset ($_SESSION['message']);
-                        ?>
-                        <?php endif ?>
-                        </div>
-                        <div class="container>
-                        <?php 
-                        $mysqli= new mysqli('localhost', 'root','','supervisor') or die(mysqli_error($mysqli));
-                        $result= $mysqli->query("SELECT * FROM Supervisor") or die($mysqli->error);
-                        ?>
-                         <div class="row justify-content-center" >
-                            <table class="table">
-                             <thead>
-                                 <tr>
-                                     <th>Name</th>
-                                     <th>Phone Number</th>
-                                     <th>Email</th>
-                                     <th>Address</th>
-                                     <th colspan="2">Action</th>
+if ($result->num_rows > 0){
+    // output data of each row
+    while($row = $result->fetch_assoc()){
+    $superid = $row["supervisor_id"];
+	$lectid = $row["lect_id"];
+	$fypid = $row["fyp_stud_id"];
+    $name = $row["supervisor_name"];
+    $email = $row["supervisor_email"];
+    $number= $row["supervisor_number"];
+    $address= $row["supervisor_address"];
+    
+	
+}
+} else {
+    echo "0 results";
+
+}
+$db->close();
+?>              
+                   <div class="table-responsive">
+                        <table class="table table-bordered table striped">
+                       <thead>
+                           <tr class="header-bg">
+                               <th scope="col">Supervisor ID</th>
+                               <th scope="col">Lecturer ID ID</th>
+                                    <th scope="col">FYP Student ID</th>
+                                    <th scope="col">Supervisor Name</th>
+                                    <th scope="col">Supervisor Email</th>
+                                    <th scope="col">Supervisor Number</th>
+                                    <th scope="col">Supervisor Address</th>
+
+                                </tr>
                             </thead>
-                            <?php while($row=$result->fetch_assoc()): ?>
-                                <tr>
-                                    <td><?php echo $row['name'];?></td>
-                                    <td><?php echo $row['phonenum'];?></td>
-                                    <td><?php echo $row['email'];?></td>
-                                    <td><?php echo $row['address'];?></td>
-                                    <td>
-                                     <a href="module4.php?edit=<?php echo $row['id'];?>"
-                                      class="btn btn-info">Edit</a>
-                                      <a href="process.php?delete=<?php echo $row['id'];?>"
-                                      class="btn btn-danger">Delete</a>
-                                    </td> 
-
-                               </tr>
-                          <?php endwhile;?>
-                           </table>
-                        </div>
-
-                        <?php
-                        function pre_r($array)
-                        {
-                            echo '<pre>';
-                            print_r($array);
-                            echo '</pre>';
-                        }
-                        ?>
-
-                        <div class="row justify-content-center" >
-                       <form action="process.php" method="POST">
-                           <input type="hidden" name="id" value="<?php echo $id; ?>">
-                        <div class="form-group">
-                           <label>Name:</label>
-                           <input type="text" name="name" class="form-control" value="<?php echo $name;?>">
-                        </div>
-                        <div class="form-group">
-                           <label>Phone Number:</label>
-                           <input type="text" name="phonenum" class="form-control" value="<?php echo $phonenum;?>"><br>
-                           </div>
-                           <div class="form-group">
-                           <label>Email:</label>
-                           <input type ="email" name="email" class="form-control" value="<?php echo $email;?>"><br>
-                           </div>
-                           <div class="form-group">
-                           <label>Address:</label>
-                           <input type="textarea" name="address" class="form-control" value="<?php echo $address;?>"><br>
-                           </div>
-                           <div class="form-group">
-                           
-                        <button type="submit" class="btn btn-info" name="update">Update</button>   
-                           <button type="submit" class="btn btn-primary" name="save">Save</button>
-                           </div>
-                       </form>
-                       </div>
-                    </div>
-                    </div>
-                </div>
+                            <tbody>
+                            <tr class="header-bg">
+                            <td scope="col"> <?php echo $superid;?> </td>
+                            <td scope="col"> <?php echo $lectid;?> </td>
+                            <td scope="col"> <?php echo $fypid;?> </td>
+                            <td scope="col"> <?php echo $name;?> </td>
+                            <td scope="col"> <?php echo $email;?> </td>
+                            <td scope="col"> <?php echo $number;?> </td>
+                            <td scope="col"> <?php echo $address;?> </td>
+                                </tr> 
+                            </tbody>
+                        </table>
+                    </div>      
+                  
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">

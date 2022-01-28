@@ -2,7 +2,11 @@
 <html lang="en">
 
 <!-- This html template is only for StudFYP lecturer only -->
+<?php
 
+include_once 'dbase.php';  
+session_start(); 
+?>
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -255,41 +259,83 @@
                         </li>
                         <li class="breadcrumb-item active">Assigned FYP Student</li>
                     </ol>
-                    <div class="row mb-2">
-                        <!-- Evaluation panel counter -->
-                        <p id="row_counter" class="col-sm-9 my-auto text-secondary">Total 0 Assigned Student</p>
+                    <?php
+ 
+$dataPoints = array( 
+	array("label"=>"Approve", "y"=>64.02),
+	array("label"=>"Disapprove", "y"=>12.55)
 
-                        <!-- Search bar -->
-                        <div class="form-outline col-sm-3">
-                            <div class="form-group has-search">
-                                <span class="fa fa-search form-control-feedback"></span>
-                                <input type="text" name="search" id="search" class="form-control" placeholder="Search ID or Name">
-                            </div>
-                        </div>
-                    </div>
-                    <?php include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php' ;  
-                     $mysqli= new mysqli('localhost', 'root','','studfyp_db') or die(mysqli_error($mysqli));
-                     $result= $mysqli->query("SELECT * FROM student") or die($mysqli->error);
-                    ?>
-                     
-                    <div class="table-responsive">
+)
+ 
+?>
+                    <script>
+window.onload = function() {
+ 
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		text: "Supervisor Report"
+	},
+
+	data: [{
+		type: "pie",
+		yValueFormatString: "#,##0.00\"%\"",
+		indexLabel: "{label} ({y})",
+		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+	}]
+});
+chart.render();
+ 
+}
+</script>
+
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>   
+
+<?php
+
+
+$sql = "SELECT * FROM fyp_project";
+$result = $db->query($sql);
+
+if (mysqli_num_rows($result) > 0){
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)){
+    $projectid = $row["fyp_proj_id"];
+	$studid = $row["stud_id"];
+	$title = $row["proj_title"];
+	$stage = $row["proj_fyp_stage"];
+	$progress = $row["fyp_proj_progress"];
+}
+} else {
+    echo "0 results";
+
+}
+$db->close();
+?>                 
+                <div class="table-responsive">
                         <table class="table table-bordered table striped">
                        <thead>
                            <tr class="header-bg">
+                               <th scope="col">Project ID</th>
                                <th scope="col">Student ID</th>
-                               <th scope="col">Student Name</th>
-                                    <th scope="col">Project ID</th>
                                     <th scope="col">Project Title</th>
-                                    <th scope="col">Approval</th>
-                                    
+                                    <th scope="col">Project Stage</th>
+                                    <th scope="col">Project Progress</th>  
                                 </tr>
                             </thead>
-                            <tbody id="result">
-                                <!-- Show datatable here -->
+                            <tbody>
+                            <tr class="header-bg">
+                            <td scope="col"> <?php echo $projectid;?> </td>
+                            <td scope="col"> <?php echo $studid;?> </td>
+                            <td scope="col"> <?php echo $title;?> </td>
+                            <td scope="col"> <?php echo $stage;?> </td>
+                            <td scope="col"> <?php echo $progress;?> </td>
+                                </tr> 
                             </tbody>
                         </table>
-                    </div>
-                  
+                    </div>   
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">

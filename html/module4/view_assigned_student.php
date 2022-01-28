@@ -2,7 +2,11 @@
 <html lang="en">
 
 <!-- This html template is only for StudFYP lecturer only -->
+<?php
 
+include_once 'dbase.php';  
+session_start(); 
+?>
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -255,40 +259,51 @@
                         </li>
                         <li class="breadcrumb-item active">Assigned FYP Student</li>
                     </ol>
-                    <div class="row mb-2">
-                        <!-- Evaluation panel counter -->
-                        <p id="row_counter" class="col-sm-9 my-auto text-secondary">Total 0 Assigned Student</p>
+                   
+<?php
+$sql = "SELECT * FROM fyp_stud";
+$result = $db->query($sql);
 
-                        <!-- Search bar -->
-                        <div class="form-outline col-sm-3">
-                            <div class="form-group has-search">
-                                <span class="fa fa-search form-control-feedback"></span>
-                                <input type="text" name="search" id="search" class="form-control" placeholder="Search ID or Name">
-                            </div>
-                        </div>
-                    </div>
-                    <?php include_once 'C:\xampp\htdocs\StudFYP_Project\mySQLi\config.php' ;  
-                     $mysqli= new mysqli('localhost', 'root','',"studfyp_db") or die(mysqli_error($mysqli));
-                     $result= $mysqli->query("SELECT * FROM student") or die($mysqli->error);
-                    ?>
-                     
-                    <div class="table-responsive">
+if ($result->num_rows > 0){
+    // output data of each row
+    while($row = $result->fetch_assoc()){
+    $fypstudid = $row["fyp_stud_id"];
+	$studid = $row["stud_id"];
+	$name = $row["stud_name"];
+    $fypstage = $row["fyp_stage"];
+    $fypprogress = $row["fyp_progress_status"];
+    
+	
+}
+} else {
+    echo "0 results";
+
+}
+$db->close();
+?>              
+                <div class="table-responsive">
                         <table class="table table-bordered table striped">
                        <thead>
                            <tr class="header-bg">
+                               <th scope="col">FYP Student ID</th>
                                <th scope="col">Student ID</th>
-                               <th scope="col">Student Name</th>
-                                    <th scope="col">Contact Number</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">Company Attached</th>
+                                    <th scope="col">Student Name</th>
+                                    <th scope="col">FYP Stage</th>
+                                    <th scope="col">FYP Progress</th>  
                                 </tr>
                             </thead>
-                            <tbody id="result">
-                                <!-- Show datatable here -->
+                            <tbody>
+                            <tr class="header-bg">
+                            <td scope="col"> <?php echo $fypstudid;?> </td>
+                            <td scope="col"> <?php echo $studid;?> </td>
+                            <td scope="col"> <?php echo $name;?> </td>
+                            <td scope="col"> <?php echo $fypstage;?> </td>
+                            <td scope="col"> <?php echo $fypprogress;?> </td>
+                                </tr> 
                             </tbody>
                         </table>
-                    </div>
+                    </div>      
+                  
                   
             </main>
             <footer class="py-4 bg-light mt-auto">
