@@ -111,39 +111,39 @@ session_start();
                         </a>
                         <div class="collapse" id="collapseCoordinator" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="module2/Assign_Student_to_Evaloutor/Assign_supervisor_to_student.php">
+                                <a class="nav-link" href="/html/module2/Assign_Student_to_Evaloutor/Assign_supervisor_to_student.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
                                     Assign student to supervisor
                                 </a>
-                                <a class="nav-link" href="module2/Assign_Student_to_industralPanel/Assign_IP_to_student.php">
+                                <a class="nav-link" href="/html/module2/Assign_Student_to_industralPanel/Assign_IP_to_student.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Assign student to evaluator
                                 </a>
-                                <a class="nav-link" href="module2/Announcment/Announcement.php">
+                                <a class="nav-link" href="/html/module2/Announcment/Announcement.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Announcement platform
                                 </a>
-                                <a class="nav-link" href="module2/fypProgress/fypProgress.php">
+                                <a class="nav-link" href="/html/module2/fypProgress/fypProgress.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>FYP progress
                                 </a>
 
-                                <a class="nav-link" href="module2\StudentMarks//student_marks.php">
+                                <a class="nav-link" href="/html/module2/StudentMarks/student_marks.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Student mark
                                 </a>
-                                <a class="nav-link" href="module2/ManageSubmissionDate/SubmissionDate.php">
+                                <a class="nav-link" href="/html/module2/ManageSubmissionDate/SubmissionDate.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Manage FYP submission date
                                 </a>
-                                <a class="nav-link" href="module2/Report/FinalReport">
+                                <a class="nav-link" href="/html/module2/Report/FinalReport">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Coordinator final report
@@ -163,17 +163,17 @@ session_start();
                         </a>
                         <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="module4\view_assigned_student.php">
+                                <a class="nav-link" href="/html/module4/view_assigned_student.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View assigned student
                                 </a>
-                                <a class="nav-link" href="module4\view_student_fyp.php">
+                                <a class="nav-link" href="/html/module4/view_student_fyp.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View student's FYP
                                 </a>
-                                <a class="nav-link" href="module4\supervisor_report.php">
+                                <a class="nav-link" href="/html/module4/supervisor_report.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Supervisor report
@@ -193,12 +193,12 @@ session_start();
                         </a>
                         <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="module5\lecturer\view_assigned_fyp.php">
+                                <a class="nav-link" href="/html/module5/lecturer/view_assigned_fyp.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View assigned FYP
                                 </a>
-                                <a class="nav-link" href="module5\lecturer\evaluation_report.php">
+                                <a class="nav-link" href="/html/module5/lecturer/evaluation_report.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Evaluation report
