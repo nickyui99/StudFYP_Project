@@ -1,12 +1,13 @@
 <?php
-include 'dbase.php'
+include 'dbase.php';
+$superid=$_GET['updateid']
 if(isset($_POST['submit']))
 $name = $_POST["name"];
 $email = $_POST["email"];
 $number= $_POST["number"];
 $address= $_POST["address"];
 
-$sql="update '
+$sql="update 'fyp_supervisor' set $superid"
 
 ?>
 <!doctype html>
@@ -40,7 +41,7 @@ $sql="update '
     <input type="text" class="form-control"  placeholder="Enter Your Address" name="address">
 </div>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Update</button>
 </form>
     </div>
 
