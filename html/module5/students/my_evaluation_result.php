@@ -180,7 +180,7 @@ $projectDetails = getProjectDetails($_SESSION['stud_id']);
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View my evaluator
                                 </a>
-                                <a class="nav-link" href="module5/students/my_evaluation_result.php">
+                                <a class="nav-link" href="/html/module5/students/my_evaluation_result.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>My evaluation result
