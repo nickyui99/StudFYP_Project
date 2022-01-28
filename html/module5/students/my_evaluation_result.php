@@ -175,7 +175,7 @@ $projectDetails = getProjectDetails($_SESSION['stud_id']);
                         </a>
                         <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="module5/students/view_my_evaluator.php">
+                                <a class="nav-link" href="/html/module5/students/view_my_evaluator.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View my evaluator

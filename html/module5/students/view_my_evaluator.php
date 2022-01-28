@@ -172,12 +172,12 @@ session_start();
                         </a>
                         <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="module5/students/view_my_evaluator.php">
+                                <a class="nav-link" href="/html/module5/students/view_my_evaluator.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View my evaluator
                                 </a>
-                                <a class="nav-link" href="module5/students/my_evaluation_result.php">
+                                <a class="nav-link" href="/html/module5/students/my_evaluation_result.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>My evaluation result
