@@ -162,11 +162,6 @@ session_start();
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View my evaluator
                                 </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>My evaluation result
-                                </a>
                             </nav>
                         </div>
 
@@ -186,6 +181,11 @@ session_start();
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View my evaluator
+                                </a>
+                                <a class="nav-link" href="module5/students/my_evaluation_result.php">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                                    </div>My evaluation result
                                 </a>
                             </nav>
                         </div>
