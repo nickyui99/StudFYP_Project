@@ -1,10 +1,8 @@
 <?php
 require_once '../DAO/LecturerDataService.php';
-require_once '../DAO/ExternalDataService.php';
 require_once '../ClassModel/EvaluationResultModel.php';
 require_once '../ClassModel/EvaluationMarkDetailsModel.php';
 require_once 'LecturerHandler.php';
-require_once 'ExternalHandler.php';
 
 session_start();
 

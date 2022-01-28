@@ -4,6 +4,7 @@
 <!-- This page is for students to view their assigned evaluator-->
 
 <?php
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/AnnouncementHandler.php';
 session_start();
 ?>
 
@@ -53,23 +54,11 @@ session_start();
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
                     </li>
+                    <?php
+                    printNotificationList();
+                    ?>
                     <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 1</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 2</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 2</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item see-more-notification" href="#">See more ...</a>
+                        <a class="dropdown-item see-more-notification" href="../../student_main.php"> See more ...</a>
                     </li>
                 </ul>
             </li>
@@ -78,13 +67,7 @@ session_start();
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li>
-                        <a class="dropdown-item" href="#!">My profile</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li><a class="dropdown-item" href="../../controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="../../controller/logout_handler.php"> <i class="fa fa-sign-out"></i> Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -223,7 +206,7 @@ session_start();
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
                     <?php
-                        echo $_SESSION['username']
+                    echo $_SESSION['username']
                     ?>
                 </div>
             </nav>
@@ -233,47 +216,49 @@ session_start();
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <!-- Page Header -->
-                    <h1 class="ms-0 mt-4">Evaluator Information</h1>
+                    <div class="card shadow my-3">
+                        <div class="card-body">
+                            <!-- Page Header -->
+                            <h1 class="ms-0 mt-4">Evaluator Information</h1>
 
-                    <!-- Breadcrumb -->
-                    <ol class="breadcrumb mb-3">
-                        <li class="breadcrumb-item">My FYP evaluation</li>
-                        <li class="breadcrumb-item active">View my evaluator</li>
-                    </ol>
+                            <!-- Breadcrumb -->
+                            <ol class="breadcrumb mb-3">
+                                <li class="breadcrumb-item">My FYP evaluation</li>
+                                <li class="breadcrumb-item active">View my evaluator</li>
+                            </ol>
 
-                    <div class="row mb-2">
-                        <!-- Evaluation panel counter -->
-                        <p id="evaluator_counter" class="col-sm-9 my-auto text-secondary">Total 0 Evaluation Panel</p>
+                            <div class="row mb-2">
+                                <!-- Evaluation panel counter -->
+                                <p id="evaluator_counter" class="col-sm-9 my-auto text-secondary">Total 0 Evaluation Panel</p>
 
-                        <!-- Search bar -->
-                        <div class="form-outline col-sm-3">
-                            <div class="form-group has-search">
-                                <span class="fa fa-search form-control-feedback"></span>
-                                <input type="text" name="search" id="search" class="form-control" placeholder="Search ID or Name">
+                                <!-- Search bar -->
+                                <div class="form-outline col-sm-3">
+                                    <div class="form-group has-search">
+                                        <span class="fa fa-search form-control-feedback"></span>
+                                        <input type="text" name="search" id="search" class="form-control" placeholder="Search ID or Name">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table id="myTable" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr class="header-bg">
+                                            <th scope="col ">Evaluator ID</th>
+                                            <th scope="col">Evaluator Category</th>
+                                            <th scope="col">Evaluator Name</th>
+                                            <th scope="col">Contact Number</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Company</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="result">
+                                        <!-- Show datatable here -->
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-
-                    <div class="table-responsive">
-                        <table id="myTable" class="table table-bordered table-striped">
-                            <thead>
-                                <tr class="header-bg">
-                                    <th scope="col ">Evaluator ID</th>
-                                    <th scope="col">Evaluator Category</th>
-                                    <th scope="col">Evaluator Name</th>
-                                    <th scope="col">Contact Number</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Company</th>
-                                </tr>
-                            </thead>
-                            <tbody id="result">
-                                <!-- Show datatable here -->
-                            </tbody>
-                        </table>
-                    </div>
-
-
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">

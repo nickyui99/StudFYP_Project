@@ -71,13 +71,7 @@ session_start();
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li>
-                        <a class="dropdown-item" href="#!">My profile</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li><a class="dropdown-item" href="controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="controller/logout_handler.php"> <i class="fa fa-sign-out"></i> Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -95,14 +89,6 @@ session_start();
                                 <i class="fa fa-tachometer" aria-hidden="true"></i>
                             </div>
                             Dashboard
-                        </a>
-
-                        <!-- My Profile -->
-                        <a class="nav-link" href="module5/external/my_profile.php">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            My profile
                         </a>
 
                         <!-- FYP Evaluation -->
@@ -155,7 +141,7 @@ session_start();
                     <div class="row" style="height: 60%;">
                         <!-- Announcement Board -->
                         <div class="col-sm-5">
-                            <div class="card mb-4">
+                            <div class="card mb-4 shadow">
                                 <div class="card-header">Announcement Board</div>
                                 <div class="card-body">
 
@@ -170,7 +156,7 @@ session_start();
 
                         <!-- Calendar Event -->
                         <div class="col-sm-7">
-                            <div class="card mb-4">
+                            <div class="card mb-4 shadow">
                                 <div class="card-header">FYP Calendar</div>
                                 <div class="card-body">
                                     <div id='calendar'></div>

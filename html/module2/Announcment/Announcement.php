@@ -1,3 +1,8 @@
+<!--Name:Aiman Basheer Mohammed-->
+<!--Section:01A-->
+<!--Matric Number:CA19124-->
+<!---Group 1A-2------>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,37 +59,71 @@
 <!--UPDATE-FORM Model---------------------->
 
 
-    <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Announcement  </h5>
+                    <h5 class="modal-title" id="exampleModalLabel"> Update Announcment  </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
 
-                <form action="" method="POST">
+                <form action="updateannouncement.php" method="POST">
 
                     <div class="modal-body">
 
-                      <input type"hidden" name="update_id" id="update_id">
+                        <input type="hidden" name="update_id" id="update_id">
+
                         <div class="form-group">
-                            <label> Title </label>
-                            <input type="text" name="announcement_title" id="announcement_title" class="form-control" placeholder="Write the title here">
+                            <label> Tile </label>
+                            <input type="text" name="announcement_title" id="announcement_title" class="form-control"
+                               >
                         </div>
 
                         <div class="form-group">
-                            <label> Decription </label>
-                            <input type="text" name="announcement_description" id="announcement_description" class="form-control" >
+                            <label> Description </label>
+                            <input type="text" name="announcement_description" id="announcement_description" class="form-control"
+                                >
                         </div>
 
-
+                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" name="updatedata" class="btn btn-primary">Update announcement</button>
+                        <button type="submit" name="updatedata" class="btn btn-primary">Update Data</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!--update-->
+
+    <!-- DELETE POP UP FORM (Bootstrap MODAL) -->
+    <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> Delete Student Data </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <form action="deletecode.php" method="POST">
+
+                    <div class="modal-body">
+
+                        <input type="hidden" name="delete_id" id="delete_id">
+
+                        <h4> Do you want to Delete this Data ??</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"> NO </button>
+                        <button type="submit" name="deletedata" class="btn btn-primary"> Yes !! Delete it. </button>
                     </div>
                 </form>
 
@@ -93,6 +132,9 @@
     </div>
 
 <!--UPDATE---------------------->
+
+
+
 
 
 
@@ -156,6 +198,11 @@
                            </button>
                     </td>
 
+                    <td>
+                           <button type="button" class="btn btn-danger deletebtn"> Delete
+                           </button>
+                    </td>
+
 
                 </tbody>
           <?php
@@ -207,10 +254,34 @@
                 $('#update_id').val(data[0]);
                 $('#announcement_title').val(data[1]);
                 $('#announcement_description').val(data[2]);
+               
+            });
+        });
+    </script>
+
+
+
+<script>
+        $(document).ready(function () {
+
+            $('.deletebtn').on('click', function () {
+
+                $('#deletemodal').modal('show');
+
+                $tr = $(this).closest('tr');
+
+                var data = $tr.children("td").map(function () {
+                    return $(this).text();
+                }).get();
+
+                console.log(data);
+
+                $('#delete_id').val(data[0]);
 
             });
         });
     </script>
+
 
 
 </body>

@@ -68,13 +68,7 @@ session_start();
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li>
-                        <a class="dropdown-item" href="#!">My profile</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li><a class="dropdown-item" href="controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="controller/logout_handler.php"> <i class="fa fa-sign-out"></i> Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -87,19 +81,11 @@ session_start();
                 <div class="sb-sidenav-menu">
                     <div class="nav mt-3">
                         <!-- Dashboard -->
-                        <a class="nav-link" href="../external_main.php">
+                        <a class="nav-link" href="../../external_main.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-tachometer" aria-hidden="true"></i>
                             </div>
                             Dashboard
-                        </a>
-
-                        <!-- My Profile -->
-                        <a class="nav-link" href="module5/external/my_profile.php">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            My profile
                         </a>
 
                         <!-- FYP Evaluation -->
@@ -114,12 +100,12 @@ session_start();
                         </a>
                         <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="module5/external/view_assigned_fyp.php">
+                                <a class="nav-link" href="view_assigned_fyp.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View assigned FYP
                                 </a>
-                                <a class="nav-link" href="module5/external/evaluation_report.php">
+                                <a class="nav-link" href="evaluation_report.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Evaluation report
@@ -149,41 +135,44 @@ session_start();
                         <li class="breadcrumb-item active">Assigned FYP for Evaluation</li>
                     </ol>
 
-                    <div class="row mb-2">
-                        <!-- Evaluation panel counter -->
-                        <p id="row_counter" class="col-sm-9 my-auto text-secondary">Total 0 Assigned Evaluation</p>
+                    <div class="card shadow my-3">
+                        <div class="card-body p-3">
+                            <div class="row mb-2">
+                                <!-- Evaluation panel counter -->
+                                <p id="row_counter" class="col-sm-9 my-auto text-secondary">Total 0 Assigned Evaluation</p>
 
-                        <!-- Search bar -->
-                        <div class="form-outline col-sm-3">
-                            <div class="form-group has-search">
-                                <span class="fa fa-search form-control-feedback"></span>
-                                <input type="text" name="search" id="search" class="form-control" placeholder="Search ID or Name">
+                                <!-- Search bar -->
+                                <div class="form-outline col-sm-3">
+                                    <div class="form-group has-search">
+                                        <span class="fa fa-search form-control-feedback"></span>
+                                        <input type="text" name="search" id="search" class="form-control" placeholder="Search ID or Name">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table id="myTable" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr class="header-bg">
+                                            <th scope="col">Project ID</th>
+                                            <th scope="col">Student ID</th>
+                                            <th scope="col">Student Name</th>
+                                            <th scope="col">FYP Level</th>
+                                            <th scope="col">FYP Progress</th>
+                                            <th scope="col">Evaluation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="result">
+                                        <!-- Show datatable here -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="message_box">
+                                <!-- This div is for showing message purpose only -->
                             </div>
                         </div>
                     </div>
-
-                    <div class="table-responsive">
-                        <table id="myTable" class="table table-bordered table-striped">
-                            <thead>
-                                <tr class="header-bg">
-                                    <th scope="col">Project ID</th>
-                                    <th scope="col">Student ID</th>
-                                    <th scope="col">Student Name</th>
-                                    <th scope="col">FYP Level</th>
-                                    <th scope="col">FYP Progress</th>
-                                    <th scope="col">Evaluation</th>
-                                </tr>
-                            </thead>
-                            <tbody id="result">
-                                <!-- Show datatable here -->
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div id="message_box">
-                        <!-- This div is for showing message purpose only -->
-                    </div>
-
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">

@@ -1,9 +1,11 @@
 <?php
 
-require_once '../DAO/ExternalDataService.php';
-require_once '../ClassModel/EvaluationResultModel.php';
-require_once '../ClassModel/EvaluationMarkDetailsModel.php';
-require_once 'ExternalHandler.php';
+require_once  $_SERVER['DOCUMENT_ROOT'] . '/html/module5/DAO/ExternalDataService.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/html/module5/ClassModel/EvaluationResultModel.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/html/module5/ClassModel/EvaluationMarkDetailsModel.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/html/module5/Controller/ExternalHandler.php';
+
+session_start();
 
 if (isset($_SESSION['ip_id'])) {
 
@@ -43,6 +45,17 @@ if (isset($_SESSION['ip_id'])) {
             header("Location: ../external/view_assigned_fyp.php");
         } else {
             echo "ERROR INSERTING EVALUATION";
+        }
+    }
+    else if (isset($_SESSION['er_report_array']) && isset($_SESSION['is_updated'])) {
+        $ev_report_array = $_SESSION['er_report_array'];
+
+        if ($_SESSION['is_updated'] == false) {
+            $status = updateEvaluationResult($ev_report_array);
+        } else {
+            //Invalid update submission because is_updated is true
+            unset($_SESSION['is_updated']);
+            unset($_SESSION['er_report_array']);
         }
     }
 }
