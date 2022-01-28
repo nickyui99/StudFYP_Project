@@ -301,7 +301,6 @@ session_start();
                   </div>
                </body>
 
-
                </html>
             </div>
          </main>
@@ -315,7 +314,5 @@ session_start();
       </div>
    </div>
 </body>
-
-
 
 </html>
