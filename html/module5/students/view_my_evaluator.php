@@ -116,23 +116,23 @@ session_start();
                         </a>
                         <div class="collapse" id="collapseFYP" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="module3\MyFYP\4viewlogbook.php">
+                                <a class="nav-link" href="/html/module3/MyFYP/4viewlogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
                                     View logbook
                                 </a>
-                                <a class="nav-link" href="module3\MyFYP\2updatelogbook.php">
+                                <a class="nav-link" href="/html/module3/MyFYP/2updatelogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Update logbook
                                 </a>
-                                <a class="nav-link" href="module3\MyFYP\5addlogbook.php">
+                                <a class="nav-link" href="/html/module3/MyFYP/5addlogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Add logbook
                                 </a>
-                                <a class="nav-link" href="module3\MyFYP\1deletelogbook.php">
+                                <a class="nav-link" href="/html/module3/MyFYP/1deletelogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Delete logbook
