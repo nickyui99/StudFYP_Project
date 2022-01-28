@@ -125,31 +125,26 @@ session_start();
                   </a>
                   <div class="collapse" id="collapseFYP" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                      <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="module3\MyFYP\4viewlogbook.php">
+                        <a class="nav-link" href="/html/module3/MyFYP/4viewlogbook.php">
                            <div class="sb-nav-link-icon">
                               <i class="fa fa-circle-thin" aria-hidden="true"></i>
                            </div>
                            View logbook
                         </a>
-                        <a class="nav-link" href="module3\MyFYP\2updatelogbook.php">
+                        <a class="nav-link" href="/html/module3/MyFYP/2updatelogbook.php">
                            <div class="sb-nav-link-icon">
                               <i class="fa fa-circle-thin" aria-hidden="true"></i>
                            </div>Update logbook
                         </a>
-                        <a class="nav-link" href="module3\MyFYP\5addlogbook.php">
+                        <a class="nav-link" href="/html/module3/MyFYP/5addlogbook.php">
                            <div class="sb-nav-link-icon">
                               <i class="fa fa-circle-thin" aria-hidden="true"></i>
                            </div>Add logbook
                         </a>
-                        <a class="nav-link" href="module3\MyFYP\1deletelogbook.php">
+                        <a class="nav-link" href="/html/module3/MyFYP/1deletelogbook.php">
                            <div class="sb-nav-link-icon">
                               <i class="fa fa-circle-thin" aria-hidden="true"></i>
                            </div>Delete logbook
-                        </a>
-                        <a class="nav-link" href="#">
-                           <div class="sb-nav-link-icon">
-                              <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                           </div>My FYP project
                         </a>
                      </nav>
                   </div>
@@ -171,11 +166,6 @@ session_start();
                               <i class="fa fa-circle-thin" aria-hidden="true"></i>
                            </div>View my evaluator
                         </a>
-                        <a class="nav-link" href="#">
-                           <div class="sb-nav-link-icon">
-                              <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                           </div>My evaluation result
-                        </a>
                      </nav>
                   </div>
 
@@ -191,26 +181,18 @@ session_start();
                   </a>
                   <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                      <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="module5/students/view_my_evaluator.php">
+                        <a class="nav-link" href="/html/module5/students/view_my_evaluator.php">
                            <div class="sb-nav-link-icon">
                               <i class="fa fa-circle-thin" aria-hidden="true"></i>
                            </div>View my evaluator
                         </a>
-                        <a class="nav-link" href="module5/students/my_evaluation_result.php">
+                        <a class="nav-link" href="/html/module5/students/my_evaluation_result.php">
                            <div class="sb-nav-link-icon">
                               <i class="fa fa-circle-thin" aria-hidden="true"></i>
                            </div>My evaluation result
                         </a>
                      </nav>
                   </div>
-
-                  <!-- My report -->
-                  <a class="nav-link" href="/html/module3/Report/My_report.php">
-                     <div class="sb-nav-link-icon">
-                        <i class="fa fa-file-o" aria-hidden="true"></i>
-                     </div>
-                     My report
-                  </a>
                </div>
             </div>
             <div class="sb-sidenav-footer">
