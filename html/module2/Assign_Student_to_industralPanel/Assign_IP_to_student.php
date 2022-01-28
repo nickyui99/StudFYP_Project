@@ -1,42 +1,56 @@
+<!--Name:Aiman Basheer Mohammed-->
+<!--Section:01A-->
+<!--Matric Number:CA19124-->
+<!---Group 1A-2------>
+
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- This html template is only for StudFYP lecturer only -->
-
-<?php
-include '../Controller/LecturerHandler.php';
-session_start();
-?>
-
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>View Assigned FYP</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FYP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <?php
+  include $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/AnnouncementHandler.php';
+  include $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/FypActivityHandler.php';
 
-    <!-- Bootstrap 5 CSS -->
-    <link rel="stylesheet" href="../../../bootstrap_v5.1/css/styles.css" />
+  session_start();
+  ?>
 
-    <!-- Bootstrap 5 JavaScript -->
-    <script src="../../../bootstrap_v5.1/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
-    <!-- Fontawesome CSS -->
-    <script src="https://use.fontawesome.com/8134766fa6.js"></script>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Dashboard</title>
 
-    <!-- Chart js  -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <!-- Bootstrap 5 CSS -->
+      <link rel="stylesheet" href="../../../bootstrap_v5.1/css/styles.css" />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../../../css/main.css" />
-    <link rel="stylesheet" href="../../../css/module_5.css" />
+      <!-- Bootstrap 5 JavaScript -->
+      <script src="../../../bootstrap_v5.1/js/scripts.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
-    <!-- JS -->
-    <script src="../../../js/module_5.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+      <!-- Fontawesome CSS -->
+      <script src="https://use.fontawesome.com/8134766fa6.js"></script>
+
+      <!-- Full Calendar API -->
+      <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet' /> -->
+      <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
+
+      <!-- Moment Js API -->
+      <script src='https://momentjs.com/downloads/moment.js'></script>
+
+      <!-- CSS -->
+      <link rel="stylesheet" href="../../../css/main.css" />
+
+      <!-- JS -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+
 
 </head>
-
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
@@ -58,23 +72,11 @@ session_start();
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
                     </li>
+                    <?php
+                    printNotificationList();
+                    ?>
                     <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 1</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 2</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#!">FYP Announcement 2</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item see-more-notification" href="#">See more ...</a>
+                        <a class="dropdown-item see-more-notification" href="../../lecturer_main.php">See more ...</a>
                     </li>
                 </ul>
             </li>
@@ -89,7 +91,7 @@ session_start();
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="../../login_controller/logout_handler.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="../../controller/logout_handler.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -102,7 +104,7 @@ session_start();
                 <div class="sb-sidenav-menu">
                     <div class="nav mt-3">
                         <!-- Dashboard -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="lecturer_main.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-tachometer" aria-hidden="true"></i>
                             </div>
@@ -208,21 +210,21 @@ session_start();
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
-                            FYP evaluation
+                            FYP Evaluation
                             <div class="sb-sidenav-collapse-arrow">
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link" href="view_assigned_fyp.php">
+                        <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="module5\lecturer\view_assigned_fyp.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View assigned FYP
                                 </a>
-                                <a class="nav-link text-light active" href="#">
+                                <a class="nav-link" href="module5\lecturer\evaluation_report.php">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Evaluation report
                                 </a>
                             </nav>
@@ -246,10 +248,9 @@ session_start();
             </nav>
         </div>
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 
+<!-----main------>
   <div class="container">
 
       <div class="row justify-content-center">
