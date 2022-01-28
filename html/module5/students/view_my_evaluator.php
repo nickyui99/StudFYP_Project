@@ -76,11 +76,12 @@ session_start();
     <!-- Sidebar -->
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
+
             <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav mt-3">
                         <!-- Dashboard -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="student_main.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-tachometer" aria-hidden="true"></i>
                             </div>
@@ -88,7 +89,7 @@ session_start();
                         </a>
 
                         <!-- My Profile -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="#">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-user"></i>
                             </div>
@@ -96,7 +97,7 @@ session_start();
                         </a>
 
                         <!-- FYP Enrollment -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="/html/module3/enrollement/1FYP_enrollement.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
                             </div>
@@ -115,31 +116,26 @@ session_start();
                         </a>
                         <div class="collapse" id="collapseFYP" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module3\MyFYP\4viewlogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
                                     View logbook
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module3\MyFYP\2updatelogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Update logbook
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module3\MyFYP\5addlogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Add logbook
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module3\MyFYP\1deletelogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Delete logbook
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>My FYP project
                                 </a>
                             </nav>
                         </div>
@@ -161,11 +157,6 @@ session_start();
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View my evaluator
                                 </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>My evaluation result
-                                </a>
                             </nav>
                         </div>
 
@@ -179,28 +170,20 @@ session_start();
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link text-light active" href="view_my_evaluator.php">
+                        <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="module5/students/view_my_evaluator.php">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View my evaluator
                                 </a>
-                                <a class="nav-link" href="my_evaluation_result.php">
+                                <a class="nav-link" href="module5/students/my_evaluation_result.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>My evaluation result
                                 </a>
                             </nav>
                         </div>
-
-                        <!-- My report -->
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-file-o" aria-hidden="true"></i>
-                            </div>
-                            My report
-                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">

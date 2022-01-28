@@ -189,14 +189,6 @@ session_start();
                                 </a>
                             </nav>
                         </div>
-
-                        <!-- My report -->
-                        <a class="nav-link" href="/html/module3/Report/My_report.php">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-file-o" aria-hidden="true"></i>
-                            </div>
-                            My report
-                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
