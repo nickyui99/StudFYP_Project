@@ -4,9 +4,10 @@
 <!-- This html template is only for StudFYP lecturer only -->
 <?php
 
-include_once 'dbase.php';  
-session_start(); 
+include_once 'dbase.php';
+session_start();
 ?>
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -18,8 +19,7 @@ session_start();
 
     <!-- Bootstrap 5 JavaScript -->
     <script src="../../bootstrap_v5.1/js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
     <!-- Fontawesome CSS -->
     <script src="https://use.fontawesome.com/8134766fa6.js"></script>
@@ -46,8 +46,7 @@ session_start();
         <ul class="navbar-nav d-md- ms-auto me-1">
             <!-- Announcement -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-bell fa-fw"></i> Notification</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell fa-fw"></i> Notification</a>
                 <ul class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="navbarDropdown">
                     <li class="dropdown-header text-white text-center p-2">
                         Notfication
@@ -75,8 +74,7 @@ session_start();
 
             <!-- Profile -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user fa-fw"></i> Account</a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li>
                         <a class="dropdown-item" href="#!">My profile</a>
@@ -97,7 +95,7 @@ session_start();
                 <div class="sb-sidenav-menu">
                     <div class="nav mt-3">
                         <!-- Dashboard -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="lecturer_main.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-tachometer" aria-hidden="true"></i>
                             </div>
@@ -105,7 +103,7 @@ session_start();
                         </a>
 
                         <!-- My Profile -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="/html/module4/update_lecturer_profile.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-user"></i>
                             </div>
@@ -113,9 +111,7 @@ session_start();
                         </a>
 
                         <!-- FYP Coordinator -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseCoordinator" aria-expanded="false"
-                            aria-controls="collapseCoordinator">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCoordinator" aria-expanded="false" aria-controls="collapseCoordinator">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -124,46 +120,41 @@ session_start();
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseCoordinator" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseCoordinator" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/html/module2/Assign_Student_to_Evaloutor/Assign_supervisor_to_student.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
                                     Assign student to supervisor
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/html/module2/Assign_Student_to_industralPanel/Assign_IP_to_student.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Assign student to evaluator
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/html/module2/Announcment/Announcement.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Announcement platform
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/html/module2/fypProgress/fypProgress.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>FYP progress
                                 </a>
-                                <a class="nav-link" href="#">
+
+                                <a class="nav-link" href="/html/module2/StudentMarks/student_marks.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Student mark
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/html/module2/ManageSubmissionDate/SubmissionDate.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Manage FYP submission date
                                 </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Manage FYP rubrics
-                                </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/html/module2/Report/FinalReport">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Coordinator final report
@@ -172,9 +163,7 @@ session_start();
                         </div>
 
                         <!-- FYP Supervisor -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseSupervisor" aria-expanded="false"
-                            aria-controls="collapseSupervisor">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSupervisor" aria-expanded="false" aria-controls="collapseSupervisor">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
@@ -183,20 +172,19 @@ session_start();
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseSupervisor" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/html/module4/view_assigned_student.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View assigned student
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/html/module4/view_student_fyp.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View student's FYP
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/html/module4/supervisor_report.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Supervisor report
@@ -205,40 +193,29 @@ session_start();
                         </div>
 
                         <!-- FYP Evaluation -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseEvaluation" aria-expanded="false"
-                            aria-controls="collapseEvaluation">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEvaluation" aria-expanded="false" aria-controls="collapseEvaluation">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
-                            FYP evaluation
+                            FYP Evaluation
                             <div class="sb-sidenav-collapse-arrow">
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/html/module5/lecturer/view_assigned_fyp.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View assigned FYP
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="/html/module5/lecturer/evaluation_report.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Evaluation report
                                 </a>
                             </nav>
                         </div>
-
-                        <!-- My report -->
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-file-o" aria-hidden="true"></i>
-                            </div>
-                            My report
-                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -255,55 +232,54 @@ session_start();
                     <h1 class="mt-4">Student's FYP Information</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item">
-                           FYP Supervisor
+                            FYP Supervisor
                         </li>
                         <li class="breadcrumb-item active">Assigned FYP Student</li>
                     </ol>
-                  
+
                     <?php
 
 
-$sql = "SELECT * FROM fyp_project";
-$result = $db->query($sql);
+                    $sql = "SELECT * FROM fyp_project";
+                    $result = $db->query($sql);
 
-if (mysqli_num_rows($result) > 0){
-    // output data of each row
-    while($row = mysqli_fetch_assoc($result)){
-    $projectid = $row["fyp_proj_id"];
-	$studid = $row["stud_id"];
-	$title = $row["proj_title"];
-	$stage = $row["proj_fyp_stage"];
-	$progress = $row["fyp_proj_progress"];
-}
-} else {
-    echo "0 results";
-
-}
-$db->close();
-?>
+                    if (mysqli_num_rows($result) > 0) {
+                        // output data of each row
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $projectid = $row["fyp_proj_id"];
+                            $studid = $row["stud_id"];
+                            $title = $row["proj_title"];
+                            $stage = $row["proj_fyp_stage"];
+                            $progress = $row["fyp_proj_progress"];
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                    $db->close();
+                    ?>
                     <div class="table-responsive">
                         <table class="table table-bordered table striped">
-                       <thead>
-                           <tr class="header-bg">
-                               <th scope="col">Project ID</th>
-                               <th scope="col">Student ID</th>
+                            <thead>
+                                <tr class="header-bg">
+                                    <th scope="col">Project ID</th>
+                                    <th scope="col">Student ID</th>
                                     <th scope="col">Project Title</th>
                                     <th scope="col">Project Stage</th>
-                                    <th scope="col">Project Progress</th>  
+                                    <th scope="col">Project Progress</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            <tr class="header-bg">
-                            <td scope="col"> <?php echo $projectid;?> </td>
-                            <td scope="col"> <?php echo $studid;?> </td>
-                            <td scope="col"> <?php echo $title;?> </td>
-                            <td scope="col"> <?php echo $stage;?> </td>
-                            <td scope="col"> <?php echo $progress;?> </td>
-                                </tr> 
+                                <tr class="header-bg">
+                                    <td scope="col"> <?php echo $projectid; ?> </td>
+                                    <td scope="col"> <?php echo $studid; ?> </td>
+                                    <td scope="col"> <?php echo $title; ?> </td>
+                                    <td scope="col"> <?php echo $stage; ?> </td>
+                                    <td scope="col"> <?php echo $progress; ?> </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
-                  
+
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
