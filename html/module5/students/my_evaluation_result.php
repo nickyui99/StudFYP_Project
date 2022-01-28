@@ -83,7 +83,8 @@ $projectDetails = getProjectDetails($_SESSION['stud_id']);
                 <div class="sb-sidenav-menu">
                     <div class="nav mt-3">
                         <!-- Dashboard -->
-                        <a class="nav-link" href="index.html">
+                        <!-- Dashboard -->
+                        <a class="nav-link" href="student_main.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-tachometer" aria-hidden="true"></i>
                             </div>
@@ -91,7 +92,7 @@ $projectDetails = getProjectDetails($_SESSION['stud_id']);
                         </a>
 
                         <!-- My Profile -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="#">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-user"></i>
                             </div>
@@ -99,7 +100,7 @@ $projectDetails = getProjectDetails($_SESSION['stud_id']);
                         </a>
 
                         <!-- FYP Enrollment -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="/html/module3/enrollement/1FYP_enrollement.php">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
                             </div>
@@ -118,41 +119,36 @@ $projectDetails = getProjectDetails($_SESSION['stud_id']);
                         </a>
                         <div class="collapse" id="collapseFYP" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module3\MyFYP\4viewlogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>
                                     View logbook
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module3\MyFYP\2updatelogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Update logbook
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module3\MyFYP\5addlogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Add logbook
                                 </a>
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="module3\MyFYP\1deletelogbook.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>Delete logbook
                                 </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>My FYP project
-                                </a>
                             </nav>
                         </div>
 
-                        <!-- FYP Supervisor -->
+                        <!-- My FYP Supervisor -->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSupervisor" aria-expanded="false" aria-controls="collapseSupervisor">
                             <div class="sb-nav-link-icon">
                                 <i class="fa fa-columns"></i>
                             </div>
-                            FYP supervisor
+                            My FYP supervisor
                             <div class="sb-sidenav-collapse-arrow">
                                 <i class="fa fa-angle-down"></i>
                             </div>
@@ -162,17 +158,7 @@ $projectDetails = getProjectDetails($_SESSION['stud_id']);
                                 <a class="nav-link" href="#">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>View assigned student
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>View student's FYP
-                                </a>
-                                <a class="nav-link" href="#">
-                                    <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
-                                    </div>Supervisor report
+                                    </div>View my evaluator
                                 </a>
                             </nav>
                         </div>
@@ -187,28 +173,20 @@ $projectDetails = getProjectDetails($_SESSION['stud_id']);
                                 <i class="fa fa-angle-down"></i>
                             </div>
                         </a>
-                        <div class="collapse show" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav nav-pills nav-fill">
-                                <a class="nav-link" href="view_my_evaluator.php">
+                        <div class="collapse" id="collapseEvaluation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="module5/students/view_my_evaluator.php">
                                     <div class="sb-nav-link-icon">
                                         <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>View my evaluator
                                 </a>
-                                <a class="nav-link text-light active" href="my_evaluation_result.php">
+                                <a class="nav-link" href="module5/students/my_evaluation_result.php">
                                     <div class="sb-nav-link-icon">
-                                        <i class="fa fa-circle-thin text-light" aria-hidden="true"></i>
+                                        <i class="fa fa-circle-thin" aria-hidden="true"></i>
                                     </div>My evaluation result
                                 </a>
                             </nav>
                         </div>
-
-                        <!-- My report -->
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa fa-file-o" aria-hidden="true"></i>
-                            </div>
-                            My report
-                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
