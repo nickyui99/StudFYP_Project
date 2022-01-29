@@ -2,10 +2,6 @@
 <!--Section:01A-->
 <!--Matric Number:CA19124-->
 <!---Group 1A-2------>
-<? php
-
-session_start();
-?>
 
 <!DOCTYPE html>
 <html lang="en">
