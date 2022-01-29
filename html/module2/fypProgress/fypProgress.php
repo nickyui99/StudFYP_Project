@@ -17,11 +17,28 @@ session_start();
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <?php
-  include $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/AnnouncementHandler.php';
-  include $_SERVER["DOCUMENT_ROOT"] . '/StudFYP_Project/html/controller/FypActivityHandler.php';
-
+  
+  
+  include_once '../../../mySQLi/config.php';
+                                  
   session_start();
-  ?>
+
+  
+
+ if(isset($_GET['stud_id']))
+ {
+     $stud_id = $_GET['stud_id'];
+
+     $query = "SELECT * FROM fyp_project WHERE stud_id='$stud_id' ";
+     $query_run = mysqli_query($con, $query);
+
+     if(mysqli_num_rows($query_run) > 0)
+     {
+         foreach($query_run as $row)
+         {
+             ?>
+
+
 
 
       <meta charset="UTF-8" />
@@ -279,28 +296,7 @@ session_start();
                         <div class="row">
                             <div class="col-md-"17">
                                 <hr>
-                                <?php
-                                     
-                                     session_start();
-
-                                     define('DB_SERVER', 'us-cdbr-east-05.cleardb.net');
-                                     define('DB_USERNAME', 'b211c0deb15c87');
-                                     define('DB_PASSWORD', '93a873ef');
-                                     define('DB_DATABASE', 'heroku_063bb470aa341a8');
-                                     $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-
-                                    if(isset($_GET['stud_id']))
-                                    {
-                                        $stud_id = $_GET['stud_id'];
-
-                                        $query = "SELECT * FROM fyp_project WHERE stud_id='$stud_id' ";
-                                        $query_run = mysqli_query($con, $query);
-
-                                        if(mysqli_num_rows($query_run) > 0)
-                                        {
-                                            foreach($query_run as $row)
-                                            {
-                                                ?>
+                                
                                                  <form>
                                                 <table class="table">
                                       <thead class="thead-dark">
@@ -331,6 +327,9 @@ session_start();
                                         {
                                             echo "No Record Found";
                                         }
+                                        
+                                        mysqli_close($db);
+
                                     }
 
                                 ?>
