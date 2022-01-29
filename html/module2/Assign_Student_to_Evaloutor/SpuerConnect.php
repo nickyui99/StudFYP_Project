@@ -1,6 +1,7 @@
 <?php
 session_start();
-$con = mysqli_connect("localhost","root","","studfyp_db");
+include_once '../../../mySQLi/config.php';
+/*$con = mysqli_connect("localhost","root","","studfyp_db");*/
 
 if(isset($_POST['save_select']))
 {
