@@ -2,7 +2,10 @@
 <!--Section:01A-->
 <!--Matric Number:CA19124-->
 <!---Group 1A-2------>
+<?
+session_start();
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -277,7 +280,11 @@
                             <div class="col-md-"17">
                                 <hr>
                                 <?php
-                                    $con = mysqli_connect("localhost","root","","studfyp_db");
+                                     define('DB_SERVER', 'us-cdbr-east-05.cleardb.net');
+                                     define('DB_USERNAME', 'b211c0deb15c87');
+                                     define('DB_PASSWORD', '93a873ef');
+                                     define('DB_DATABASE', 'heroku_063bb470aa341a8');
+                                     $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
 
                                     if(isset($_GET['stud_id']))
                                     {
