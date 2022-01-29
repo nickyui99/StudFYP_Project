@@ -277,7 +277,9 @@
                             <div class="col-md-"17">
                                 <hr>
                                 <?php
-                                    $con = mysqli_connect("localhost","root","","studfyp_db");
+                                   /* $con = mysqli_connect("localhost","root","","studfyp_db");*/
+
+                                   include_once '../../../mySQLi/config.php';
 
                                     if(isset($_GET['stud_id']))
                                     {

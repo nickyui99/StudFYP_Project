@@ -294,7 +294,9 @@
     <?php
 
 
-    $mysqli = NEW MySQLi('localhost','root','','studfyp_db');
+    /*$mysqli = NEW MySQLi('localhost','root','','studfyp_db');*/
+
+    include_once '../../../mySQLi/config.php';
 
     $resultSet = $mysqli->query("SELECT lect_id FROM lecturer");
     ?>

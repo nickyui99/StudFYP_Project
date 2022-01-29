@@ -1,7 +1,10 @@
 <?php
 
-$connection = mysqli_connect("localhost","root","");
-$db = mysqli_select_db($connection, 'studfyp_db');
+/*$connection = mysqli_connect("localhost","root","");
+$db = mysqli_select_db($connection, 'studfyp_db');*/
+
+include_once '../../../mySQLi/config.php'; 
+
 
 if(isset($_POST['insertdata']))
 {

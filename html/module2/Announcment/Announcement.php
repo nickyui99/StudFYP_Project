@@ -151,8 +151,11 @@
                     <h2 style="text-align:"> Announcements list</h2>
 
                     <?php
-                    $connection = mysqli_connect("localhost", "root", "");
-                    $db = mysqli_select_db($connection, 'studfyp_db');
+
+                     include_once '../../../mySQLi/config.php';
+
+                    /*$connection = mysqli_connect("localhost", "root", "");
+                    $db = mysqli_select_db($connection, 'studfyp_db');*/
 
                     $query = "SELECT * FROM announcement";
                     $query_run = mysqli_query($connection, $query);
