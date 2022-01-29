@@ -3,7 +3,14 @@
 <!--Section:01A-->
 <!--Matric Number:CA19124-->
 <!---Group 1A-2------>
+<?php
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/AnnouncementHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/FypActivityHandler.php';
+include_once $_SERVER["DOCUMENT_ROOT"] .  '/mySQLi/config.php';
 
+session_start();
+
+?> 
 <html lang="en">
 <head>
   
