@@ -3,6 +3,13 @@
 <!--Matric Number:CA19124-->
 <!---Group 1A-2------>
 
+<? php
+
+include_once '../../../mySQLi/config.php';
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -152,7 +159,7 @@
 
                     <?php
 
-                     include_once '../../../mySQLi/config.php';
+                     
 
                     /*$connection = mysqli_connect("localhost", "root", "");
                     $db = mysqli_select_db($connection, 'studfyp_db');*/
