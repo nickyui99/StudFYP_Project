@@ -280,6 +280,9 @@ session_start();
                             <div class="col-md-"17">
                                 <hr>
                                 <?php
+                                     
+                                     session_start();
+
                                      define('DB_SERVER', 'us-cdbr-east-05.cleardb.net');
                                      define('DB_USERNAME', 'b211c0deb15c87');
                                      define('DB_PASSWORD', '93a873ef');
