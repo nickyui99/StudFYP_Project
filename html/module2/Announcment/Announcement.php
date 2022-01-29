@@ -3,9 +3,11 @@
 <!--Matric Number:CA19124-->
 <!---Group 1A-2------>
 
-<? php
+<?php
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/AnnouncementHandler.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/html/controller/FypActivityHandler.php';
+include_once $_SERVER["DOCUMENT_ROOT"] .  '/mySQLi/config.php';
 
-include_once '../../../mySQLi/config.php';
 session_start();
 
 ?>
@@ -161,6 +163,10 @@ session_start();
 
                      
 
+         /*include_once $_SERVER["DOCUMENT_ROOT"] .  '/mySQLi/config.php';*/
+
+
+
                     /*$connection = mysqli_connect("localhost", "root", "");
                     $db = mysqli_select_db($connection, 'studfyp_db');*/
 
@@ -182,6 +188,8 @@ session_start();
                             </tr>
                         </thead>
                         <?php
+                        session_start();
+
                         if ($query_run) {
                             foreach ($query_run as $row) {
                         ?>

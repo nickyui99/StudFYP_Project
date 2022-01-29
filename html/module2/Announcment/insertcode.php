@@ -3,7 +3,10 @@
 /*$connection = mysqli_connect("localhost","root","");
 $db = mysqli_select_db($connection, 'studfyp_db');*/
 
-include_once '../../../mySQLi/config.php'; 
+/*include_once '../../../mySQLi/config.php'; */
+
+session_start();
+
 
 
 if(isset($_POST['insertdata']))
