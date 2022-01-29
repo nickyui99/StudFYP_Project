@@ -3,6 +3,10 @@
 <!--Matric Number:CA19124-->
 <!---Group 1A-2------>
 
+<?
+include_once '../../../mySQLi/config.php';
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -270,9 +274,8 @@
                             <?php
   
   
-    include_once '../../../mySQLi/config.php';
-                                  
-  session_start();
+                  include_once '../../../mySQLi/config.php';
+                  session_start();
 
   
 
@@ -319,6 +322,9 @@
                                           </form>
                                           </tr>
                                                 <?php
+                                                include_once '../../../mySQLi/config.php';
+                                                session_start();
+                              
                                             }
                                         }
                                         else
