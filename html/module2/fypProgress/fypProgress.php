@@ -2,27 +2,10 @@
 <!--Section:01A-->
 <!--Matric Number:CA19124-->
 <!---Group 1A-2------>
-<?php
-  
-  
-  include_once '../../../mySQLi/config.php';
-                                  
-  session_start();
+<? php
 
-  
-
- if(isset($_GET['stud_id']))
- {
-     $stud_id = $_GET['stud_id'];
-
-     $query = "SELECT * FROM fyp_project WHERE stud_id='$stud_id' ";
-     $query_run = mysqli_query($con, $query);
-
-     if(mysqli_num_rows($query_run) > 0)
-     {
-         foreach($query_run as $row)
-         {
-             ?>
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -288,7 +271,27 @@
                                     <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
                             </div>
-                        
+                            <?php
+  
+  
+    include_once '../../../mySQLi/config.php';
+                                  
+  session_start();
+
+  
+
+ if(isset($_GET['stud_id']))
+ {
+     $stud_id = $_GET['stud_id'];
+
+     $query = "SELECT * FROM fyp_project WHERE stud_id='$stud_id' ";
+     $query_run = mysqli_query($con, $query);
+
+     if(mysqli_num_rows($query_run) > 0)
+     {
+         foreach($query_run as $row)
+         {
+             ?>
                         
                         </form>
 
